@@ -1,221 +1,971 @@
 {
-  "status": "visual_candidates_only",
-  "note": "Detected connected dark annotation panel regions with moderate morphological closing (not OCR text bounds), then mapped the panel outer rectangles onto base.jpg. Review required; not app runtime data.",
+  "status": "manual_source_rect_candidates",
+  "note": "32 individually specified outer name-plate rectangles from submitted left.jpg/right.jpg, transformed onto base.jpg. Approximate hand-marked bounds; review required; not app runtime data.",
   "imageSize": [
     414,
     739
   ],
-  "panelCount": 7,
+  "panelCount": 32,
   "panels": [
     {
+      "number": 1,
+      "name": "マグカップ",
       "source": "left",
-      "sourcePanelRect": [
-        263,
-        0,
-        151,
-        25
+      "sourceRect": [
+        78,
+        278,
+        130,
+        313
       ],
       "basePolygon": [
         [
-          172,
-          256
+          51,
+          438
         ],
         [
-          271,
-          256
+          85,
+          438
         ],
         [
-          271,
-          272
+          85,
+          460
         ],
         [
-          172,
-          272
+          51,
+          460
         ]
       ],
-      "darkFillRatio": 0.291,
-      "rectangularity": 0.244,
-      "confidence": "panel_contour_candidate_only"
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
     },
     {
+      "number": 2,
+      "name": "テディベア",
       "source": "left",
-      "sourcePanelRect": [
-        388,
-        99,
-        26,
-        28
+      "sourceRect": [
+        130,
+        269,
+        172,
+        310
       ],
       "basePolygon": [
         [
-          254,
-          320
+          85,
+          432
         ],
         [
-          271,
-          320
+          112,
+          432
         ],
         [
-          271,
-          339
+          112,
+          458
         ],
         [
-          254,
-          339
+          85,
+          458
         ]
       ],
-      "darkFillRatio": 0.692,
-      "rectangularity": 0.628,
-      "confidence": "panel_contour_candidate_only"
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
     },
     {
+      "number": 3,
+      "name": "呼び出しボタン",
       "source": "left",
-      "sourcePanelRect": [
-        261,
-        522,
-        140,
-        88
+      "sourceRect": [
+        307,
+        174,
+        372,
+        212
       ],
       "basePolygon": [
         [
-          171,
-          597
+          201,
+          370
         ],
         [
-          262,
-          597
+          243,
+          370
         ],
         [
-          262,
-          655
+          243,
+          394
         ],
         [
-          171,
-          655
+          201,
+          394
         ]
       ],
-      "darkFillRatio": 0.367,
-      "rectangularity": 0.291,
-      "confidence": "panel_contour_candidate_only"
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
     },
     {
+      "number": 4,
+      "name": "バーコードスキャナー",
       "source": "left",
-      "sourcePanelRect": [
-        71,
-        664,
-        72,
-        41
+      "sourceRect": [
+        283,
+        221,
+        359,
+        255
       ],
       "basePolygon": [
         [
-          46,
-          690
+          185,
+          400
         ],
         [
-          93,
-          690
+          235,
+          400
         ],
         [
-          93,
-          717
+          235,
+          422
         ],
         [
-          46,
-          717
+          185,
+          423
         ]
       ],
-      "darkFillRatio": 1.0,
-      "rectangularity": 0.962,
-      "confidence": "panel_contour_candidate_only"
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
     },
     {
-      "source": "right",
-      "sourcePanelRect": [
-        43,
-        0,
-        62,
-        20
-      ],
-      "basePolygon": [
-        [
-          173,
-          260
-        ],
-        [
-          213,
-          260
-        ],
-        [
-          213,
-          273
-        ],
-        [
-          173,
-          273
-        ]
-      ],
-      "darkFillRatio": 0.323,
-      "rectangularity": 0.259,
-      "confidence": "panel_contour_candidate_only"
-    },
-    {
-      "source": "right",
-      "sourcePanelRect": [
-        127,
-        689,
+      "number": 5,
+      "name": "いちごクッション",
+      "source": "left",
+      "sourceRect": [
         42,
-        31
+        319,
+        104,
+        354
       ],
       "basePolygon": [
         [
-          228,
-          706
+          27,
+          464
         ],
         [
-          255,
-          706
+          68,
+          464
         ],
         [
-          255,
-          727
+          68,
+          487
         ],
         [
-          228,
-          727
+          27,
+          487
         ]
       ],
-      "darkFillRatio": 0.502,
-      "rectangularity": 0.453,
-      "confidence": "panel_contour_candidate_only"
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
     },
     {
-      "source": "right",
-      "sourcePanelRect": [
-        100,
-        700,
-        29,
-        18
+      "number": 6,
+      "name": "卓上ベル",
+      "source": "left",
+      "sourceRect": [
+        167,
+        309,
+        236,
+        334
       ],
       "basePolygon": [
         [
-          210,
-          714
+          109,
+          458
         ],
         [
-          229,
-          714
+          154,
+          458
         ],
         [
-          229,
-          725
+          154,
+          474
         ],
         [
-          210,
-          725
+          109,
+          474
         ]
       ],
-      "darkFillRatio": 0.326,
-      "rectangularity": 0.25,
-      "confidence": "panel_contour_candidate_only"
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 7,
+      "name": "カップケーキ",
+      "source": "left",
+      "sourceRect": [
+        263,
+        285,
+        319,
+        324
+      ],
+      "basePolygon": [
+        [
+          172,
+          442
+        ],
+        [
+          208,
+          442
+        ],
+        [
+          208,
+          468
+        ],
+        [
+          172,
+          468
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 8,
+      "name": "おにぎり",
+      "source": "left",
+      "sourceRect": [
+        323,
+        304,
+        375,
+        327
+      ],
+      "basePolygon": [
+        [
+          211,
+          455
+        ],
+        [
+          245,
+          455
+        ],
+        [
+          245,
+          470
+        ],
+        [
+          211,
+          470
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 9,
+      "name": "売り切れプレート",
+      "source": "left",
+      "sourceRect": [
+        350,
+        371,
+        412,
+        405
+      ],
+      "basePolygon": [
+        [
+          229,
+          498
+        ],
+        [
+          269,
+          498
+        ],
+        [
+          269,
+          521
+        ],
+        [
+          229,
+          521
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 10,
+      "name": "トレー",
+      "source": "left",
+      "sourceRect": [
+        6,
+        436,
+        46,
+        467
+      ],
+      "basePolygon": [
+        [
+          4,
+          541
+        ],
+        [
+          30,
+          541
+        ],
+        [
+          30,
+          561
+        ],
+        [
+          4,
+          561
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 11,
+      "name": "ロールケーキ",
+      "source": "left",
+      "sourceRect": [
+        227,
+        409,
+        294,
+        433
+      ],
+      "basePolygon": [
+        [
+          148,
+          523
+        ],
+        [
+          192,
+          523
+        ],
+        [
+          192,
+          539
+        ],
+        [
+          148,
+          539
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 12,
+      "name": "マカロン",
+      "source": "left",
+      "sourceRect": [
+        350,
+        458,
+        407,
+        484
+      ],
+      "basePolygon": [
+        [
+          229,
+          555
+        ],
+        [
+          266,
+          555
+        ],
+        [
+          266,
+          572
+        ],
+        [
+          229,
+          572
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 13,
+      "name": "ラッピングリボン",
+      "source": "left",
+      "sourceRect": [
+        130,
+        465,
+        192,
+        499
+      ],
+      "basePolygon": [
+        [
+          85,
+          560
+        ],
+        [
+          125,
+          560
+        ],
+        [
+          125,
+          582
+        ],
+        [
+          85,
+          582
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 14,
+      "name": "いちごプリン",
+      "source": "left",
+      "sourceRect": [
+        24,
+        490,
+        78,
+        531
+      ],
+      "basePolygon": [
+        [
+          16,
+          576
+        ],
+        [
+          51,
+          576
+        ],
+        [
+          51,
+          603
+        ],
+        [
+          16,
+          603
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 15,
+      "name": "アイリスメガネ",
+      "source": "left",
+      "sourceRect": [
+        82,
+        495,
+        146,
+        532
+      ],
+      "basePolygon": [
+        [
+          54,
+          579
+        ],
+        [
+          95,
+          579
+        ],
+        [
+          95,
+          604
+        ],
+        [
+          54,
+          604
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 16,
+      "name": "黒いリボン",
+      "source": "left",
+      "sourceRect": [
+        0,
+        544,
+        76,
+        571
+      ],
+      "basePolygon": [
+        [
+          0,
+          611
+        ],
+        [
+          50,
+          611
+        ],
+        [
+          50,
+          629
+        ],
+        [
+          0,
+          629
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 17,
+      "name": "ピンクのカゴ",
+      "source": "left",
+      "sourceRect": [
+        281,
+        568,
+        378,
+        605
+      ],
+      "basePolygon": [
+        [
+          184,
+          627
+        ],
+        [
+          247,
+          627
+        ],
+        [
+          247,
+          651
+        ],
+        [
+          184,
+          651
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 18,
+      "name": "レシート",
+      "source": "left",
+      "sourceRect": [
+        31,
+        623,
+        103,
+        651
+      ],
+      "basePolygon": [
+        [
+          20,
+          663
+        ],
+        [
+          67,
+          663
+        ],
+        [
+          67,
+          681
+        ],
+        [
+          20,
+          681
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 19,
+      "name": "ハンカチ",
+      "source": "left",
+      "sourceRect": [
+        129,
+        604,
+        200,
+        635
+      ],
+      "basePolygon": [
+        [
+          84,
+          651
+        ],
+        [
+          131,
+          651
+        ],
+        [
+          131,
+          671
+        ],
+        [
+          84,
+          671
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 20,
+      "name": "いちごスプーン",
+      "source": "left",
+      "sourceRect": [
+        216,
+        635,
+        279,
+        679
+      ],
+      "basePolygon": [
+        [
+          141,
+          671
+        ],
+        [
+          182,
+          671
+        ],
+        [
+          182,
+          700
+        ],
+        [
+          141,
+          700
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 21,
+      "name": "プリンのスタンプ",
+      "source": "left",
+      "sourceRect": [
+        153,
+        653,
+        218,
+        691
+      ],
+      "basePolygon": [
+        [
+          100,
+          683
+        ],
+        [
+          142,
+          683
+        ],
+        [
+          142,
+          708
+        ],
+        [
+          100,
+          708
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 22,
+      "name": "ハートのティッシュ",
+      "source": "left",
+      "sourceRect": [
+        226,
+        642,
+        298,
+        681
+      ],
+      "basePolygon": [
+        [
+          148,
+          676
+        ],
+        [
+          195,
+          676
+        ],
+        [
+          195,
+          701
+        ],
+        [
+          148,
+          701
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 23,
+      "name": "ポイントカード",
+      "source": "left",
+      "sourceRect": [
+        70,
+        666,
+        135,
+        713
+      ],
+      "basePolygon": [
+        [
+          46,
+          691
+        ],
+        [
+          88,
+          691
+        ],
+        [
+          88,
+          722
+        ],
+        [
+          46,
+          722
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 24,
+      "name": "学生証",
+      "source": "left",
+      "sourceRect": [
+        315,
+        697,
+        374,
+        732
+      ],
+      "basePolygon": [
+        [
+          206,
+          712
+        ],
+        [
+          244,
+          712
+        ],
+        [
+          244,
+          734
+        ],
+        [
+          206,
+          734
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 25,
+      "name": "プリンの張り紙",
+      "source": "right",
+      "sourceRect": [
+        128,
+        67,
+        244,
+        137
+      ],
+      "basePolygon": [
+        [
+          228,
+          303
+        ],
+        [
+          304,
+          303
+        ],
+        [
+          304,
+          348
+        ],
+        [
+          228,
+          348
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 26,
+      "name": "プリンのぬいぐるみ",
+      "source": "right",
+      "sourceRect": [
+        143,
+        220,
+        235,
+        261
+      ],
+      "basePolygon": [
+        [
+          238,
+          402
+        ],
+        [
+          298,
+          402
+        ],
+        [
+          298,
+          429
+        ],
+        [
+          238,
+          429
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 27,
+      "name": "コーヒー牛乳",
+      "source": "right",
+      "sourceRect": [
+        337,
+        111,
+        411,
+        151
+      ],
+      "basePolygon": [
+        [
+          364,
+          332
+        ],
+        [
+          412,
+          332
+        ],
+        [
+          412,
+          358
+        ],
+        [
+          364,
+          358
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 28,
+      "name": "いちごオレ",
+      "source": "right",
+      "sourceRect": [
+        362,
+        145,
+        411,
+        194
+      ],
+      "basePolygon": [
+        [
+          380,
+          354
+        ],
+        [
+          412,
+          354
+        ],
+        [
+          412,
+          385
+        ],
+        [
+          380,
+          385
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 29,
+      "name": "牛乳",
+      "source": "right",
+      "sourceRect": [
+        330,
+        126,
+        372,
+        197
+      ],
+      "basePolygon": [
+        [
+          359,
+          341
+        ],
+        [
+          387,
+          341
+        ],
+        [
+          387,
+          387
+        ],
+        [
+          359,
+          387
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 30,
+      "name": "イチゴジャム",
+      "source": "right",
+      "sourceRect": [
+        335,
+        430,
+        405,
+        505
+      ],
+      "basePolygon": [
+        [
+          363,
+          538
+        ],
+        [
+          408,
+          538
+        ],
+        [
+          408,
+          587
+        ],
+        [
+          363,
+          587
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 31,
+      "name": "ドーナツボックス",
+      "source": "right",
+      "sourceRect": [
+        302,
+        514,
+        374,
+        568
+      ],
+      "basePolygon": [
+        [
+          341,
+          593
+        ],
+        [
+          388,
+          593
+        ],
+        [
+          388,
+          628
+        ],
+        [
+          341,
+          628
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
+    },
+    {
+      "number": 32,
+      "name": "ゴールドスプーン",
+      "source": "right",
+      "sourceRect": [
+        197,
+        670,
+        291,
+        731
+      ],
+      "basePolygon": [
+        [
+          273,
+          694
+        ],
+        [
+          334,
+          694
+        ],
+        [
+          334,
+          734
+        ],
+        [
+          273,
+          734
+        ]
+      ],
+      "confidence": "manual_source_plate_bounds_needs_visual_review"
     }
   ]
 }\n
