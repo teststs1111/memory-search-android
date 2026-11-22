@@ -4,7 +4,10 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "reference" / "chapter_01" / "base.jpg"
-OUTPUT = ROOT / "reference" / "chapter_01" / "base_grid.jpg"
+REF = ROOT / "reference" / "chapter_01"
+OUTPUT = REF / "base_grid.jpg"
+LEFT = REF / "left.jpg"
+RIGHT = REF / "right.jpg"
 
 
 def register_view(base, view, name: str):
@@ -64,8 +67,8 @@ def main() -> None:
             raise SystemExit(f"Could not read {path}")
         good, inliers = register_view(image, view, name)
         report.append(f"{name}: {inliers}/{good} SIFT matches were RANSAC inliers")
-    (REF / "registration_report.txt").write_text("\\n".join(report) + "\\n", encoding="utf-8")
-    print("\\n".join(report))
+    (REF / "registration_report.txt").write_text("\n".join(report) + "\n", encoding="utf-8")
+    print("\n".join(report))
 
 if __name__ == "__main__":
     main()
