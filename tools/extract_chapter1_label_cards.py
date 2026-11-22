@@ -127,6 +127,33 @@ def main():
             cv2.putText(preview, str(panel["number"]), (x1, max(10, y1 - 2)),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.36, (255, 255, 255), 1, cv2.LINE_AA)
 
+    # Enlarged source crops for components that may contain touching cards.
+    review_tiles = []
+    source_images = {name: cv2.imread(str(path)) for name, path, _ in VIEWS}
+    for panel in all_panels:
+        x1, y1, x2, y2 = panel["sourceBounds"]
+        if (x2 - x1) < 70 and (y2 - y1) < 48:
+            continue
+        crop = source_images[panel["source"]][y1:y2, x1:x2]
+        if crop.size == 0:
+            continue
+        scale = 3
+        enlarged = cv2.resize(crop, None, fx=scale, fy=scale, interpolation=cv2.INTER_NEAREST)
+        header = np.full((24, enlarged.shape[1], 3), 245, dtype=np.uint8)
+        cv2.putText(header, f'{panel["source"]} {panel["sourceBounds"]}',
+                    (4, 17), cv2.FONT_HERSHEY_SIMPLEX, 0.42, (0, 0, 0), 1, cv2.LINE_AA)
+        review_tiles.append(np.vstack([header, enlarged]))
+
+    if review_tiles:
+        tile_width = max(tile.shape[1] for tile in review_tiles)
+        padded = []
+        for tile in review_tiles:
+            canvas = np.full((tile.shape[0], tile_width, 3), 255, dtype=np.uint8)
+            canvas[:, :tile.shape[1]] = tile
+            padded.append(canvas)
+        review = cv2.vconcat(padded)
+        cv2.imwrite(str(REF / "label_merge_review.jpg"), review, [cv2.IMWRITE_JPEG_QUALITY, 96])
+
     cv2.imwrite(str(OUT_IMAGE), preview, [cv2.IMWRITE_JPEG_QUALITY, 96])
     OUT_JSON.write_text(json.dumps({
         "status": "image_difference_extraction_candidates",
