@@ -32,7 +32,7 @@ def register_to_base(source, base):
     return matrix, {"matches": len(good), "inliers": inlier_count}
 
 
-def extract_dark_panels(source, base_in_source, view_name):
+def extract_dark_panels(source, base_in_source, view_name, threshold):
     source_gray = cv2.cvtColor(source, cv2.COLOR_BGR2GRAY).astype(np.float32)
     reference_gray = cv2.cvtColor(base_in_source, cv2.COLOR_BGR2GRAY).astype(np.float32)
 
@@ -42,11 +42,11 @@ def extract_dark_panels(source, base_in_source, view_name):
     valid = reference_gray >= 24
     ratio = np.ones_like(source_gray, dtype=np.float32)
     ratio[valid] = (source_gray[valid] + 1.0) / (reference_gray[valid] + 1.0)
-    mask = np.where(valid & (ratio < 0.78), 255, 0).astype(np.uint8)
+    mask = np.where(valid & (ratio < threshold), 255, 0).astype(np.uint8)
 
     # Only close one-pixel resampling gaps. Larger kernels merge neighboring labels.
     mask = cv2.morphologyEx(
-        mask, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+        mask, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
     )
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     height, width = mask.shape
@@ -93,13 +93,19 @@ def main():
         base_in_source = cv2.warpPerspective(
             base, inverse, (width, height), flags=cv2.INTER_LINEAR
         )
-        panels, mask = extract_dark_panels(source, base_in_source, view_name)
+        sweep = {}
+        for threshold in [0.55, 0.60, 0.65, 0.70, 0.75, 0.80]:
+            test_panels, _ = extract_dark_panels(source, base_in_source, view_name, threshold)
+            sweep[str(threshold)] = len(test_panels)
+
+        panels, mask = extract_dark_panels(source, base_in_source, view_name, 0.65)
         cv2.imwrite(str(REF / f"{view_name}_annotation_diff_mask.png"), mask)
 
         reports[view_name] = {
             **registration,
             "expectedPanels": expected,
             "detectedPanels": len(panels),
+            "thresholdSweep": sweep,
         }
         for panel in panels:
             source_poly = np.asarray(panel["sourcePolygon"], dtype=np.float32).reshape(-1, 1, 2)
