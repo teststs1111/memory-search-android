@@ -6,7 +6,7 @@ Source references:
 - `right.jpg`: right-side annotated reference.
 - `annotated_pair.jpg`: the two annotated views placed side by side for easier review. The original files remain unchanged.
 
-The names below were checked visually against the actual uploaded annotation images. This catalog is **not** a verified coordinate dataset. Do not use these entries to place markers until each physical object has been matched against `base.jpg` and its normalized center has been checked.
+The names below were checked visually against the actual uploaded annotation images. This catalog is a name list, not a verified target-object coordinate dataset. The current task is to highlight each item's **name label frame** as a rectangle; the frame coordinates are stored separately as review-only candidates.
 
 ## Left reference (24 items)
 
@@ -50,6 +50,7 @@ The names below were checked visually against the actual uploaded annotation ima
 
 - Status: pending.
 - The original images are kept unchanged.
-- Coordinates must refer to the center of the actual target object in `base.jpg`, not the annotation label or the label box.
+- The 32 name-label rectangles are mapped to `base.jpg` and stored in `app/src/main/assets/stages/chapter_1_label_boxes.candidates.json`.
+- The candidate rectangles are normalized to the base image and are intended to outline the entire label frame, not the target object.
 - The combined annotated sheet is a visual aid only; it is not a coordinate reference.
-- Keep `chapter_1.json` as `awaiting_coordinate_verification` with an empty `items` array until all coordinates are checked.
+- Keep `chapter_1.json` as `awaiting_coordinate_verification` with an empty `items` array; label-frame candidates must remain separate from physical-object coordinates.
