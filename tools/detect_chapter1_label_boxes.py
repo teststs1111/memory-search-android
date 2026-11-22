@@ -48,8 +48,8 @@ def ocr_text_lines(image_path):
 
 
 def merge_label_lines(lines, image_shape):
-    # Multi-line Japanese labels form compact text blocks. Merge only lines
-    # with substantial horizontal overlap and a small vertical gap.
+    # Keep each OCR text group tight. The previous padding expanded the
+    # highlight beyond the label and made it look visibly misaligned.
     groups = []
     for line in lines:
         x1, y1, x2, y2 = line["x1"], line["y1"], line["x2"], line["y2"]
@@ -72,10 +72,10 @@ def merge_label_lines(lines, image_shape):
     boxes = []
     for g in groups:
         x1, y1, x2, y2 = g["box"]
-        # Add padding to recover the dark label panel around the OCR glyphs.
-        x1, y1 = max(0, x1 - 9), max(0, y1 - 6)
-        x2, y2 = min(w - 1, x2 + 9), min(h - 1, y2 + 6)
-        if x2 - x1 < 20 or y2 - y1 < 12:
+        # No artificial margin: preserve the compact box around the text.
+        x1, y1 = max(0, x1), max(0, y1)
+        x2, y2 = min(w - 1, x2), min(h - 1, y2)
+        if x2 - x1 < 8 or y2 - y1 < 8:
             continue
         boxes.append((x1, y1, x2 - x1, y2 - y1, "".join(g["texts"])))
     return sorted(boxes, key=lambda b: (b[1], b[0]))
@@ -116,7 +116,7 @@ def main():
             mapped[:, 0] = np.clip(mapped[:, 0], 0, width - 1)
             mapped[:, 1] = np.clip(mapped[:, 1], 0, height - 1)
             polygon = np.round(mapped).astype(np.int32)
-            cv2.polylines(preview, [polygon], True, (0, 255, 255), 2, cv2.LINE_AA)
+            cv2.polylines(preview, [polygon], True, (0, 255, 255), 1, cv2.LINE_AA)
             center = tuple(np.mean(polygon, axis=0).astype(int))
             records.append({
                 "source": view_name, "recognizedText": text,
@@ -134,10 +134,10 @@ def main():
         raise SystemExit("Could not write label_box_candidates.jpg")
     OUT_JSON.write_text(json.dumps({
         "status": "visual_candidates_only",
-        "note": "OCR text bounds padded to approximate annotation label panels, then transformed onto base.jpg. Not app runtime data.",
+        "note": "Tight OCR text bounds without artificial padding, transformed onto base.jpg. Not app runtime data.",
         "imageSize": [width, height], "boxes": records
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Created {len(records)} OCR label-box candidates; preview={OUT_IMAGE.name}")
+    print(f"Created {len(records)} tight label-box candidates; preview={OUT_IMAGE.name}")
 
 
 if __name__ == "__main__":
