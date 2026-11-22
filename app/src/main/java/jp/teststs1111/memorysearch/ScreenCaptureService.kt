@@ -136,12 +136,15 @@ class ScreenCaptureService : Service() {
         val recognizer = TextRecognition.getClient(JapaneseTextRecognizerOptions.Builder().build())
         recognizer.process(InputImage.fromBitmap(bitmap, 0))
             .addOnSuccessListener { result ->
-                val lines = result.textBlocks.flatMap { block -> block.lines.map { line -> line.text } }
+                val blocks = result.textBlocks.map { block -> block.lines.map { line -> line.text } }
+                val lines = blocks.flatten()
                 sendBroadcast(Intent(ACTION_OCR_RESULT).setPackage(packageName).apply {
                     putExtra(EXTRA_WIDTH, bitmap.width)
                     putExtra(EXTRA_HEIGHT, bitmap.height)
                     putExtra(EXTRA_OCR_TEXT, result.text)
                     putStringArrayListExtra(EXTRA_OCR_LINES, ArrayList(lines))
+                    // Keep OCR block boundaries so separate labels are never joined.
+                    putStringArrayListExtra(EXTRA_OCR_BLOCKS, ArrayList(blocks.map { it.joinToString("\n") }))
                 })
             }
             .addOnFailureListener { error ->
@@ -191,6 +194,7 @@ class ScreenCaptureService : Service() {
         const val EXTRA_HEIGHT = "frame_height"
         const val EXTRA_OCR_TEXT = "ocr_text"
         const val EXTRA_OCR_LINES = "ocr_lines"
+        const val EXTRA_OCR_BLOCKS = "ocr_blocks"
         const val EXTRA_STAGE_ID = "stage_id"
         const val EXTRA_ERROR = "error"
         private const val CHANNEL_ID = "screen_capture_test"
