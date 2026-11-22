@@ -25,7 +25,7 @@ class MainActivity : Activity() {
             textSize = 25f
         })
         root.addView(TextView(this).apply {
-            text = "テスト版 ${packageManager.getPackageInfo(packageName, 0).versionName ?: "不明"} — 第1章データ読込対応"
+            text = "テスト版 ${packageManager.getPackageInfo(packageName, 0).versionName ?: "不明"} — 全10章データ読込対応"
             textSize = 14f
             setPadding(0, padding / 3, 0, padding)
         })
