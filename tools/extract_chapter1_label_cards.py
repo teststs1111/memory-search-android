@@ -115,6 +115,24 @@ def main():
 
     if len(records) != 32:
         raise SystemExit(f"Expected 32 label cards, got {len(records)}")
+
+    # Verify the source rectangles against the original submitted annotations
+    # before judging the transformed coordinates on base.jpg.
+    source_panels = []
+    for view_name, path in VIEWS:
+        source = cv2.imread(str(path))
+        for name, rect in PLATES[view_name]:
+            number = next(p["number"] for p in records if p["source"] == view_name and p["name"] == name)
+            x1, y1, x2, y2 = rect
+            cv2.rectangle(source, (x1, y1), (x2, y2), (0, 255, 255), 1, cv2.LINE_AA)
+            cv2.putText(source, str(number), (x1, max(10, y1 - 2)),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.38, (0, 0, 0), 3, cv2.LINE_AA)
+            cv2.putText(source, str(number), (x1, max(10, y1 - 2)),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.38, (255, 255, 255), 1, cv2.LINE_AA)
+        source_panels.append(source)
+    source_check = np.hstack(source_panels)
+    cv2.imwrite(str(REF / "source_label_box_check.jpg"), source_check, [cv2.IMWRITE_JPEG_QUALITY, 96])
+
     cv2.imwrite(str(OUT_IMAGE), preview, [cv2.IMWRITE_JPEG_QUALITY, 96])
     OUT_JSON.write_text(json.dumps({
         "status": "32_source_label_cards_mapped",
