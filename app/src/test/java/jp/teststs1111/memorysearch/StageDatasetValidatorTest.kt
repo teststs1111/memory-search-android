@@ -67,11 +67,10 @@ class StageDatasetValidatorTest {
         )
         val chapterTwo = dataset(
             items = listOf(StageItem("chapter-two-item", "赤いカップ", 0.8, 0.7))
-                .map { it.copy(itemName = "青いカップ") }
         )
 
         assertEquals("chapter-one-item", StageDatasetValidator.findItem(chapterOne, "赤いカップ")?.itemId)
-        assertEquals(null, StageDatasetValidator.findItem(chapterTwo, "赤いカップ"))
+        assertEquals("chapter-two-item", StageDatasetValidator.findItem(chapterTwo, "赤いカップ")?.itemId)
     }
 
     @Test
