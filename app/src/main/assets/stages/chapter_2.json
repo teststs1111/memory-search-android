@@ -1,0 +1,8 @@
+{
+  "stageId": "chapter_2",
+  "stageName": "第2章",
+  "coordinateSystem": "normalized_0_to_1",
+  "referenceImage": "reference/chapter_02/base.jpg",
+  "dataStatus": "awaiting_coordinate_verification",
+  "items": []
+}
