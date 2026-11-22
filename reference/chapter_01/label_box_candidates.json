@@ -1,154 +1,30 @@
 {
-  "status": "image_difference_extraction_candidates",
-  "method": "Register base into each annotated source image; detect pixels darkened by the translucent black name plates using relative luminance; trace contours in source coordinates and transform them to base.",
+  "status": "32_source_label_cards_mapped",
+  "method": "Bounds were traced from the actual darkening regions in left.jpg/right.jpg, with touching panels split and duplicate fragments merged; SIFT/RANSAC maps each source quadrilateral onto base.jpg.",
   "reviewRequired": true,
-  "reports": {
+  "registration": {
     "left": {
       "matches": 514,
-      "inliers": 493,
-      "expectedPanels": 24,
-      "detectedPanels": 21,
-      "thresholdSweep": {
-        "0.35": 47,
-        "0.4": 21,
-        "0.45": 19,
-        "0.5": 19,
-        "0.55": 19,
-        "0.6": 19
-      }
+      "inliers": 493
     },
     "right": {
       "matches": 654,
-      "inliers": 636,
-      "expectedPanels": 8,
-      "detectedPanels": 7,
-      "thresholdSweep": {
-        "0.35": 21,
-        "0.4": 7,
-        "0.45": 6,
-        "0.5": 6,
-        "0.55": 6,
-        "0.6": 6
-      }
+      "inliers": 636
     }
   },
-  "panelCount": 28,
+  "panelCount": 32,
   "panels": [
     {
+      "number": 1,
+      "name": "マグカップ",
       "source": "left",
-      "area": 1624.0,
-      "sourceBounds": [
-        310,
-        176,
-        372,
-        211
-      ],
-      "polygon": [
-        [
-          203,
-          371
-        ],
-        [
-          243,
-          371
-        ],
-        [
-          243,
-          394
-        ],
-        [
-          203,
-          394
-        ]
-      ],
-      "bounds": [
-        202,
-        370,
-        243,
-        393
-      ],
-      "number": 1
-    },
-    {
-      "source": "left",
-      "area": 2185.5,
-      "sourceBounds": [
-        285,
-        223,
-        360,
-        259
-      ],
-      "polygon": [
-        [
-          186,
-          402
-        ],
-        [
-          235,
-          402
-        ],
-        [
-          235,
-          425
-        ],
-        [
-          186,
-          425
-        ]
-      ],
-      "bounds": [
-        186,
-        401,
-        235,
-        425
-      ],
-      "number": 2
-    },
-    {
-      "source": "left",
-      "area": 2970.5,
-      "sourceBounds": [
-        133,
-        271,
-        235,
-        333
-      ],
-      "polygon": [
-        [
-          87,
-          433
-        ],
-        [
-          154,
-          433
-        ],
-        [
-          154,
-          474
-        ],
-        [
-          87,
-          474
-        ]
-      ],
-      "bounds": [
-        86,
-        432,
-        153,
-        473
-      ],
-      "number": 3
-    },
-    {
-      "source": "left",
-      "area": 1441.5,
-      "sourceBounds": [
+      "sourceRect": [
         81,
         280,
         130,
         316
       ],
-      "polygon": [
+      "basePolygon": [
         [
           53,
           439
@@ -166,59 +42,109 @@
           462
         ]
       ],
-      "bounds": [
-        52,
-        438,
-        84,
-        462
-      ],
-      "number": 4
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 2,
+      "name": "テディベア",
       "source": "left",
-      "area": 3070.5,
-      "sourceBounds": [
-        268,
-        286,
-        386,
-        328
+      "sourceRect": [
+        133,
+        271,
+        173,
+        310
       ],
-      "polygon": [
+      "basePolygon": [
         [
-          175,
-          443
+          87,
+          433
         ],
         [
-          252,
-          443
+          113,
+          433
         ],
         [
-          252,
-          470
+          113,
+          458
         ],
         [
-          175,
-          470
+          87,
+          458
         ]
       ],
-      "bounds": [
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 3,
+      "name": "呼び出しボタン",
+      "source": "left",
+      "sourceRect": [
+        310,
         175,
-        442,
-        252,
-        470
+        372,
+        211
       ],
-      "number": 5
+      "basePolygon": [
+        [
+          203,
+          370
+        ],
+        [
+          243,
+          370
+        ],
+        [
+          243,
+          394
+        ],
+        [
+          203,
+          394
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 4,
+      "name": "バーコードスキャナー",
       "source": "left",
-      "area": 1713.5,
-      "sourceBounds": [
+      "sourceRect": [
+        285,
+        223,
+        360,
+        259
+      ],
+      "basePolygon": [
+        [
+          186,
+          402
+        ],
+        [
+          235,
+          402
+        ],
+        [
+          235,
+          425
+        ],
+        [
+          186,
+          425
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 5,
+      "name": "いちごクッション",
+      "source": "left",
+      "sourceRect": [
         45,
         321,
         114,
         354
       ],
-      "polygon": [
+      "basePolygon": [
         [
           29,
           466
@@ -236,24 +162,109 @@
           487
         ]
       ],
-      "bounds": [
-        29,
-        465,
-        74,
-        487
-      ],
-      "number": 6
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 6,
+      "name": "卓上ベル",
       "source": "left",
-      "area": 1625.0,
-      "sourceBounds": [
+      "sourceRect": [
+        168,
+        309,
+        235,
+        333
+      ],
+      "basePolygon": [
+        [
+          110,
+          458
+        ],
+        [
+          154,
+          458
+        ],
+        [
+          154,
+          474
+        ],
+        [
+          110,
+          474
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 7,
+      "name": "カップケーキ",
+      "source": "left",
+      "sourceRect": [
+        268,
+        286,
+        321,
+        327
+      ],
+      "basePolygon": [
+        [
+          175,
+          443
+        ],
+        [
+          210,
+          443
+        ],
+        [
+          210,
+          470
+        ],
+        [
+          175,
+          470
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 8,
+      "name": "おにぎり",
+      "source": "left",
+      "sourceRect": [
+        320,
+        304,
+        386,
+        328
+      ],
+      "basePolygon": [
+        [
+          209,
+          455
+        ],
+        [
+          252,
+          455
+        ],
+        [
+          252,
+          470
+        ],
+        [
+          209,
+          470
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 9,
+      "name": "売り切れプレート",
+      "source": "left",
+      "sourceRect": [
         353,
         369,
         414,
         405
       ],
-      "polygon": [
+      "basePolygon": [
         [
           231,
           497
@@ -271,59 +282,19 @@
           521
         ]
       ],
-      "bounds": [
-        230,
-        497,
-        270,
-        520
-      ],
-      "number": 7
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 10,
+      "name": "トレー",
       "source": "left",
-      "area": 1354.0,
-      "sourceBounds": [
-        229,
-        411,
-        317,
-        431
-      ],
-      "polygon": [
-        [
-          150,
-          525
-        ],
-        [
-          207,
-          525
-        ],
-        [
-          207,
-          538
-        ],
-        [
-          150,
-          538
-        ]
-      ],
-      "bounds": [
-        149,
-        524,
-        207,
-        537
-      ],
-      "number": 8
-    },
-    {
-      "source": "left",
-      "area": 1547.0,
-      "sourceBounds": [
+      "sourceRect": [
         10,
         439,
         77,
         466
       ],
-      "polygon": [
+      "basePolygon": [
         [
           6,
           543
@@ -341,59 +312,49 @@
           560
         ]
       ],
-      "bounds": [
-        6,
-        542,
-        50,
-        560
-      ],
-      "number": 9
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 11,
+      "name": "ロールケーキ",
       "source": "left",
-      "area": 3610.5,
-      "sourceBounds": [
-        79,
-        462,
-        199,
-        534
+      "sourceRect": [
+        229,
+        411,
+        317,
+        431
       ],
-      "polygon": [
+      "basePolygon": [
         [
-          52,
-          558
+          150,
+          525
         ],
         [
-          130,
-          558
+          207,
+          525
         ],
         [
-          130,
-          605
+          207,
+          538
         ],
         [
-          52,
-          605
+          150,
+          538
         ]
       ],
-      "bounds": [
-        51,
-        557,
-        130,
-        604
-      ],
-      "number": 10
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 12,
+      "name": "マカロン",
       "source": "left",
-      "area": 1047.0,
-      "sourceBounds": [
+      "sourceRect": [
         353,
         461,
         414,
         481
       ],
-      "polygon": [
+      "basePolygon": [
         [
           231,
           557
@@ -411,24 +372,49 @@
           570
         ]
       ],
-      "bounds": [
-        230,
-        557,
-        270,
-        570
-      ],
-      "number": 11
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 13,
+      "name": "ラッピングリボン",
       "source": "left",
-      "area": 1405.0,
-      "sourceBounds": [
+      "sourceRect": [
+        129,
+        462,
+        199,
+        496
+      ],
+      "basePolygon": [
+        [
+          84,
+          558
+        ],
+        [
+          130,
+          558
+        ],
+        [
+          130,
+          580
+        ],
+        [
+          84,
+          580
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 14,
+      "name": "いちごプリン",
+      "source": "left",
+      "sourceRect": [
         25,
         493,
         78,
         531
       ],
-      "polygon": [
+      "basePolygon": [
         [
           16,
           578
@@ -446,24 +432,49 @@
           603
         ]
       ],
-      "bounds": [
-        16,
-        578,
-        50,
-        602
-      ],
-      "number": 12
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 15,
+      "name": "アイリスメガネ",
       "source": "left",
-      "area": 1348.5,
-      "sourceBounds": [
+      "sourceRect": [
+        79,
+        496,
+        145,
+        534
+      ],
+      "basePolygon": [
+        [
+          52,
+          580
+        ],
+        [
+          95,
+          580
+        ],
+        [
+          95,
+          605
+        ],
+        [
+          52,
+          605
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 16,
+      "name": "黒いリボン",
+      "source": "left",
+      "sourceRect": [
         0,
         545,
         81,
         567
       ],
-      "polygon": [
+      "basePolygon": [
         [
           0,
           612
@@ -481,24 +492,19 @@
           627
         ]
       ],
-      "bounds": [
-        0,
-        612,
-        52,
-        626
-      ],
-      "number": 13
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 17,
+      "name": "ピンクのカゴ",
       "source": "left",
-      "area": 2670.5,
-      "sourceBounds": [
+      "sourceRect": [
         283,
         572,
         401,
         600
       ],
-      "polygon": [
+      "basePolygon": [
         [
           185,
           630
@@ -516,94 +522,19 @@
           648
         ]
       ],
-      "bounds": [
-        184,
-        629,
-        262,
-        648
-      ],
-      "number": 14
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 18,
+      "name": "レシート",
       "source": "left",
-      "area": 1190.0,
-      "sourceBounds": [
-        132,
-        609,
-        198,
-        630
-      ],
-      "polygon": [
-        [
-          86,
-          654
-        ],
-        [
-          129,
-          654
-        ],
-        [
-          129,
-          668
-        ],
-        [
-          86,
-          668
-        ]
-      ],
-      "bounds": [
-        86,
-        653,
-        129,
-        667
-      ],
-      "number": 15
-    },
-    {
-      "source": "left",
-      "area": 1769.5,
-      "sourceBounds": [
-        221,
-        606,
-        278,
-        639
-      ],
-      "polygon": [
-        [
-          144,
-          652
-        ],
-        [
-          182,
-          652
-        ],
-        [
-          182,
-          674
-        ],
-        [
-          144,
-          674
-        ]
-      ],
-      "bounds": [
-        144,
-        652,
-        181,
-        673
-      ],
-      "number": 16
-    },
-    {
-      "source": "left",
-      "area": 1295.0,
-      "sourceBounds": [
+      "sourceRect": [
         34,
         627,
         100,
         648
       ],
-      "polygon": [
+      "basePolygon": [
         [
           22,
           666
@@ -621,59 +552,79 @@
           679
         ]
       ],
-      "bounds": [
-        22,
-        665,
-        65,
-        679
-      ],
-      "number": 17
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 19,
+      "name": "ハンカチ",
       "source": "left",
-      "area": 1853.5,
-      "sourceBounds": [
-        226,
-        644,
-        296,
-        677
+      "sourceRect": [
+        132,
+        609,
+        198,
+        630
       ],
-      "polygon": [
+      "basePolygon": [
         [
-          148,
-          677
+          86,
+          654
         ],
         [
-          193,
-          677
+          129,
+          654
         ],
         [
-          193,
-          698
+          129,
+          668
         ],
         [
-          148,
-          698
+          86,
+          668
         ]
       ],
-      "bounds": [
-        147,
-        676,
-        193,
-        698
-      ],
-      "number": 18
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 20,
+      "name": "いちごスプーン",
       "source": "left",
-      "area": 1548.5,
-      "sourceBounds": [
+      "sourceRect": [
+        221,
+        606,
+        278,
+        639
+      ],
+      "basePolygon": [
+        [
+          144,
+          652
+        ],
+        [
+          182,
+          652
+        ],
+        [
+          182,
+          674
+        ],
+        [
+          144,
+          674
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 21,
+      "name": "プリンのスタンプ",
+      "source": "left",
+      "sourceRect": [
         157,
         655,
         215,
         688
       ],
-      "polygon": [
+      "basePolygon": [
         [
           103,
           684
@@ -691,24 +642,49 @@
           706
         ]
       ],
-      "bounds": [
-        102,
-        684,
-        140,
-        705
-      ],
-      "number": 19
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 22,
+      "name": "ハートのティッシュ",
       "source": "left",
-      "area": 2831.0,
-      "sourceBounds": [
+      "sourceRect": [
+        226,
+        644,
+        296,
+        677
+      ],
+      "basePolygon": [
+        [
+          148,
+          677
+        ],
+        [
+          193,
+          677
+        ],
+        [
+          193,
+          698
+        ],
+        [
+          148,
+          698
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 23,
+      "name": "ポイントカード",
+      "source": "left",
+      "sourceRect": [
         72,
         665,
         144,
         706
       ],
-      "polygon": [
+      "basePolygon": [
         [
           47,
           691
@@ -726,24 +702,19 @@
           717
         ]
       ],
-      "bounds": [
-        46,
-        690,
-        94,
-        717
-      ],
-      "number": 20
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 24,
+      "name": "学生証",
       "source": "left",
-      "area": 1094.5,
-      "sourceBounds": [
+      "sourceRect": [
         319,
         693,
         386,
         721
       ],
-      "polygon": [
+      "basePolygon": [
         [
           208,
           709
@@ -761,61 +732,21 @@
           727
         ]
       ],
-      "bounds": [
-        208,
-        708,
-        252,
-        727
-      ],
-      "number": 21
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 25,
+      "name": "プリンの張り紙",
       "source": "right",
-      "area": 41.0,
-      "sourceBounds": [
-        131,
-        69,
-        142,
-        135
-      ],
-      "polygon": [
-        [
-          230,
-          304
-        ],
-        [
-          237,
-          304
-        ],
-        [
-          237,
-          347
-        ],
-        [
-          230,
-          347
-        ]
-      ],
-      "bounds": [
-        230,
-        304,
-        237,
-        347
-      ],
-      "number": 22
-    },
-    {
-      "source": "right",
-      "area": 5406.0,
-      "sourceBounds": [
-        136,
+      "sourceRect": [
+        130,
         68,
         247,
         136
       ],
-      "polygon": [
+      "basePolygon": [
         [
-          234,
+          230,
           304
         ],
         [
@@ -827,63 +758,23 @@
           348
         ],
         [
-          234,
+          230,
           348
         ]
       ],
-      "bounds": [
-        233,
-        303,
-        305,
-        347
-      ],
-      "number": 23
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 26,
+      "name": "プリンのぬいぐるみ",
       "source": "right",
-      "area": 6850.5,
-      "sourceBounds": [
-        325,
-        141,
-        414,
-        260
-      ],
-      "polygon": [
-        [
-          356,
-          351
-        ],
-        [
-          413,
-          351
-        ],
-        [
-          413,
-          428
-        ],
-        [
-          356,
-          428
-        ]
-      ],
-      "bounds": [
-        356,
-        351,
-        413,
-        428
-      ],
-      "number": 24
-    },
-    {
-      "source": "right",
-      "area": 3672.5,
-      "sourceBounds": [
+      "sourceRect": [
         145,
         217,
         239,
         262
       ],
-      "polygon": [
+      "basePolygon": [
         [
           239,
           400
@@ -901,24 +792,109 @@
           430
         ]
       ],
-      "bounds": [
-        239,
-        400,
-        300,
-        429
-      ],
-      "number": 25
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 27,
+      "name": "コーヒー牛乳",
       "source": "right",
-      "area": 3792.5,
-      "sourceBounds": [
+      "sourceRect": [
+        384,
+        141,
+        414,
+        260
+      ],
+      "basePolygon": [
+        [
+          394,
+          351
+        ],
+        [
+          413,
+          351
+        ],
+        [
+          413,
+          428
+        ],
+        [
+          394,
+          428
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 28,
+      "name": "いちごオレ",
+      "source": "right",
+      "sourceRect": [
+        356,
+        145,
+        389,
+        257
+      ],
+      "basePolygon": [
+        [
+          376,
+          354
+        ],
+        [
+          398,
+          354
+        ],
+        [
+          398,
+          426
+        ],
+        [
+          376,
+          426
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 29,
+      "name": "牛乳",
+      "source": "right",
+      "sourceRect": [
+        325,
+        169,
+        362,
+        247
+      ],
+      "basePolygon": [
+        [
+          356,
+          369
+        ],
+        [
+          380,
+          369
+        ],
+        [
+          380,
+          420
+        ],
+        [
+          356,
+          420
+        ]
+      ],
+      "status": "candidate_from_pixel_difference_review"
+    },
+    {
+      "number": 30,
+      "name": "イチゴジャム",
+      "source": "right",
+      "sourceRect": [
         333,
         495,
         412,
         552
       ],
-      "polygon": [
+      "basePolygon": [
         [
           361,
           581
@@ -936,24 +912,19 @@
           618
         ]
       ],
-      "bounds": [
-        361,
-        580,
-        412,
-        617
-      ],
-      "number": 26
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 31,
+      "name": "ドーナツボックス",
       "source": "right",
-      "area": 3864.5,
-      "sourceBounds": [
+      "sourceRect": [
         307,
         575,
         397,
         627
       ],
-      "polygon": [
+      "basePolygon": [
         [
           345,
           633
@@ -971,24 +942,19 @@
           666
         ]
       ],
-      "bounds": [
-        344,
-        632,
-        402,
-        666
-      ],
-      "number": 27
+      "status": "candidate_from_pixel_difference_review"
     },
     {
+      "number": 32,
+      "name": "ゴールドスプーン",
       "source": "right",
-      "area": 4329.5,
-      "sourceBounds": [
+      "sourceRect": [
         194,
         672,
         288,
         726
       ],
-      "polygon": [
+      "basePolygon": [
         [
           271,
           695
@@ -1006,13 +972,7 @@
           730
         ]
       ],
-      "bounds": [
-        271,
-        695,
-        332,
-        730
-      ],
-      "number": 28
+      "status": "candidate_from_pixel_difference_review"
     }
   ]
 }
