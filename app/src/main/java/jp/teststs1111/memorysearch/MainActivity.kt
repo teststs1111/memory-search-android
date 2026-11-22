@@ -36,10 +36,12 @@ class MainActivity : Activity() {
                     val blocks = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_BLOCKS)
                         ?.map { encoded -> encoded.split('\n') }
                         ?: lines.map { listOf(it) }
-                    val itemNames = StageItemCatalogRepository.loadItemNames(assets, selectedStageId)
+                    // Use the chapter captured when permission was granted, not a later spinner selection.
+                    val resultStageId = intent.getStringExtra(ScreenCaptureService.EXTRA_STAGE_ID) ?: selectedStageId
+                    val itemNames = StageItemCatalogRepository.loadItemNames(assets, resultStageId)
                     val matches = OcrItemMatcher.matchBlocks(blocks, itemNames)
                     val matchText = if (matches.isEmpty()) {
-                        "選択中の章のアイテム名との完全一致はありません。"
+                        "${resultStageId} のアイテム名との完全一致はありません。"
                     } else {
                         "一致したアイテム：\n" + matches.joinToString("、")
                     }
