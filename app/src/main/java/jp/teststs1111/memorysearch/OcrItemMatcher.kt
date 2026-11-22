@@ -13,7 +13,7 @@ object OcrItemMatcher {
     fun normalize(value: String): String {
         return Normalizer.normalize(value, Normalizer.Form.NFKC)
             .lowercase(Locale.ROOT)
-            .filterNot { it.isWhitespace() || it.isSpaceChar() }
+            .filterNot { it.isWhitespace() || Character.isSpaceChar(it) }
     }
 
     fun matchLines(ocrLines: List<String>, itemNames: List<String>): List<String> {
