@@ -50,6 +50,7 @@ class ScreenCaptureService : Service() {
             startForeground(NOTIFICATION_ID, notification)
         }
 
+        val requestedStageId = intent?.getStringExtra(EXTRA_STAGE_ID)?.takeIf { it.matches(Regex("chapter_[0-9]+")) } ?: "chapter_1"
         val resultCode = intent?.getIntExtra(EXTRA_RESULT_CODE, 0) ?: 0
         val resultData = if (Build.VERSION.SDK_INT >= 33) {
             intent?.getParcelableExtra(EXTRA_RESULT_DATA, Intent::class.java)
@@ -141,6 +142,7 @@ class ScreenCaptureService : Service() {
                 sendBroadcast(Intent(ACTION_OCR_RESULT).setPackage(packageName).apply {
                     putExtra(EXTRA_WIDTH, bitmap.width)
                     putExtra(EXTRA_HEIGHT, bitmap.height)
+                    putExtra(EXTRA_STAGE_ID, requestedStageId)
                     putExtra(EXTRA_OCR_TEXT, result.text)
                     putStringArrayListExtra(EXTRA_OCR_LINES, ArrayList(lines))
                     // Keep OCR block boundaries so separate labels are never joined.
