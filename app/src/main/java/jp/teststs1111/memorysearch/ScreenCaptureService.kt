@@ -120,15 +120,19 @@ class ScreenCaptureService : Service() {
         val plane = image.planes[0]
         val pixelStride = plane.pixelStride
         val rowStride = plane.rowStride
-        val paddedWidth = rowStride / pixelStride
-        val padded = Bitmap.createBitmap(paddedWidth, image.height, Bitmap.Config.ARGB_8888)
-        val buffer = plane.buffer
-        buffer.rewind()
-        padded.copyPixelsFromBuffer(buffer)
-        if (paddedWidth == image.width) return padded
-        val cropped = Bitmap.createBitmap(padded, 0, 0, image.width, image.height)
-        padded.recycle()
-        return cropped
+        val rowBytes = image.width * pixelStride
+        val source = plane.buffer
+        val compact = java.nio.ByteBuffer.allocate(image.width * image.height * 4)
+        val row = ByteArray(rowBytes)
+        for (y in 0 until image.height) {
+            source.position(y * rowStride)
+            source.get(row, 0, rowBytes)
+            compact.put(row)
+        }
+        compact.rewind()
+        return Bitmap.createBitmap(image.width, image.height, Bitmap.Config.ARGB_8888).apply {
+            copyPixelsFromBuffer(compact)
+        }
     }
 
     private fun runJapaneseOcr(bitmap: Bitmap) {
