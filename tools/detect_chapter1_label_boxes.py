@@ -1,5 +1,8 @@
 from pathlib import Path
+import csv
+import io
 import json
+import subprocess
 import cv2
 import numpy as np
 
@@ -11,29 +14,71 @@ OUT_IMAGE = REF / "label_box_candidates.jpg"
 OUT_JSON = REF / "label_box_candidates.json"
 
 
-def find_label_boxes(image, name):
-    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    # The annotation labels are translucent charcoal rectangles with white text.
-    mask = cv2.inRange(hsv, np.array([0, 0, 0]), np.array([180, 105, 112]))
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (9, 7))
-    closed = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=2)
-    count, labels, stats, _ = cv2.connectedComponentsWithStats(closed, 8)
+def ocr_text_lines(image_path):
+    result = subprocess.run(
+        ["tesseract", str(image_path), "stdout", "-l", "jpn", "--psm", "11", "tsv"],
+        check=True, capture_output=True, text=True
+    )
+    rows = csv.DictReader(io.StringIO(result.stdout), delimiter="\t")
+    grouped = {}
+    for row in rows:
+        text = (row.get("text") or "").strip()
+        try:
+            confidence = float(row.get("conf", "-1"))
+        except ValueError:
+            continue
+        if not text or confidence < 10:
+            continue
+        key = (row["block_num"], row["par_num"], row["line_num"])
+        x, y = int(row["left"]), int(row["top"])
+        w, h = int(row["width"]), int(row["height"])
+        if key not in grouped:
+            grouped[key] = [x, y, x + w, y + h, [text], confidence]
+        else:
+            b = grouped[key]
+            b[0], b[1] = min(b[0], x), min(b[1], y)
+            b[2], b[3] = max(b[2], x + w), max(b[3], y + h)
+            b[4].append(text)
+            b[5] = max(b[5], confidence)
+    lines = []
+    for b in grouped.values():
+        lines.append({"x1": b[0], "y1": b[1], "x2": b[2], "y2": b[3],
+                      "text": "".join(b[4]), "confidence": round(b[5], 1)})
+    return sorted(lines, key=lambda b: (b["y1"], b["x1"]))
+
+
+def merge_label_lines(lines, image_shape):
+    # Multi-line Japanese labels form compact text blocks. Merge only lines
+    # with substantial horizontal overlap and a small vertical gap.
+    groups = []
+    for line in lines:
+        x1, y1, x2, y2 = line["x1"], line["y1"], line["x2"], line["y2"]
+        matches = []
+        for i, g in enumerate(groups):
+            gx1, gy1, gx2, gy2 = g["box"]
+            overlap = max(0, min(x2, gx2) - max(x1, gx1))
+            min_width = max(1, min(x2 - x1, gx2 - gx1))
+            gap = max(0, max(y1, gy1) - min(y2, gy2))
+            if overlap / min_width >= 0.28 and gap <= 15:
+                matches.append(i)
+        if not matches:
+            groups.append({"box": [x1, y1, x2, y2], "texts": [line["text"]]})
+        else:
+            g = groups[matches[0]]
+            g["box"] = [min(g["box"][0], x1), min(g["box"][1], y1),
+                        max(g["box"][2], x2), max(g["box"][3], y2)]
+            g["texts"].append(line["text"])
+    h, w = image_shape[:2]
     boxes = []
-    h, w = image.shape[:2]
-    for i in range(1, count):
-        x, y, bw, bh, area = map(int, stats[i])
-        if bw < 22 or bh < 13 or area < 250:
+    for g in groups:
+        x1, y1, x2, y2 = g["box"]
+        # Add padding to recover the dark label panel around the OCR glyphs.
+        x1, y1 = max(0, x1 - 9), max(0, y1 - 6)
+        x2, y2 = min(w - 1, x2 + 9), min(h - 1, y2 + 6)
+        if x2 - x1 < 20 or y2 - y1 < 12:
             continue
-        ratio = bw / max(bh, 1)
-        if ratio > 9.0 or ratio < 0.55 or bw > w * 0.48 or bh > h * 0.16:
-            continue
-        # Keep compact label-like regions; reject large scene shadows and furniture.
-        fill = area / float(bw * bh)
-        if fill < 0.30:
-            continue
-        boxes.append((x, y, bw, bh, round(fill, 3)))
-    boxes.sort(key=lambda b: (b[1], b[0]))
-    return boxes
+        boxes.append((x1, y1, x2 - x1, y2 - y1, "".join(g["texts"])))
+    return sorted(boxes, key=lambda b: (b[1], b[0]))
 
 
 def main():
@@ -63,8 +108,9 @@ def main():
         if matrix is None or int(inlier_mask.sum()) < 30:
             raise SystemExit(f"Unreliable image registration for {view_name}")
 
-        boxes = find_label_boxes(view, view_name)
-        for x, y, bw, bh, fill in boxes:
+        lines = ocr_text_lines(path)
+        boxes = merge_label_lines(lines, view.shape)
+        for x, y, bw, bh, text in boxes:
             corners = np.float32([[[x, y], [x + bw, y], [x + bw, y + bh], [x, y + bh]]])
             mapped = cv2.perspectiveTransform(corners, matrix)[0]
             mapped[:, 0] = np.clip(mapped[:, 0], 0, width - 1)
@@ -73,12 +119,9 @@ def main():
             cv2.polylines(preview, [polygon], True, (0, 255, 255), 2, cv2.LINE_AA)
             center = tuple(np.mean(polygon, axis=0).astype(int))
             records.append({
-                "source": view_name,
-                "sourceBox": [x, y, bw, bh],
-                "basePolygon": polygon.tolist(),
-                "center": [round(float(np.mean(mapped[:, 0])) / (width - 1), 6),
-                           round(float(np.mean(mapped[:, 1])) / (height - 1), 6)],
-                "fillRatio": fill
+                "source": view_name, "recognizedText": text,
+                "sourceBox": [x, y, bw, bh], "basePolygon": polygon.tolist(),
+                "confidence": "ocr_candidate_only"
             })
     for i, record in enumerate(records, 1):
         poly = np.array(record["basePolygon"], dtype=np.int32)
@@ -91,11 +134,10 @@ def main():
         raise SystemExit("Could not write label_box_candidates.jpg")
     OUT_JSON.write_text(json.dumps({
         "status": "visual_candidates_only",
-        "note": "Detected annotation label rectangles transformed onto base.jpg. Not app runtime data; text-to-item mapping and visual verification remain pending.",
-        "imageSize": [width, height],
-        "boxes": records
+        "note": "OCR text bounds padded to approximate annotation label panels, then transformed onto base.jpg. Not app runtime data.",
+        "imageSize": [width, height], "boxes": records
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Detected {len(records)} candidate label rectangles; preview={OUT_IMAGE.name}")
+    print(f"Created {len(records)} OCR label-box candidates; preview={OUT_IMAGE.name}")
 
 
 if __name__ == "__main__":
