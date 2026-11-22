@@ -1,220 +1,70 @@
 {
   "status": "visual_candidates_only",
-  "note": "Detected dark annotation panel contours (not OCR text bounds), then mapped the panel outer rectangles onto base.jpg. Review required; not app runtime data.",
+  "note": "Detected connected dark annotation panel regions with larger morphological closing (not OCR text bounds), then mapped the panel outer rectangles onto base.jpg. Review required; not app runtime data.",
   "imageSize": [
     414,
     739
   ],
-  "panelCount": 7,
+  "panelCount": 2,
   "panels": [
     {
       "source": "left",
       "sourcePanelRect": [
+        263,
+        0,
+        151,
+        25
+      ],
+      "basePolygon": [
+        [
+          172,
+          256
+        ],
+        [
+          271,
+          256
+        ],
+        [
+          271,
+          272
+        ],
+        [
+          172,
+          272
+        ]
+      ],
+      "darkFillRatio": 0.457,
+      "rectangularity": 0.411,
+      "confidence": "panel_contour_candidate_only"
+    },
+    {
+      "source": "left",
+      "sourcePanelRect": [
         388,
-        99,
+        64,
         26,
-        22
+        63
       ],
       "basePolygon": [
         [
           254,
-          320
+          298
         ],
         [
           271,
-          320
+          298
         ],
         [
           271,
-          335
+          339
         ],
         [
           254,
-          335
+          339
         ]
       ],
-      "darkFillRatio": 0.498,
-      "rectangularity": 0.418,
-      "confidence": "panel_contour_candidate_only"
-    },
-    {
-      "source": "left",
-      "sourcePanelRect": [
-        281,
-        562,
-        120,
-        40
-      ],
-      "basePolygon": [
-        [
-          184,
-          623
-        ],
-        [
-          262,
-          623
-        ],
-        [
-          262,
-          649
-        ],
-        [
-          184,
-          649
-        ]
-      ],
-      "darkFillRatio": 0.594,
-      "rectangularity": 0.556,
-      "confidence": "panel_contour_candidate_only"
-    },
-    {
-      "source": "left",
-      "sourcePanelRect": [
-        131,
-        603,
-        67,
-        26
-      ],
-      "basePolygon": [
-        [
-          86,
-          650
-        ],
-        [
-          129,
-          650
-        ],
-        [
-          129,
-          667
-        ],
-        [
-          86,
-          667
-        ]
-      ],
-      "darkFillRatio": 0.855,
-      "rectangularity": 0.803,
-      "confidence": "panel_contour_candidate_only"
-    },
-    {
-      "source": "left",
-      "sourcePanelRect": [
-        156,
-        653,
-        58,
-        34
-      ],
-      "basePolygon": [
-        [
-          102,
-          683
-        ],
-        [
-          140,
-          683
-        ],
-        [
-          140,
-          705
-        ],
-        [
-          102,
-          705
-        ]
-      ],
-      "darkFillRatio": 0.992,
-      "rectangularity": 0.946,
-      "confidence": "panel_contour_candidate_only"
-    },
-    {
-      "source": "left",
-      "sourcePanelRect": [
-        71,
-        664,
-        72,
-        41
-      ],
-      "basePolygon": [
-        [
-          46,
-          690
-        ],
-        [
-          93,
-          690
-        ],
-        [
-          93,
-          717
-        ],
-        [
-          46,
-          717
-        ]
-      ],
-      "darkFillRatio": 1.0,
-      "rectangularity": 0.962,
-      "confidence": "panel_contour_candidate_only"
-    },
-    {
-      "source": "left",
-      "sourcePanelRect": [
-        317,
-        689,
-        73,
-        31
-      ],
-      "basePolygon": [
-        [
-          207,
-          706
-        ],
-        [
-          255,
-          706
-        ],
-        [
-          255,
-          727
-        ],
-        [
-          207,
-          727
-        ]
-      ],
-      "darkFillRatio": 0.731,
-      "rectangularity": 0.724,
-      "confidence": "panel_contour_candidate_only"
-    },
-    {
-      "source": "right",
-      "sourcePanelRect": [
-        262,
-        84,
-        23,
-        18
-      ],
-      "basePolygon": [
-        [
-          315,
-          314
-        ],
-        [
-          330,
-          314
-        ],
-        [
-          330,
-          326
-        ],
-        [
-          315,
-          326
-        ]
-      ],
-      "darkFillRatio": 0.512,
-      "rectangularity": 0.394,
+      "darkFillRatio": 0.683,
+      "rectangularity": 0.629,
       "confidence": "panel_contour_candidate_only"
     }
   ]
