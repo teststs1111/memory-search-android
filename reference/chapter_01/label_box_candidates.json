@@ -1,6 +1,6 @@
 {
   "status": "visual_candidates_only",
-  "note": "Detected annotation label rectangles transformed onto base.jpg. Not app runtime data; text-to-item mapping and visual verification remain pending.",
+  "note": "OCR text bounds padded to approximate annotation label panels, then transformed onto base.jpg. Not app runtime data.",
   "imageSize": [
     414,
     739
@@ -8,195 +8,989 @@
   "boxes": [
     {
       "source": "left",
+      "recognizedText": "ーー",
       "sourceBox": [
-        264,
-        0,
-        88,
-        15
+        160,
+        135,
+        31,
+        17
       ],
       "basePolygon": [
         [
-          172,
-          256
+          105,
+          344
         ],
         [
-          230,
-          256
+          125,
+          344
         ],
         [
-          230,
-          266
+          125,
+          355
         ],
         [
-          172,
-          266
+          105,
+          355
         ]
       ],
-      "center": [
-        0.487276,
-        0.35322
-      ],
-      "fillRatio": 0.663
+      "confidence": "ocr_candidate_only"
     },
     {
       "source": "left",
+      "recognizedText": "呼び|ポ:|バーュースキャナー",
       "sourceBox": [
-        389,
-        100,
-        25,
-        19
+        271,
+        168,
+        90,
+        99
       ],
       "basePolygon": [
         [
-          254,
-          321
+          177,
+          366
         ],
         [
-          271,
-          321
+          236,
+          366
         ],
         [
-          271,
-          334
+          236,
+          430
         ],
         [
-          254,
-          334
+          177,
+          430
         ]
       ],
-      "center": [
-        0.63527,
-        0.443574
-      ],
-      "fillRatio": 0.592
+      "confidence": "ocr_candidate_only"
     },
     {
       "source": "left",
+      "recognizedText": "TL",
       "sourceBox": [
-        260,
-        525,
-        141,
-        77
-      ],
-      "basePolygon": [
-        [
-          170,
-          599
-        ],
-        [
-          262,
-          599
-        ],
-        [
-          262,
-          649
-        ],
-        [
-          170,
-          649
-        ]
-      ],
-      "center": [
-        0.522939,
-        0.84585
-      ],
-      "fillRatio": 0.341
-    },
-    {
-      "source": "left",
-      "sourceBox": [
-        131,
-        607,
-        67,
-        22
-      ],
-      "basePolygon": [
-        [
-          86,
-          653
-        ],
-        [
-          129,
-          653
-        ],
-        [
-          129,
-          667
-        ],
-        [
-          86,
-          667
-        ]
-      ],
-      "center": [
-        0.260186,
-        0.894145
-      ],
-      "fillRatio": 0.946
-    },
-    {
-      "source": "right",
-      "sourceBox": [
-        120,
-        309,
-        24,
+        162,
+        181,
+        29,
         20
       ],
       "basePolygon": [
         [
-          223,
-          460
+          106,
+          374
         ],
         [
-          239,
-          460
+          125,
+          374
         ],
         [
-          239,
-          473
+          125,
+          387
         ],
         [
-          223,
-          473
+          106,
+          387
         ]
       ],
-      "center": [
-        0.559315,
-        0.632098
-      ],
-      "fillRatio": 0.621
+      "confidence": "ocr_candidate_only"
     },
     {
-      "source": "right",
+      "source": "left",
+      "recognizedText": "グ|テテイップ|ベア",
       "sourceBox": [
-        38,
-        523,
-        42,
-        38
+        91,
+        263,
+        98,
+        58
       ],
       "basePolygon": [
         [
-          170,
-          599
+          59,
+          428
         ],
         [
-          197,
-          599
+          123,
+          428
         ],
         [
-          197,
-          623
+          123,
+          466
         ],
         [
-          170,
-          623
+          59,
+          466
         ]
       ],
-      "center": [
-        0.4447,
-        0.828067
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "ップケーキおぉにぎり",
+      "sourceBox": [
+        266,
+        284,
+        120,
+        51
       ],
-      "fillRatio": 0.357
+      "basePolygon": [
+        [
+          174,
+          441
+        ],
+        [
+          252,
+          441
+        ],
+        [
+          252,
+          475
+        ],
+        [
+          174,
+          475
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "卓上べ,",
+      "sourceBox": [
+        169,
+        305,
+        58,
+        36
+      ],
+      "basePolygon": [
+        [
+          110,
+          455
+        ],
+        [
+          148,
+          455
+        ],
+        [
+          148,
+          479
+        ],
+        [
+          110,
+          479
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "いち",
+      "sourceBox": [
+        53,
+        317,
+        39,
+        23
+      ],
+      "basePolygon": [
+        [
+          35,
+          463
+        ],
+        [
+          60,
+          463
+        ],
+        [
+          60,
+          478
+        ],
+        [
+          35,
+          478
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "EE4",
+      "sourceBox": [
+        78,
+        334,
+        38,
+        20
+      ],
+      "basePolygon": [
+        [
+          51,
+          474
+        ],
+        [
+          76,
+          474
+        ],
+        [
+          76,
+          487
+        ],
+        [
+          51,
+          487
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "\\た",
+      "sourceBox": [
+        27,
+        338,
+        49,
+        72
+      ],
+      "basePolygon": [
+        [
+          18,
+          477
+        ],
+        [
+          50,
+          477
+        ],
+        [
+          50,
+          524
+        ],
+        [
+          18,
+          524
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "で売り切れプレード",
+      "sourceBox": [
+        328,
+        357,
+        85,
+        57
+      ],
+      "basePolygon": [
+        [
+          214,
+          489
+        ],
+        [
+          270,
+          489
+        ],
+        [
+          270,
+          526
+        ],
+        [
+          214,
+          526
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "ロールケーキ",
+      "sourceBox": [
+        226,
+        408,
+        92,
+        23
+      ],
+      "basePolygon": [
+        [
+          148,
+          523
+        ],
+        [
+          208,
+          523
+        ],
+        [
+          208,
+          538
+        ],
+        [
+          148,
+          538
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "ドレ",
+      "sourceBox": [
+        12,
+        438,
+        64,
+        27
+      ],
+      "basePolygon": [
+        [
+          8,
+          542
+        ],
+        [
+          50,
+          542
+        ],
+        [
+          50,
+          560
+        ],
+        [
+          8,
+          560
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "マカロン",
+      "sourceBox": [
+        350,
+        458,
+        63,
+        23
+      ],
+      "basePolygon": [
+        [
+          229,
+          555
+        ],
+        [
+          270,
+          555
+        ],
+        [
+          270,
+          570
+        ],
+        [
+          229,
+          570
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "SN",
+      "sourceBox": [
+        232,
+        463,
+        75,
+        22
+      ],
+      "basePolygon": [
+        [
+          152,
+          559
+        ],
+        [
+          201,
+          559
+        ],
+        [
+          201,
+          573
+        ],
+        [
+          152,
+          573
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "リポシ",
+      "sourceBox": [
+        139,
+        473,
+        50,
+        23
+      ],
+      "basePolygon": [
+        [
+          91,
+          565
+        ],
+        [
+          123,
+          565
+        ],
+        [
+          123,
+          580
+        ],
+        [
+          91,
+          580
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "いちブリン|:メガネ黒いリ",
+      "sourceBox": [
+        0,
+        490,
+        140,
+        84
+      ],
+      "basePolygon": [
+        [
+          0,
+          576
+        ],
+        [
+          91,
+          576
+        ],
+        [
+          91,
+          631
+        ],
+        [
+          0,
+          631
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "|アイリス",
+      "sourceBox": [
+        68,
+        494,
+        79,
+        24
+      ],
+      "basePolygon": [
+        [
+          44,
+          579
+        ],
+        [
+          96,
+          579
+        ],
+        [
+          96,
+          594
+        ],
+        [
+          44,
+          594
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "/",
+      "sourceBox": [
+        256,
+        503,
+        21,
+        18
+      ],
+      "basePolygon": [
+        [
+          167,
+          585
+        ],
+        [
+          181,
+          585
+        ],
+        [
+          181,
+          596
+        ],
+        [
+          167,
+          596
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "者",
+      "sourceBox": [
+        353,
+        524,
+        39,
+        16
+      ],
+      "basePolygon": [
+        [
+          231,
+          598
+        ],
+        [
+          256,
+          598
+        ],
+        [
+          256,
+          609
+        ],
+        [
+          231,
+          609
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "が",
+      "sourceBox": [
+        185,
+        525,
+        48,
+        46
+      ],
+      "basePolygon": [
+        [
+          121,
+          599
+        ],
+        [
+          152,
+          599
+        ],
+        [
+          152,
+          629
+        ],
+        [
+          121,
+          629
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "ピンクのカゴ",
+      "sourceBox": [
+        284,
+        566,
+        118,
+        42
+      ],
+      "basePolygon": [
+        [
+          186,
+          626
+        ],
+        [
+          263,
+          626
+        ],
+        [
+          263,
+          653
+        ],
+        [
+          186,
+          653
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "いちスフーンハートのティッシュ",
+      "sourceBox": [
+        217,
+        603,
+        80,
+        75
+      ],
+      "basePolygon": [
+        [
+          142,
+          650
+        ],
+        [
+          194,
+          650
+        ],
+        [
+          194,
+          699
+        ],
+        [
+          142,
+          699
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "、g",
+      "sourceBox": [
+        20,
+        619,
+        133,
+        118
+      ],
+      "basePolygon": [
+        [
+          13,
+          661
+        ],
+        [
+          100,
+          661
+        ],
+        [
+          100,
+          738
+        ],
+        [
+          13,
+          738
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "タ",
+      "sourceBox": [
+        153,
+        651,
+        29,
+        36
+      ],
+      "basePolygon": [
+        [
+          100,
+          681
+        ],
+        [
+          119,
+          681
+        ],
+        [
+          119,
+          705
+        ],
+        [
+          100,
+          705
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "left",
+      "recognizedText": "EEH/",
+      "sourceBox": [
+        308,
+        679,
+        105,
+        59
+      ],
+      "basePolygon": [
+        [
+          201,
+          700
+        ],
+        [
+          270,
+          700
+        ],
+        [
+          270,
+          738
+        ],
+        [
+          201,
+          738
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "right",
+      "recognizedText": "プリンの張り紙",
+      "sourceBox": [
+        134,
+        65,
+        109,
+        79
+      ],
+      "basePolygon": [
+        [
+          232,
+          302
+        ],
+        [
+          303,
+          302
+        ],
+        [
+          303,
+          353
+        ],
+        [
+          232,
+          353
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "right",
+      "recognizedText": "4",
+      "sourceBox": [
+        349,
+        89,
+        30,
+        48
+      ],
+      "basePolygon": [
+        [
+          372,
+          317
+        ],
+        [
+          391,
+          317
+        ],
+        [
+          391,
+          348
+        ],
+        [
+          372,
+          348
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "right",
+      "recognizedText": "ェwT生ちとる」",
+      "sourceBox": [
+        326,
+        158,
+        87,
+        64
+      ],
+      "basePolygon": [
+        [
+          357,
+          362
+        ],
+        [
+          413,
+          362
+        ],
+        [
+          413,
+          404
+        ],
+        [
+          357,
+          404
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "right",
+      "recognizedText": "プリンの|ぬいぐるみ",
+      "sourceBox": [
+        144,
+        209,
+        96,
+        61
+      ],
+      "basePolygon": [
+        [
+          239,
+          395
+        ],
+        [
+          301,
+          395
+        ],
+        [
+          301,
+          435
+        ],
+        [
+          239,
+          435
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "right",
+      "recognizedText": "レし乳",
+      "sourceBox": [
+        355,
+        227,
+        58,
+        41
+      ],
+      "basePolygon": [
+        [
+          376,
+          407
+        ],
+        [
+          413,
+          407
+        ],
+        [
+          413,
+          433
+        ],
+        [
+          376,
+          433
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "right",
+      "recognizedText": "ce",
+      "sourceBox": [
+        253,
+        271,
+        41,
+        20
+      ],
+      "basePolygon": [
+        [
+          309,
+          435
+        ],
+        [
+          336,
+          435
+        ],
+        [
+          336,
+          448
+        ],
+        [
+          309,
+          448
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "right",
+      "recognizedText": "司)こでごチゴ",
+      "sourceBox": [
+        230,
+        392,
+        183,
+        133
+      ],
+      "basePolygon": [
+        [
+          295,
+          514
+        ],
+        [
+          413,
+          514
+        ],
+        [
+          413,
+          600
+        ],
+        [
+          295,
+          600
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "right",
+      "recognizedText": "ボ",
+      "sourceBox": [
+        306,
+        603,
+        35,
+        20
+      ],
+      "basePolygon": [
+        [
+          344,
+          651
+        ],
+        [
+          367,
+          651
+        ],
+        [
+          367,
+          664
+        ],
+        [
+          344,
+          664
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
+    },
+    {
+      "source": "right",
+      "recognizedText": "ゴールドゆみスプー",
+      "sourceBox": [
+        137,
+        670,
+        148,
+        63
+      ],
+      "basePolygon": [
+        [
+          234,
+          694
+        ],
+        [
+          330,
+          694
+        ],
+        [
+          330,
+          735
+        ],
+        [
+          234,
+          735
+        ]
+      ],
+      "confidence": "ocr_candidate_only"
     }
   ]
 }
