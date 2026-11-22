@@ -73,9 +73,27 @@ object StageLabelBoxValidator {
 object StageLabelBoxRepository {
     private const val CANDIDATE_FILE = "stages/chapter_1_label_boxes.candidates.json"
 
-    fun loadChapterOneCandidates(assets: AssetManager): StageLabelBoxDataset {
-        val jsonText = assets.open(CANDIDATE_FILE).bufferedReader().use { it.readText() }
-        return parse(jsonText)
+    fun loadChapterOneCandidates(assets: AssetManager): StageLabelBoxDataset =
+        loadCandidates(assets, "chapter_1")
+
+    /**
+     * Names may be used for OCR matching while candidate rectangles remain inactive.
+     * A missing chapter file produces an empty catalog rather than borrowing another chapter.
+     */
+    fun loadCandidateItemNames(assets: AssetManager, stageId: String): List<String> {
+        if (!stageId.matches(Regex("chapter_[0-9]+"))) return emptyList()
+        val fileName = "${stageId}_label_boxes.candidates.json"
+        if (assets.list("stages")?.contains(fileName) != true) return emptyList()
+        val dataset = loadCandidates(assets, stageId)
+        return dataset.items.map { it.itemName }
+    }
+
+    private fun loadCandidates(assets: AssetManager, stageId: String): StageLabelBoxDataset {
+        val fileName = "stages/${stageId}_label_boxes.candidates.json"
+        val jsonText = assets.open(fileName).bufferedReader().use { it.readText() }
+        return parse(jsonText).also { dataset ->
+            require(dataset.stageId == stageId) { "Stage ID mismatch in $fileName" }
+        }
     }
 
     internal fun parse(jsonText: String): StageLabelBoxDataset {
