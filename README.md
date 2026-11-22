@@ -45,7 +45,9 @@ Each JSON file in `app/src/main/assets/stages/` represents one selectable chapte
 - `coordinateSystem`: currently `normalized_0_to_1`.
 - `referenceImage`: path to the unannotated reference image under `reference/`.
 - `dataStatus`: `awaiting_coordinate_verification` or `verified`.
-- `items`: list of `itemId`, `itemName`, `x`, and `y`.
+- `items`: list of `itemId`, `itemName`, `x`, and `y` for verified target-object marker coordinates.
+
+Chapter 1 also has a separate `chapter_1_label_boxes.candidates.json` asset containing 32 normalized rectangles for the **item-name label frames**. These are intended to be highlighted as a whole when OCR recognizes the matching name. This candidate file is deliberately marked `runtimeEnabled: false` and is not read by the current app yet; it must not be treated as verified runtime data.
 
 An unverified dataset must have an empty `items` array. The validator enforces this, and unverified data cannot produce lookup results or markers.
 
@@ -65,3 +67,10 @@ GitHub Actions runs unit tests and builds a debug APK on pushes to `main`. Open 
 ## Network and game isolation
 
 The companion app does not request Android's `INTERNET` permission and does not communicate with the game. Stage datasets are bundled locally. CI checks the app manifest so an accidental addition of the internet permission fails the build.
+
+## Chapter 1 label-box candidates
+
+- The 32 item-name label frames have been mapped from the original `left.jpg` / `right.jpg` annotations onto `base.jpg`.
+- Candidate rectangles are stored separately in `app/src/main/assets/stages/chapter_1_label_boxes.candidates.json` using normalized `left`, `top`, `right`, and `bottom` bounds.
+- These rectangles identify the name plates, not the physical target objects.
+- They remain review-only (`runtimeEnabled: false`) until the rectangle overlay is implemented and the remaining small alignment differences are checked.
