@@ -1,10 +1,12 @@
 package jp.teststs1111.memorysearch
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
@@ -67,7 +69,7 @@ class MainActivity : Activity() {
                     } else {
                         "座標確認待ち：登録アイテム ${stage.items.size}件（マーカー表示対象外）"
                     }
-                    status.text = "\n${stage.stageName}\n${dataMessage}\n\n現在はステージデータの読み込みと検証まで対応しています。ゲーム画面のキャプチャ、OCR、マーカー表示はまだ行いません。"
+                    status.text = "\n${stage.stageName}\n${dataMessage}\n\n現在はステージデータの読み込みと検証まで対応しています。ゲーム画面のキャプチャ、OCR、ゲーム上へのマーカー表示はまだ行いません。"
                 }
                 selector.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
@@ -80,6 +82,13 @@ class MainActivity : Activity() {
                     override fun onNothingSelected(parent: android.widget.AdapterView<*>?) = Unit
                 }
                 updateStatus(0)
+
+                root.addView(Button(this).apply {
+                    text = "第1章の名称枠プレビュー（候補）"
+                    setOnClickListener {
+                        startActivity(Intent(this@MainActivity, LabelBoxPreviewActivity::class.java))
+                    }
+                })
             }
         } catch (error: Exception) {
             status.text = "ステージデータを読み込めませんでした。\n${error.message ?: "データ形式を確認してください。"}"
