@@ -19,6 +19,7 @@ import android.widget.TextView
 class MainActivity : Activity() {
     private lateinit var captureStatus: TextView
     private var receiverRegistered = false
+    private var selectedStageId: String = "chapter_1"
 
     private val captureReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -31,9 +32,16 @@ class MainActivity : Activity() {
                 ScreenCaptureService.ACTION_OCR_RESULT -> {
                     val width = intent.getIntExtra(ScreenCaptureService.EXTRA_WIDTH, 0)
                     val height = intent.getIntExtra(ScreenCaptureService.EXTRA_HEIGHT, 0)
-                    val recognized = intent.getStringExtra(ScreenCaptureService.EXTRA_OCR_TEXT).orEmpty()
-                    val displayText = if (recognized.isBlank()) "文字を検出できませんでした。" else recognized.take(1200)
-                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\n\n読み取った文字：\n${displayText}\n\n画像は保存せず、メモリ上で破棄しました。"
+                    val lines = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_LINES).orEmpty()
+                    val itemNames = StageLabelBoxRepository.loadCandidateItemNames(assets, selectedStageId)
+                    val matches = OcrItemMatcher.matchLines(lines, itemNames)
+                    val matchText = if (matches.isEmpty()) {
+                        "選択中の章のアイテム名との完全一致はありません。"
+                    } else {
+                        "一致したアイテム：\\n" + matches.joinToString("、")
+                    }
+                    val recognized = lines.joinToString("\\n").ifBlank { "文字を検出できませんでした。" }
+                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\\n章：${selectedStageId}\\n\\n${matchText}\\n\\nOCR行：\\n${recognized.take(1200)}\\n\\n画像は保存せず、メモリ上で破棄しました。枠座標は未検証のため光りません。"
                 }
                 ScreenCaptureService.ACTION_CAPTURE_ERROR -> {
                     captureStatus.text = "画面取得/OCRエラー：${intent.getStringExtra(ScreenCaptureService.EXTRA_ERROR) ?: "不明"}"
@@ -79,6 +87,7 @@ class MainActivity : Activity() {
                 root.addView(selector, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
                 fun updateStatus(index: Int) {
                     val stage = stages[index]
+                    selectedStageId = stage.stageId
                     val message = if (stage.dataStatus == "verified") {
                         "確認済みアイテム：${stage.items.size}件"
                     } else {
@@ -157,6 +166,7 @@ class MainActivity : Activity() {
                 val serviceIntent = Intent(this, ScreenCaptureService::class.java).apply {
                     putExtra(ScreenCaptureService.EXTRA_RESULT_CODE, resultCode)
                     putExtra(ScreenCaptureService.EXTRA_RESULT_DATA, data)
+                    putExtra(ScreenCaptureService.EXTRA_STAGE_ID, selectedStageId)
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) startForegroundService(serviceIntent) else startService(serviceIntent)
             } else {
