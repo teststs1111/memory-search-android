@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.graphics.Bitmap
-import android.graphics.Rect
 import android.hardware.display.DisplayManager
 import android.hardware.display.VirtualDisplay
 import android.media.Image
@@ -19,14 +18,12 @@ import android.os.Build
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.IBinder
-import com.google.android.gms.tasks.Tasks
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.japanese.JapaneseTextRecognizerOptions
-import java.util.concurrent.Executor
 
 /**
- * One-shot, in-memory screen capture and Japanese OCR test.
+ * One-shot, in-memory screen capture and Japanese OCR.
  * The captured bitmap is never written to storage or transmitted.
  */
 class ScreenCaptureService : Service() {
@@ -139,10 +136,12 @@ class ScreenCaptureService : Service() {
         val recognizer = TextRecognition.getClient(JapaneseTextRecognizerOptions.Builder().build())
         recognizer.process(InputImage.fromBitmap(bitmap, 0))
             .addOnSuccessListener { result ->
+                val lines = result.textBlocks.flatMap { block -> block.lines.map { line -> line.text } }
                 sendBroadcast(Intent(ACTION_OCR_RESULT).setPackage(packageName).apply {
                     putExtra(EXTRA_WIDTH, bitmap.width)
                     putExtra(EXTRA_HEIGHT, bitmap.height)
                     putExtra(EXTRA_OCR_TEXT, result.text)
+                    putStringArrayListExtra(EXTRA_OCR_LINES, ArrayList(lines))
                 })
             }
             .addOnFailureListener { error ->
@@ -191,6 +190,8 @@ class ScreenCaptureService : Service() {
         const val EXTRA_WIDTH = "frame_width"
         const val EXTRA_HEIGHT = "frame_height"
         const val EXTRA_OCR_TEXT = "ocr_text"
+        const val EXTRA_OCR_LINES = "ocr_lines"
+        const val EXTRA_STAGE_ID = "stage_id"
         const val EXTRA_ERROR = "error"
         private const val CHANNEL_ID = "screen_capture_test"
         private const val NOTIFICATION_ID = 41
