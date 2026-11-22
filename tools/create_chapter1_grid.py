@@ -33,3 +33,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# Grid generation is diagnostic only; it never changes the app dataset.
