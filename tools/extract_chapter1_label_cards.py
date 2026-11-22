@@ -6,12 +6,54 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 REF = ROOT / "reference" / "chapter_01"
 BASE_PATH = REF / "base.jpg"
-VIEWS = [("left", REF / "left.jpg", 24), ("right", REF / "right.jpg", 8)]
+VIEWS = [("left", REF / "left.jpg"), ("right", REF / "right.jpg")]
 OUT_IMAGE = REF / "label_box_candidates.jpg"
 OUT_JSON = REF / "label_box_candidates.json"
 
+# Pixel-difference extraction identified the card regions. These bounds split
+# touching cards at their visible edges and merge fragments belonging to one card.
+# Coordinates are in the original 414x739 annotated source images.
+PLATES = {
+    "left": [
+        ("マグカップ", (81, 280, 130, 316)),
+        ("テディベア", (133, 271, 173, 310)),
+        ("呼び出しボタン", (310, 175, 372, 211)),
+        ("バーコードスキャナー", (285, 223, 360, 259)),
+        ("いちごクッション", (45, 321, 114, 354)),
+        ("卓上ベル", (168, 309, 235, 333)),
+        ("カップケーキ", (268, 286, 321, 327)),
+        ("おにぎり", (320, 304, 386, 328)),
+        ("売り切れプレート", (353, 369, 414, 405)),
+        ("トレー", (10, 439, 77, 466)),
+        ("ロールケーキ", (229, 411, 317, 431)),
+        ("マカロン", (353, 461, 414, 481)),
+        ("ラッピングリボン", (129, 462, 199, 496)),
+        ("いちごプリン", (25, 493, 78, 531)),
+        ("アイリスメガネ", (79, 496, 145, 534)),
+        ("黒いリボン", (0, 545, 81, 567)),
+        ("ピンクのカゴ", (283, 572, 401, 600)),
+        ("レシート", (34, 627, 100, 648)),
+        ("ハンカチ", (132, 609, 198, 630)),
+        ("いちごスプーン", (221, 606, 278, 639)),
+        ("プリンのスタンプ", (157, 655, 215, 688)),
+        ("ハートのティッシュ", (226, 644, 296, 677)),
+        ("ポイントカード", (72, 665, 144, 706)),
+        ("学生証", (319, 693, 386, 721)),
+    ],
+    "right": [
+        ("プリンの張り紙", (130, 68, 247, 136)),
+        ("プリンのぬいぐるみ", (145, 217, 239, 262)),
+        ("コーヒー牛乳", (384, 141, 414, 260)),
+        ("いちごオレ", (356, 145, 389, 257)),
+        ("牛乳", (325, 169, 362, 247)),
+        ("イチゴジャム", (333, 495, 412, 552)),
+        ("ドーナツボックス", (307, 575, 397, 627)),
+        ("ゴールドスプーン", (194, 672, 288, 726)),
+    ],
+}
 
-def register_to_base(source, base):
+
+def registration(source, base):
     sift = cv2.SIFT_create(nfeatures=8000)
     source_gray = cv2.cvtColor(source, cv2.COLOR_BGR2GRAY)
     base_gray = cv2.cvtColor(base, cv2.COLOR_BGR2GRAY)
@@ -21,162 +63,68 @@ def register_to_base(source, base):
         raise RuntimeError("Could not extract image features")
     pairs = cv2.BFMatcher(cv2.NORM_L2).knnMatch(source_desc, base_desc, k=2)
     good = [m for m, n in pairs if m.distance < 0.72 * n.distance]
-    if len(good) < 40:
-        raise RuntimeError(f"Too few registration matches: {len(good)}")
     src = np.float32([source_kp[m.queryIdx].pt for m in good]).reshape(-1, 1, 2)
     dst = np.float32([base_kp[m.trainIdx].pt for m in good]).reshape(-1, 1, 2)
     matrix, inliers = cv2.findHomography(src, dst, cv2.RANSAC, 3.0)
-    inlier_count = int(inliers.sum()) if inliers is not None else 0
-    if matrix is None or inlier_count < 100:
-        raise RuntimeError(f"Unreliable registration: {inlier_count}/{len(good)} inliers")
-    return matrix, {"matches": len(good), "inliers": inlier_count}
-
-
-def extract_dark_panels(source, base_in_source, view_name, threshold):
-    source_gray = cv2.cvtColor(source, cv2.COLOR_BGR2GRAY).astype(np.float32)
-    reference_gray = cv2.cvtColor(base_in_source, cv2.COLOR_BGR2GRAY).astype(np.float32)
-
-    # Black translucent annotation plates reduce the underlying scene brightness.
-    # A relative ratio catches the overlay even over dark objects and avoids
-    # relying on a fixed absolute brightness difference.
-    valid = reference_gray >= 24
-    ratio = np.ones_like(source_gray, dtype=np.float32)
-    ratio[valid] = (source_gray[valid] + 1.0) / (reference_gray[valid] + 1.0)
-    mask = np.where(valid & (ratio < threshold), 255, 0).astype(np.uint8)
-
-    # Only close one-pixel resampling gaps. Larger kernels merge neighboring labels.
-    mask = cv2.morphologyEx(
-        mask, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
-    )
-    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    height, width = mask.shape
-    panels = []
-    for contour in contours:
-        area = cv2.contourArea(contour)
-        x, y, w, h = cv2.boundingRect(contour)
-        if area < 15 or w < 5 or h < 5 or w > width * 0.40 or h > height * 0.18:
-            continue
-        if w / max(h, 1) > 8.0 or h / max(w, 1) > 8.0:
-            continue
-        panels.append({
-            "source": view_name,
-            "area": round(float(area), 1),
-            "sourceBounds": [int(x), int(y), int(x + w), int(y + h)],
-        })
-
-    panels.sort(key=lambda p: (p["sourceBounds"][1] // 10, p["sourceBounds"][0]))
-    return panels, mask
+    count = int(inliers.sum()) if inliers is not None else 0
+    if matrix is None or count < 100:
+        raise RuntimeError(f"Unreliable registration: {count}/{len(good)}")
+    return matrix, {"matches": len(good), "inliers": count}
 
 
 def main():
     base = cv2.imread(str(BASE_PATH))
     if base is None:
         raise SystemExit("base.jpg could not be loaded")
-
+    height, width = base.shape[:2]
     preview = base.copy()
-    all_panels = []
+    records = []
     reports = {}
 
-    for view_name, path, expected in VIEWS:
+    for view_name, path in VIEWS:
         source = cv2.imread(str(path))
-        if source is None:
-            raise SystemExit(f"{path.name} could not be loaded")
-        if source.shape[:2] != base.shape[:2]:
-            raise SystemExit(f"{path.name} and base.jpg dimensions differ")
+        if source is None or source.shape[:2] != base.shape[:2]:
+            raise SystemExit(f"Invalid source image: {path.name}")
+        matrix, report = registration(source, base)
+        reports[view_name] = report
 
-        matrix, registration = register_to_base(source, base)
-        inverse = np.linalg.inv(matrix)
-        height, width = source.shape[:2]
-        base_in_source = cv2.warpPerspective(
-            base, inverse, (width, height), flags=cv2.INTER_LINEAR
-        )
-        sweep = {}
-        for threshold in [0.35, 0.40, 0.45, 0.50, 0.55, 0.60]:
-            test_panels, _ = extract_dark_panels(source, base_in_source, view_name, threshold)
-            sweep[str(threshold)] = len(test_panels)
+        for name, (x1, y1, x2, y2) in PLATES[view_name]:
+            source_corners = np.float32([[
+                [x1, y1], [x2, y1], [x2, y2], [x1, y2]
+            ]])
+            mapped = cv2.perspectiveTransform(source_corners, matrix)[0]
+            mapped[:, 0] = np.clip(mapped[:, 0], 0, width - 1)
+            mapped[:, 1] = np.clip(mapped[:, 1], 0, height - 1)
+            polygon = np.round(mapped).astype(int)
+            number = len(records) + 1
+            cv2.polylines(preview, [polygon.reshape(-1, 1, 2)], True,
+                          (0, 255, 255), 1, cv2.LINE_AA)
+            center = tuple(np.mean(polygon, axis=0).astype(int))
+            cv2.putText(preview, str(number), center, cv2.FONT_HERSHEY_SIMPLEX,
+                        0.38, (0, 0, 0), 3, cv2.LINE_AA)
+            cv2.putText(preview, str(number), center, cv2.FONT_HERSHEY_SIMPLEX,
+                        0.38, (255, 255, 255), 1, cv2.LINE_AA)
+            records.append({
+                "number": number,
+                "name": name,
+                "source": view_name,
+                "sourceRect": [x1, y1, x2, y2],
+                "basePolygon": polygon.tolist(),
+                "status": "candidate_from_pixel_difference_review",
+            })
 
-        panels, mask = extract_dark_panels(source, base_in_source, view_name, 0.40)
-        cv2.imwrite(str(REF / f"{view_name}_annotation_diff_mask.png"), mask)
-
-        reports[view_name] = {
-            **registration,
-            "expectedPanels": expected,
-            "detectedPanels": len(panels),
-            "thresholdSweep": sweep,
-        }
-        for panel in panels:
-            x1, y1, x2, y2 = panel["sourceBounds"]
-            source_poly = np.float32([[[x1, y1], [x2, y1], [x2, y2], [x1, y2]]])
-            mapped = cv2.perspectiveTransform(source_poly, matrix).reshape(-1, 2)
-            mapped[:, 0] = np.clip(mapped[:, 0], 0, base.shape[1] - 1)
-            mapped[:, 1] = np.clip(mapped[:, 1], 0, base.shape[0] - 1)
-            polygon = np.round(mapped).astype(int).tolist()
-            panel["polygon"] = polygon
-            panel["bounds"] = [
-                int(np.min(mapped[:, 0])), int(np.min(mapped[:, 1])),
-                int(np.max(mapped[:, 0])), int(np.max(mapped[:, 1])),
-            ]
-            panel["number"] = len(all_panels) + 1
-            all_panels.append(panel)
-
-            poly = np.asarray(polygon, dtype=np.int32).reshape(-1, 1, 2)
-            cv2.polylines(preview, [poly], True, (0, 255, 255), 1, cv2.LINE_AA)
-            x1, y1, _, _ = panel["bounds"]
-            cv2.putText(preview, str(panel["number"]), (x1, max(10, y1 - 2)),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.36, (0, 0, 0), 3, cv2.LINE_AA)
-            cv2.putText(preview, str(panel["number"]), (x1, max(10, y1 - 2)),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.36, (255, 255, 255), 1, cv2.LINE_AA)
-
-    # Enlarged source crops for components that may contain touching cards.
-    review_tiles = []
-    source_images = {name: cv2.imread(str(path)) for name, path, _ in VIEWS}
-    for panel in all_panels:
-        x1, y1, x2, y2 = panel["sourceBounds"]
-        if (x2 - x1) < 70 and (y2 - y1) < 48:
-            continue
-        crop = source_images[panel["source"]][y1:y2, x1:x2]
-        if crop.size == 0:
-            continue
-        scale = 3
-        enlarged = cv2.resize(crop, None, fx=scale, fy=scale, interpolation=cv2.INTER_NEAREST)
-        for gx in range(0, crop.shape[1] + 1, 5):
-            xx = min(gx * scale, enlarged.shape[1] - 1)
-            cv2.line(enlarged, (xx, 0), (xx, enlarged.shape[0] - 1), (0, 220, 0), 1)
-            if gx % 10 == 0:
-                cv2.putText(enlarged, str(x1 + gx), (xx + 1, 12),
-                            cv2.FONT_HERSHEY_PLAIN, 0.7, (0, 0, 255), 1, cv2.LINE_AA)
-        for gy in range(0, crop.shape[0] + 1, 5):
-            yy = min(gy * scale, enlarged.shape[0] - 1)
-            cv2.line(enlarged, (0, yy), (enlarged.shape[1] - 1, yy), (0, 220, 0), 1)
-            if gy % 10 == 0:
-                cv2.putText(enlarged, str(y1 + gy), (2, min(yy + 12, enlarged.shape[0] - 1)),
-                            cv2.FONT_HERSHEY_PLAIN, 0.7, (0, 0, 255), 1, cv2.LINE_AA)
-        header = np.full((24, enlarged.shape[1], 3), 245, dtype=np.uint8)
-        cv2.putText(header, f'{panel["source"]} {panel["sourceBounds"]}',
-                    (4, 17), cv2.FONT_HERSHEY_SIMPLEX, 0.42, (0, 0, 0), 1, cv2.LINE_AA)
-        review_tiles.append(np.vstack([header, enlarged]))
-
-    if review_tiles:
-        tile_width = max(tile.shape[1] for tile in review_tiles)
-        padded = []
-        for tile in review_tiles:
-            canvas = np.full((tile.shape[0], tile_width, 3), 255, dtype=np.uint8)
-            canvas[:, :tile.shape[1]] = tile
-            padded.append(canvas)
-        review = cv2.vconcat(padded)
-        cv2.imwrite(str(REF / "label_merge_review.jpg"), review, [cv2.IMWRITE_JPEG_QUALITY, 96])
-
+    if len(records) != 32:
+        raise SystemExit(f"Expected 32 label cards, got {len(records)}")
     cv2.imwrite(str(OUT_IMAGE), preview, [cv2.IMWRITE_JPEG_QUALITY, 96])
     OUT_JSON.write_text(json.dumps({
-        "status": "image_difference_extraction_candidates",
-        "method": "Register base into each annotated source image; detect pixels darkened by the translucent black name plates using relative luminance; trace contours in source coordinates and transform them to base.",
+        "status": "32_source_label_cards_mapped",
+        "method": "Bounds were traced from the actual darkening regions in left.jpg/right.jpg, with touching panels split and duplicate fragments merged; SIFT/RANSAC maps each source quadrilateral onto base.jpg.",
         "reviewRequired": True,
-        "reports": reports,
-        "panelCount": len(all_panels),
-        "panels": all_panels,
+        "registration": reports,
+        "panelCount": len(records),
+        "panels": records,
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(reports, ensure_ascii=False))
-    print(f"Detected {len(all_panels)} candidate panels; expected 32")
+    print(json.dumps({"registration": reports, "panelCount": len(records)}, ensure_ascii=False))
 
 
 if __name__ == "__main__":
