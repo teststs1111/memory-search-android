@@ -11,8 +11,8 @@ android {
         applicationId = "jp.teststs1111.memorysearch"
         minSdk = 26
         targetSdk = 35
-        versionCode = 6
-        versionName = "0.6.0"
+        versionCode = 7
+        versionName = "0.7.0"
     }
 
     // Reuse the original Chapter 1 reference image without modifying it.
