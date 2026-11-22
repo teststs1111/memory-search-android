@@ -52,20 +52,60 @@ def extract_dark_panels(source, base_in_source, view_name, threshold):
     height, width = mask.shape
     panels = []
     for contour in contours:
-        area = cv2.contourArea(contour)
-        x, y, w, h = cv2.boundingRect(contour)
-        if area < 15 or w < 5 or h < 5 or w > width * 0.40 or h > height * 0.18:
+        component = np.zeros_like(mask)
+        cv2.drawContours(component, [contour], -1, 255, thickness=cv2.FILLED)
+        area = cv2.countNonZero(component)
+        if area < 15:
             continue
-        if w / max(h, 1) > 8.0 or h / max(w, 1) > 8.0:
-            continue
-        perimeter = cv2.arcLength(contour, True)
-        polygon = cv2.approxPolyDP(contour, max(0.8, perimeter * 0.008), True)
-        panels.append({
-            "source": view_name,
-            "area": round(float(area), 1),
-            "sourceBounds": [int(x), int(y), int(x + w), int(y + h)],
-            "sourcePolygon": polygon.reshape(-1, 2).astype(float).tolist(),
-        })
+
+        # Touching annotation cards form one connected component. Split such
+        # components at the distance-transform ridges, using one seed per
+        # rectangular card interior.
+        distance = cv2.distanceTransform(component, cv2.DIST_L2, 5)
+        peak_neighborhood = cv2.dilate(distance, np.ones((13, 13), np.uint8))
+        peak_mask = np.where(
+            (distance >= peak_neighborhood - 0.05) & (distance >= 5.0),
+            255, 0
+        ).astype(np.uint8)
+        peak_count, peak_labels, peak_stats, peak_centers = cv2.connectedComponentsWithStats(peak_mask)
+        seeds = []
+        for idx in range(1, peak_count):
+            px, py = peak_centers[idx]
+            if all(np.hypot(px - sx, py - sy) >= 14 for sx, sy in seeds):
+                seeds.append((float(px), float(py)))
+
+        ys, xs = np.where(component > 0)
+        if len(seeds) > 1:
+            coords = np.column_stack((xs, ys)).astype(np.float32)
+            centers = np.asarray(seeds, dtype=np.float32)
+            distances = ((coords[:, None, :] - centers[None, :, :]) ** 2).sum(axis=2)
+            assignments = distances.argmin(axis=1)
+            segments = []
+            for seed_index in range(len(seeds)):
+                selected = assignments == seed_index
+                if int(selected.sum()) >= 30:
+                    segment = np.zeros_like(mask)
+                    segment[ys[selected], xs[selected]] = 255
+                    segments.append(segment)
+        else:
+            segments = [component]
+
+        for segment in segments:
+            sy, sx = np.where(segment > 0)
+            if len(sx) < 30:
+                continue
+            x1, x2 = int(sx.min()), int(sx.max()) + 1
+            y1, y2 = int(sy.min()), int(sy.max()) + 1
+            w, h = x2 - x1, y2 - y1
+            if w < 5 or h < 5 or w > width * 0.40 or h > height * 0.18:
+                continue
+            if w / max(h, 1) > 8.0 or h / max(w, 1) > 8.0:
+                continue
+            panels.append({
+                "source": view_name,
+                "area": int(len(sx)),
+                "sourceBounds": [x1, y1, x2, y2],
+            })
 
     panels.sort(key=lambda p: (p["sourceBounds"][1] // 10, p["sourceBounds"][0]))
     return panels, mask
