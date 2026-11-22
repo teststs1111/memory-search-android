@@ -19,66 +19,126 @@
     {
       "stageId": "chapter_2",
       "stageName": "モモの散弾銃整備",
-      "annotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/117/%E7%AC%AC2%E7%AB%A0.jpeg"],
-      "unannotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/121/%E7%AC%AC2%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"],
+      "annotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/117/%E7%AC%AC2%E7%AB%A0.jpeg"
+      ],
+      "unannotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/121/%E7%AC%AC2%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
+      ],
       "status": "source_located_catalog_and_coordinates_pending"
     },
     {
       "stageId": "chapter_3",
       "stageName": "製パン部での午後",
-      "annotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/118/%E7%AC%AC3%E7%AB%A0.jpeg"],
-      "unannotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/122/%E7%AC%AC3%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"],
-      "status": "source_located_catalog_and_coordinates_pending"
+      "annotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/118/%E7%AC%AC3%E7%AB%A0.jpeg"
+      ],
+      "unannotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/122/%E7%AC%AC3%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
+      ],
+      "status": "source_located_catalog_and_coordinates_pending",
+      "reviewNotes": [
+        "リビーのヘアピンは梅雨スキンのもの"
+      ]
     },
     {
       "stageId": "chapter_4",
       "stageName": "地下射撃場：エリアB",
-      "annotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/119/%E7%AC%AC4%E7%AB%A0.jpeg"],
-      "unannotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/123/%E7%AC%AC4%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"],
-      "status": "source_located_catalog_and_coordinates_pending"
+      "annotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/119/%E7%AC%AC4%E7%AB%A0.jpeg"
+      ],
+      "unannotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/123/%E7%AC%AC4%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
+      ],
+      "status": "source_located_catalog_and_coordinates_pending",
+      "reviewNotes": [
+        "掃除用ブラシをペンと間違えないよう注意"
+      ]
     },
     {
       "stageId": "chapter_5",
       "stageName": "ルート４輸送隊襲撃",
-      "annotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/125/%E7%AC%AC5%E7%AB%A0.jpeg"],
-      "unannotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/124/%E7%AC%AC5%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"],
-      "status": "source_located_catalog_and_coordinates_pending"
+      "annotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/125/%E7%AC%AC5%E7%AB%A0.jpeg"
+      ],
+      "unannotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/124/%E7%AC%AC5%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
+      ],
+      "status": "source_located_catalog_and_coordinates_pending",
+      "reviewNotes": [
+        "信号紅炎を赤ペンと間違えないよう注意"
+      ]
     },
     {
       "stageId": "chapter_6",
       "stageName": "学園の中庭",
-      "annotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/153/%E7%AC%AC6%E7%AB%A0.jpeg"],
-      "unannotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/149/%E7%AC%AC6%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"],
-      "status": "source_located_catalog_and_coordinates_pending"
+      "annotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/153/%E7%AC%AC6%E7%AB%A0.jpeg"
+      ],
+      "unannotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/149/%E7%AC%AC6%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
+      ],
+      "status": "source_located_catalog_and_coordinates_pending",
+      "reviewNotes": [
+        "ショベルと風車は背景に溶け込みやすい"
+      ]
     },
     {
       "stageId": "chapter_7",
       "stageName": "心理評価センター",
-      "annotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/154/%E7%AC%AC7%E7%AB%A0.jpeg"],
-      "unannotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/150/%E7%AC%AC7%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"],
-      "status": "source_located_catalog_and_coordinates_pending"
+      "annotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/154/%E7%AC%AC7%E7%AB%A0.jpeg"
+      ],
+      "unannotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/150/%E7%AC%AC7%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
+      ],
+      "status": "source_located_catalog_and_coordinates_pending",
+      "reviewNotes": [
+        "化学本は普通の本なので、名称を混同しない"
+      ]
     },
     {
       "stageId": "chapter_8",
       "stageName": "ゲームセンター(閉店)",
-      "annotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/155/%E7%AC%AC8%E7%AB%A0.jpeg"],
-      "unannotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/152/%E7%AC%AC8%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"],
+      "annotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/155/%E7%AC%AC8%E7%AB%A0.jpeg"
+      ],
+      "unannotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/152/%E7%AC%AC8%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
+      ],
       "status": "source_located_catalog_and_coordinates_pending",
-      "reviewNotes": ["青カプセルは発見・タップ時の誤認に注意", "ウサギぬいぐるみは背景に溶け込みやすい"]
+      "reviewNotes": [
+        "青カプセルは発見・タップ時の誤認に注意",
+        "ウサギぬいぐるみは背景に溶け込みやすい"
+      ]
     },
     {
       "stageId": "chapter_9",
       "stageName": "第１補給倉庫前",
-      "annotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/156/%E7%AC%AC9%E7%AB%A0.jpeg"],
-      "unannotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/151/%E7%AC%AC9%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"],
-      "status": "source_located_catalog_and_coordinates_pending"
+      "annotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/156/%E7%AC%AC9%E7%AB%A0.jpeg"
+      ],
+      "unannotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/151/%E7%AC%AC9%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
+      ],
+      "status": "source_located_catalog_and_coordinates_pending",
+      "reviewNotes": [
+        "プリンは机上のクーポンとの引っ掛けに注意"
+      ]
     },
     {
       "stageId": "chapter_10",
       "stageName": "第２沿岸区域",
-      "annotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/157/%E7%AC%AC10%E7%AB%A0.jpeg"],
-      "unannotatedImages": ["https://img.atwiki.jp/eden_jp/attach/46/158/%E7%AC%AC10%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"],
-      "status": "source_located_catalog_and_coordinates_pending"
+      "annotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/157/%E7%AC%AC10%E7%AB%A0.jpeg"
+      ],
+      "unannotatedImages": [
+        "https://img.atwiki.jp/eden_jp/attach/46/158/%E7%AC%AC10%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
+      ],
+      "status": "source_located_catalog_and_coordinates_pending",
+      "reviewNotes": [
+        "ショベルは背景に溶け込みやすい"
+      ]
     }
   ]
 }
