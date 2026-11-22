@@ -35,14 +35,14 @@
       "bounds": {
         "left": 0.210145,
         "top": 0.588315,
-        "right": 0.272947,
+        "right": 0.280193,
         "bottom": 0.622283
       },
       "source": "left",
       "sourceRect": [
         133,
         271,
-        173,
+        177,
         310
       ],
       "status": "candidate_needs_final_visual_check"
