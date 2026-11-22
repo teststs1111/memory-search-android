@@ -26,10 +26,17 @@ class MainActivity : Activity() {
                 ScreenCaptureService.ACTION_CAPTURE_RESULT -> {
                     val width = intent.getIntExtra(ScreenCaptureService.EXTRA_WIDTH, 0)
                     val height = intent.getIntExtra(ScreenCaptureService.EXTRA_HEIGHT, 0)
-                    captureStatus.text = "画面取得テスト成功：${width} × ${height} px\n画像データは保存せず、メモリ上で破棄しました。"
+                    captureStatus.text = "画面取得成功：${width} × ${height} px"
+                }
+                ScreenCaptureService.ACTION_OCR_RESULT -> {
+                    val width = intent.getIntExtra(ScreenCaptureService.EXTRA_WIDTH, 0)
+                    val height = intent.getIntExtra(ScreenCaptureService.EXTRA_HEIGHT, 0)
+                    val recognized = intent.getStringExtra(ScreenCaptureService.EXTRA_OCR_TEXT).orEmpty()
+                    val displayText = if (recognized.isBlank()) "文字を検出できませんでした。" else recognized.take(1200)
+                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\n\n読み取った文字：\n${displayText}\n\n画像は保存せず、メモリ上で破棄しました。"
                 }
                 ScreenCaptureService.ACTION_CAPTURE_ERROR -> {
-                    captureStatus.text = "画面取得エラー：${intent.getStringExtra(ScreenCaptureService.EXTRA_ERROR) ?: "不明"}"
+                    captureStatus.text = "画面取得/OCRエラー：${intent.getStringExtra(ScreenCaptureService.EXTRA_ERROR) ?: "不明"}"
                 }
             }
         }
@@ -77,7 +84,7 @@ class MainActivity : Activity() {
                     } else {
                         "座標確認待ち：登録アイテム ${stage.items.size}件（マーカー表示対象外）"
                     }
-                    stageStatus.text = "\n${stage.stageName}\n$message\n\n名称枠プレビューは確認専用です。番号は実プレイ画面には表示しません。"
+                    stageStatus.text = "\n${stage.stageName}\n${message}\n\n名称枠プレビューは確認専用です。番号は実プレイ画面には表示しません。"
                 }
                 selector.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) = updateStatus(position)
@@ -94,18 +101,18 @@ class MainActivity : Activity() {
         }
 
         root.addView(TextView(this).apply {
-            text = "画面取得テスト"
+            text = "画面取得・日本語OCRテスト"
             textSize = 18f
             setPadding(0, padding, 0, 0)
         })
         captureStatus = TextView(this).apply {
-            text = "許可を求めたときだけ画面取得を開始します。連続録画や画像保存は行いません。"
+            text = "許可を求めたときだけ1フレームを取得して日本語OCRを行います。画像は保存しません。"
             textSize = 14f
             setPadding(0, padding / 2, 0, padding / 2)
         }
         root.addView(captureStatus)
         root.addView(Button(this).apply {
-            text = "画面取得の許可・テスト"
+            text = "画面取得・日本語OCRテスト"
             setOnClickListener {
                 val manager = getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
                 @Suppress("DEPRECATION")
@@ -121,6 +128,7 @@ class MainActivity : Activity() {
             val filter = IntentFilter().apply {
                 addAction(ScreenCaptureService.ACTION_CAPTURE_RESULT)
                 addAction(ScreenCaptureService.ACTION_CAPTURE_ERROR)
+                addAction(ScreenCaptureService.ACTION_OCR_RESULT)
             }
             if (Build.VERSION.SDK_INT >= 33) {
                 registerReceiver(captureReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
@@ -145,7 +153,7 @@ class MainActivity : Activity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CAPTURE) {
             if (resultCode == RESULT_OK && data != null) {
-                captureStatus.text = "許可を受け取りました。最初の1フレームだけ取得します…"
+                captureStatus.text = "許可を受け取りました。1フレームを取得して日本語OCRを実行します…"
                 val serviceIntent = Intent(this, ScreenCaptureService::class.java).apply {
                     putExtra(ScreenCaptureService.EXTRA_RESULT_CODE, resultCode)
                     putExtra(ScreenCaptureService.EXTRA_RESULT_DATA, data)
