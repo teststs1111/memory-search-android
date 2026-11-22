@@ -40,3 +40,7 @@ These features are intentionally kept separate from the current data-loading mil
 ## Build and install
 
 GitHub Actions runs unit tests and builds a debug APK on pushes to `main`. Open the latest successful workflow run, then download the `memory-search-android-debug` artifact from its Artifacts section. The APK is currently a debug build, not a Play Store release.
+
+## Network and game isolation
+
+The companion app does not request Android's `INTERNET` permission and does not communicate with the game. Stage datasets are bundled locally. CI checks the app manifest so an accidental addition of the internet permission fails the build.
