@@ -33,8 +33,11 @@ class MainActivity : Activity() {
                     val width = intent.getIntExtra(ScreenCaptureService.EXTRA_WIDTH, 0)
                     val height = intent.getIntExtra(ScreenCaptureService.EXTRA_HEIGHT, 0)
                     val lines = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_LINES).orEmpty()
+                    val blocks = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_BLOCKS)
+                        ?.map { encoded -> encoded.split('\n') }
+                        ?: lines.map { listOf(it) }
                     val itemNames = StageItemCatalogRepository.loadItemNames(assets, selectedStageId)
-                    val matches = OcrItemMatcher.matchLines(lines, itemNames)
+                    val matches = OcrItemMatcher.matchBlocks(blocks, itemNames)
                     val matchText = if (matches.isEmpty()) {
                         "選択中の章のアイテム名との完全一致はありません。"
                     } else {
