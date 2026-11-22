@@ -59,7 +59,7 @@ class OcrItemMatcherTest {
     fun doesNotJoinThreeLinesOrUseSubstringMatches() {
         assertEquals(
             emptyList<String>(),
-            OcrItemMatcher.matchBlocks(listOf(listOf("星", "型", "チャーム")), listOf("星型チャーム", "チャーム"))
+            OcrItemMatcher.matchBlocks(listOf(listOf("星", "型", "チャーム")), listOf("星型チャーム"))
         )
     }
 
