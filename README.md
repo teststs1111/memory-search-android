@@ -4,29 +4,50 @@ Android companion app for the E.D.E.N. Memory Search minigame.
 
 ## Current milestone
 
-- Android app can load stage JSON files from `app/src/main/assets/stages/`.
+- The app loads stage JSON files from `app/src/main/assets/stages/`.
 - The stage selector is populated from the available JSON datasets.
 - Item lookup is scoped to the selected stage; identical item names in different stages remain independent.
 - Only datasets marked `verified` can return marker candidates.
-- Coordinates are normalized to the game-content rectangle, from 0.0 to 1.0.
+- Coordinates use `normalized_0_to_1`, relative to the game-content area.
 - Unit tests cover coordinate validation, duplicate IDs, stage isolation, and unverified-data safety.
 
-## Chapter 1 data status
+## Reference images — upload instructions
 
-Chapter 1 is currently `awaiting_coordinate_verification` with an empty item list. This is intentional: the source images need direct visual verification before item names and coordinates are added. No guessed coordinates or unverified items are used.
+There are currently 10 chapters prepared. Upload the original images into the matching folders under **`reference/`**. These folders are separate from the app assets, so reference images will not be bundled into the APK.
 
-## Data format
+For each chapter, upload these three files:
 
-Each JSON file in `app/src/main/assets/stages/` represents one selectable stage:
+| Filename | What to upload |
+|---|---|
+| `base.jpg` | The unannotated/full stage image |
+| `left.jpg` | The left annotated reference image |
+| `right.jpg` | The right annotated reference image |
 
-- `stageId`: stable unique stage identifier.
+Folder examples:
+
+- `reference/chapter_01/`
+- `reference/chapter_02/`
+- …
+- `reference/chapter_10/`
+
+**You do not need to combine left and right.** Upload them separately as-is; I will align and combine them into one annotated reference image during data preparation. Please keep the original resolution and do not crop, resize, or recompress them. PNG is also fine; if you use PNG, keep the same base names (for example, `left.png`) and tell me.
+
+On GitHub Mobile, open the relevant chapter folder, choose **Add file → Upload files**, select the three images, and commit. Repeat only for chapters whose images you have ready; you do not need to upload all ten at once.
+
+## Stage data status
+
+All ten chapter JSON files are prepared as `awaiting_coordinate_verification` with empty item lists. This is intentional. No item names or coordinates are guessed. After the reference images are checked, verified item coordinates will be added to the corresponding chapter dataset.
+
+Each JSON file in `app/src/main/assets/stages/` represents one selectable chapter:
+
+- `stageId`: stable unique chapter identifier.
 - `stageName`: label shown in the app.
 - `coordinateSystem`: currently `normalized_0_to_1`.
-- `referenceImage`: source image used to establish coordinates.
+- `referenceImage`: path to the unannotated reference image under `reference/`.
 - `dataStatus`: `awaiting_coordinate_verification` or `verified`.
 - `items`: list of `itemId`, `itemName`, `x`, and `y`.
 
-An unverified dataset must have an empty `items` array. This is checked by the validator.
+An unverified dataset must have an empty `items` array. The validator enforces this, and unverified data cannot produce lookup results or markers.
 
 ## Not implemented yet
 
@@ -35,7 +56,7 @@ An unverified dataset must have an empty `items` array. This is checked by the v
 - Transparent overlay marker.
 - Mapping between the captured game-content rectangle and normalized coordinates.
 
-These features are intentionally kept separate from the current data-loading milestone.
+These features will be added after the chapter reference data is verified.
 
 ## Build and install
 
