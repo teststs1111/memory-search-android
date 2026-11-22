@@ -1,0 +1,591 @@
+{
+  "stageId": "chapter_1",
+  "coordinateSystem": "normalized_0_to_1",
+  "coordinateReference": "reference/chapter_01/base.jpg",
+  "purpose": "highlight_item_name_label_box",
+  "runtimeEnabled": false,
+  "dataStatus": "candidate_reviewed_by_user_pending_final_check",
+  "imageSize": {
+    "width": 414,
+    "height": 736
+  },
+  "reviewNote": "User considers the 32 label-box placements nearly acceptable. Keep separate from runtime item coordinates until the final check and rectangle overlay implementation are complete.",
+  "items": [
+    {
+      "itemId": "chapter_1_item_01",
+      "itemName": "マグカップ",
+      "bounds": {
+        "left": 0.128019,
+        "top": 0.596467,
+        "right": 0.205314,
+        "bottom": 0.627717
+      },
+      "source": "left",
+      "sourceRect": [
+        81,
+        280,
+        130,
+        316
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_02",
+      "itemName": "テディベア",
+      "bounds": {
+        "left": 0.210145,
+        "top": 0.588315,
+        "right": 0.272947,
+        "bottom": 0.622283
+      },
+      "source": "left",
+      "sourceRect": [
+        133,
+        271,
+        173,
+        310
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_03",
+      "itemName": "呼び出しボタン",
+      "bounds": {
+        "left": 0.490338,
+        "top": 0.502717,
+        "right": 0.586957,
+        "bottom": 0.535326
+      },
+      "source": "left",
+      "sourceRect": [
+        310,
+        175,
+        372,
+        211
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_04",
+      "itemName": "バーコードスキャナー",
+      "bounds": {
+        "left": 0.449275,
+        "top": 0.546196,
+        "right": 0.567633,
+        "bottom": 0.577446
+      },
+      "source": "left",
+      "sourceRect": [
+        285,
+        223,
+        360,
+        259
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_05",
+      "itemName": "いちごクッション",
+      "bounds": {
+        "left": 0.070048,
+        "top": 0.633152,
+        "right": 0.178744,
+        "bottom": 0.661685
+      },
+      "source": "left",
+      "sourceRect": [
+        45,
+        321,
+        114,
+        354
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_06",
+      "itemName": "卓上ベル",
+      "bounds": {
+        "left": 0.2657,
+        "top": 0.622283,
+        "right": 0.371981,
+        "bottom": 0.644022
+      },
+      "source": "left",
+      "sourceRect": [
+        168,
+        309,
+        235,
+        333
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_07",
+      "itemName": "カップケーキ",
+      "bounds": {
+        "left": 0.422705,
+        "top": 0.601902,
+        "right": 0.507246,
+        "bottom": 0.638587
+      },
+      "source": "left",
+      "sourceRect": [
+        268,
+        286,
+        321,
+        327
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_08",
+      "itemName": "おにぎり",
+      "bounds": {
+        "left": 0.504831,
+        "top": 0.618207,
+        "right": 0.608696,
+        "bottom": 0.638587
+      },
+      "source": "left",
+      "sourceRect": [
+        320,
+        304,
+        386,
+        328
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_09",
+      "itemName": "売り切れプレート",
+      "bounds": {
+        "left": 0.557971,
+        "top": 0.675272,
+        "right": 0.654589,
+        "bottom": 0.70788
+      },
+      "source": "left",
+      "sourceRect": [
+        353,
+        369,
+        414,
+        405
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_10",
+      "itemName": "トレー",
+      "bounds": {
+        "left": 0.014493,
+        "top": 0.737772,
+        "right": 0.120773,
+        "bottom": 0.76087
+      },
+      "source": "left",
+      "sourceRect": [
+        10,
+        439,
+        77,
+        466
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_11",
+      "itemName": "ロールケーキ",
+      "bounds": {
+        "left": 0.362319,
+        "top": 0.713315,
+        "right": 0.5,
+        "bottom": 0.730978
+      },
+      "source": "left",
+      "sourceRect": [
+        229,
+        411,
+        317,
+        431
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_12",
+      "itemName": "マカロン",
+      "bounds": {
+        "left": 0.557971,
+        "top": 0.756793,
+        "right": 0.654589,
+        "bottom": 0.774457
+      },
+      "source": "left",
+      "sourceRect": [
+        353,
+        461,
+        414,
+        481
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_13",
+      "itemName": "ラッピングリボン",
+      "bounds": {
+        "left": 0.202899,
+        "top": 0.758152,
+        "right": 0.31401,
+        "bottom": 0.788043
+      },
+      "source": "left",
+      "sourceRect": [
+        129,
+        462,
+        199,
+        496
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_14",
+      "itemName": "いちごプリン",
+      "bounds": {
+        "left": 0.038647,
+        "top": 0.785326,
+        "right": 0.123188,
+        "bottom": 0.819293
+      },
+      "source": "left",
+      "sourceRect": [
+        25,
+        493,
+        78,
+        531
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_15",
+      "itemName": "アイリスメガネ",
+      "bounds": {
+        "left": 0.125604,
+        "top": 0.788043,
+        "right": 0.229469,
+        "bottom": 0.822011
+      },
+      "source": "left",
+      "sourceRect": [
+        79,
+        496,
+        145,
+        534
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_16",
+      "itemName": "黒いリボン",
+      "bounds": {
+        "left": 0,
+        "top": 0.831522,
+        "right": 0.128019,
+        "bottom": 0.851902
+      },
+      "source": "left",
+      "sourceRect": [
+        0,
+        545,
+        81,
+        567
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_17",
+      "itemName": "ピンクのカゴ",
+      "bounds": {
+        "left": 0.44686,
+        "top": 0.855978,
+        "right": 0.63285,
+        "bottom": 0.880435
+      },
+      "source": "left",
+      "sourceRect": [
+        283,
+        572,
+        401,
+        600
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_18",
+      "itemName": "レシート",
+      "bounds": {
+        "left": 0.05314,
+        "top": 0.904891,
+        "right": 0.157005,
+        "bottom": 0.922554
+      },
+      "source": "left",
+      "sourceRect": [
+        34,
+        627,
+        100,
+        648
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_19",
+      "itemName": "ハンカチ",
+      "bounds": {
+        "left": 0.207729,
+        "top": 0.888587,
+        "right": 0.311594,
+        "bottom": 0.907609
+      },
+      "source": "left",
+      "sourceRect": [
+        132,
+        609,
+        198,
+        630
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_20",
+      "itemName": "いちごスプーン",
+      "bounds": {
+        "left": 0.347826,
+        "top": 0.88587,
+        "right": 0.439614,
+        "bottom": 0.915761
+      },
+      "source": "left",
+      "sourceRect": [
+        221,
+        606,
+        278,
+        639
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_21",
+      "itemName": "プリンのスタンプ",
+      "bounds": {
+        "left": 0.248792,
+        "top": 0.929348,
+        "right": 0.338164,
+        "bottom": 0.959239
+      },
+      "source": "left",
+      "sourceRect": [
+        157,
+        655,
+        215,
+        688
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_22",
+      "itemName": "ハートのティッシュ",
+      "bounds": {
+        "left": 0.357488,
+        "top": 0.919837,
+        "right": 0.466184,
+        "bottom": 0.94837
+      },
+      "source": "left",
+      "sourceRect": [
+        226,
+        644,
+        296,
+        677
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_23",
+      "itemName": "ポイントカード",
+      "bounds": {
+        "left": 0.113527,
+        "top": 0.938859,
+        "right": 0.227053,
+        "bottom": 0.974185
+      },
+      "source": "left",
+      "sourceRect": [
+        72,
+        665,
+        144,
+        706
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_24",
+      "itemName": "学生証",
+      "bounds": {
+        "left": 0.502415,
+        "top": 0.963315,
+        "right": 0.608696,
+        "bottom": 0.987772
+      },
+      "source": "left",
+      "sourceRect": [
+        319,
+        693,
+        386,
+        721
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_25",
+      "itemName": "プリンの張り紙",
+      "bounds": {
+        "left": 0.555556,
+        "top": 0.413043,
+        "right": 0.73913,
+        "bottom": 0.472826
+      },
+      "source": "right",
+      "sourceRect": [
+        130,
+        68,
+        247,
+        136
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_26",
+      "itemName": "プリンのぬいぐるみ",
+      "bounds": {
+        "left": 0.577295,
+        "top": 0.543478,
+        "right": 0.724638,
+        "bottom": 0.584239
+      },
+      "source": "right",
+      "sourceRect": [
+        145,
+        217,
+        239,
+        262
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_27",
+      "itemName": "コーヒー牛乳",
+      "bounds": {
+        "left": 0.951691,
+        "top": 0.476902,
+        "right": 0.997585,
+        "bottom": 0.581522
+      },
+      "source": "right",
+      "sourceRect": [
+        384,
+        141,
+        414,
+        260
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_28",
+      "itemName": "いちごオレ",
+      "bounds": {
+        "left": 0.908213,
+        "top": 0.480978,
+        "right": 0.961353,
+        "bottom": 0.578804
+      },
+      "source": "right",
+      "sourceRect": [
+        356,
+        145,
+        389,
+        257
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_29",
+      "itemName": "牛乳",
+      "bounds": {
+        "left": 0.859903,
+        "top": 0.501359,
+        "right": 0.917874,
+        "bottom": 0.570652
+      },
+      "source": "right",
+      "sourceRect": [
+        325,
+        169,
+        362,
+        247
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_30",
+      "itemName": "イチゴジャム",
+      "bounds": {
+        "left": 0.871981,
+        "top": 0.789402,
+        "right": 0.997585,
+        "bottom": 0.839674
+      },
+      "source": "right",
+      "sourceRect": [
+        333,
+        495,
+        412,
+        552
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_31",
+      "itemName": "ドーナツボックス",
+      "bounds": {
+        "left": 0.833333,
+        "top": 0.860054,
+        "right": 0.97343,
+        "bottom": 0.904891
+      },
+      "source": "right",
+      "sourceRect": [
+        307,
+        575,
+        397,
+        627
+      ],
+      "status": "candidate_needs_final_visual_check"
+    },
+    {
+      "itemId": "chapter_1_item_32",
+      "itemName": "ゴールドスプーン",
+      "bounds": {
+        "left": 0.654589,
+        "top": 0.944293,
+        "right": 0.801932,
+        "bottom": 0.991848
+      },
+      "source": "right",
+      "sourceRect": [
+        194,
+        672,
+        288,
+        726
+      ],
+      "status": "candidate_needs_final_visual_check"
+    }
+  ]
+}
