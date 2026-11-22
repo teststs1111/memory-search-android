@@ -13,6 +13,8 @@ object StageDatasetRepository {
         return files.map { fileName ->
             val json = assets.open("stages/$fileName").bufferedReader().use { it.readText() }
             parse(json)
+        }.sortedBy { dataset ->
+            dataset.stageId.substringAfterLast('_').toIntOrNull() ?: Int.MAX_VALUE
         }
     }
 
