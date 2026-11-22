@@ -20,47 +20,70 @@ class MainActivity : Activity() {
             gravity = Gravity.TOP
         }
 
-        val title = TextView(this).apply {
+        root.addView(TextView(this).apply {
             text = "記憶探索サポート"
             textSize = 25f
-        }
-        root.addView(title)
-
-        val subtitle = TextView(this).apply {
-            text = "テスト版 0.1.0 — 第1章から対応"
+        })
+        root.addView(TextView(this).apply {
+            text = "テスト版 0.2.0 — 第1章データ読込対応"
             textSize = 14f
             setPadding(0, padding / 3, 0, padding)
-        }
-        root.addView(subtitle)
-
-        val stageLabel = TextView(this).apply {
+        })
+        root.addView(TextView(this).apply {
             text = "挑戦するステージ"
             textSize = 18f
-        }
-        root.addView(stageLabel)
-
-        val stages = listOf("第1章")
-        val stageSelector = Spinner(this).apply {
-            adapter = ArrayAdapter(
-                this@MainActivity,
-                android.R.layout.simple_spinner_dropdown_item,
-                stages
-            )
-        }
-        root.addView(
-            stageSelector,
-            LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
-        )
+        })
 
         val status = TextView(this).apply {
-            text = "\n第1章のデータ準備中\n\n次の工程：アイテム座標の登録、画面キャプチャ、文字認識、マーカー表示。\n\n現在は画面とプロジェクトの土台です。座標が未確認のアイテムを誤表示しないよう、認識・マーカー機能はまだ有効にしていません。"
             textSize = 16f
             setPadding(0, padding, 0, 0)
         }
         root.addView(status)
+
+        try {
+            val stages = StageDatasetRepository.loadStages(assets)
+            if (stages.isEmpty()) {
+                status.text = "ステージデータがありません。"
+            } else {
+                val selector = Spinner(this).apply {
+                    adapter = ArrayAdapter(
+                        this@MainActivity,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        stages.map { it.stageName }
+                    )
+                }
+                root.addView(
+                    selector,
+                    LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+                )
+
+                fun updateStatus(index: Int) {
+                    val stage = stages[index]
+                    val dataMessage = if (stage.dataStatus == "verified") {
+                        "確認済みアイテム：${stage.items.size}件"
+                    } else {
+                        "座標確認待ち：登録アイテム ${stage.items.size}件（マーカー表示対象外）"
+                    }
+                    status.text = "\n${stage.stageName}\n${dataMessage}\n\n現在はステージデータの読み込みと検証まで対応しています。ゲーム画面のキャプチャ、OCR、マーカー表示はまだ行いません。"
+                }
+                selector.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: android.widget.AdapterView<*>?,
+                        view: android.view.View?,
+                        position: Int,
+                        id: Long
+                    ) = updateStatus(position)
+
+                    override fun onNothingSelected(parent: android.widget.AdapterView<*>?) = Unit
+                }
+                updateStatus(0)
+            }
+        } catch (error: Exception) {
+            status.text = "ステージデータを読み込めませんでした。\n${error.message ?: "データ形式を確認してください。"}"
+        }
 
         setContentView(root)
     }
