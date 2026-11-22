@@ -61,6 +61,34 @@ class StageDatasetValidatorTest {
     }
 
     @Test
+    fun itemLookupIsRestrictedToTheSelectedStage() {
+        val chapterOne = dataset(
+            items = listOf(StageItem("chapter-one-item", "赤いカップ", 0.2, 0.3))
+        )
+        val chapterTwo = dataset(
+            items = listOf(StageItem("chapter-two-item", "赤いカップ", 0.8, 0.7))
+                .map { it.copy(itemName = "青いカップ") }
+        )
+
+        assertEquals("chapter-one-item", StageDatasetValidator.findItem(chapterOne, "赤いカップ")?.itemId)
+        assertEquals(null, StageDatasetValidator.findItem(chapterTwo, "赤いカップ"))
+    }
+
+    @Test
+    fun itemLookupTrimsWhitespaceButDoesNotGuessNames() {
+        val verified = dataset()
+        assertEquals("item-1", StageDatasetValidator.findItem(verified, "  テストアイテム  ")?.itemId)
+        assertEquals(null, StageDatasetValidator.findItem(verified, "テストアイテム?"))
+        assertEquals(null, StageDatasetValidator.findItem(verified, " "))
+    }
+
+    @Test
+    fun unverifiedItemsAreNeverReturnedByLookup() {
+        val unverified = dataset(status = "awaiting_coordinate_verification", items = emptyList())
+        assertEquals(null, StageDatasetValidator.findItem(unverified, "テストアイテム"))
+    }
+
+    @Test
     fun rejectsUnverifiedDatasetWithCoordinates() {
         assertThrows(IllegalArgumentException::class.java) {
             StageDatasetValidator.validate(dataset(status = "awaiting_coordinate_verification"))
