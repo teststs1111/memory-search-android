@@ -1,8 +1,5 @@
 from pathlib import Path
-import csv
-import io
 import json
-import subprocess
 import cv2
 import numpy as np
 
@@ -14,71 +11,55 @@ OUT_IMAGE = REF / "label_box_candidates.jpg"
 OUT_JSON = REF / "label_box_candidates.json"
 
 
-def ocr_text_lines(image_path):
-    result = subprocess.run(
-        ["tesseract", str(image_path), "stdout", "-l", "jpn", "--psm", "11", "tsv"],
-        check=True, capture_output=True, text=True
-    )
-    rows = csv.DictReader(io.StringIO(result.stdout), delimiter="\t")
-    grouped = {}
-    for row in rows:
-        text = (row.get("text") or "").strip()
-        try:
-            confidence = float(row.get("conf", "-1"))
-        except ValueError:
-            continue
-        if not text or confidence < 10:
-            continue
-        key = (row["block_num"], row["par_num"], row["line_num"])
-        x, y = int(row["left"]), int(row["top"])
-        w, h = int(row["width"]), int(row["height"])
-        if key not in grouped:
-            grouped[key] = [x, y, x + w, y + h, [text], confidence]
-        else:
-            b = grouped[key]
-            b[0], b[1] = min(b[0], x), min(b[1], y)
-            b[2], b[3] = max(b[2], x + w), max(b[3], y + h)
-            b[4].append(text)
-            b[5] = max(b[5], confidence)
-    lines = []
-    for b in grouped.values():
-        lines.append({"x1": b[0], "y1": b[1], "x2": b[2], "y2": b[3],
-                      "text": "".join(b[4]), "confidence": round(b[5], 1)})
-    return sorted(lines, key=lambda b: (b["y1"], b["x1"]))
+def detect_dark_label_panels(image):
+    """Detect the dark rectangular name plates themselves, not the OCR text."""
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    # The supplied annotation plates are dark and nearly neutral. White text
+    # is excluded; closing bridges small letter-shaped gaps in each plate.
+    mask = cv2.inRange(hsv, np.array([0, 0, 18]), np.array([180, 115, 128]))
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=2)
 
-
-def merge_label_lines(lines, image_shape):
-    # Keep each OCR text group tight. The previous padding expanded the
-    # highlight beyond the label and made it look visibly misaligned.
-    groups = []
-    for line in lines:
-        x1, y1, x2, y2 = line["x1"], line["y1"], line["x2"], line["y2"]
-        matches = []
-        for i, g in enumerate(groups):
-            gx1, gy1, gx2, gy2 = g["box"]
-            overlap = max(0, min(x2, gx2) - max(x1, gx1))
-            min_width = max(1, min(x2 - x1, gx2 - gx1))
-            gap = max(0, max(y1, gy1) - min(y2, gy2))
-            if overlap / min_width >= 0.50 and gap <= 5:
-                matches.append(i)
-        if not matches:
-            groups.append({"box": [x1, y1, x2, y2], "texts": [line["text"]]})
-        else:
-            g = groups[matches[0]]
-            g["box"] = [min(g["box"][0], x1), min(g["box"][1], y1),
-                        max(g["box"][2], x2), max(g["box"][3], y2)]
-            g["texts"].append(line["text"])
-    h, w = image_shape[:2]
-    boxes = []
-    for g in groups:
-        x1, y1, x2, y2 = g["box"]
-        # No artificial margin: preserve the compact box around the text.
-        x1, y1 = max(0, x1), max(0, y1)
-        x2, y2 = min(w - 1, x2), min(h - 1, y2)
-        if x2 - x1 < 8 or y2 - y1 < 8:
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    candidates = []
+    image_h, image_w = image.shape[:2]
+    for contour in contours:
+        x, y, w, h = cv2.boundingRect(contour)
+        area = cv2.contourArea(contour)
+        if w < 22 or h < 13 or w > image_w * 0.62 or h > image_h * 0.20:
             continue
-        boxes.append((x1, y1, x2 - x1, y2 - y1, "".join(g["texts"])))
-    return sorted(boxes, key=lambda b: (b[1], b[0]))
+        ratio = w / float(h)
+        if ratio < 0.38 or ratio > 6.5:
+            continue
+        rectangularity = area / float(w * h)
+        if rectangularity < 0.38:
+            continue
+        # Require a substantial dark fill inside the bounding rectangle.
+        roi = mask[y:y+h, x:x+w]
+        fill = cv2.countNonZero(roi) / float(w * h)
+        if fill < 0.34:
+            continue
+        # Ignore large scene objects by requiring a compact, plate-like shape.
+        approx = cv2.approxPolyDP(contour, 0.035 * cv2.arcLength(contour, True), True)
+        if len(approx) < 4 or len(approx) > 10:
+            continue
+        candidates.append((x, y, w, h, round(fill, 3), round(rectangularity, 3)))
+
+    # Remove nested/near-duplicate detections; retain the larger outer plate.
+    candidates.sort(key=lambda b: b[2] * b[3], reverse=True)
+    kept = []
+    for candidate in candidates:
+        x, y, w, h = candidate[:4]
+        cx, cy = x + w / 2, y + h / 2
+        duplicate = False
+        for other in kept:
+            ox, oy, ow, oh = other[:4]
+            if ox <= cx <= ox + ow and oy <= cy <= oy + oh:
+                duplicate = True
+                break
+        if not duplicate:
+            kept.append(candidate)
+    return sorted(kept, key=lambda b: (b[1], b[0]))
 
 
 def main():
@@ -108,21 +89,23 @@ def main():
         if matrix is None or int(inlier_mask.sum()) < 30:
             raise SystemExit(f"Unreliable image registration for {view_name}")
 
-        lines = ocr_text_lines(path)
-        boxes = merge_label_lines(lines, view.shape)
-        for x, y, bw, bh, text in boxes:
+        panels = detect_dark_label_panels(view)
+        for x, y, bw, bh, fill, rectangularity in panels:
             corners = np.float32([[[x, y], [x + bw, y], [x + bw, y + bh], [x, y + bh]]])
             mapped = cv2.perspectiveTransform(corners, matrix)[0]
             mapped[:, 0] = np.clip(mapped[:, 0], 0, width - 1)
             mapped[:, 1] = np.clip(mapped[:, 1], 0, height - 1)
             polygon = np.round(mapped).astype(np.int32)
             cv2.polylines(preview, [polygon], True, (0, 255, 255), 1, cv2.LINE_AA)
-            center = tuple(np.mean(polygon, axis=0).astype(int))
             records.append({
-                "source": view_name, "recognizedText": text,
-                "sourceBox": [x, y, bw, bh], "basePolygon": polygon.tolist(),
-                "confidence": "ocr_candidate_only"
+                "source": view_name,
+                "sourcePanelRect": [x, y, bw, bh],
+                "basePolygon": polygon.tolist(),
+                "darkFillRatio": fill,
+                "rectangularity": rectangularity,
+                "confidence": "panel_contour_candidate_only"
             })
+
     for i, record in enumerate(records, 1):
         poly = np.array(record["basePolygon"], dtype=np.int32)
         c = tuple(np.mean(poly, axis=0).astype(int))
@@ -130,14 +113,19 @@ def main():
                     0.42, (0, 0, 0), 3, cv2.LINE_AA)
         cv2.putText(preview, str(i), (c[0], c[1]), cv2.FONT_HERSHEY_SIMPLEX,
                     0.42, (255, 255, 255), 1, cv2.LINE_AA)
+
+    if not records:
+        raise SystemExit("No dark label panels detected; refusing to publish an empty preview")
     if not cv2.imwrite(str(OUT_IMAGE), preview, [cv2.IMWRITE_JPEG_QUALITY, 95]):
         raise SystemExit("Could not write label_box_candidates.jpg")
     OUT_JSON.write_text(json.dumps({
         "status": "visual_candidates_only",
-        "note": "Tight OCR text bounds without artificial padding, transformed onto base.jpg. Not app runtime data.",
-        "imageSize": [width, height], "boxes": records
-    }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Created {len(records)} tight label-box candidates; preview={OUT_IMAGE.name}")
+        "note": "Detected dark annotation panel contours (not OCR text bounds), then mapped the panel outer rectangles onto base.jpg. Review required; not app runtime data.",
+        "imageSize": [width, height],
+        "panelCount": len(records),
+        "panels": records
+    }, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    print(f"Created {len(records)} dark panel candidates; preview={OUT_IMAGE.name}")
 
 
 if __name__ == "__main__":
