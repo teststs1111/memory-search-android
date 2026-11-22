@@ -17,7 +17,7 @@ def detect_dark_label_panels(image):
     # The supplied annotation plates are dark and nearly neutral. White text
     # is excluded; closing bridges small letter-shaped gaps in each plate.
     mask = cv2.inRange(hsv, np.array([0, 0, 18]), np.array([180, 115, 128]))
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (19, 13))
     mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=2)
 
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -26,22 +26,22 @@ def detect_dark_label_panels(image):
     for contour in contours:
         x, y, w, h = cv2.boundingRect(contour)
         area = cv2.contourArea(contour)
-        if w < 22 or h < 13 or w > image_w * 0.62 or h > image_h * 0.20:
+        if w < 25 or h < 14 or w > image_w * 0.62 or h > image_h * 0.20:
             continue
         ratio = w / float(h)
         if ratio < 0.38 or ratio > 6.5:
             continue
         rectangularity = area / float(w * h)
-        if rectangularity < 0.38:
+        if rectangularity < 0.22:
             continue
         # Require a substantial dark fill inside the bounding rectangle.
         roi = mask[y:y+h, x:x+w]
         fill = cv2.countNonZero(roi) / float(w * h)
-        if fill < 0.34:
+        if fill < 0.20:
             continue
         # Ignore large scene objects by requiring a compact, plate-like shape.
         approx = cv2.approxPolyDP(contour, 0.035 * cv2.arcLength(contour, True), True)
-        if len(approx) < 4 or len(approx) > 10:
+        if len(approx) < 4 or len(approx) > 12:
             continue
         candidates.append((x, y, w, h, round(fill, 3), round(rectangularity, 3)))
 
@@ -120,7 +120,7 @@ def main():
         raise SystemExit("Could not write label_box_candidates.jpg")
     OUT_JSON.write_text(json.dumps({
         "status": "visual_candidates_only",
-        "note": "Detected dark annotation panel contours (not OCR text bounds), then mapped the panel outer rectangles onto base.jpg. Review required; not app runtime data.",
+        "note": "Detected connected dark annotation panel regions with larger morphological closing (not OCR text bounds), then mapped the panel outer rectangles onto base.jpg. Review required; not app runtime data.",
         "imageSize": [width, height],
         "panelCount": len(records),
         "panels": records
