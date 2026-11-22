@@ -139,6 +139,18 @@ def main():
             continue
         scale = 3
         enlarged = cv2.resize(crop, None, fx=scale, fy=scale, interpolation=cv2.INTER_NEAREST)
+        for gx in range(0, crop.shape[1] + 1, 5):
+            xx = min(gx * scale, enlarged.shape[1] - 1)
+            cv2.line(enlarged, (xx, 0), (xx, enlarged.shape[0] - 1), (0, 220, 0), 1)
+            if gx % 10 == 0:
+                cv2.putText(enlarged, str(x1 + gx), (xx + 1, 12),
+                            cv2.FONT_HERSHEY_PLAIN, 0.7, (0, 0, 255), 1, cv2.LINE_AA)
+        for gy in range(0, crop.shape[0] + 1, 5):
+            yy = min(gy * scale, enlarged.shape[0] - 1)
+            cv2.line(enlarged, (0, yy), (enlarged.shape[1] - 1, yy), (0, 220, 0), 1)
+            if gy % 10 == 0:
+                cv2.putText(enlarged, str(y1 + gy), (2, min(yy + 12, enlarged.shape[0] - 1)),
+                            cv2.FONT_HERSHEY_PLAIN, 0.7, (0, 0, 255), 1, cv2.LINE_AA)
         header = np.full((24, enlarged.shape[1], 3), 245, dtype=np.uint8)
         cv2.putText(header, f'{panel["source"]} {panel["sourceBounds"]}',
                     (4, 17), cv2.FONT_HERSHEY_SIMPLEX, 0.42, (0, 0, 0), 1, cv2.LINE_AA)
