@@ -10,56 +10,47 @@ VIEWS = [("left", REF / "left.jpg"), ("right", REF / "right.jpg")]
 OUT_IMAGE = REF / "label_box_candidates.jpg"
 OUT_JSON = REF / "label_box_candidates.json"
 
-
-def detect_dark_label_panels(image):
-    """Detect the dark rectangular name plates themselves, not the OCR text."""
-    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    # The supplied annotation plates are dark and nearly neutral. White text
-    # is excluded; closing bridges small letter-shaped gaps in each plate.
-    mask = cv2.inRange(hsv, np.array([0, 0, 18]), np.array([180, 115, 128]))
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (7, 5))
-    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=2)
-
-    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    candidates = []
-    image_h, image_w = image.shape[:2]
-    for contour in contours:
-        x, y, w, h = cv2.boundingRect(contour)
-        area = cv2.contourArea(contour)
-        if w < 25 or h < 14 or w > image_w * 0.62 or h > image_h * 0.20:
-            continue
-        ratio = w / float(h)
-        if ratio < 0.38 or ratio > 6.5:
-            continue
-        rectangularity = area / float(w * h)
-        if rectangularity < 0.18:
-            continue
-        # Require a substantial dark fill inside the bounding rectangle.
-        roi = mask[y:y+h, x:x+w]
-        fill = cv2.countNonZero(roi) / float(w * h)
-        if fill < 0.18:
-            continue
-        # Ignore large scene objects by requiring a compact, plate-like shape.
-        approx = cv2.approxPolyDP(contour, 0.035 * cv2.arcLength(contour, True), True)
-        if len(approx) < 4 or len(approx) > 12:
-            continue
-        candidates.append((x, y, w, h, round(fill, 3), round(rectangularity, 3)))
-
-    # Remove nested/near-duplicate detections; retain the larger outer plate.
-    candidates.sort(key=lambda b: b[2] * b[3], reverse=True)
-    kept = []
-    for candidate in candidates:
-        x, y, w, h = candidate[:4]
-        cx, cy = x + w / 2, y + h / 2
-        duplicate = False
-        for other in kept:
-            ox, oy, ow, oh = other[:4]
-            if ox <= cx <= ox + ow and oy <= cy <= oy + oh:
-                duplicate = True
-                break
-        if not duplicate:
-            kept.append(candidate)
-    return sorted(kept, key=lambda b: (b[1], b[0]))
+# Hand-marked outer bounds of the dark name plates in the submitted annotated
+# images. Coordinates are in the original 414x739 reference-image space.
+# These are explicit source rectangles; no OCR or dark-region detection.
+PLATES = {
+    "left": [
+        ("マグカップ", (78, 278, 130, 313)),
+        ("テディベア", (130, 269, 172, 310)),
+        ("呼び出しボタン", (307, 174, 372, 212)),
+        ("バーコードスキャナー", (283, 221, 359, 255)),
+        ("いちごクッション", (42, 319, 104, 354)),
+        ("卓上ベル", (167, 309, 236, 334)),
+        ("カップケーキ", (263, 285, 319, 324)),
+        ("おにぎり", (323, 304, 375, 327)),
+        ("売り切れプレート", (350, 371, 412, 405)),
+        ("トレー", (6, 436, 46, 467)),
+        ("ロールケーキ", (227, 409, 294, 433)),
+        ("マカロン", (350, 458, 407, 484)),
+        ("ラッピングリボン", (130, 465, 192, 499)),
+        ("いちごプリン", (24, 490, 78, 531)),
+        ("アイリスメガネ", (82, 495, 146, 532)),
+        ("黒いリボン", (0, 544, 76, 571)),
+        ("ピンクのカゴ", (281, 568, 378, 605)),
+        ("レシート", (31, 623, 103, 651)),
+        ("ハンカチ", (129, 604, 200, 635)),
+        ("いちごスプーン", (216, 635, 279, 679)),
+        ("プリンのスタンプ", (153, 653, 218, 691)),
+        ("ハートのティッシュ", (226, 642, 298, 681)),
+        ("ポイントカード", (70, 666, 135, 713)),
+        ("学生証", (315, 697, 374, 732)),
+    ],
+    "right": [
+        ("プリンの張り紙", (128, 67, 244, 137)),
+        ("プリンのぬいぐるみ", (143, 220, 235, 261)),
+        ("コーヒー牛乳", (337, 111, 411, 151)),
+        ("いちごオレ", (362, 145, 411, 194)),
+        ("牛乳", (330, 126, 372, 197)),
+        ("イチゴジャム", (335, 430, 405, 505)),
+        ("ドーナツボックス", (302, 514, 374, 568)),
+        ("ゴールドスプーン", (197, 670, 291, 731)),
+    ],
+}
 
 
 def main():
@@ -79,6 +70,9 @@ def main():
         view = cv2.imread(str(path))
         if view is None:
             raise SystemExit(f"{path.name} could not be loaded")
+        vh, vw = view.shape[:2]
+        if (vw, vh) != (414, 739):
+            raise SystemExit(f"Unexpected {view_name}.jpg dimensions: {vw}x{vh}")
         gray = cv2.cvtColor(view, cv2.COLOR_BGR2GRAY)
         kp, desc = sift.detectAndCompute(gray, None)
         pairs = cv2.BFMatcher(cv2.NORM_L2).knnMatch(desc, base_desc, k=2)
@@ -89,43 +83,43 @@ def main():
         if matrix is None or int(inlier_mask.sum()) < 30:
             raise SystemExit(f"Unreliable image registration for {view_name}")
 
-        panels = detect_dark_label_panels(view)
-        for x, y, bw, bh, fill, rectangularity in panels:
-            corners = np.float32([[[x, y], [x + bw, y], [x + bw, y + bh], [x, y + bh]]])
+        for name, (x1, y1, x2, y2) in PLATES[view_name]:
+            corners = np.float32([[[x1, y1], [x2, y1], [x2, y2], [x1, y2]]])
             mapped = cv2.perspectiveTransform(corners, matrix)[0]
             mapped[:, 0] = np.clip(mapped[:, 0], 0, width - 1)
             mapped[:, 1] = np.clip(mapped[:, 1], 0, height - 1)
             polygon = np.round(mapped).astype(np.int32)
             cv2.polylines(preview, [polygon], True, (0, 255, 255), 1, cv2.LINE_AA)
             records.append({
+                "number": len(records) + 1,
+                "name": name,
                 "source": view_name,
-                "sourcePanelRect": [x, y, bw, bh],
+                "sourceRect": [x1, y1, x2, y2],
                 "basePolygon": polygon.tolist(),
-                "darkFillRatio": fill,
-                "rectangularity": rectangularity,
-                "confidence": "panel_contour_candidate_only"
+                "confidence": "manual_source_plate_bounds_needs_visual_review"
             })
 
-    for i, record in enumerate(records, 1):
+    for record in records:
         poly = np.array(record["basePolygon"], dtype=np.int32)
-        c = tuple(np.mean(poly, axis=0).astype(int))
-        cv2.putText(preview, str(i), (c[0], c[1]), cv2.FONT_HERSHEY_SIMPLEX,
-                    0.42, (0, 0, 0), 3, cv2.LINE_AA)
-        cv2.putText(preview, str(i), (c[0], c[1]), cv2.FONT_HERSHEY_SIMPLEX,
-                    0.42, (255, 255, 255), 1, cv2.LINE_AA)
+        center = tuple(np.mean(poly, axis=0).astype(int))
+        label = str(record["number"])
+        cv2.putText(preview, label, center, cv2.FONT_HERSHEY_SIMPLEX, 0.42,
+                    (0, 0, 0), 3, cv2.LINE_AA)
+        cv2.putText(preview, label, center, cv2.FONT_HERSHEY_SIMPLEX, 0.42,
+                    (255, 255, 255), 1, cv2.LINE_AA)
 
-    if not records:
-        raise SystemExit("No dark label panels detected; refusing to publish an empty preview")
+    if len(records) != 32:
+        raise SystemExit(f"Expected 32 manually defined plates, got {len(records)}")
     if not cv2.imwrite(str(OUT_IMAGE), preview, [cv2.IMWRITE_JPEG_QUALITY, 95]):
-        raise SystemExit("Could not write label_box_candidates.jpg")
+        raise SystemExit("Could not write preview")
     OUT_JSON.write_text(json.dumps({
-        "status": "visual_candidates_only",
-        "note": "Detected connected dark annotation panel regions with moderate morphological closing (not OCR text bounds), then mapped the panel outer rectangles onto base.jpg. Review required; not app runtime data.",
+        "status": "manual_source_rect_candidates",
+        "note": "32 individually specified outer name-plate rectangles from submitted left.jpg/right.jpg, transformed onto base.jpg. Approximate hand-marked bounds; review required; not app runtime data.",
         "imageSize": [width, height],
         "panelCount": len(records),
         "panels": records
     }, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
-    print(f"Created {len(records)} dark panel candidates; preview={OUT_IMAGE.name}")
+    print(f"Created {len(records)} manually specified plate candidates")
 
 
 if __name__ == "__main__":
