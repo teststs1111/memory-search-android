@@ -94,11 +94,11 @@ def main():
             base, inverse, (width, height), flags=cv2.INTER_LINEAR
         )
         sweep = {}
-        for threshold in [0.55, 0.60, 0.65, 0.70, 0.75, 0.80]:
+        for threshold in [0.35, 0.40, 0.45, 0.50, 0.55, 0.60]:
             test_panels, _ = extract_dark_panels(source, base_in_source, view_name, threshold)
             sweep[str(threshold)] = len(test_panels)
 
-        panels, mask = extract_dark_panels(source, base_in_source, view_name, 0.65)
+        panels, mask = extract_dark_panels(source, base_in_source, view_name, 0.45)
         cv2.imwrite(str(REF / f"{view_name}_annotation_diff_mask.png"), mask)
 
         reports[view_name] = {
