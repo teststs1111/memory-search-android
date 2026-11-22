@@ -31,7 +31,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reference/chapter_01/label_box_candidates.jpg reference/chapter_01/label_box_candidates.json
+          git add reference/chapter_01/label_box_candidates.jpg reference/chapter_01/label_box_candidates.json reference/chapter_01/source_label_box_check.jpg
           if git diff --cached --quiet; then
             echo "No changes in extracted label cards."
             exit 0
