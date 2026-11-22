@@ -59,7 +59,7 @@ def merge_label_lines(lines, image_shape):
             overlap = max(0, min(x2, gx2) - max(x1, gx1))
             min_width = max(1, min(x2 - x1, gx2 - gx1))
             gap = max(0, max(y1, gy1) - min(y2, gy2))
-            if overlap / min_width >= 0.28 and gap <= 15:
+            if overlap / min_width >= 0.50 and gap <= 5:
                 matches.append(i)
         if not matches:
             groups.append({"box": [x1, y1, x2, y2], "texts": [line["text"]]})
