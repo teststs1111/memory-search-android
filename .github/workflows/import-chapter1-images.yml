@@ -1,0 +1,48 @@
+name: Import Chapter 1 reference images
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Download the three exact Chapter 1 references
+        run: |
+          set -euo pipefail
+          mkdir -p reference/chapter_01
+          curl --fail --location --retry 3 --retry-delay 2 \
+            'https://img.atwiki.jp/eden_jp/attach/46/120/m/%E7%AC%AC1%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg' \
+            --output reference/chapter_01/base.jpg
+          curl --fail --location --retry 3 --retry-delay 2 \
+            'https://img.atwiki.jp/eden_jp/attach/46/115/m/%E7%AC%AC1%E7%AB%A0%E5%B7%A6.jpeg' \
+            --output reference/chapter_01/left.jpg
+          curl --fail --location --retry 3 --retry-delay 2 \
+            'https://img.atwiki.jp/eden_jp/attach/46/116/m/%E7%AC%AC1%E7%AB%A0%E5%8F%B3.jpeg' \
+            --output reference/chapter_01/right.jpg
+          file reference/chapter_01/base.jpg reference/chapter_01/left.jpg reference/chapter_01/right.jpg
+          for image in reference/chapter_01/base.jpg reference/chapter_01/left.jpg reference/chapter_01/right.jpg; do
+            test "$(od -An -tx1 -N2 "$image" | tr -d ' \n')" = "ffd8"
+          done
+
+      - name: Commit images to main
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reference/chapter_01/base.jpg reference/chapter_01/left.jpg reference/chapter_01/right.jpg
+          if git diff --cached --quiet; then
+            echo "Reference images are already up to date."
+            exit 0
+          fi
+          git commit -m "Add Chapter 1 reference images"
+          git push origin HEAD:main
