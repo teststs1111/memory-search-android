@@ -33,7 +33,7 @@ class MainActivity : Activity() {
                     val width = intent.getIntExtra(ScreenCaptureService.EXTRA_WIDTH, 0)
                     val height = intent.getIntExtra(ScreenCaptureService.EXTRA_HEIGHT, 0)
                     val lines = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_LINES).orEmpty()
-                    val itemNames = StageLabelBoxRepository.loadCandidateItemNames(assets, selectedStageId)
+                    val itemNames = StageItemCatalogRepository.loadItemNames(assets, selectedStageId)
                     val matches = OcrItemMatcher.matchLines(lines, itemNames)
                     val matchText = if (matches.isEmpty()) {
                         "選択中の章のアイテム名との完全一致はありません。"
@@ -88,12 +88,13 @@ class MainActivity : Activity() {
                 fun updateStatus(index: Int) {
                     val stage = stages[index]
                     selectedStageId = stage.stageId
+                    val catalogCount = StageItemCatalogRepository.loadItemNames(assets, stage.stageId).size
                     val message = if (stage.dataStatus == "verified") {
-                        "確認済みアイテム：${stage.items.size}件"
+                        "確認済み名称枠：${stage.items.size}件"
                     } else {
-                        "座標確認待ち：登録アイテム ${stage.items.size}件（マーカー表示対象外）"
+                        "照合用アイテム名：${catalogCount}件\n名称枠の座標：確認待ち（実プレイでは非表示）"
                     }
-                    stageStatus.text = "\n${stage.stageName}\n${message}\n\n名称枠プレビューは確認専用です。番号は実プレイ画面には表示しません。"
+                    stageStatus.text = "\n${stage.stageName}\n${message}\n\n番号付きプレビューは確認専用です。実プレイ画面には番号を表示しません。"
                 }
                 selector.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) = updateStatus(position)
