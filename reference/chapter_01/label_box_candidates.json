@@ -1,1054 +1,221 @@
 {
   "status": "visual_candidates_only",
-  "note": "Tight OCR text bounds without artificial padding, transformed onto base.jpg. Not app runtime data.",
+  "note": "Detected dark annotation panel contours (not OCR text bounds), then mapped the panel outer rectangles onto base.jpg. Review required; not app runtime data.",
   "imageSize": [
     414,
     739
   ],
-  "boxes": [
+  "panelCount": 7,
+  "panels": [
     {
       "source": "left",
-      "recognizedText": "呼び|ポ:",
-      "sourceBox": [
-        315,
-        174,
-        28,
-        39
+      "sourcePanelRect": [
+        388,
+        99,
+        26,
+        22
       ],
       "basePolygon": [
         [
-          206,
-          370
+          254,
+          320
         ],
         [
-          224,
-          370
+          271,
+          320
         ],
         [
-          224,
-          395
+          271,
+          335
         ],
         [
-          206,
-          395
+          254,
+          335
         ]
       ],
-      "confidence": "ocr_candidate_only"
+      "darkFillRatio": 0.498,
+      "rectangularity": 0.418,
+      "confidence": "panel_contour_candidate_only"
     },
     {
       "source": "left",
-      "recognizedText": "TL",
-      "sourceBox": [
-        171,
-        187,
-        11,
-        8
-      ],
-      "basePolygon": [
-        [
-          112,
-          378
-        ],
-        [
-          119,
-          378
-        ],
-        [
-          119,
-          383
-        ],
-        [
-          112,
-          383
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "|バーュースキャナー",
-      "sourceBox": [
-        280,
-        221,
-        72,
+      "sourcePanelRect": [
+        281,
+        562,
+        120,
         40
       ],
       "basePolygon": [
         [
-          183,
-          400
+          184,
+          623
         ],
         [
-          230,
-          400
+          262,
+          623
         ],
         [
-          230,
-          426
+          262,
+          649
         ],
         [
-          183,
-          426
+          184,
+          649
         ]
       ],
-      "confidence": "ocr_candidate_only"
+      "darkFillRatio": 0.594,
+      "rectangularity": 0.556,
+      "confidence": "panel_contour_candidate_only"
     },
     {
       "source": "left",
-      "recognizedText": "グ|テテイップ|ベア",
-      "sourceBox": [
-        100,
-        269,
-        80,
-        46
+      "sourcePanelRect": [
+        131,
+        603,
+        67,
+        26
       ],
       "basePolygon": [
         [
-          65,
-          432
+          86,
+          650
         ],
         [
-          118,
-          432
+          129,
+          650
         ],
         [
-          118,
-          462
-        ],
-        [
-          65,
-          462
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "ップケーキおぉにぎり",
-      "sourceBox": [
-        275,
-        290,
-        102,
-        39
-      ],
-      "basePolygon": [
-        [
-          180,
-          445
-        ],
-        [
-          246,
-          445
-        ],
-        [
-          246,
-          471
-        ],
-        [
-          180,
-          471
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "卓上べ,",
-      "sourceBox": [
-        178,
-        311,
-        40,
-        24
-      ],
-      "basePolygon": [
-        [
-          116,
-          459
-        ],
-        [
-          142,
-          459
-        ],
-        [
-          142,
-          475
-        ],
-        [
-          116,
-          475
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "いち",
-      "sourceBox": [
-        62,
-        323,
-        21,
-        11
-      ],
-      "basePolygon": [
-        [
-          40,
-          467
-        ],
-        [
-          54,
-          467
-        ],
-        [
-          54,
-          474
-        ],
-        [
-          40,
-          474
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "EE4",
-      "sourceBox": [
-        87,
-        340,
-        20,
-        8
-      ],
-      "basePolygon": [
-        [
-          57,
-          478
-        ],
-        [
-          70,
-          478
-        ],
-        [
-          70,
-          483
-        ],
-        [
-          57,
-          483
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "た",
-      "sourceBox": [
-        36,
-        363,
-        31,
-        41
-      ],
-      "basePolygon": [
-        [
-          23,
-          493
-        ],
-        [
-          44,
-          493
-        ],
-        [
-          44,
-          520
-        ],
-        [
-          23,
-          520
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "で",
-      "sourceBox": [
-        337,
-        363,
-        35,
-        9
-      ],
-      "basePolygon": [
-        [
-          220,
-          493
-        ],
-        [
-          243,
-          493
-        ],
-        [
-          243,
-          499
-        ],
-        [
-          220,
-          499
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "売り切れプレード",
-      "sourceBox": [
-        358,
-        372,
-        50,
-        36
-      ],
-      "basePolygon": [
-        [
-          234,
-          499
-        ],
-        [
-          267,
-          499
-        ],
-        [
-          267,
-          523
-        ],
-        [
-          234,
-          523
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "ロールケーキ",
-      "sourceBox": [
-        235,
-        414,
-        74,
-        11
-      ],
-      "basePolygon": [
-        [
-          154,
-          526
-        ],
-        [
-          202,
-          526
-        ],
-        [
-          202,
-          534
-        ],
-        [
-          154,
-          534
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "ドレ",
-      "sourceBox": [
-        21,
-        444,
-        46,
-        15
-      ],
-      "basePolygon": [
-        [
-          14,
-          546
-        ],
-        [
-          44,
-          546
-        ],
-        [
-          44,
-          556
-        ],
-        [
-          14,
-          556
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "マカロン",
-      "sourceBox": [
-        359,
-        464,
-        48,
-        11
-      ],
-      "basePolygon": [
-        [
-          235,
-          559
-        ],
-        [
-          266,
-          559
-        ],
-        [
-          266,
-          566
-        ],
-        [
-          235,
-          566
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "SN",
-      "sourceBox": [
-        241,
-        469,
-        57,
-        10
-      ],
-      "basePolygon": [
-        [
-          157,
-          562
-        ],
-        [
-          195,
-          562
-        ],
-        [
-          195,
-          569
-        ],
-        [
-          157,
-          569
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "リポシ",
-      "sourceBox": [
-        148,
-        479,
-        32,
-        11
-      ],
-      "basePolygon": [
-        [
-          97,
-          569
-        ],
-        [
-          118,
-          569
-        ],
-        [
-          118,
-          576
-        ],
-        [
-          97,
-          576
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "いちブリン|:メガネ",
-      "sourceBox": [
-        31,
-        496,
-        100,
-        38
-      ],
-      "basePolygon": [
-        [
-          20,
-          580
+          129,
+          667
         ],
         [
           86,
-          580
-        ],
-        [
-          86,
-          605
-        ],
-        [
-          20,
-          605
+          667
         ]
       ],
-      "confidence": "ocr_candidate_only"
+      "darkFillRatio": 0.855,
+      "rectangularity": 0.803,
+      "confidence": "panel_contour_candidate_only"
     },
     {
       "source": "left",
-      "recognizedText": "|アイリス",
-      "sourceBox": [
-        77,
-        500,
-        61,
-        12
-      ],
-      "basePolygon": [
-        [
-          50,
-          583
-        ],
-        [
-          90,
-          583
-        ],
-        [
-          90,
-          591
-        ],
-        [
-          50,
-          591
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "が",
-      "sourceBox": [
-        194,
-        531,
-        30,
+      "sourcePanelRect": [
+        156,
+        653,
+        58,
         34
       ],
       "basePolygon": [
         [
-          127,
-          603
+          102,
+          683
         ],
         [
-          146,
-          603
+          140,
+          683
         ],
         [
-          146,
-          625
+          140,
+          705
         ],
         [
-          127,
-          625
+          102,
+          705
         ]
       ],
-      "confidence": "ocr_candidate_only"
+      "darkFillRatio": 0.992,
+      "rectangularity": 0.946,
+      "confidence": "panel_contour_candidate_only"
     },
     {
       "source": "left",
-      "recognizedText": "黒いリ",
-      "sourceBox": [
-        7,
-        544,
-        40,
-        24
-      ],
-      "basePolygon": [
-        [
-          5,
-          611
-        ],
-        [
-          31,
-          611
-        ],
-        [
-          31,
-          627
-        ],
-        [
-          5,
-          627
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "ピンクのカゴ",
-      "sourceBox": [
-        293,
-        572,
-        100,
-        30
-      ],
-      "basePolygon": [
-        [
-          191,
-          630
-        ],
-        [
-          257,
-          630
-        ],
-        [
-          257,
-          649
-        ],
-        [
-          191,
-          649
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "いちスフーンハートのティッシュ",
-      "sourceBox": [
-        226,
-        609,
-        62,
-        63
-      ],
-      "basePolygon": [
-        [
-          148,
-          654
-        ],
-        [
-          188,
-          654
-        ],
-        [
-          188,
-          695
-        ],
-        [
-          148,
-          695
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "、g",
-      "sourceBox": [
-        29,
-        625,
-        115,
-        106
-      ],
-      "basePolygon": [
-        [
-          19,
-          664
-        ],
-        [
-          94,
-          664
-        ],
-        [
-          94,
-          734
-        ],
-        [
-          19,
-          734
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "タ",
-      "sourceBox": [
-        162,
-        657,
-        11,
-        24
-      ],
-      "basePolygon": [
-        [
-          106,
-          685
-        ],
-        [
-          113,
-          685
-        ],
-        [
-          113,
-          701
-        ],
-        [
-          106,
-          701
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "left",
-      "recognizedText": "EEH/",
-      "sourceBox": [
-        317,
-        685,
-        92,
-        50
-      ],
-      "basePolygon": [
-        [
-          207,
-          704
-        ],
-        [
-          267,
-          704
-        ],
-        [
-          267,
-          736
-        ],
-        [
-          207,
-          736
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "right",
-      "recognizedText": "プリンの張り紙",
-      "sourceBox": [
-        143,
+      "sourcePanelRect": [
         71,
-        91,
-        67
+        664,
+        72,
+        41
       ],
       "basePolygon": [
         [
-          238,
-          306
+          46,
+          690
         ],
         [
-          297,
-          306
+          93,
+          690
         ],
         [
-          297,
-          349
+          93,
+          717
         ],
         [
-          238,
-          349
+          46,
+          717
         ]
       ],
-      "confidence": "ocr_candidate_only"
+      "darkFillRatio": 1.0,
+      "rectangularity": 0.962,
+      "confidence": "panel_contour_candidate_only"
     },
     {
-      "source": "right",
-      "recognizedText": "4",
-      "sourceBox": [
-        358,
-        95,
-        12,
-        36
+      "source": "left",
+      "sourcePanelRect": [
+        317,
+        689,
+        73,
+        31
       ],
       "basePolygon": [
         [
-          378,
-          321
+          207,
+          706
         ],
         [
-          385,
-          321
+          255,
+          706
         ],
         [
-          385,
-          345
+          255,
+          727
         ],
         [
-          378,
-          345
+          207,
+          727
         ]
       ],
-      "confidence": "ocr_candidate_only"
+      "darkFillRatio": 0.731,
+      "rectangularity": 0.724,
+      "confidence": "panel_contour_candidate_only"
     },
     {
       "source": "right",
-      "recognizedText": "ェwT生ちと",
-      "sourceBox": [
-        335,
-        164,
-        70,
-        32
-      ],
-      "basePolygon": [
-        [
-          363,
-          366
-        ],
-        [
-          408,
-          366
-        ],
-        [
-          408,
-          387
-        ],
-        [
-          363,
-          387
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "right",
-      "recognizedText": "る」",
-      "sourceBox": [
-        368,
-        202,
-        35,
-        14
-      ],
-      "basePolygon": [
-        [
-          384,
-          391
-        ],
-        [
-          407,
-          391
-        ],
-        [
-          407,
-          400
-        ],
-        [
-          384,
-          400
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "right",
-      "recognizedText": "プリンの|ぬいぐるみ",
-      "sourceBox": [
-        153,
-        215,
-        78,
-        49
-      ],
-      "basePolygon": [
-        [
-          245,
-          399
-        ],
-        [
-          295,
-          399
-        ],
-        [
-          295,
-          431
-        ],
-        [
-          245,
-          431
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "right",
-      "recognizedText": "レし乳",
-      "sourceBox": [
-        364,
-        233,
-        43,
-        29
-      ],
-      "basePolygon": [
-        [
-          381,
-          411
-        ],
-        [
-          409,
-          411
-        ],
-        [
-          409,
-          430
-        ],
-        [
-          381,
-          430
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "right",
-      "recognizedText": "ce",
-      "sourceBox": [
+      "sourcePanelRect": [
         262,
-        277,
+        84,
         23,
-        8
+        18
       ],
       "basePolygon": [
         [
           315,
-          439
+          314
         ],
         [
           330,
-          439
+          314
         ],
         [
           330,
-          444
+          326
         ],
         [
           315,
-          444
+          326
         ]
       ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "right",
-      "recognizedText": "司)こでご",
-      "sourceBox": [
-        239,
-        398,
-        174,
-        92
-      ],
-      "basePolygon": [
-        [
-          300,
-          518
-        ],
-        [
-          413,
-          518
-        ],
-        [
-          413,
-          577
-        ],
-        [
-          300,
-          577
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "right",
-      "recognizedText": "チゴ",
-      "sourceBox": [
-        363,
-        500,
-        39,
-        19
-      ],
-      "basePolygon": [
-        [
-          381,
-          584
-        ],
-        [
-          406,
-          584
-        ],
-        [
-          406,
-          596
-        ],
-        [
-          381,
-          596
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "right",
-      "recognizedText": "ボ",
-      "sourceBox": [
-        315,
-        609,
-        17,
-        8
-      ],
-      "basePolygon": [
-        [
-          350,
-          655
-        ],
-        [
-          361,
-          655
-        ],
-        [
-          361,
-          660
-        ],
-        [
-          350,
-          660
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
-    },
-    {
-      "source": "right",
-      "recognizedText": "ゴールドゆみスプー",
-      "sourceBox": [
-        146,
-        676,
-        130,
-        51
-      ],
-      "basePolygon": [
-        [
-          240,
-          698
-        ],
-        [
-          324,
-          698
-        ],
-        [
-          324,
-          731
-        ],
-        [
-          240,
-          731
-        ]
-      ],
-      "confidence": "ocr_candidate_only"
+      "darkFillRatio": 0.512,
+      "rectangularity": 0.394,
+      "confidence": "panel_contour_candidate_only"
     }
   ]
-}
+}\n
