@@ -53,4 +53,14 @@ object StageDatasetValidator {
     /** Only verified coordinates may ever be used for marker placement. */
     fun markerItems(dataset: StageDataset): List<StageItem> =
         if (dataset.dataStatus == "verified") dataset.items else emptyList()
+
+    /**
+     * Search only within the explicitly selected stage. Unverified datasets
+     * intentionally return no result, preventing accidental marker placement.
+     */
+    fun findItem(dataset: StageDataset, requestedName: String): StageItem? {
+        val normalizedName = requestedName.trim()
+        if (normalizedName.isEmpty()) return null
+        return markerItems(dataset).firstOrNull { it.itemName == normalizedName }
+    }
 }
