@@ -29,51 +29,45 @@ def register_to_base(source, base):
     inlier_count = int(inliers.sum()) if inliers is not None else 0
     if matrix is None or inlier_count < 100:
         raise RuntimeError(f"Unreliable registration: {inlier_count}/{len(good)} inliers")
-    height, width = base.shape[:2]
-    warped = cv2.warpPerspective(source, matrix, (width, height), flags=cv2.INTER_LINEAR)
-    return warped, {"matches": len(good), "inliers": inlier_count}
+    return matrix, {"matches": len(good), "inliers": inlier_count}
 
 
-def extract_dark_panels(base, warped, expected, view_name):
-    base_gray = cv2.cvtColor(base, cv2.COLOR_BGR2GRAY).astype(np.int16)
-    warped_gray = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY).astype(np.int16)
+def extract_dark_panels(source, base_in_source, view_name):
+    source_gray = cv2.cvtColor(source, cv2.COLOR_BGR2GRAY).astype(np.float32)
+    reference_gray = cv2.cvtColor(base_in_source, cv2.COLOR_BGR2GRAY).astype(np.float32)
 
-    # The annotation cards darken the original scene. White lettering brightens
-    # pixels, so only positive luminance loss is used as the panel mask.
-    darkening = np.maximum(base_gray - warped_gray, 0).astype(np.uint8)
-    mask = np.where(darkening >= 22, 255, 0).astype(np.uint8)
+    # Black translucent annotation plates reduce the underlying scene brightness.
+    # A relative ratio catches the overlay even over dark objects and avoids
+    # relying on a fixed absolute brightness difference.
+    valid = reference_gray >= 24
+    ratio = np.ones_like(source_gray, dtype=np.float32)
+    ratio[valid] = (source_gray[valid] + 1.0) / (reference_gray[valid] + 1.0)
+    mask = np.where(valid & (ratio < 0.78), 255, 0).astype(np.uint8)
 
-    # Bridge tiny gaps caused by white glyphs and image resampling. External
-    # contours then recover each dark card's outer boundary, not text bounds.
+    # Only close one-pixel resampling gaps. Larger kernels merge neighboring labels.
     mask = cv2.morphologyEx(
-        mask, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
+        mask, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
     )
-    mask = cv2.morphologyEx(
-        mask, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
-    )
-
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     height, width = mask.shape
     panels = []
     for contour in contours:
         area = cv2.contourArea(contour)
         x, y, w, h = cv2.boundingRect(contour)
-        if area < 55 or w < 9 or h < 9 or w > width * 0.42 or h > height * 0.20:
+        if area < 35 or w < 8 or h < 8 or w > width * 0.40 or h > height * 0.18:
             continue
-        # Ignore large registration artifacts and thin isolated text strokes.
-        if w / max(h, 1) > 7.5 or h / max(w, 1) > 7.5:
+        if w / max(h, 1) > 8.0 or h / max(w, 1) > 8.0:
             continue
         perimeter = cv2.arcLength(contour, True)
-        polygon = cv2.approxPolyDP(contour, max(1.0, perimeter * 0.012), True)
+        polygon = cv2.approxPolyDP(contour, max(0.8, perimeter * 0.008), True)
         panels.append({
             "source": view_name,
             "area": round(float(area), 1),
-            "bounds": [int(x), int(y), int(x + w), int(y + h)],
-            "polygon": polygon.reshape(-1, 2).astype(int).tolist(),
+            "sourceBounds": [int(x), int(y), int(x + w), int(y + h)],
+            "sourcePolygon": polygon.reshape(-1, 2).astype(float).tolist(),
         })
 
-    # Stable visual reading order for review.
-    panels.sort(key=lambda p: (p["bounds"][1] // 12, p["bounds"][0]))
+    panels.sort(key=lambda p: (p["sourceBounds"][1] // 10, p["sourceBounds"][0]))
     return panels, mask
 
 
@@ -93,20 +87,37 @@ def main():
         if source.shape[:2] != base.shape[:2]:
             raise SystemExit(f"{path.name} and base.jpg dimensions differ")
 
-        warped, registration = register_to_base(source, base)
-        panels, mask = extract_dark_panels(base, warped, expected, view_name)
+        matrix, registration = register_to_base(source, base)
+        inverse = np.linalg.inv(matrix)
+        height, width = source.shape[:2]
+        base_in_source = cv2.warpPerspective(
+            base, inverse, (width, height), flags=cv2.INTER_LINEAR
+        )
+        panels, mask = extract_dark_panels(source, base_in_source, view_name)
         cv2.imwrite(str(REF / f"{view_name}_annotation_diff_mask.png"), mask)
+
         reports[view_name] = {
             **registration,
             "expectedPanels": expected,
             "detectedPanels": len(panels),
         }
         for panel in panels:
+            source_poly = np.asarray(panel["sourcePolygon"], dtype=np.float32).reshape(-1, 1, 2)
+            mapped = cv2.perspectiveTransform(source_poly, matrix).reshape(-1, 2)
+            mapped[:, 0] = np.clip(mapped[:, 0], 0, base.shape[1] - 1)
+            mapped[:, 1] = np.clip(mapped[:, 1], 0, base.shape[0] - 1)
+            polygon = np.round(mapped).astype(int).tolist()
+            panel["polygon"] = polygon
+            panel["bounds"] = [
+                int(np.min(mapped[:, 0])), int(np.min(mapped[:, 1])),
+                int(np.max(mapped[:, 0])), int(np.max(mapped[:, 1])),
+            ]
             panel["number"] = len(all_panels) + 1
             all_panels.append(panel)
-            poly = np.asarray(panel["polygon"], dtype=np.int32).reshape(-1, 1, 2)
+
+            poly = np.asarray(polygon, dtype=np.int32).reshape(-1, 1, 2)
             cv2.polylines(preview, [poly], True, (0, 255, 255), 1, cv2.LINE_AA)
-            x1, y1, x2, y2 = panel["bounds"]
+            x1, y1, _, _ = panel["bounds"]
             cv2.putText(preview, str(panel["number"]), (x1, max(10, y1 - 2)),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.36, (0, 0, 0), 3, cv2.LINE_AA)
             cv2.putText(preview, str(panel["number"]), (x1, max(10, y1 - 2)),
@@ -115,7 +126,7 @@ def main():
     cv2.imwrite(str(OUT_IMAGE), preview, [cv2.IMWRITE_JPEG_QUALITY, 96])
     OUT_JSON.write_text(json.dumps({
         "status": "image_difference_extraction_candidates",
-        "method": "SIFT/RANSAC registration followed by source-vs-base luminance-difference masks; contours are extracted from the dark annotation cards.",
+        "method": "Register base into each annotated source image; detect pixels darkened by the translucent black name plates using relative luminance; trace contours in source coordinates and transform them to base.",
         "reviewRequired": True,
         "reports": reports,
         "panelCount": len(all_panels),
