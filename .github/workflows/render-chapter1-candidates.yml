@@ -1,0 +1,33 @@
+name: Render Chapter 1 candidate markers
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "reference/chapter_01/chapter_1_candidates.json"
+      - "tools/render_chapter1_candidates.py"
+      - ".github/workflows/render-chapter1-candidates.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install image processing dependency
+        run: python -m pip install opencv-python-headless==4.10.0.84
+      - name: Render provisional markers
+        run: python tools/render_chapter1_candidates.py
+      - name: Commit preview image
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reference/chapter_01/candidate_markers.jpg
+          git commit -m "Render provisional Chapter 1 item markers"
+          git push origin HEAD:main
