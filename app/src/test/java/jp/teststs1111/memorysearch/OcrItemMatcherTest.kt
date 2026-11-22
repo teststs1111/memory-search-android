@@ -37,6 +37,16 @@ class OcrItemMatcherTest {
     }
 
     @Test
+    fun matchesOnlyAgainstTheCurrentlySelectedChapterCatalog() {
+        val chapterOneCatalog = listOf("マグカップ", "テディベア")
+        val chapterTwoCatalog = listOf("赤い本", "青い箱")
+        val recognizedLines = listOf("テディベア")
+
+        assertEquals(listOf("テディベア"), OcrItemMatcher.matchLines(recognizedLines, chapterOneCatalog))
+        assertEquals(emptyList<String>(), OcrItemMatcher.matchLines(recognizedLines, chapterTwoCatalog))
+    }
+
+    @Test
     fun returnsEachMatchedItemOnlyOnceInCatalogOrder() {
         assertEquals(
             listOf("マグカップ", "テディベア"),
