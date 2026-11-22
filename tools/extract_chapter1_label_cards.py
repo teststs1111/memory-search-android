@@ -54,7 +54,7 @@ def extract_dark_panels(source, base_in_source, view_name, threshold):
     for contour in contours:
         area = cv2.contourArea(contour)
         x, y, w, h = cv2.boundingRect(contour)
-        if area < 35 or w < 8 or h < 8 or w > width * 0.40 or h > height * 0.18:
+        if area < 15 or w < 5 or h < 5 or w > width * 0.40 or h > height * 0.18:
             continue
         if w / max(h, 1) > 8.0 or h / max(w, 1) > 8.0:
             continue
@@ -98,7 +98,7 @@ def main():
             test_panels, _ = extract_dark_panels(source, base_in_source, view_name, threshold)
             sweep[str(threshold)] = len(test_panels)
 
-        panels, mask = extract_dark_panels(source, base_in_source, view_name, 0.45)
+        panels, mask = extract_dark_panels(source, base_in_source, view_name, 0.40)
         cv2.imwrite(str(REF / f"{view_name}_annotation_diff_mask.png"), mask)
 
         reports[view_name] = {
