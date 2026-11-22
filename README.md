@@ -2,26 +2,41 @@
 
 Android companion app for the E.D.E.N. Memory Search minigame.
 
-## Milestone 1
+## Current milestone
 
-Create a phone-managed Android project that builds in GitHub Actions. The first functional target is Chapter 1 only.
+- Android app can load stage JSON files from `app/src/main/assets/stages/`.
+- The stage selector is populated from the available JSON datasets.
+- Item lookup is scoped to the selected stage; identical item names in different stages remain independent.
+- Only datasets marked `verified` can return marker candidates.
+- Coordinates are normalized to the game-content rectangle, from 0.0 to 1.0.
+- Unit tests cover coordinate validation, duplicate IDs, stage isolation, and unverified-data safety.
 
-## Planned features
+## Chapter 1 data status
 
-- Explicit stage selection; each stage has its own coordinate dataset.
-- OCR of the requested item name.
-- Stage-scoped item lookup.
-- Transparent marker overlay that does not intercept game touch input.
-- Normalized coordinates mapped to the detected game content area.
+Chapter 1 is currently `awaiting_coordinate_verification` with an empty item list. This is intentional: the source images need direct visual verification before item names and coordinates are added. No guessed coordinates or unverified items are used.
 
-## Data integrity
+## Data format
 
-Chapter 1 source images were shared in the project discussion. Item names and coordinates still require direct verification before they are treated as production data. Unverified items must never trigger a marker. Example coordinates must be clearly marked as examples.
+Each JSON file in `app/src/main/assets/stages/` represents one selectable stage:
 
-## Android permissions
+- `stageId`: stable unique stage identifier.
+- `stageName`: label shown in the app.
+- `coordinateSystem`: currently `normalized_0_to_1`.
+- `referenceImage`: source image used to establish coordinates.
+- `dataStatus`: `awaiting_coordinate_verification` or `verified`.
+- `items`: list of `itemId`, `itemName`, `x`, and `y`.
 
-Screen capture uses the MediaProjection consent flow. Overlay display requires the user's explicit Android special-access grant. Capture must stop when the user ends the session or Android revokes projection.
+An unverified dataset must have an empty `items` array. This is checked by the validator.
 
-## Build
+## Not implemented yet
 
-Pushes to `main` and manual workflow runs build a debug APK with GitHub Actions. Download it from the workflow run's Artifacts section.
+- MediaProjection screen capture.
+- Japanese OCR and OCR confidence/retry handling.
+- Transparent overlay marker.
+- Mapping between the captured game-content rectangle and normalized coordinates.
+
+These features are intentionally kept separate from the current data-loading milestone.
+
+## Build and install
+
+GitHub Actions runs unit tests and builds a debug APK on pushes to `main`. Open the latest successful workflow run, then download the `memory-search-android-debug` artifact from its Artifacts section. The APK is currently a debug build, not a Play Store release.
