@@ -38,10 +38,10 @@ class MainActivity : Activity() {
                     val matchText = if (matches.isEmpty()) {
                         "選択中の章のアイテム名との完全一致はありません。"
                     } else {
-                        "一致したアイテム：\\n" + matches.joinToString("、")
+                        "一致したアイテム：\n" + matches.joinToString("、")
                     }
-                    val recognized = lines.joinToString("\\n").ifBlank { "文字を検出できませんでした。" }
-                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\\n章：${selectedStageId}\\n\\n${matchText}\\n\\nOCR行：\\n${recognized.take(1200)}\\n\\n画像は保存せず、メモリ上で破棄しました。枠座標は未検証のため光りません。"
+                    val recognized = lines.joinToString("\n").ifBlank { "文字を検出できませんでした。" }
+                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\n章：${selectedStageId}\n\n${matchText}\n\nOCR行：\n${recognized.take(1200)}\n\n画像は保存せず、メモリ上で破棄しました。枠座標は未検証のため光りません。"
                 }
                 ScreenCaptureService.ACTION_CAPTURE_ERROR -> {
                     captureStatus.text = "画面取得/OCRエラー：${intent.getStringExtra(ScreenCaptureService.EXTRA_ERROR) ?: "不明"}"
