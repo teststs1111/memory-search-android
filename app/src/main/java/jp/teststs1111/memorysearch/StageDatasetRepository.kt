@@ -4,11 +4,16 @@ import android.content.res.AssetManager
 import org.json.JSONObject
 
 object StageDatasetRepository {
+    private val stageFilePattern = Regex("^chapter_[0-9]+\\.json$", RegexOption.IGNORE_CASE)
+
+    internal fun stageDataFileNames(fileNames: List<String>): List<String> {
+        return fileNames
+            .filter { stageFilePattern.matches(it) }
+            .sortedBy { it.substringAfter('_').substringBefore('.').toIntOrNull() ?: Int.MAX_VALUE }
+    }
+
     fun loadStages(assets: AssetManager): List<StageDataset> {
-        val files = assets.list("stages")
-            ?.filter { it.endsWith(".json", ignoreCase = true) }
-            ?.sorted()
-            ?: emptyList()
+        val files = stageDataFileNames(assets.list("stages")?.toList().orEmpty())
 
         return files.map { fileName ->
             val json = assets.open("stages/$fileName").bufferedReader().use { it.readText() }
