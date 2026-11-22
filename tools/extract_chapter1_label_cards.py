@@ -148,7 +148,8 @@ def main():
             "thresholdSweep": sweep,
         }
         for panel in panels:
-            source_poly = np.asarray(panel["sourcePolygon"], dtype=np.float32).reshape(-1, 1, 2)
+            x1, y1, x2, y2 = panel["sourceBounds"]
+            source_poly = np.float32([[[x1, y1], [x2, y1], [x2, y2], [x1, y2]]])
             mapped = cv2.perspectiveTransform(source_poly, matrix).reshape(-1, 2)
             mapped[:, 0] = np.clip(mapped[:, 0], 0, base.shape[1] - 1)
             mapped[:, 1] = np.clip(mapped[:, 1], 0, base.shape[0] - 1)
