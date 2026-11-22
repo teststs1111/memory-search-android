@@ -11,8 +11,8 @@ android {
         applicationId = "jp.teststs1111.memorysearch"
         minSdk = 26
         targetSdk = 35
-        versionCode = 5
-        versionName = "0.5.0"
+        versionCode = 6
+        versionName = "0.6.0"
     }
 
     // Reuse the original Chapter 1 reference image without modifying it.
@@ -29,5 +29,6 @@ android {
 }
 
 dependencies {
+    implementation("com.google.mlkit:text-recognition-japanese:16.0.1")
     testImplementation("junit:junit:4.13.2")
 }
