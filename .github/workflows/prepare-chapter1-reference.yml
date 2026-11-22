@@ -4,6 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
+      - ".github/workflows/prepare-chapter1-reference.yml"
       - "tools/prepare_chapter1.py"
       - "reference/chapter_01/left.jpg"
       - "reference/chapter_01/right.jpg"
