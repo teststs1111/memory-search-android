@@ -17,6 +17,24 @@ class StageDatasetValidatorTest {
         items = items
     )
 
+
+    @Test
+    fun stageFileDiscoveryExcludesCatalogAndCandidateJsonFiles() {
+        assertEquals(
+            listOf("chapter_1.json", "chapter_2.json", "chapter_10.json"),
+            StageDatasetRepository.stageDataFileNames(
+                listOf(
+                    "item_catalogs.json",
+                    "chapter_10.json",
+                    "chapter_1_label_boxes.candidates.json",
+                    "chapter_2.json",
+                    "chapter_1.json",
+                    "notes.JSON"
+                )
+            )
+        )
+    }
+
     @Test
     fun acceptsNormalizedCoordinatesIncludingEdges() {
         StageDatasetValidator.validate(
