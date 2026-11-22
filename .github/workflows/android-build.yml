@@ -26,6 +26,13 @@ jobs:
         with:
           gradle-version: "8.9"
 
+      - name: Verify app has no internet permission
+        run: |
+          if grep -Eq '<uses-permission[^>]+android:name="android.permission.INTERNET"' app/src/main/AndroidManifest.xml; then
+            echo "Network access is not allowed for this companion app."
+            exit 1
+          fi
+
       - name: Run unit tests
         run: gradle --no-daemon :app:testDebugUnitTest
 
