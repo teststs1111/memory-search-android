@@ -1,0 +1,202 @@
+{
+  "status": "visual_candidates_only",
+  "note": "Detected annotation label rectangles transformed onto base.jpg. Not app runtime data; text-to-item mapping and visual verification remain pending.",
+  "imageSize": [
+    414,
+    739
+  ],
+  "boxes": [
+    {
+      "source": "left",
+      "sourceBox": [
+        264,
+        0,
+        88,
+        15
+      ],
+      "basePolygon": [
+        [
+          172,
+          256
+        ],
+        [
+          230,
+          256
+        ],
+        [
+          230,
+          266
+        ],
+        [
+          172,
+          266
+        ]
+      ],
+      "center": [
+        0.487276,
+        0.35322
+      ],
+      "fillRatio": 0.663
+    },
+    {
+      "source": "left",
+      "sourceBox": [
+        389,
+        100,
+        25,
+        19
+      ],
+      "basePolygon": [
+        [
+          254,
+          321
+        ],
+        [
+          271,
+          321
+        ],
+        [
+          271,
+          334
+        ],
+        [
+          254,
+          334
+        ]
+      ],
+      "center": [
+        0.63527,
+        0.443574
+      ],
+      "fillRatio": 0.592
+    },
+    {
+      "source": "left",
+      "sourceBox": [
+        260,
+        525,
+        141,
+        77
+      ],
+      "basePolygon": [
+        [
+          170,
+          599
+        ],
+        [
+          262,
+          599
+        ],
+        [
+          262,
+          649
+        ],
+        [
+          170,
+          649
+        ]
+      ],
+      "center": [
+        0.522939,
+        0.84585
+      ],
+      "fillRatio": 0.341
+    },
+    {
+      "source": "left",
+      "sourceBox": [
+        131,
+        607,
+        67,
+        22
+      ],
+      "basePolygon": [
+        [
+          86,
+          653
+        ],
+        [
+          129,
+          653
+        ],
+        [
+          129,
+          667
+        ],
+        [
+          86,
+          667
+        ]
+      ],
+      "center": [
+        0.260186,
+        0.894145
+      ],
+      "fillRatio": 0.946
+    },
+    {
+      "source": "right",
+      "sourceBox": [
+        120,
+        309,
+        24,
+        20
+      ],
+      "basePolygon": [
+        [
+          223,
+          460
+        ],
+        [
+          239,
+          460
+        ],
+        [
+          239,
+          473
+        ],
+        [
+          223,
+          473
+        ]
+      ],
+      "center": [
+        0.559315,
+        0.632098
+      ],
+      "fillRatio": 0.621
+    },
+    {
+      "source": "right",
+      "sourceBox": [
+        38,
+        523,
+        42,
+        38
+      ],
+      "basePolygon": [
+        [
+          170,
+          599
+        ],
+        [
+          197,
+          599
+        ],
+        [
+          197,
+          623
+        ],
+        [
+          170,
+          623
+        ]
+      ],
+      "center": [
+        0.4447,
+        0.828067
+      ],
+      "fillRatio": 0.357
+    }
+  ]
+}
