@@ -1,0 +1,2 @@
+left: 493/514 SIFT matches were RANSAC inliers
+right: 636/654 SIFT matches were RANSAC inliers
