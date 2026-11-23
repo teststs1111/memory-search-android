@@ -9,7 +9,7 @@
     "width": 563,
     "height": 1000
   },
-  "reviewNote": "Initial draft traced from the chapter 5 annotated wiki reference. All 34 label frames are approximate candidates and require visual review against the paired base image before any runtime use. The source image is a single annotated image, so source is annotated for every item. User review adjustment: item 25 moved 5 px upward and item 33 moved 5 px left; both remain draft candidates pending visual review. Further user review adjustment: item 3 moved 5 px right; item 25 moved an additional 5 px upward; item 33 moved an additional 5 px left. All remain draft candidates pending visual review.",
+  "reviewNote": "Initial draft traced from the chapter 5 annotated wiki reference. All 34 label frames are approximate candidates and require visual review against the paired base image before any runtime use. The source image is a single annotated image, so source is annotated for every item. User review adjustment: item 25 moved 5 px upward and item 33 moved 5 px left; both remain draft candidates pending visual review. Further user review adjustment: item 3 moved 5 px right; item 25 moved an additional 5 px upward; item 33 moved an additional 5 px left. All remain draft candidates pending visual review. Item 3 adjustment applies to the entire frame shifted right, preserving its width.",
   "items": [
     {
       "itemId": "chapter_5_item_01",
@@ -53,14 +53,14 @@
       "bounds": {
         "left": 0.12433392539964476,
         "top": 0.352,
-        "right": 0.294849,
+        "right": 0.3037300177619893,
         "bottom": 0.385
       },
       "source": "annotated",
       "sourceRect": [
         70,
         352,
-        166,
+        171,
         385
       ],
       "status": "candidate_needs_visual_review"
