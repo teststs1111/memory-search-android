@@ -22,6 +22,9 @@ object StageItemCatalogValidator {
             }
             require(catalog.stageName.isNotBlank()) { "stageName must not be blank" }
             require(catalog.itemNames.isNotEmpty()) { "Catalog must contain item names: ${catalog.stageId}" }
+            require(catalog.reviewNotes.all { it.isNotBlank() }) {
+                "Review notes must not be blank: ${catalog.stageId}"
+            }
             require(catalog.itemNames.all { it.isNotBlank() }) {
                 "Item names must not be blank: ${catalog.stageId}"
             }
