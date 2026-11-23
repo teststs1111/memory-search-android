@@ -46,6 +46,25 @@ class StageItemCatalogValidatorTest {
     }
 
     @Test
+    fun acceptsAccuracyNotesForLaterChapters() {
+        val catalog = StageItemCatalog(
+            "chapter_5", "第5章", listOf("信号紅炎"),
+            listOf("赤ペンと見間違えないようにする")
+        )
+        StageItemCatalogValidator.validate(listOf(catalog))
+        assertEquals(1, catalog.reviewNotes.size)
+    }
+
+    @Test
+    fun rejectsBlankAccuracyNotes() {
+        assertThrows(IllegalArgumentException::class.java) {
+            StageItemCatalogValidator.validate(
+                listOf(StageItemCatalog("chapter_5", "第5章", listOf("信号紅炎"), listOf(" ")))
+            )
+        }
+    }
+
+    @Test
     fun rejectsBlankNamesAndInvalidStageIds() {
         assertThrows(IllegalArgumentException::class.java) {
             StageItemCatalogValidator.validate(
