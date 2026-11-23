@@ -67,7 +67,25 @@ def validate_runtime_datasets() -> None:
                 assert 0.0 <= value <= 1.0, f"{path}: {item_id} {axis} outside 0..1"
 
 
+def load_catalog_names() -> dict:
+    catalog_path = STAGES_DIR / "item_catalogs.json"
+    root = read_json(catalog_path)
+    assert root.get("schemaVersion") == 1, "Unsupported item catalog schema"
+    chapters = root.get("chapters")
+    assert isinstance(chapters, list), "item catalog chapters must be an array"
+    result = {}
+    for chapter in chapters:
+        stage_id = chapter.get("stageId")
+        names = chapter.get("itemNames")
+        assert isinstance(stage_id, str) and stage_id, "Catalog has invalid stageId"
+        assert isinstance(names, list), f"{stage_id}: itemNames must be an array"
+        assert stage_id not in result, f"Duplicate catalog stageId: {stage_id}"
+        result[stage_id] = names
+    return result
+
+
 def validate_inactive_candidates() -> None:
+    catalog_names = load_catalog_names()
     files = sorted(
         (path for path in STAGES_DIR.iterdir() if CANDIDATE_FILE.fullmatch(path.name)),
         key=lambda path: int(CANDIDATE_FILE.fullmatch(path.name).group(1)),
@@ -98,6 +116,16 @@ def validate_inactive_candidates() -> None:
 
         items = data.get("items")
         assert isinstance(items, list) and items, f"{path}: no candidate boxes"
+        chapter_id = f"chapter_{chapter_number}"
+        expected_names = catalog_names.get(chapter_id)
+        assert expected_names is not None, f"{path}: no matching OCR catalog"
+        candidate_names = [item.get("itemName") for item in items]
+        assert len(candidate_names) == len(expected_names), (
+            f"{path}: expected {len(expected_names)} candidate boxes, got {len(candidate_names)}"
+        )
+        assert set(candidate_names) == set(expected_names), (
+            f"{path}: candidate label names do not exactly match {chapter_id} OCR catalog"
+        )
         ids = set()
         for item in items:
             item_id = item.get("itemId")
@@ -106,6 +134,21 @@ def validate_inactive_candidates() -> None:
             ids.add(item_id)
             assert isinstance(item.get("itemName"), str) and item["itemName"].strip(), (
                 f"{path}: blank itemName for {item_id}"
+            )
+            assert item.get("status") != "verified", (
+                f"{path}: candidate item {item_id} must not be marked runtime-verified"
+            )
+            source = item.get("source")
+            assert source in {"left", "right"}, f"{path}: invalid source side for {item_id}"
+            source_rect = item.get("sourceRect")
+            assert (
+                isinstance(source_rect, list)
+                and len(source_rect) == 4
+                and all(isinstance(value, int) for value in source_rect)
+            ), f"{path}: invalid sourceRect for {item_id}"
+            sx1, sy1, sx2, sy2 = source_rect
+            assert 0 <= sx1 < sx2 <= width and 0 <= sy1 < sy2 <= height, (
+                f"{path}: sourceRect outside reference image for {item_id}"
             )
             bounds = item.get("bounds")
             assert isinstance(bounds, dict), f"{path}: missing bounds for {item_id}"
@@ -118,7 +161,10 @@ def validate_inactive_candidates() -> None:
             assert 0.0 <= left < right <= 1.0, f"{path}: invalid horizontal bounds for {item_id}"
             assert 0.0 <= top < bottom <= 1.0, f"{path}: invalid vertical bounds for {item_id}"
 
-    print(f"Inactive candidate datasets OK: {len(files)} file(s); runtimeEnabled remains false")
+    print(
+        f"Inactive candidate datasets OK: {len(files)} file(s); "
+        "candidate names match their OCR catalogs; runtimeEnabled remains false"
+    )
 
 
 def main() -> None:
