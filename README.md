@@ -19,7 +19,7 @@ There are 10 prepared chapter slots. Each chapter JSON currently remains `awaiti
 
 The item-name catalog is independent of coordinate data. It contains the OCR lookup names for each chapter, allowing the OCR test to work without activating unverified coordinates. Chapters 5-10 also display chapter-specific caution notes for known visual confusions from the reference guide (signal flare/red pen, shovel/windmill, chemistry book, blue capsule/rabbit plush, pudding/coupon, and shovel/background). These notes are advisory only; they do not create fuzzy OCR matches or change item names.
 
-Chapter 1 also has a separate `chapter_1_label_boxes.candidates.json` file containing 32 candidate rectangles for the **item-name label frames** (not the hidden physical objects). The candidate data is marked `runtimeEnabled: false` and is used only by the developer preview. Numbered circles are preview-only and are never drawn over the game.
+Chapter 1 has a separate `chapter_1_label_boxes.candidates.json` file containing 32 candidate rectangles for the **item-name label frames** (not the hidden physical objects). Chapter 5 now also has a first-pass set of 34 label-frame candidates traced from the annotated reference image. Chapter 5 uses `source: "annotated"` because its reference is a single annotated image rather than a left/right pair; these draft rectangles still require visual review against the unannotated base image. Both candidate datasets are marked `runtimeEnabled: false` and are not used by gameplay. Numbered circles are preview-only and are never drawn over the game.
 
 ## Reference images — upload instructions
 
