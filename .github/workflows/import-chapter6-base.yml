@@ -1,0 +1,42 @@
+name: Import Chapter 6 base reference image
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - ".github/workflows/import-chapter6-base.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  import-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Download Chapter 6 unannotated image
+        run: |
+          set -euo pipefail
+          mkdir -p reference/chapter_06
+          curl --fail --location --retry 3 --retry-delay 2 \
+            'https://img.atwiki.jp/eden_jp/attach/46/149/%E7%AC%AC6%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg' \
+            --output reference/chapter_06/base.jpg
+          file reference/chapter_06/base.jpg
+          test "$(od -An -tx1 -N2 reference/chapter_06/base.jpg | tr -d ' \n')" = "ffd8"
+      - name: Commit image to main
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reference/chapter_06/base.jpg
+          if git diff --cached --quiet; then
+            echo "Chapter 6 base image is already up to date."
+            exit 0
+          fi
+          git commit -m "Add Chapter 6 unannotated reference image"
+          git push origin HEAD:main
