@@ -139,7 +139,7 @@ def validate_inactive_candidates() -> None:
                 f"{path}: candidate item {item_id} must not be marked runtime-verified"
             )
             source = item.get("source")
-            assert source in {"left", "right"}, f"{path}: invalid source side for {item_id}"
+            assert source in {"left", "right", "annotated"}, f"{path}: invalid source side for {item_id}"
             source_rect = item.get("sourceRect")
             assert (
                 isinstance(source_rect, list)
