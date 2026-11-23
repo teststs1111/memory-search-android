@@ -33,6 +33,7 @@ class ScreenCaptureService : Service() {
     private var worker: HandlerThread? = null
     private var stopped = false
     private var frameHandled = false
+    private var requestedStageId: String = "chapter_1"
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -50,7 +51,7 @@ class ScreenCaptureService : Service() {
             startForeground(NOTIFICATION_ID, notification)
         }
 
-        val requestedStageId = intent?.getStringExtra(EXTRA_STAGE_ID)?.takeIf { it.matches(Regex("chapter_[0-9]+")) } ?: "chapter_1"
+        requestedStageId = intent?.getStringExtra(EXTRA_STAGE_ID)?.takeIf { it.matches(Regex("chapter_[0-9]+")) } ?: "chapter_1"
         val resultCode = intent?.getIntExtra(EXTRA_RESULT_CODE, 0) ?: 0
         val resultData = if (Build.VERSION.SDK_INT >= 33) {
             intent?.getParcelableExtra(EXTRA_RESULT_DATA, Intent::class.java)
