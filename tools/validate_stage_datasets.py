@@ -123,8 +123,8 @@ def validate_inactive_candidates() -> None:
         assert len(candidate_names) == len(expected_names), (
             f"{path}: expected {len(expected_names)} candidate boxes, got {len(candidate_names)}"
         )
-        assert set(candidate_names) == set(expected_names), (
-            f"{path}: candidate label names do not exactly match {chapter_id} OCR catalog"
+        assert candidate_names == expected_names, (
+            f"{path}: candidate label names/order do not exactly match {chapter_id} OCR catalog"
         )
         ids = set()
         for item in items:
