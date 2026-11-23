@@ -9,7 +9,7 @@
     "width": 563,
     "height": 1000
   },
-  "reviewNote": "Initial draft traced from the chapter 5 annotated wiki reference. All 34 label frames are approximate candidates and require visual review against the paired base image before any runtime use. The source image is a single annotated image, so source is annotated for every item.",
+  "reviewNote": "Initial draft traced from the chapter 5 annotated wiki reference. All 34 label frames are approximate candidates and require visual review against the paired base image before any runtime use. The source image is a single annotated image, so source is annotated for every item. User review adjustment: item 25 moved 5 px upward and item 33 moved 5 px left; both remain draft candidates pending visual review.",
   "items": [
     {
       "itemId": "chapter_5_item_01",
@@ -448,16 +448,16 @@
       "itemName": "信号紅炎",
       "bounds": {
         "left": 0.204263,
-        "top": 0.763,
+        "top": 0.758,
         "right": 0.390764,
-        "bottom": 0.812
+        "bottom": 0.807
       },
       "source": "annotated",
       "sourceRect": [
         115,
-        763,
+        758,
         220,
-        812
+        807
       ],
       "status": "candidate_needs_visual_review"
     },
@@ -591,16 +591,16 @@
       "itemId": "chapter_5_item_33",
       "itemName": "入館証",
       "bounds": {
-        "left": 0.39254,
+        "left": 0.3836589698046181,
         "top": 0.862,
-        "right": 0.474245,
+        "right": 0.46536412078152756,
         "bottom": 0.941
       },
       "source": "annotated",
       "sourceRect": [
-        221,
+        216,
         862,
-        267,
+        262,
         941
       ],
       "status": "candidate_needs_visual_review"
