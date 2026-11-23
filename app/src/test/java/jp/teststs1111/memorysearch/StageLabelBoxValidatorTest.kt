@@ -54,6 +54,18 @@ class StageLabelBoxValidatorTest {
     }
 
     @Test
+    fun rejectsDuplicateNames() {
+        assertThrows(IllegalArgumentException::class.java) {
+            StageLabelBoxValidator.validate(
+                dataset(items = listOf(
+                    StageLabelBox("first", "同じ名前", NormalizedBounds(0.1, 0.1, 0.2, 0.2), "left"),
+                    StageLabelBox("second", "同じ名前", NormalizedBounds(0.3, 0.3, 0.4, 0.4), "right")
+                ))
+            )
+        }
+    }
+
+    @Test
     fun rejectsDuplicateIds() {
         assertThrows(IllegalArgumentException::class.java) {
             StageLabelBoxValidator.validate(
