@@ -24,18 +24,13 @@ jobs:
         run: python -m pip install opencv-python-headless==4.10.0.84
       - name: Render draft label-frame rectangles
         run: |
-          if [ ! -f reference/chapter_05/base.jpg ]; then
-            echo "Chapter 5 base.jpg has not been uploaded; preview generation is deferred."
-            exit 0
-          fi
+          set -euo pipefail
+          test -f reference/chapter_05/base.jpg
           python tools/render_chapter5_label_boxes.py
       - name: Commit preview image
         run: |
           set -euo pipefail
-          if [ ! -f reference/chapter_05/label_box_candidates.jpg ]; then
-            echo "No preview was generated; nothing to commit."
-            exit 0
-          fi
+          test -f reference/chapter_05/label_box_candidates.jpg
           git add reference/chapter_05/label_box_candidates.jpg
           if git diff --cached --quiet; then
             echo "Preview is unchanged."
