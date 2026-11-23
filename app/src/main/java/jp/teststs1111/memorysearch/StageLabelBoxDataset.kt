@@ -42,10 +42,12 @@ object StageLabelBoxValidator {
         }
 
         val ids = HashSet<String>()
+        val names = HashSet<String>()
         dataset.items.forEach { item ->
             require(item.itemId.isNotBlank()) { "itemId must not be blank" }
             require(item.itemName.isNotBlank()) { "itemName must not be blank" }
             require(ids.add(item.itemId)) { "Duplicate itemId: ${item.itemId}" }
+            require(names.add(item.itemName)) { "Duplicate itemName: ${item.itemName}" }
             val b = item.bounds
             require(
                 listOf(b.left, b.top, b.right, b.bottom).all { it.isFinite() && it in 0.0..1.0 }
