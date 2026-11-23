@@ -36,6 +36,9 @@ jobs:
       - name: Validate all chapter OCR catalogs
         run: python3 tools/validate_ocr_catalogs.py
 
+      - name: Validate runtime and candidate stage datasets
+        run: python3 tools/validate_stage_datasets.py
+
       - name: Run unit tests
         run: gradle --no-daemon :app:testDebugUnitTest
 
