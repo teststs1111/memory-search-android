@@ -6,7 +6,8 @@ import org.json.JSONObject
 data class StageItemCatalog(
     val stageId: String,
     val stageName: String,
-    val itemNames: List<String>
+    val itemNames: List<String>,
+    val reviewNotes: List<String> = emptyList()
 )
 
 object StageItemCatalogValidator {
@@ -55,11 +56,20 @@ object StageItemCatalogRepository {
                         add(namesJson.getString(nameIndex))
                     }
                 }
+                val notesJson = chapter.optJSONArray("reviewNotes")
+                val notes = buildList {
+                    if (notesJson != null) {
+                        for (noteIndex in 0 until notesJson.length()) {
+                            add(notesJson.getString(noteIndex))
+                        }
+                    }
+                }
                 add(
                     StageItemCatalog(
                         stageId = chapter.getString("stageId"),
                         stageName = chapter.getString("stageName"),
-                        itemNames = names
+                        itemNames = names,
+                        reviewNotes = notes
                     )
                 )
             }
@@ -71,5 +81,10 @@ object StageItemCatalogRepository {
     fun loadItemNames(assets: AssetManager, stageId: String): List<String> {
         if (!stageId.matches(Regex("chapter_[0-9]+"))) return emptyList()
         return loadAll(assets).firstOrNull { it.stageId == stageId }?.itemNames.orEmpty()
+    }
+
+    fun loadReviewNotes(assets: AssetManager, stageId: String): List<String> {
+        if (!stageId.matches(Regex("chapter_[0-9]+"))) return emptyList()
+        return loadAll(assets).firstOrNull { it.stageId == stageId }?.reviewNotes.orEmpty()
     }
 }
