@@ -9,7 +9,7 @@
     "width": 563,
     "height": 1000
   },
-  "reviewNote": "Initial draft traced from the chapter 5 annotated wiki reference. All 34 label frames are approximate candidates and require visual review against the paired base image before any runtime use. The source image is a single annotated image, so source is annotated for every item. User review adjustment: item 25 moved 5 px upward and item 33 moved 5 px left; both remain draft candidates pending visual review. Further user review adjustment: item 3 moved 5 px right; item 25 moved an additional 5 px upward; item 33 moved an additional 5 px left. All remain draft candidates pending visual review. Item 3 adjustment applies to the entire frame shifted right, preserving its width.",
+  "reviewNote": "Initial draft traced from the chapter 5 annotated wiki reference. All 34 label frames are approximate candidates and require visual review against the paired base image before any runtime use. The source image is a single annotated image, so source is annotated for every item. User review adjustment: item 25 moved 5 px upward and item 33 moved 5 px left; both remain draft candidates pending visual review. Further user review adjustment: item 3 moved 5 px right; item 25 moved an additional 5 px upward; item 33 moved an additional 5 px left. All remain draft candidates pending visual review. Item 3 adjustment applies to the entire frame shifted right, preserving its width. User-requested 10 px adjustment from the prior draft: item 3 shifted 10 px right, item 25 shifted 10 px upward, and item 33 shifted 10 px left; frames retain their dimensions and remain inactive candidates.",
   "items": [
     {
       "itemId": "chapter_5_item_01",
@@ -51,16 +51,16 @@
       "itemId": "chapter_5_item_03",
       "itemName": "懐中電灯",
       "bounds": {
-        "left": 0.12433392539964476,
+        "left": 0.14209591474245115,
         "top": 0.352,
-        "right": 0.3037300177619893,
+        "right": 0.32149200710479575,
         "bottom": 0.385
       },
       "source": "annotated",
       "sourceRect": [
-        70,
+        80,
         352,
-        171,
+        181,
         385
       ],
       "status": "candidate_needs_visual_review"
@@ -448,16 +448,16 @@
       "itemName": "信号紅炎",
       "bounds": {
         "left": 0.204263,
-        "top": 0.753,
+        "top": 0.743,
         "right": 0.390764,
-        "bottom": 0.802
+        "bottom": 0.792
       },
       "source": "annotated",
       "sourceRect": [
         115,
-        753,
+        743,
         220,
-        802
+        792
       ],
       "status": "candidate_needs_visual_review"
     },
@@ -591,16 +591,16 @@
       "itemId": "chapter_5_item_33",
       "itemName": "入館証",
       "bounds": {
-        "left": 0.3747779751332149,
+        "left": 0.35701598579040855,
         "top": 0.862,
-        "right": 0.4564831261101243,
+        "right": 0.43872113676731794,
         "bottom": 0.941
       },
       "source": "annotated",
       "sourceRect": [
-        211,
+        201,
         862,
-        257,
+        247,
         941
       ],
       "status": "candidate_needs_visual_review"
