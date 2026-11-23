@@ -37,6 +37,15 @@ class StageItemCatalogValidatorTest {
     }
 
     @Test
+    fun rejectsNamesThatCollideAfterOcrNormalization() {
+        assertThrows(IllegalArgumentException::class.java) {
+            StageItemCatalogValidator.validate(
+                listOf(StageItemCatalog("chapter_1", "第1章", listOf("ＡＢＣ", "abc")))
+            )
+        }
+    }
+
+    @Test
     fun rejectsBlankNamesAndInvalidStageIds() {
         assertThrows(IllegalArgumentException::class.java) {
             StageItemCatalogValidator.validate(
