@@ -94,12 +94,14 @@ class MainActivity : Activity() {
                     val stage = stages[index]
                     selectedStageId = stage.stageId
                     val catalogCount = StageItemCatalogRepository.loadItemNames(assets, stage.stageId).size
+                    val reviewNotes = StageItemCatalogRepository.loadReviewNotes(assets, stage.stageId)
                     val message = if (stage.dataStatus == "verified") {
                         "確認済み名称枠：${stage.items.size}件"
                     } else {
                         "照合用アイテム名：${catalogCount}件\n名称枠の座標：確認待ち（実プレイでは非表示）"
                     }
-                    stageStatus.text = "\n${stage.stageName}\n${message}\n\n番号付きプレビューは確認専用です。実プレイ画面には番号を表示しません。"
+                    val caution = if (reviewNotes.isEmpty()) "" else "\n\n精度注意ポイント：\n・" + reviewNotes.joinToString("\n・")
+                    stageStatus.text = "\n${stage.stageName}\n${message}${caution}\n\n番号付きプレビューは確認専用です。実プレイ画面には番号を表示しません。"
                 }
                 selector.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) = updateStatus(position)
