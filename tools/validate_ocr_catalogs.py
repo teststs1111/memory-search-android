@@ -12,6 +12,9 @@ from pathlib import Path
 
 CATALOG = Path("app/src/main/assets/stages/item_catalogs.json")
 EXPECTED_CHAPTERS = [f"chapter_{number}" for number in range(1, 11)]
+EXPECTED_REVIEW_CHAPTERS = {
+    "chapter_5", "chapter_6", "chapter_7", "chapter_8", "chapter_9", "chapter_10"
+}
 EXPECTED_COUNTS = {
     "chapter_1": 32,
     "chapter_2": 29,
@@ -48,6 +51,15 @@ def main() -> None:
         names = chapter.get("itemNames")
         assert stage_name.strip(), f"{stage_id}: blank chapter name"
         assert isinstance(names, list) and names, f"{stage_id}: no item names"
+        notes = chapter.get("reviewNotes", [])
+        assert isinstance(notes, list), f"{stage_id}: reviewNotes must be an array"
+        assert all(isinstance(note, str) and note.strip() for note in notes), (
+            f"{stage_id}: blank or non-string review note"
+        )
+        if stage_id in EXPECTED_REVIEW_CHAPTERS:
+            assert notes, f"{stage_id}: missing accuracy review notes"
+        else:
+            assert not notes, f"{stage_id}: notes should be scoped to chapters 5-10"
         assert len(names) == EXPECTED_COUNTS[stage_id], (
             f"{stage_id}: expected {EXPECTED_COUNTS[stage_id]} names, got {len(names)}"
         )
