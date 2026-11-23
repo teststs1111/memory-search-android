@@ -11,7 +11,7 @@ Android companion app for the E.D.E.N. Memory Search minigame.
 - OCR matching is exact after Unicode NFKC normalization and whitespace removal. Two adjacent OCR lines may be joined only within the same OCR text block; lines from separate blocks are never joined.
 - Captured images are not saved or transmitted. The bitmap, ImageReader, VirtualDisplay, MediaProjection, worker thread, and OCR recognizer are released after the one-shot operation.
 - The app does not request Android's `INTERNET` permission. Stage data and OCR processing are local.
-- GitHub Actions validates all 10 OCR catalogs (chapter order, expected item counts, blank/duplicate labels, normalization collisions, and per-label exact-match round trips), runs Kotlin unit tests, and builds a debug APK on pushes to `main`.
+- GitHub Actions validates all 10 OCR catalogs (chapter order, expected item counts, blank/duplicate labels, normalization collisions, and per-label exact-match round trips), validates runtime stage JSON and inactive candidate rectangles (including keeping unverified coordinates empty and candidate overlays disabled), runs Kotlin unit tests, and builds a debug APK on pushes to `main`.
 
 ## Chapter data
 
