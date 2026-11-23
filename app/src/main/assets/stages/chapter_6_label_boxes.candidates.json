@@ -1,0 +1,592 @@
+{
+  "stageId": "chapter_6",
+  "coordinateSystem": "normalized_0_to_1",
+  "coordinateReference": "reference/chapter_06/base.jpg",
+  "purpose": "highlight_item_name_label_box",
+  "runtimeEnabled": false,
+  "dataStatus": "candidate_draft_from_annotated_reference",
+  "imageSize": {
+    "width": 563,
+    "height": 1000
+  },
+  "reviewNote": "First-pass approximate label-frame candidates derived from the annotated wiki image. Frames are guidance markers only; visually review against the unannotated base image before use. Runtime remains disabled.",
+  "sourceImage": "https://img.atwiki.jp/eden_jp/attach/46/153/%E7%AC%AC6%E7%AB%A0.jpeg",
+  "items": [
+    {
+      "itemId": "chapter_6_item_01",
+      "itemName": "バルーン",
+      "bounds": {
+        "left": 0.060391,
+        "top": 0.172,
+        "right": 0.248668,
+        "bottom": 0.206
+      },
+      "source": "annotated",
+      "sourceRect": [
+        34,
+        172,
+        140,
+        206
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_02",
+      "itemName": "バードハウス",
+      "bounds": {
+        "left": 0.584369,
+        "top": 0.229,
+        "right": 0.749556,
+        "bottom": 0.296
+      },
+      "source": "annotated",
+      "sourceRect": [
+        329,
+        229,
+        422,
+        296
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_03",
+      "itemName": "バードフィーダー",
+      "bounds": {
+        "left": 0.806394,
+        "top": 0.248,
+        "right": 1,
+        "bottom": 0.309
+      },
+      "source": "annotated",
+      "sourceRect": [
+        454,
+        248,
+        563,
+        309
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_04",
+      "itemName": "リボン",
+      "bounds": {
+        "left": 0.51865,
+        "top": 0.397,
+        "right": 0.671403,
+        "bottom": 0.435
+      },
+      "source": "annotated",
+      "sourceRect": [
+        292,
+        397,
+        378,
+        435
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_05",
+      "itemName": "カメラ",
+      "bounds": {
+        "left": 0.220249,
+        "top": 0.497,
+        "right": 0.401421,
+        "bottom": 0.543
+      },
+      "source": "annotated",
+      "sourceRect": [
+        124,
+        497,
+        226,
+        543
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_06",
+      "itemName": "バケツ",
+      "bounds": {
+        "left": 0.152753,
+        "top": 0.546,
+        "right": 0.309059,
+        "bottom": 0.586
+      },
+      "source": "annotated",
+      "sourceRect": [
+        86,
+        546,
+        174,
+        586
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_07",
+      "itemName": "バスケット",
+      "bounds": {
+        "left": 0.344583,
+        "top": 0.546,
+        "right": 0.436945,
+        "bottom": 0.594
+      },
+      "source": "annotated",
+      "sourceRect": [
+        194,
+        546,
+        246,
+        594
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_08",
+      "itemName": "ネズミぬいぐるみ",
+      "bounds": {
+        "left": 0.087034,
+        "top": 0.58,
+        "right": 0.291297,
+        "bottom": 0.627
+      },
+      "source": "annotated",
+      "sourceRect": [
+        49,
+        580,
+        164,
+        627
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_09",
+      "itemName": "鈴",
+      "bounds": {
+        "left": 0.246892,
+        "top": 0.587,
+        "right": 0.323268,
+        "bottom": 0.645
+      },
+      "source": "annotated",
+      "sourceRect": [
+        139,
+        587,
+        182,
+        645
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_10",
+      "itemName": "風車",
+      "bounds": {
+        "left": 0.426288,
+        "top": 0.59,
+        "right": 0.511545,
+        "bottom": 0.65
+      },
+      "source": "annotated",
+      "sourceRect": [
+        240,
+        590,
+        288,
+        650
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_11",
+      "itemName": "ショベル",
+      "bounds": {
+        "left": 0.651865,
+        "top": 0.545,
+        "right": 0.767318,
+        "bottom": 0.612
+      },
+      "source": "annotated",
+      "sourceRect": [
+        367,
+        545,
+        432,
+        612
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_12",
+      "itemName": "ハンカチ",
+      "bounds": {
+        "left": 0.847247,
+        "top": 0.601,
+        "right": 1,
+        "bottom": 0.652
+      },
+      "source": "annotated",
+      "sourceRect": [
+        477,
+        601,
+        563,
+        652
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_13",
+      "itemName": "双眼鏡",
+      "bounds": {
+        "left": 0.507993,
+        "top": 0.64,
+        "right": 0.683837,
+        "bottom": 0.687
+      },
+      "source": "annotated",
+      "sourceRect": [
+        286,
+        640,
+        385,
+        687
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_14",
+      "itemName": "傘",
+      "bounds": {
+        "left": 0.586146,
+        "top": 0.654,
+        "right": 0.662522,
+        "bottom": 0.727
+      },
+      "source": "annotated",
+      "sourceRect": [
+        330,
+        654,
+        373,
+        727
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_15",
+      "itemName": "本",
+      "bounds": {
+        "left": 0.777975,
+        "top": 0.697,
+        "right": 0.868561,
+        "bottom": 0.731
+      },
+      "source": "annotated",
+      "sourceRect": [
+        438,
+        697,
+        489,
+        731
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_16",
+      "itemName": "スクールバッグ",
+      "bounds": {
+        "left": 0.875666,
+        "top": 0.69,
+        "right": 1,
+        "bottom": 0.746
+      },
+      "source": "annotated",
+      "sourceRect": [
+        493,
+        690,
+        563,
+        746
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_17",
+      "itemName": "サッカーボール",
+      "bounds": {
+        "left": 0.307282,
+        "top": 0.688,
+        "right": 0.461812,
+        "bottom": 0.737
+      },
+      "source": "annotated",
+      "sourceRect": [
+        173,
+        688,
+        260,
+        737
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_18",
+      "itemName": "円盤",
+      "bounds": {
+        "left": 0.238011,
+        "top": 0.734,
+        "right": 0.367673,
+        "bottom": 0.772
+      },
+      "source": "annotated",
+      "sourceRect": [
+        134,
+        734,
+        207,
+        772
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_19",
+      "itemName": "鉢植え",
+      "bounds": {
+        "left": 0,
+        "top": 0.74,
+        "right": 0.108348,
+        "bottom": 0.81
+      },
+      "source": "annotated",
+      "sourceRect": [
+        0,
+        740,
+        61,
+        810
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_20",
+      "itemName": "キャンディ",
+      "bounds": {
+        "left": 0.110124,
+        "top": 0.744,
+        "right": 0.245115,
+        "bottom": 0.803
+      },
+      "source": "annotated",
+      "sourceRect": [
+        62,
+        744,
+        138,
+        803
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_21",
+      "itemName": "紙飛行機",
+      "bounds": {
+        "left": 0.346359,
+        "top": 0.758,
+        "right": 0.53286,
+        "bottom": 0.809
+      },
+      "source": "annotated",
+      "sourceRect": [
+        195,
+        758,
+        300,
+        809
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_22",
+      "itemName": "シャトルコック",
+      "bounds": {
+        "left": 0.545293,
+        "top": 0.762,
+        "right": 0.699822,
+        "bottom": 0.814
+      },
+      "source": "annotated",
+      "sourceRect": [
+        307,
+        762,
+        394,
+        814
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_23",
+      "itemName": "水筒",
+      "bounds": {
+        "left": 0.699822,
+        "top": 0.744,
+        "right": 0.809947,
+        "bottom": 0.805
+      },
+      "source": "annotated",
+      "sourceRect": [
+        394,
+        744,
+        456,
+        805
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_24",
+      "itemName": "ラケット",
+      "bounds": {
+        "left": 0.820604,
+        "top": 0.752,
+        "right": 1,
+        "bottom": 0.806
+      },
+      "source": "annotated",
+      "sourceRect": [
+        462,
+        752,
+        563,
+        806
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_25",
+      "itemName": "スニーカー",
+      "bounds": {
+        "left": 0.712256,
+        "top": 0.803,
+        "right": 0.907638,
+        "bottom": 0.845
+      },
+      "source": "annotated",
+      "sourceRect": [
+        401,
+        803,
+        511,
+        845
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_26",
+      "itemName": "虫メガネ",
+      "bounds": {
+        "left": 0.321492,
+        "top": 0.798,
+        "right": 0.470693,
+        "bottom": 0.84
+      },
+      "source": "annotated",
+      "sourceRect": [
+        181,
+        798,
+        265,
+        840
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_27",
+      "itemName": "カチューシャ",
+      "bounds": {
+        "left": 0.426288,
+        "top": 0.825,
+        "right": 0.580817,
+        "bottom": 0.876
+      },
+      "source": "annotated",
+      "sourceRect": [
+        240,
+        825,
+        327,
+        876
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_28",
+      "itemName": "ヘッドホン",
+      "bounds": {
+        "left": 0.64476,
+        "top": 0.823,
+        "right": 0.825933,
+        "bottom": 0.879
+      },
+      "source": "annotated",
+      "sourceRect": [
+        363,
+        823,
+        465,
+        879
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_29",
+      "itemName": "手袋",
+      "bounds": {
+        "left": 0.230906,
+        "top": 0.883,
+        "right": 0.417407,
+        "bottom": 0.941
+      },
+      "source": "annotated",
+      "sourceRect": [
+        130,
+        883,
+        235,
+        941
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_30",
+      "itemName": "サンドイッチ",
+      "bounds": {
+        "left": 0.428064,
+        "top": 0.853,
+        "right": 0.582593,
+        "bottom": 0.919
+      },
+      "source": "annotated",
+      "sourceRect": [
+        241,
+        853,
+        328,
+        919
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_31",
+      "itemName": "扇子",
+      "bounds": {
+        "left": 0.428064,
+        "top": 0.946,
+        "right": 0.566607,
+        "bottom": 0.985
+      },
+      "source": "annotated",
+      "sourceRect": [
+        241,
+        946,
+        319,
+        985
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_6_item_32",
+      "itemName": "ジュース",
+      "bounds": {
+        "left": 0.719361,
+        "top": 0.929,
+        "right": 0.932504,
+        "bottom": 0.976
+      },
+      "source": "annotated",
+      "sourceRect": [
+        405,
+        929,
+        525,
+        976
+      ],
+      "status": "candidate_needs_visual_review"
+    }
+  ]
+}
