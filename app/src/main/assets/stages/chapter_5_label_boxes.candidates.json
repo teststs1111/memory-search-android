@@ -1,0 +1,627 @@
+{
+  "stageId": "chapter_5",
+  "coordinateSystem": "normalized_0_to_1",
+  "coordinateReference": "reference/chapter_05/base.jpg",
+  "purpose": "highlight_item_name_label_box",
+  "runtimeEnabled": false,
+  "dataStatus": "candidate_draft_from_annotated_reference",
+  "imageSize": {
+    "width": 563,
+    "height": 1000
+  },
+  "reviewNote": "Initial draft traced from the chapter 5 annotated wiki reference. All 34 label frames are approximate candidates and require visual review against the paired base image before any runtime use. The source image is a single annotated image, so source is annotated for every item.",
+  "items": [
+    {
+      "itemId": "chapter_5_item_01",
+      "itemName": "コードリール",
+      "bounds": {
+        "left": 0.110124,
+        "top": 0.198,
+        "right": 0.394316,
+        "bottom": 0.238
+      },
+      "source": "annotated",
+      "sourceRect": [
+        62,
+        198,
+        222,
+        238
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_02",
+      "itemName": "救急箱",
+      "bounds": {
+        "left": 0.369449,
+        "top": 0.309,
+        "right": 0.539964,
+        "bottom": 0.351
+      },
+      "source": "annotated",
+      "sourceRect": [
+        208,
+        309,
+        304,
+        351
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_03",
+      "itemName": "懐中電灯",
+      "bounds": {
+        "left": 0.115453,
+        "top": 0.352,
+        "right": 0.294849,
+        "bottom": 0.385
+      },
+      "source": "annotated",
+      "sourceRect": [
+        65,
+        352,
+        166,
+        385
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_04",
+      "itemName": "防弾ベスト",
+      "bounds": {
+        "left": 0.339254,
+        "top": 0.373,
+        "right": 0.46714,
+        "bottom": 0.437
+      },
+      "source": "annotated",
+      "sourceRect": [
+        191,
+        373,
+        263,
+        437
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_05",
+      "itemName": "燃料タンク",
+      "bounds": {
+        "left": 0.657194,
+        "top": 0.426,
+        "right": 0.811723,
+        "bottom": 0.491
+      },
+      "source": "annotated",
+      "sourceRect": [
+        370,
+        426,
+        457,
+        491
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_06",
+      "itemName": "バリケード",
+      "bounds": {
+        "left": 0.870337,
+        "top": 0.448,
+        "right": 1,
+        "bottom": 0.514
+      },
+      "source": "annotated",
+      "sourceRect": [
+        490,
+        448,
+        563,
+        514
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_07",
+      "itemName": "コンパス",
+      "bounds": {
+        "left": 0.333925,
+        "top": 0.477,
+        "right": 0.515098,
+        "bottom": 0.519
+      },
+      "source": "annotated",
+      "sourceRect": [
+        188,
+        477,
+        290,
+        519
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_08",
+      "itemName": "スペアタイヤ",
+      "bounds": {
+        "left": 0.531083,
+        "top": 0.464,
+        "right": 0.694494,
+        "bottom": 0.52
+      },
+      "source": "annotated",
+      "sourceRect": [
+        299,
+        464,
+        391,
+        520
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_09",
+      "itemName": "コア",
+      "bounds": {
+        "left": 0.357016,
+        "top": 0.515,
+        "right": 0.470693,
+        "bottom": 0.557
+      },
+      "source": "annotated",
+      "sourceRect": [
+        201,
+        515,
+        265,
+        557
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_10",
+      "itemName": "ペットボトル",
+      "bounds": {
+        "left": 0.470693,
+        "top": 0.548,
+        "right": 0.573712,
+        "bottom": 0.601
+      },
+      "source": "annotated",
+      "sourceRect": [
+        265,
+        548,
+        323,
+        601
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_11",
+      "itemName": "工具箱",
+      "bounds": {
+        "left": 0.566607,
+        "top": 0.55,
+        "right": 0.683837,
+        "bottom": 0.596
+      },
+      "source": "annotated",
+      "sourceRect": [
+        319,
+        550,
+        385,
+        596
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_12",
+      "itemName": "ジャッキ",
+      "bounds": {
+        "left": 0.685613,
+        "top": 0.529,
+        "right": 0.786856,
+        "bottom": 0.585
+      },
+      "source": "annotated",
+      "sourceRect": [
+        386,
+        529,
+        443,
+        585
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_13",
+      "itemName": "ロードコーン",
+      "bounds": {
+        "left": 0.777975,
+        "top": 0.518,
+        "right": 0.904085,
+        "bottom": 0.582
+      },
+      "source": "annotated",
+      "sourceRect": [
+        438,
+        518,
+        509,
+        582
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_14",
+      "itemName": "双眼鏡",
+      "bounds": {
+        "left": 0.868561,
+        "top": 0.566,
+        "right": 1,
+        "bottom": 0.605
+      },
+      "source": "annotated",
+      "sourceRect": [
+        489,
+        566,
+        563,
+        605
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_15",
+      "itemName": "ガンベルト",
+      "bounds": {
+        "left": 0.039076,
+        "top": 0.566,
+        "right": 0.314387,
+        "bottom": 0.62
+      },
+      "source": "annotated",
+      "sourceRect": [
+        22,
+        566,
+        177,
+        620
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_16",
+      "itemName": "保護ヘルメット",
+      "bounds": {
+        "left": 0.314387,
+        "top": 0.57,
+        "right": 0.476021,
+        "bottom": 0.621
+      },
+      "source": "annotated",
+      "sourceRect": [
+        177,
+        570,
+        268,
+        621
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_17",
+      "itemName": "誘導棒",
+      "bounds": {
+        "left": 0.653641,
+        "top": 0.591,
+        "right": 0.786856,
+        "bottom": 0.623
+      },
+      "source": "annotated",
+      "sourceRect": [
+        368,
+        591,
+        443,
+        623
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_18",
+      "itemName": "けん引きロープ",
+      "bounds": {
+        "left": 0.534636,
+        "top": 0.622,
+        "right": 0.703375,
+        "bottom": 0.672
+      },
+      "source": "annotated",
+      "sourceRect": [
+        301,
+        622,
+        396,
+        672
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_19",
+      "itemName": "レンチ",
+      "bounds": {
+        "left": 0,
+        "top": 0.625,
+        "right": 0.127886,
+        "bottom": 0.657
+      },
+      "source": "annotated",
+      "sourceRect": [
+        0,
+        625,
+        72,
+        657
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_20",
+      "itemName": "黒い軍手",
+      "bounds": {
+        "left": 0.131439,
+        "top": 0.609,
+        "right": 0.243339,
+        "bottom": 0.665
+      },
+      "source": "annotated",
+      "sourceRect": [
+        74,
+        609,
+        137,
+        665
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_21",
+      "itemName": "消火器",
+      "bounds": {
+        "left": 0.26643,
+        "top": 0.621,
+        "right": 0.442274,
+        "bottom": 0.666
+      },
+      "source": "annotated",
+      "sourceRect": [
+        150,
+        621,
+        249,
+        666
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_22",
+      "itemName": "トランシーバー",
+      "bounds": {
+        "left": 0.724689,
+        "top": 0.669,
+        "right": 0.808171,
+        "bottom": 0.754
+      },
+      "source": "annotated",
+      "sourceRect": [
+        408,
+        669,
+        455,
+        754
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_23",
+      "itemName": "毛布",
+      "bounds": {
+        "left": 0.142096,
+        "top": 0.691,
+        "right": 0.312611,
+        "bottom": 0.75
+      },
+      "source": "annotated",
+      "sourceRect": [
+        80,
+        691,
+        176,
+        750
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_24",
+      "itemName": "カゴネット",
+      "bounds": {
+        "left": 0.031972,
+        "top": 0.744,
+        "right": 0.206039,
+        "bottom": 0.818
+      },
+      "source": "annotated",
+      "sourceRect": [
+        18,
+        744,
+        116,
+        818
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_25",
+      "itemName": "信号紅炎",
+      "bounds": {
+        "left": 0.204263,
+        "top": 0.763,
+        "right": 0.390764,
+        "bottom": 0.812
+      },
+      "source": "annotated",
+      "sourceRect": [
+        115,
+        763,
+        220,
+        812
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_26",
+      "itemName": "道路マップ",
+      "bounds": {
+        "left": 0.373002,
+        "top": 0.715,
+        "right": 0.579041,
+        "bottom": 0.785
+      },
+      "source": "annotated",
+      "sourceRect": [
+        210,
+        715,
+        326,
+        785
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_27",
+      "itemName": "食料箱",
+      "bounds": {
+        "left": 0.230906,
+        "top": 0.801,
+        "right": 0.415631,
+        "bottom": 0.856
+      },
+      "source": "annotated",
+      "sourceRect": [
+        130,
+        801,
+        234,
+        856
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_28",
+      "itemName": "メガホン",
+      "bounds": {
+        "left": 0.49556,
+        "top": 0.79,
+        "right": 0.630551,
+        "bottom": 0.839
+      },
+      "source": "annotated",
+      "sourceRect": [
+        279,
+        790,
+        355,
+        839
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_29",
+      "itemName": "缶詰",
+      "bounds": {
+        "left": 0.623446,
+        "top": 0.778,
+        "right": 0.804618,
+        "bottom": 0.824
+      },
+      "source": "annotated",
+      "sourceRect": [
+        351,
+        778,
+        453,
+        824
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_30",
+      "itemName": "補給バッグ",
+      "bounds": {
+        "left": 0.509769,
+        "top": 0.837,
+        "right": 0.79929,
+        "bottom": 0.923
+      },
+      "source": "annotated",
+      "sourceRect": [
+        287,
+        837,
+        450,
+        923
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_31",
+      "itemName": "非常食",
+      "bounds": {
+        "left": 0.804618,
+        "top": 0.866,
+        "right": 0.973357,
+        "bottom": 0.902
+      },
+      "source": "annotated",
+      "sourceRect": [
+        453,
+        866,
+        548,
+        902
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_32",
+      "itemName": "車キー",
+      "bounds": {
+        "left": 0.802842,
+        "top": 0.931,
+        "right": 0.968028,
+        "bottom": 0.97
+      },
+      "source": "annotated",
+      "sourceRect": [
+        452,
+        931,
+        545,
+        970
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_33",
+      "itemName": "入館証",
+      "bounds": {
+        "left": 0.39254,
+        "top": 0.862,
+        "right": 0.474245,
+        "bottom": 0.941
+      },
+      "source": "annotated",
+      "sourceRect": [
+        221,
+        862,
+        267,
+        941
+      ],
+      "status": "candidate_needs_visual_review"
+    },
+    {
+      "itemId": "chapter_5_item_34",
+      "itemName": "輸送書類",
+      "bounds": {
+        "left": 0.195382,
+        "top": 0.917,
+        "right": 0.330373,
+        "bottom": 0.985
+      },
+      "source": "annotated",
+      "sourceRect": [
+        110,
+        917,
+        186,
+        985
+      ],
+      "status": "candidate_needs_visual_review"
+    }
+  ]
+}
