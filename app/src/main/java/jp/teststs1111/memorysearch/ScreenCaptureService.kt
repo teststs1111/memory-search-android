@@ -135,29 +135,39 @@ class ScreenCaptureService : Service() {
     }
 
     private fun runJapaneseOcr(bitmap: Bitmap) {
-        val recognizer = TextRecognition.getClient(JapaneseTextRecognizerOptions.Builder().build())
-        recognizer.process(InputImage.fromBitmap(bitmap, 0))
-            .addOnSuccessListener { result ->
-                val blocks = result.textBlocks.map { block -> block.lines.map { line -> line.text } }
-                val lines = blocks.flatten()
-                sendBroadcast(Intent(ACTION_OCR_RESULT).setPackage(packageName).apply {
-                    putExtra(EXTRA_WIDTH, bitmap.width)
-                    putExtra(EXTRA_HEIGHT, bitmap.height)
-                    putExtra(EXTRA_STAGE_ID, requestedStageId)
-                    putExtra(EXTRA_OCR_TEXT, result.text)
-                    putStringArrayListExtra(EXTRA_OCR_LINES, ArrayList(lines))
-                    // Keep OCR block boundaries so separate labels are never joined.
-                    putStringArrayListExtra(EXTRA_OCR_BLOCKS, ArrayList(blocks.map { it.joinToString("\n") }))
-                })
-            }
-            .addOnFailureListener { error ->
-                reportFailure("日本語OCRに失敗しました：${error.message ?: "不明"}")
-            }
-            .addOnCompleteListener {
-                recognizer.close()
-                bitmap.recycle()
-                stopCapture()
-            }
+        var recognizer: com.google.mlkit.vision.text.TextRecognizer? = null
+        try {
+            val activeRecognizer = TextRecognition.getClient(JapaneseTextRecognizerOptions.Builder().build())
+            recognizer = activeRecognizer
+            activeRecognizer.process(InputImage.fromBitmap(bitmap, 0))
+                .addOnSuccessListener { result ->
+                    val blocks = result.textBlocks.map { block -> block.lines.map { line -> line.text } }
+                    val lines = blocks.flatten()
+                    sendBroadcast(Intent(ACTION_OCR_RESULT).setPackage(packageName).apply {
+                        putExtra(EXTRA_WIDTH, bitmap.width)
+                        putExtra(EXTRA_HEIGHT, bitmap.height)
+                        putExtra(EXTRA_STAGE_ID, requestedStageId)
+                        putExtra(EXTRA_OCR_TEXT, result.text)
+                        putStringArrayListExtra(EXTRA_OCR_LINES, ArrayList(lines))
+                        // Keep OCR block boundaries so separate labels are never joined.
+                        putStringArrayListExtra(EXTRA_OCR_BLOCKS, ArrayList(blocks.map { it.joinToString("\n") }))
+                    })
+                }
+                .addOnFailureListener { error ->
+                    reportFailure("日本語OCRに失敗しました：${error.message ?: "不明"}")
+                }
+                .addOnCompleteListener {
+                    activeRecognizer.close()
+                    if (!bitmap.isRecycled) bitmap.recycle()
+                    stopCapture()
+                }
+        } catch (error: Exception) {
+            // ML Kit setup or task submission can fail before async listeners run.
+            recognizer?.close()
+            if (!bitmap.isRecycled) bitmap.recycle()
+            reportFailure("日本語OCRを開始できませんでした：${error.message ?: "不明"}")
+            stopCapture()
+        }
     }
 
     private fun reportFailure(message: String) {
