@@ -28,13 +28,18 @@ data class StageLabelBoxDataset(
 object StageLabelBoxValidator {
     private const val NORMALIZED = "normalized_0_to_1"
     private const val REVIEWED_CANDIDATE = "candidate_reviewed_by_user_pending_final_check"
+    private const val DRAFT_CANDIDATE = "candidate_draft_from_annotated_reference"
 
     fun validate(dataset: StageLabelBoxDataset) {
         require(dataset.stageId.isNotBlank()) { "stageId must not be blank" }
         require(dataset.coordinateSystem == NORMALIZED) {
             "Unsupported coordinateSystem: ${dataset.coordinateSystem}"
         }
-        require(dataset.dataStatus == REVIEWED_CANDIDATE || dataset.dataStatus == "verified") {
+        require(
+            dataset.dataStatus == REVIEWED_CANDIDATE ||
+                dataset.dataStatus == DRAFT_CANDIDATE ||
+                dataset.dataStatus == "verified"
+        ) {
             "Unsupported dataStatus: ${dataset.dataStatus}"
         }
         require(!dataset.runtimeEnabled || dataset.dataStatus == "verified") {
@@ -55,7 +60,7 @@ object StageLabelBoxValidator {
             require(b.left < b.right && b.top < b.bottom) {
                 "Bounds must have positive width and height for ${item.itemId}"
             }
-            require(item.source == "left" || item.source == "right") {
+            require(item.source == "left" || item.source == "right" || item.source == "annotated") {
                 "Unsupported source image for ${item.itemId}"
             }
         }
@@ -76,7 +81,12 @@ object StageLabelBoxRepository {
     private const val CANDIDATE_FILE = "stages/chapter_1_label_boxes.candidates.json"
 
     fun loadChapterOneCandidates(assets: AssetManager): StageLabelBoxDataset =
-        loadCandidates(assets, "chapter_1")
+        loadCandidatesForStage(assets, "chapter_1")
+
+    fun loadCandidatesForStage(assets: AssetManager, stageId: String): StageLabelBoxDataset {
+        require(stageId.matches(Regex("chapter_[0-9]+"))) { "Invalid stage ID: $stageId" }
+        return loadCandidates(assets, stageId)
+    }
 
     /**
      * Names may be used for OCR matching while candidate rectangles remain inactive.
