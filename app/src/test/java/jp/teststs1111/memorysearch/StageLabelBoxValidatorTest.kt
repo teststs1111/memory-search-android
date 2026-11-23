@@ -66,6 +66,34 @@ class StageLabelBoxValidatorTest {
     }
 
     @Test
+    fun acceptsDraftFromSingleAnnotatedReferenceButKeepsItInactive() {
+        val draft = StageLabelBoxDataset(
+            stageId = "chapter_5",
+            coordinateSystem = "normalized_0_to_1",
+            runtimeEnabled = false,
+            dataStatus = "candidate_draft_from_annotated_reference",
+            items = listOf(
+                StageLabelBox(
+                    "chapter_5_item_01",
+                    "コードリール",
+                    NormalizedBounds(0.1, 0.1, 0.3, 0.2),
+                    "annotated"
+                )
+            )
+        )
+        StageLabelBoxValidator.validate(draft)
+        assertEquals(emptyList<StageLabelBox>(), StageLabelBoxValidator.activeBoxes(draft))
+    }
+
+    @Test
+    fun rejectsEnablingDraftAnnotatedCandidates() {
+        val draft = dataset(enabled = true, status = "candidate_draft_from_annotated_reference")
+        assertThrows(IllegalArgumentException::class.java) {
+            StageLabelBoxValidator.validate(draft)
+        }
+    }
+
+    @Test
     fun rejectsDuplicateIds() {
         assertThrows(IllegalArgumentException::class.java) {
             StageLabelBoxValidator.validate(
