@@ -9,7 +9,7 @@
     "width": 563,
     "height": 1000
   },
-  "reviewNote": "Initial draft traced from the chapter 5 annotated wiki reference. All 34 label frames are approximate candidates and require visual review against the paired base image before any runtime use. The source image is a single annotated image, so source is annotated for every item. User review adjustment: item 25 moved 5 px upward and item 33 moved 5 px left; both remain draft candidates pending visual review.",
+  "reviewNote": "Initial draft traced from the chapter 5 annotated wiki reference. All 34 label frames are approximate candidates and require visual review against the paired base image before any runtime use. The source image is a single annotated image, so source is annotated for every item. User review adjustment: item 25 moved 5 px upward and item 33 moved 5 px left; both remain draft candidates pending visual review. Further user review adjustment: item 3 moved 5 px right; item 25 moved an additional 5 px upward; item 33 moved an additional 5 px left. All remain draft candidates pending visual review.",
   "items": [
     {
       "itemId": "chapter_5_item_01",
@@ -51,14 +51,14 @@
       "itemId": "chapter_5_item_03",
       "itemName": "懐中電灯",
       "bounds": {
-        "left": 0.115453,
+        "left": 0.12433392539964476,
         "top": 0.352,
         "right": 0.294849,
         "bottom": 0.385
       },
       "source": "annotated",
       "sourceRect": [
-        65,
+        70,
         352,
         166,
         385
@@ -448,16 +448,16 @@
       "itemName": "信号紅炎",
       "bounds": {
         "left": 0.204263,
-        "top": 0.758,
+        "top": 0.753,
         "right": 0.390764,
-        "bottom": 0.807
+        "bottom": 0.802
       },
       "source": "annotated",
       "sourceRect": [
         115,
-        758,
+        753,
         220,
-        807
+        802
       ],
       "status": "candidate_needs_visual_review"
     },
@@ -591,16 +591,16 @@
       "itemId": "chapter_5_item_33",
       "itemName": "入館証",
       "bounds": {
-        "left": 0.3836589698046181,
+        "left": 0.3747779751332149,
         "top": 0.862,
-        "right": 0.46536412078152756,
+        "right": 0.4564831261101243,
         "bottom": 0.941
       },
       "source": "annotated",
       "sourceRect": [
-        216,
+        211,
         862,
-        262,
+        257,
         941
       ],
       "status": "candidate_needs_visual_review"
