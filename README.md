@@ -17,7 +17,7 @@ Android companion app for the E.D.E.N. Memory Search minigame.
 
 There are 10 prepared chapter slots. Each chapter JSON currently remains `awaiting_coordinate_verification` with an empty `items` array. This is intentional: unverified object coordinates are never used at runtime.
 
-The item-name catalog is independent of coordinate data. It contains the OCR lookup names for each chapter, allowing the OCR test to work without activating unverified coordinates.
+The item-name catalog is independent of coordinate data. It contains the OCR lookup names for each chapter, allowing the OCR test to work without activating unverified coordinates. Chapters 5-10 also display chapter-specific caution notes for known visual confusions from the reference guide (signal flare/red pen, shovel/windmill, chemistry book, blue capsule/rabbit plush, pudding/coupon, and shovel/background). These notes are advisory only; they do not create fuzzy OCR matches or change item names.
 
 Chapter 1 also has a separate `chapter_1_label_boxes.candidates.json` file containing 32 candidate rectangles for the **item-name label frames** (not the hidden physical objects). The candidate data is marked `runtimeEnabled: false` and is used only by the developer preview. Numbered circles are preview-only and are never drawn over the game.
 
@@ -39,7 +39,8 @@ You do not need to combine the left and right images. Upload them separately as-
 
 ## Remaining work
 
-- Review and finalize candidate label-frame rectangles against the paired reference images, chapter by chapter.
+- Prioritize chapters 5-10 for accuracy work; chapters 1-4 are already cleared by the user.
+- Review and finalize candidate label-frame rectangles against the paired reference images, chapter by chapter, starting at chapter 5.
 - Implement a safe mapping from the captured game-content rectangle to normalized label-frame coordinates.
 - Implement a transparent, non-touchable label-frame highlight overlay only after the corresponding chapter coordinates are verified.
 - Add OCR confidence/retry handling only if real event captures show that the current exact matcher needs it.
