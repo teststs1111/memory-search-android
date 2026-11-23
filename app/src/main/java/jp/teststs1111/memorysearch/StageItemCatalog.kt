@@ -27,6 +27,13 @@ object StageItemCatalogValidator {
             require(catalog.itemNames.distinct().size == catalog.itemNames.size) {
                 "Duplicate item name: ${catalog.stageId}"
             }
+            val normalizedNames = catalog.itemNames.map(OcrItemMatcher::normalize)
+            require(normalizedNames.all { it.isNotEmpty() }) {
+                "Item names must not normalize to blank: ${catalog.stageId}"
+            }
+            require(normalizedNames.distinct().size == normalizedNames.size) {
+                "Item names collide after OCR normalization: ${catalog.stageId}"
+            }
         }
     }
 }
