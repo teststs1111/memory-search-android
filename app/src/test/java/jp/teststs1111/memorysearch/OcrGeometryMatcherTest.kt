@@ -56,7 +56,7 @@ class OcrGeometryMatcherTest {
 
         assertEquals(listOf("バリケード", "輸送書類"), result.map { it.itemName })
         assertEquals(listOf("バリケード", "輸送書類"), result.map { it.recognizedText })
-        assertEquals(4, result.size.let { 2 * it })
+        assertEquals(2, result.size)
     }
 
     @Test
