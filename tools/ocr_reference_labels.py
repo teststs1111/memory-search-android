@@ -86,6 +86,60 @@ def run_tesseract(image_path: Path, base_path: Path, scale: int = 4) -> list[dic
     return lines
 
 
+def run_seeded_tesseract(image: "cv2.Mat", item: dict, image_size: dict, scale: int = 5) -> dict:
+    height, width = image.shape[:2]
+    if "sourceRect" in item:
+        x1, y1, x2, y2 = item["sourceRect"]
+        sx, sy = width / image_size["width"], height / image_size["height"]
+        x1, y1, x2, y2 = int(x1 * sx), int(y1 * sy), int(x2 * sx), int(y2 * sy)
+    else:
+        b = item["bounds"]
+        x1, y1 = int(b["left"] * width), int(b["top"] * height)
+        x2, y2 = int(b["right"] * width), int(b["bottom"] * height)
+    pad_x, pad_y = max(8, (x2 - x1) // 4), max(8, (y2 - y1) // 3)
+    left, top = max(0, x1 - pad_x), max(0, y1 - pad_y)
+    right, bottom = min(width, x2 + pad_x), min(height, y2 + pad_y)
+    crop = image[top:bottom, left:right]
+    enlarged = cv2.resize(crop, None, fx=scale, fy=scale, interpolation=cv2.INTER_CUBIC)
+    gray = cv2.cvtColor(enlarged, cv2.COLOR_BGR2GRAY)
+    gray = cv2.GaussianBlur(gray, (3, 3), 0)
+    temp = Path("/tmp") / f"memory-search-ocr-{item['itemId']}.png"
+    if not cv2.imwrite(str(temp), gray):
+        return {"itemId": item["itemId"], "text": "", "confidence": 0, "bounds": None}
+    try:
+        result = subprocess.run(
+            ["tesseract", str(temp), "stdout", "-l", "jpn", "--psm", "6", "tsv"],
+            check=True, capture_output=True, text=True, encoding="utf-8"
+        )
+    finally:
+        temp.unlink(missing_ok=True)
+    words = []
+    for row in csv.DictReader(io.StringIO(result.stdout), delimiter="\\t"):
+        text = (row.get("text") or "").strip()
+        try:
+            conf = float(row.get("conf", "-1"))
+            l, t, w, h = int(row["left"]), int(row["top"]), int(row["width"]), int(row["height"])
+        except (ValueError, KeyError):
+            continue
+        if text and conf >= 0 and w > 0 and h > 0:
+            words.append((text, conf, l, t, w, h))
+    if not words:
+        return {"itemId": item["itemId"], "text": "", "confidence": 0, "bounds": None}
+    recognized = "".join(word[0] for word in words)
+    bounds = {
+        "left": left + min(w[2] for w in words) // scale,
+        "top": top + min(w[3] for w in words) // scale,
+        "right": left + (max(w[2] + w[4] for w in words) + scale - 1) // scale,
+        "bottom": top + (max(w[3] + w[5] for w in words) + scale - 1) // scale,
+    }
+    score = difflib.SequenceMatcher(None, normalize(recognized), normalize(item["itemName"])).ratio()
+    return {
+        "itemId": item["itemId"], "itemName": item["itemName"],
+        "text": recognized, "confidence": round(sum(w[1] for w in words) / len(words), 1),
+        "similarity": round(score, 3), "bounds": bounds,
+    }
+
+
 def match_catalog(lines: list[dict], items: list[dict]) -> list[dict]:
     names = [(item["itemId"], item["itemName"], normalize(item["itemName"])) for item in items]
     for line in lines:
@@ -115,8 +169,17 @@ def main() -> None:
     args = parser.parse_args()
 
     seeds = json.loads(args.seeds.read_text(encoding="utf-8"))
+    aligned = cv2.imread(str(args.base), cv2.IMREAD_COLOR)
     lines = match_catalog(run_tesseract(args.image, args.base), seeds["items"])
-    image = cv2.imread(str(args.base), cv2.IMREAD_COLOR)
+    item_anchors = [
+        run_seeded_tesseract(aligned, item, seeds["imageSize"])
+        for item in seeds["items"]
+    ]
+    image = aligned.copy()
+    for anchor in item_anchors:
+        if anchor.get("bounds"):
+            b = anchor["bounds"]
+            cv2.rectangle(image, (b["left"], b["top"]), (b["right"], b["bottom"]), (255, 220, 0), 1)
     for index, line in enumerate(lines, 1):
         b = line["bounds"]
         cv2.rectangle(image, (b["left"], b["top"]), (b["right"], b["bottom"]), (255, 220, 0), 1)
@@ -134,6 +197,8 @@ def main() -> None:
         "runtimeEnabled": False,
         "lineCount": len(lines),
         "matchedCatalogCount": sum(1 for line in lines if line.get("bestCatalogMatch")),
+        "seededItemAnchorCount": sum(1 for anchor in item_anchors if anchor.get("bounds")),
+        "itemAnchors": item_anchors,
         "lines": lines,
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -141,7 +206,7 @@ def main() -> None:
     args.preview.parent.mkdir(parents=True, exist_ok=True)
     if not cv2.imwrite(str(args.preview), image, [cv2.IMWRITE_JPEG_QUALITY, 94]):
         raise SystemExit(f"Could not write preview: {args.preview}")
-    print(f"OCR extracted {len(lines)} text lines; {result['matchedCatalogCount']} have a tentative catalog match.")
+    print(f"OCR extracted {len(lines)} text lines; {result['matchedCatalogCount']} tentative matches; {result['seededItemAnchorCount']}/{len(item_anchors)} seeded item crops returned text.")
 
 
 if __name__ == "__main__":
