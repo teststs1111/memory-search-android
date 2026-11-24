@@ -13,6 +13,7 @@ android {
         targetSdk = 35
         versionCode = 8
         versionName = "0.8.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     // Reuse the original Chapter 1 reference image without modifying it.
@@ -33,4 +34,6 @@ android {
 dependencies {
     implementation("com.google.mlkit:text-recognition-japanese:16.0.1")
     testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
 }
