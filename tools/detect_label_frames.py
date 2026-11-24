@@ -218,11 +218,11 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
         "items": result_items,
     }
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    output_path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     preview_path.parent.mkdir(parents=True, exist_ok=True)
     if not cv2.imwrite(str(preview_path), preview, [cv2.IMWRITE_JPEG_QUALITY, 94]):
         raise SystemExit(f"Could not write preview: {preview_path}")
-    return result
+    return output
 
 
 def main() -> None:
