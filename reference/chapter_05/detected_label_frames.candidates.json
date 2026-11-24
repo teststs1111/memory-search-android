@@ -7,193 +7,20 @@
   "runtimeEnabled": false,
   "dataStatus": "automatically_detected_candidates_pending_visual_review",
   "detectionMethod": "hsv_pink_purple_red_fill_quadrilateral",
-  "detectedShapeCount": 8,
-  "matchedItemCount": 6,
-  "unmatchedItemCount": 28,
-  "detectedShapes": [
-    {
-      "center": [
-        105.0,
-        161.5
-      ],
-      "area": 3422.0,
-      "rectangularity": 0.9505,
-      "aspectRatio": 4.069,
-      "bounds": [
-        46,
-        147,
-        165,
-        177
-      ]
-    },
-    {
-      "center": [
-        359.48,
-        226.55
-      ],
-      "area": 1563.59,
-      "rectangularity": 0.7515,
-      "aspectRatio": 4.8602,
-      "bounds": [
-        316,
-        218,
-        404,
-        237
-      ]
-    },
-    {
-      "center": [
-        189.0,
-        243.5
-      ],
-      "area": 2030.0,
-      "rectangularity": 1.0,
-      "aspectRatio": 2.4138,
-      "bounds": [
-        154,
-        229,
-        225,
-        259
-      ]
-    },
-    {
-      "center": [
-        361.5,
-        249.5
-      ],
-      "area": 629.0,
-      "rectangularity": 0.8378,
-      "aspectRatio": 2.1765,
-      "bounds": [
-        343,
-        241,
-        381,
-        259
-      ]
-    },
-    {
-      "center": [
-        132.5,
-        288.0
-      ],
-      "area": 7260.0,
-      "rectangularity": 0.5937,
-      "aspectRatio": 2.0167,
-      "bounds": [
-        72,
-        258,
-        194,
-        319
-      ]
-    },
-    {
-      "center": [
-        320.5,
-        524.5
-      ],
-      "area": 2537.0,
-      "rectangularity": 0.7895,
-      "aspectRatio": 1.3721,
-      "bounds": [
-        299,
-        495,
-        343,
-        555
-      ]
-    },
-    {
-      "center": [
-        176.28,
-        662.52
-      ],
-      "area": 1588.14,
-      "rectangularity": 0.9407,
-      "aspectRatio": 2.0419,
-      "bounds": [
-        158,
-        633,
-        195,
-        693
-      ]
-    },
-    {
-      "center": [
-        109.0,
-        699.0
-      ],
-      "area": 2800.0,
-      "rectangularity": 0.9348,
-      "aspectRatio": 1.12,
-      "bounds": [
-        81,
-        674,
-        138,
-        725
-      ]
-    }
-  ],
+  "detectedShapeCount": 0,
+  "matchedItemCount": 0,
+  "unmatchedItemCount": 34,
+  "detectedShapes": [],
   "items": [
     {
       "itemId": "chapter_5_item_01",
       "itemName": "コードリール",
-      "status": "detected_candidate_needs_visual_review",
-      "corners": [
-        [
-          0.11138,
-          0.2
-        ],
-        [
-          0.397094,
-          0.2
-        ],
-        [
-          0.397094,
-          0.239456
-        ],
-        [
-          0.11138,
-          0.239456
-        ]
-      ],
-      "bounds": {
-        "left": 0.11138,
-        "top": 0.2,
-        "right": 0.397094,
-        "bottom": 0.239456
-      },
-      "rectangularity": 0.9505,
-      "aspectRatio": 4.069
+      "status": "unmatched_needs_manual_review"
     },
     {
       "itemId": "chapter_5_item_02",
       "itemName": "救急箱",
-      "status": "detected_candidate_needs_visual_review",
-      "corners": [
-        [
-          0.372881,
-          0.311565
-        ],
-        [
-          0.542373,
-          0.311565
-        ],
-        [
-          0.542373,
-          0.35102
-        ],
-        [
-          0.372881,
-          0.35102
-        ]
-      ],
-      "bounds": {
-        "left": 0.372881,
-        "top": 0.311565,
-        "right": 0.542373,
-        "bottom": 0.35102
-      },
-      "rectangularity": 1.0,
-      "aspectRatio": 2.4138
+      "status": "unmatched_needs_manual_review"
     },
     {
       "itemId": "chapter_5_item_03",
@@ -203,33 +30,7 @@
     {
       "itemId": "chapter_5_item_04",
       "itemName": "防弾ベスト",
-      "status": "detected_candidate_needs_visual_review",
-      "corners": [
-        [
-          0.174334,
-          0.35102
-        ],
-        [
-          0.467312,
-          0.35102
-        ],
-        [
-          0.467312,
-          0.432653
-        ],
-        [
-          0.174334,
-          0.432653
-        ]
-      ],
-      "bounds": {
-        "left": 0.174334,
-        "top": 0.35102,
-        "right": 0.467312,
-        "bottom": 0.432653
-      },
-      "rectangularity": 0.5937,
-      "aspectRatio": 2.0167
+      "status": "unmatched_needs_manual_review"
     },
     {
       "itemId": "chapter_5_item_05",
@@ -319,33 +120,7 @@
     {
       "itemId": "chapter_5_item_22",
       "itemName": "トランシーバー",
-      "status": "detected_candidate_needs_visual_review",
-      "corners": [
-        [
-          0.723971,
-          0.673469
-        ],
-        [
-          0.828087,
-          0.673469
-        ],
-        [
-          0.828087,
-          0.753741
-        ],
-        [
-          0.723971,
-          0.753741
-        ]
-      ],
-      "bounds": {
-        "left": 0.723971,
-        "top": 0.673469,
-        "right": 0.828087,
-        "bottom": 0.753741
-      },
-      "rectangularity": 0.7895,
-      "aspectRatio": 1.3721
+      "status": "unmatched_needs_manual_review"
     },
     {
       "itemId": "chapter_5_item_23",
@@ -400,64 +175,12 @@
     {
       "itemId": "chapter_5_item_33",
       "itemName": "入館証",
-      "status": "detected_candidate_needs_visual_review",
-      "corners": [
-        [
-          0.380931,
-          0.935967
-        ],
-        [
-          0.406341,
-          0.859818
-        ],
-        [
-          0.472712,
-          0.86681
-        ],
-        [
-          0.447302,
-          0.94296
-        ]
-      ],
-      "bounds": {
-        "left": 0.382567,
-        "top": 0.861224,
-        "right": 0.469734,
-        "bottom": 0.941497
-      },
-      "rectangularity": 0.9407,
-      "aspectRatio": 2.0419
+      "status": "unmatched_needs_manual_review"
     },
     {
       "itemId": "chapter_5_item_34",
       "itemName": "輸送書類",
-      "status": "detected_candidate_needs_visual_review",
-      "corners": [
-        [
-          0.196126,
-          0.917007
-        ],
-        [
-          0.331719,
-          0.917007
-        ],
-        [
-          0.331719,
-          0.985034
-        ],
-        [
-          0.196126,
-          0.985034
-        ]
-      ],
-      "bounds": {
-        "left": 0.196126,
-        "top": 0.917007,
-        "right": 0.331719,
-        "bottom": 0.985034
-      },
-      "rectangularity": 0.9348,
-      "aspectRatio": 1.12
+      "status": "unmatched_needs_manual_review"
     }
   ]
 }
