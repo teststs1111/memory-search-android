@@ -33,21 +33,30 @@ def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list
     if annotated is None or base is None:
         raise ValueError("Both annotated and base images are required")
     if annotated.shape[:2] != base.shape[:2]:
-        raise ValueError("Annotated and base images must have identical dimensions")
+        raise ValueError("Annotated image must be aligned to the base image before detection")
 
     height, width = base.shape[:2]
     image_area = float(width * height)
-    difference = cv2.absdiff(annotated, base)
-    strongest_channel = difference.max(axis=2)
-    _, mask = cv2.threshold(strongest_channel, 22, 255, cv2.THRESH_BINARY)
+    hsv = cv2.cvtColor(annotated, cv2.COLOR_BGR2HSV)
 
-    # Close small holes caused by text strokes and JPEG compression. This is
-    # color-independent: any visible annotation color contributes equally.
-    close_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (7, 7))
+    # The wiki labels use several translucent pink/purple/red fills. Detect
+    # the shared annotation palette as a hue family rather than one exact RGB
+    # value, so JPEG variation and the different label colors are tolerated.
+    pink_purple = cv2.inRange(
+        hsv, np.array([125, 32, 70], dtype=np.uint8),
+        np.array([179, 255, 255], dtype=np.uint8)
+    )
+    red = cv2.inRange(
+        hsv, np.array([0, 32, 70], dtype=np.uint8),
+        np.array([12, 255, 255], dtype=np.uint8)
+    )
+    mask = cv2.bitwise_or(pink_purple, red)
+
+    close_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
     mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, close_kernel, iterations=2)
     mask = cv2.morphologyEx(
         mask, cv2.MORPH_OPEN,
-        cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3)), iterations=1
+        cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2)), iterations=1
     )
 
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -56,7 +65,7 @@ def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list
 
     for contour in contours:
         contour_area = float(cv2.contourArea(contour))
-        if contour_area < image_area * 0.00018:
+        if contour_area < max(35.0, image_area * 0.00012):
             continue
 
         rect = cv2.minAreaRect(contour)
@@ -64,12 +73,12 @@ def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list
         if rw <= 1 or rh <= 1:
             continue
         rect_area = float(rw * rh)
-        if rect_area < image_area * 0.00018 or rect_area > image_area * 0.06:
+        if rect_area < max(35.0, image_area * 0.00012) or rect_area > image_area * 0.06:
             continue
 
         aspect = max(rw, rh) / min(rw, rh)
         rectangularity = contour_area / rect_area
-        if not 1.12 <= aspect <= 9.0 or rectangularity < 0.58:
+        if not 1.12 <= aspect <= 9.0 or rectangularity < 0.55:
             continue
 
         points = cv2.boxPoints(rect).astype(np.float32)
@@ -86,12 +95,11 @@ def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list
             "bounds": (x, y, x + bw, y + bh),
         })
 
-    # Remove duplicate contours around the same colored backing shape.
     raw.sort(key=lambda item: (item["rectangularity"], item["area"]), reverse=True)
     kept: list[dict] = []
     for candidate in raw:
-        duplicate = False
         cx, cy = candidate["center"]
+        duplicate = False
         for prior in kept:
             px, py = prior["center"]
             center_distance = math.hypot(cx - px, cy - py)
@@ -104,7 +112,6 @@ def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list
 
     kept.sort(key=lambda item: (item["center"][1], item["center"][0]))
     return kept
-
 
 def _seed_rect(item: dict, image_size: dict, width: int, height: int) -> tuple[float, float, float, float]:
     if "sourceRect" in item:
@@ -216,7 +223,7 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
         "coordinateReference": str(base_path),
         "runtimeEnabled": False,
         "dataStatus": "automatically_detected_candidates_pending_visual_review",
-        "detectionMethod": "paired_image_difference_color_independent_quadrilateral",
+        "detectionMethod": "hsv_pink_purple_red_fill_quadrilateral",
         "detectedShapeCount": len(detections),
         "matchedItemCount": matched_count,
         "unmatchedItemCount": len(seeds["items"]) - matched_count,
