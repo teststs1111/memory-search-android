@@ -30,7 +30,7 @@ def main():
         proc=subprocess.run(["tesseract",str(temp),"stdout","-l","jpn","--psm","11","tsv"],check=True,capture_output=True,text=True,encoding="utf-8")
     finally: temp.unlink(missing_ok=True)
     groups=defaultdict(list)
-    for row in csv.DictReader(io.StringIO(proc.stdout),delimiter="\\t"):
+    for row in csv.DictReader(io.StringIO(proc.stdout),delimiter="\t"):
         txt=(row.get("text") or "").strip()
         try:
             conf=float(row["conf"]); x,y,bw,bh=(int(row[k]) for k in ("left","top","width","height"))
