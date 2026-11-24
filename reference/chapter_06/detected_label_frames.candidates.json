@@ -7,10 +7,10 @@
   "runtimeEnabled": false,
   "dataStatus": "automatically_detected_candidates_pending_visual_review",
   "detectionMethod": "seeded_paired_image_difference_quadrilateral",
-  "detectedShapeCount": 30,
+  "detectedShapeCount": 31,
   "differenceMaskPixelCount": 1714249,
-  "matchedItemCount": 30,
-  "unmatchedItemCount": 2,
+  "matchedItemCount": 31,
+  "unmatchedItemCount": 1,
   "detectedShapes": [
     {
       "center": [
@@ -74,60 +74,75 @@
     },
     {
       "center": [
-        435.5,
-        1303.5
+        431.43,
+        1303.71
       ],
-      "area": 46389.0,
-      "rectangularity": 0.7108,
-      "aspectRatio": 2.3333,
+      "area": 34004.78,
+      "rectangularity": 0.6978,
+      "aspectRatio": 1.8721,
       "bounds": [
-        271,
+        308,
         1233,
-        601,
+        559,
         1375
       ]
     },
     {
       "center": [
-        323.0,
-        1411.5
+        326.16,
+        1398.64
       ],
-      "area": 37505.98,
-      "rectangularity": 0.7293,
-      "aspectRatio": 2.1203,
+      "area": 29705.3,
+      "rectangularity": 0.6448,
+      "aspectRatio": 1.5966,
       "bounds": [
-        182,
+        199,
         1345,
-        465,
+        437,
         1479
       ]
     },
     {
       "center": [
-        264.5,
+        547.5,
+        1417.0
+      ],
+      "area": 25384.0,
+      "rectangularity": 0.806,
+      "aspectRatio": 1.0987,
+      "bounds": [
+        464,
+        1341,
+        632,
+        1494
+      ]
+    },
+    {
+      "center": [
+        209.5,
         1505.0
       ],
-      "area": 58618.0,
-      "rectangularity": 0.7625,
-      "aspectRatio": 2.3481,
+      "area": 41238.0,
+      "rectangularity": 0.7238,
+      "aspectRatio": 1.6519,
       "bounds": [
         79,
         1426,
-        451,
+        341,
         1585
       ]
     },
     {
       "center": [
         399.0,
-        1533.5
+        1552.0
       ],
-      "area": 26081.99,
-      "rectangularity": 0.7781,
-      "aspectRatio": 1.3696,
+      "area": 20976.0,
+      "rectangularity": 0.8118,
+      "aspectRatio": 1.1014,
       "bounds": [
         330,
-        1439,
+        1476,
         469,
         1629
       ]
@@ -137,8 +152,8 @@
         657.5,
         1546.5
       ],
-      "area": 30752.99,
-      "rectangularity": 0.8708,
+      "area": 30753.0,
+      "rectangularity": 0.801,
       "aspectRatio": 1.3137,
       "bounds": [
         581,
@@ -179,42 +194,42 @@
     },
     {
       "center": [
-        836.0,
-        1655.0
+        825.74,
+        1641.62
       ],
-      "area": 50560.0,
-      "rectangularity": 0.7634,
-      "aspectRatio": 2.0253,
+      "area": 36761.91,
+      "rectangularity": 0.6136,
+      "aspectRatio": 2.5912,
       "bounds": [
-        676,
+        685,
         1576,
-        997,
-        1735
+        976,
+        1722
       ]
     },
     {
       "center": [
         875.5,
-        1722.5
+        1741.5
       ],
-      "area": 34055.0,
-      "rectangularity": 0.8553,
-      "aspectRatio": 1.7626,
+      "area": 28772.99,
+      "rectangularity": 0.6503,
+      "aspectRatio": 1.4892,
       "bounds": [
         806,
-        1600,
+        1638,
         946,
         1846
       ]
     },
     {
       "center": [
-        1155.02,
-        1781.29
+        1154.62,
+        1781.28
       ],
-      "area": 18629.16,
-      "rectangularity": 0.7294,
-      "aspectRatio": 1.4684,
+      "area": 18539.34,
+      "rectangularity": 0.7259,
+      "aspectRatio": 1.4613,
       "bounds": [
         1073,
         1724,
@@ -224,222 +239,222 @@
     },
     {
       "center": [
-        1303.0,
-        1791.5
+        1318.0,
+        1790.0
       ],
-      "area": 37799.99,
-      "rectangularity": 0.7471,
-      "aspectRatio": 1.0582,
+      "area": 31620.0,
+      "rectangularity": 0.7613,
+      "aspectRatio": 1.0941,
       "bounds": [
-        1203,
+        1233,
         1697,
         1404,
-        1887
+        1884
       ]
     },
     {
       "center": [
-        539.0,
-        1777.5
+        554.5,
+        1767.5
       ],
-      "area": 46200.0,
-      "rectangularity": 0.6728,
-      "aspectRatio": 1.697,
+      "area": 36105.0,
+      "rectangularity": 0.6871,
+      "aspectRatio": 1.7172,
       "bounds": [
-        399,
+        430,
         1695,
         680,
-        1861
+        1841
       ]
     },
     {
       "center": [
-        424.44,
-        1876.83
+        423.31,
+        1863.13
       ],
-      "area": 29787.95,
-      "rectangularity": 0.6078,
-      "aspectRatio": 1.9214,
+      "area": 20748.77,
+      "rectangularity": 0.6955,
+      "aspectRatio": 2.2031,
       "bounds": [
-        307,
+        315,
         1815,
-        543,
-        1943
+        532,
+        1915
       ]
     },
     {
       "center": [
-        88.5,
+        84.0,
         1933.5
       ],
-      "area": 39715.0,
-      "rectangularity": 0.7289,
-      "aspectRatio": 1.3905,
+      "area": 37600.0,
+      "rectangularity": 0.7314,
+      "aspectRatio": 1.4688,
       "bounds": [
         4,
         1816,
-        174,
+        165,
         2052
       ]
     },
     {
       "center": [
-        248.45,
-        1929.06
+        257.79,
+        1921.46
       ],
-      "area": 48141.21,
-      "rectangularity": 0.7124,
-      "aspectRatio": 1.3514,
+      "area": 33605.83,
+      "rectangularity": 0.7275,
+      "aspectRatio": 1.0806,
       "bounds": [
-        126,
-        1831,
-        372,
-        2030
+        161,
+        1832,
+        355,
+        2009
       ]
     },
     {
       "center": [
-        616.5,
-        1954.5
+        629.0,
+        1940.0
       ],
-      "area": 57969.0,
-      "rectangularity": 0.6196,
-      "aspectRatio": 1.9825,
+      "area": 33796.0,
+      "rectangularity": 0.5915,
+      "aspectRatio": 1.6761,
       "bounds": [
-        447,
+        510,
         1869,
-        787,
-        2041
+        749,
+        2012
       ]
     },
     {
       "center": [
-        873.0,
+        862.0,
         1965.5
       ],
-      "area": 49000.0,
-      "rectangularity": 0.8101,
-      "aspectRatio": 1.6,
+      "area": 40950.0,
+      "rectangularity": 0.7614,
+      "aspectRatio": 1.3371,
       "bounds": [
-        733,
+        745,
         1878,
-        1014,
+        980,
         2054
       ]
     },
     {
       "center": [
-        1259.0,
-        1943.0
+        1286.0,
+        1943.5
       ],
-      "area": 52415.98,
-      "rectangularity": 0.7828,
-      "aspectRatio": 1.5824,
+      "area": 42353.99,
+      "rectangularity": 0.7023,
+      "aspectRatio": 1.2928,
       "bounds": [
-        1115,
-        1852,
+        1169,
+        1853,
         1404,
         2035
       ]
     },
     {
       "center": [
-        1136.5,
+        1168.0,
         2056.0
       ],
-      "area": 49699.98,
-      "rectangularity": 0.7975,
-      "aspectRatio": 2.5357,
+      "area": 34160.0,
+      "rectangularity": 0.646,
+      "aspectRatio": 1.7429,
       "bounds": [
-        959,
+        1046,
         1986,
-        1315,
+        1291,
         2127
       ]
     },
     {
       "center": [
-        555.0,
-        2043.0
+        573.0,
+        2078.0
       ],
-      "area": 37800.0,
-      "rectangularity": 0.4513,
-      "aspectRatio": 1.9286,
+      "area": 10360.0,
+      "rectangularity": 0.5775,
+      "aspectRatio": 2.1143,
       "bounds": [
-        420,
-        1973,
-        691,
+        499,
+        2043,
+        648,
         2114
       ]
     },
     {
       "center": [
-        706.0,
-        2122.0
+        725.61,
+        2102.81
       ],
-      "area": 47600.0,
-      "rectangularity": 0.8029,
-      "aspectRatio": 1.6471,
+      "area": 31512.11,
+      "rectangularity": 0.7042,
+      "aspectRatio": 1.984,
       "bounds": [
-        566,
+        596,
         2037,
         847,
-        2208
+        2167
       ]
     },
     {
       "center": [
-        1031.5,
+        1017.5,
         2123.0
       ],
-      "area": 61851.98,
-      "rectangularity": 0.8755,
-      "aspectRatio": 1.75,
+      "area": 55460.0,
+      "rectangularity": 0.5808,
+      "aspectRatio": 1.5691,
       "bounds": [
-        867,
+        870,
         2029,
-        1197,
+        1166,
         2218
       ]
     },
     {
       "center": [
-        454.5,
+        434.5,
         2275.0
       ],
-      "area": 66444.0,
-      "rectangularity": 0.6862,
-      "aspectRatio": 1.7296,
+      "area": 58604.0,
+      "rectangularity": 0.6797,
+      "aspectRatio": 1.5255,
       "bounds": [
         285,
         2177,
-        625,
+        585,
         2374
       ]
     },
     {
       "center": [
-        708.5,
-        2210.5
+        712.43,
+        2242.81
       ],
-      "area": 61658.98,
-      "rectangularity": 0.8232,
-      "aspectRatio": 1.2624,
+      "area": 41733.22,
+      "rectangularity": 0.7261,
+      "aspectRatio": 1.8177,
       "bounds": [
-        569,
-        2100,
+        573,
+        2164,
         849,
-        2322
+        2317
       ]
     },
     {
       "center": [
-        680.45,
-        2407.31
+        680.68,
+        2407.32
       ],
-      "area": 28404.87,
-      "rectangularity": 0.868,
-      "aspectRatio": 1.7632,
+      "area": 28346.76,
+      "rectangularity": 0.8691,
+      "aspectRatio": 1.7596,
       "bounds": [
         572,
         2344,
@@ -594,30 +609,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.193158,
-          0.494188
+          0.214783,
+          0.546351
         ],
         [
-          0.427655,
-          0.494188
+          0.220742,
+          0.492437
         ],
         [
-          0.427655,
-          0.550701
+          0.400232,
+          0.49871
         ],
         [
-          0.193158,
-          0.550701
+          0.394273,
+          0.552623
         ]
       ],
       "bounds": {
-        "left": 0.193158,
+        "left": 0.21953,
         "top": 0.494188,
-        "right": 0.427655,
+        "right": 0.397719,
         "bottom": 0.550701
       },
-      "rectangularity": 0.7108,
-      "aspectRatio": 2.3333
+      "rectangularity": 0.6978,
+      "aspectRatio": 1.8721
     },
     {
       "itemId": "chapter_6_item_06",
@@ -625,35 +640,61 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.129722,
-          0.539078
+          0.140896,
+          0.560588
         ],
         [
-          0.33072,
-          0.539078
+          0.192488,
+          0.514251
         ],
         [
-          0.33072,
-          0.592385
+          0.324052,
+          0.56057
         ],
         [
-          0.129722,
-          0.592385
+          0.272461,
+          0.606907
         ]
       ],
       "bounds": {
-        "left": 0.129722,
+        "left": 0.141839,
         "top": 0.539078,
-        "right": 0.33072,
+        "right": 0.310763,
         "bottom": 0.592385
       },
-      "rectangularity": 0.7293,
-      "aspectRatio": 2.1203
+      "rectangularity": 0.6448,
+      "aspectRatio": 1.5966
     },
     {
       "itemId": "chapter_6_item_07",
       "itemName": "バスケット",
-      "status": "unmatched_needs_manual_review"
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.33072,
+          0.537475
+        ],
+        [
+          0.449751,
+          0.537475
+        ],
+        [
+          0.449751,
+          0.598397
+        ],
+        [
+          0.33072,
+          0.598397
+        ]
+      ],
+      "bounds": {
+        "left": 0.33072,
+        "top": 0.537475,
+        "right": 0.449751,
+        "bottom": 0.598397
+      },
+      "rectangularity": 0.806,
+      "aspectRatio": 1.0987
     },
     {
       "itemId": "chapter_6_item_08",
@@ -665,11 +706,11 @@
           0.571543
         ],
         [
-          0.320741,
+          0.242338,
           0.571543
         ],
         [
-          0.320741,
+          0.242338,
           0.63487
         ],
         [
@@ -680,11 +721,11 @@
       "bounds": {
         "left": 0.056308,
         "top": 0.571543,
-        "right": 0.320741,
+        "right": 0.242338,
         "bottom": 0.63487
       },
-      "rectangularity": 0.7625,
-      "aspectRatio": 2.3481
+      "rectangularity": 0.7238,
+      "aspectRatio": 1.6519
     },
     {
       "itemId": "chapter_6_item_09",
@@ -697,11 +738,11 @@
         ],
         [
           0.23521,
-          0.576754
+          0.591583
         ],
         [
           0.333571,
-          0.576754
+          0.591583
         ],
         [
           0.333571,
@@ -710,12 +751,12 @@
       ],
       "bounds": {
         "left": 0.23521,
-        "top": 0.576754,
+        "top": 0.591583,
         "right": 0.333571,
         "bottom": 0.652505
       },
-      "rectangularity": 0.7781,
-      "aspectRatio": 1.3696
+      "rectangularity": 0.8118,
+      "aspectRatio": 1.1014
     },
     {
       "itemId": "chapter_6_item_10",
@@ -724,18 +765,18 @@
       "corners": [
         [
           0.414113,
+          0.579559
+        ],
+        [
+          0.523165,
+          0.579559
+        ],
+        [
+          0.523165,
           0.66012
         ],
         [
           0.414113,
-          0.579559
-        ],
-        [
-          0.523165,
-          0.579559
-        ],
-        [
-          0.523165,
           0.66012
         ]
       ],
@@ -745,7 +786,7 @@
         "right": 0.523165,
         "bottom": 0.66012
       },
-      "rectangularity": 0.8708,
+      "rectangularity": 0.801,
       "aspectRatio": 1.3137
     },
     {
@@ -816,30 +857,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.481825,
-          0.631663
+          0.471002,
+          0.663035
         ],
         [
-          0.709907,
-          0.631663
+          0.669575,
+          0.609801
         ],
         [
-          0.709907,
-          0.69499
+          0.70611,
+          0.652894
         ],
         [
-          0.481825,
-          0.69499
+          0.507537,
+          0.706128
         ]
       ],
       "bounds": {
-        "left": 0.481825,
+        "left": 0.488239,
         "top": 0.631663,
-        "right": 0.709907,
-        "bottom": 0.69499
+        "right": 0.694939,
+        "bottom": 0.68978
       },
-      "rectangularity": 0.7634,
-      "aspectRatio": 2.0253
+      "rectangularity": 0.6136,
+      "aspectRatio": 2.5912
     },
     {
       "itemId": "chapter_6_item_14",
@@ -848,29 +889,29 @@
       "corners": [
         [
           0.574483,
-          0.641283
-        ],
-        [
-          0.673557,
-          0.641283
-        ],
-        [
-          0.673557,
           0.739479
         ],
         [
           0.574483,
+          0.656513
+        ],
+        [
+          0.673557,
+          0.656513
+        ],
+        [
+          0.673557,
           0.739479
         ]
       ],
       "bounds": {
         "left": 0.574483,
-        "top": 0.641283,
+        "top": 0.656513,
         "right": 0.673557,
         "bottom": 0.739479
       },
-      "rectangularity": 0.8553,
-      "aspectRatio": 1.7626
+      "rectangularity": 0.6503,
+      "aspectRatio": 1.4892
     },
     {
       "itemId": "chapter_6_item_15",
@@ -886,12 +927,12 @@
           0.690952
         ],
         [
-          0.882692,
-          0.691791
+          0.882124,
+          0.691787
         ],
         [
-          0.881676,
-          0.736932
+          0.881108,
+          0.736928
         ]
       ],
       "bounds": {
@@ -900,8 +941,8 @@
         "right": 0.881682,
         "bottom": 0.736673
       },
-      "rectangularity": 0.7294,
-      "aspectRatio": 1.4684
+      "rectangularity": 0.7259,
+      "aspectRatio": 1.4613
     },
     {
       "itemId": "chapter_6_item_16",
@@ -909,11 +950,7 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.857448,
-          0.755912
-        ],
-        [
-          0.857448,
+          0.878831,
           0.68016
         ],
         [
@@ -922,17 +959,21 @@
         ],
         [
           1.0,
-          0.755912
+          0.754709
+        ],
+        [
+          0.878831,
+          0.754709
         ]
       ],
       "bounds": {
-        "left": 0.857448,
+        "left": 0.878831,
         "top": 0.68016,
         "right": 1.0,
-        "bottom": 0.755912
+        "bottom": 0.754709
       },
-      "rectangularity": 0.7471,
-      "aspectRatio": 1.0582
+      "rectangularity": 0.7613,
+      "aspectRatio": 1.0941
     },
     {
       "itemId": "chapter_6_item_17",
@@ -940,7 +981,7 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.284391,
+          0.306486,
           0.679359
         ],
         [
@@ -949,21 +990,21 @@
         ],
         [
           0.483963,
-          0.745491
+          0.737475
         ],
         [
-          0.284391,
-          0.745491
+          0.306486,
+          0.737475
         ]
       ],
       "bounds": {
-        "left": 0.284391,
+        "left": 0.306486,
         "top": 0.679359,
         "right": 0.483963,
-        "bottom": 0.745491
+        "bottom": 0.737475
       },
-      "rectangularity": 0.6728,
-      "aspectRatio": 1.697
+      "rectangularity": 0.6871,
+      "aspectRatio": 1.7172
     },
     {
       "itemId": "chapter_6_item_18",
@@ -971,30 +1012,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.215787,
-          0.728951
+          0.224379,
+          0.728784
         ],
         [
-          0.386204,
-          0.725647
+          0.376679,
+          0.725831
         ],
         [
-          0.389263,
-          0.775522
+          0.379063,
+          0.764704
         ],
         [
-          0.218846,
-          0.778826
+          0.226763,
+          0.767657
         ]
       ],
       "bounds": {
-        "left": 0.218817,
+        "left": 0.224519,
         "top": 0.727455,
-        "right": 0.386315,
-        "bottom": 0.778357
+        "right": 0.378475,
+        "bottom": 0.767134
       },
-      "rectangularity": 0.6078,
-      "aspectRatio": 1.9214
+      "rectangularity": 0.6955,
+      "aspectRatio": 2.2031
     },
     {
       "itemId": "chapter_6_item_19",
@@ -1006,11 +1047,11 @@
           0.727856
         ],
         [
-          0.123307,
+          0.116892,
           0.727856
         ],
         [
-          0.123307,
+          0.116892,
           0.822044
         ],
         [
@@ -1021,11 +1062,11 @@
       "bounds": {
         "left": 0.002851,
         "top": 0.727856,
-        "right": 0.123307,
+        "right": 0.116892,
         "bottom": 0.822044
       },
-      "rectangularity": 0.7289,
-      "aspectRatio": 1.3905
+      "rectangularity": 0.7314,
+      "aspectRatio": 1.4688
     },
     {
       "itemId": "chapter_6_item_20",
@@ -1033,30 +1074,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.082775,
-          0.738084
+          0.114481,
+          0.735622
         ],
         [
-          0.264325,
-          0.732711
+          0.250275,
+          0.733962
         ],
         [
-          0.271396,
-          0.808253
+          0.253007,
+          0.804627
         ],
         [
-          0.089845,
-          0.813626
+          0.117213,
+          0.806287
         ]
       ],
       "bounds": {
-        "left": 0.089808,
-        "top": 0.733868,
-        "right": 0.264433,
-        "bottom": 0.813226
+        "left": 0.114754,
+        "top": 0.734269,
+        "right": 0.252316,
+        "bottom": 0.80481
       },
-      "rectangularity": 0.7124,
-      "aspectRatio": 1.3514
+      "rectangularity": 0.7275,
+      "aspectRatio": 1.0806
     },
     {
       "itemId": "chapter_6_item_21",
@@ -1064,30 +1105,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.318603,
+          0.363507,
           0.749098
         ],
         [
-          0.560228,
+          0.533143,
           0.749098
         ],
         [
-          0.560228,
-          0.817635
+          0.533143,
+          0.806012
         ],
         [
-          0.318603,
-          0.817635
+          0.363507,
+          0.806012
         ]
       ],
       "bounds": {
-        "left": 0.318603,
+        "left": 0.363507,
         "top": 0.749098,
-        "right": 0.560228,
-        "bottom": 0.817635
+        "right": 0.533143,
+        "bottom": 0.806012
       },
-      "rectangularity": 0.6196,
-      "aspectRatio": 1.9825
+      "rectangularity": 0.5915,
+      "aspectRatio": 1.6761
     },
     {
       "itemId": "chapter_6_item_22",
@@ -1095,30 +1136,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.522452,
+          0.531005,
           0.752705
         ],
         [
-          0.722024,
+          0.69779,
           0.752705
         ],
         [
-          0.722024,
+          0.69779,
           0.822846
         ],
         [
-          0.522452,
+          0.531005,
           0.822846
         ]
       ],
       "bounds": {
-        "left": 0.522452,
+        "left": 0.531005,
         "top": 0.752705,
-        "right": 0.722024,
+        "right": 0.69779,
         "bottom": 0.822846
       },
-      "rectangularity": 0.8101,
-      "aspectRatio": 1.6
+      "rectangularity": 0.7614,
+      "aspectRatio": 1.3371
     },
     {
       "itemId": "chapter_6_item_23",
@@ -1131,30 +1172,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.794726,
-          0.742285
+          0.833215,
+          0.742685
         ],
         [
           1.0,
-          0.742285
+          0.742685
         ],
         [
           1.0,
           0.81523
         ],
         [
-          0.794726,
+          0.833215,
           0.81523
         ]
       ],
       "bounds": {
-        "left": 0.794726,
-        "top": 0.742285,
+        "left": 0.833215,
+        "top": 0.742685,
         "right": 1.0,
         "bottom": 0.81523
       },
-      "rectangularity": 0.7828,
-      "aspectRatio": 1.5824
+      "rectangularity": 0.7023,
+      "aspectRatio": 1.2928
     },
     {
       "itemId": "chapter_6_item_25",
@@ -1162,30 +1203,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.683535,
+          0.745545,
           0.795992
         ],
         [
-          0.936565,
+          0.919458,
           0.795992
         ],
         [
-          0.936565,
+          0.919458,
           0.852104
         ],
         [
-          0.683535,
+          0.745545,
           0.852104
         ]
       ],
       "bounds": {
-        "left": 0.683535,
+        "left": 0.745545,
         "top": 0.795992,
-        "right": 0.936565,
+        "right": 0.919458,
         "bottom": 0.852104
       },
-      "rectangularity": 0.7975,
-      "aspectRatio": 2.5357
+      "rectangularity": 0.646,
+      "aspectRatio": 1.7429
     },
     {
       "itemId": "chapter_6_item_26",
@@ -1193,30 +1234,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.299359,
-          0.790782
+          0.355666,
+          0.818838
         ],
         [
-          0.491803,
-          0.790782
+          0.461155,
+          0.818838
         ],
         [
-          0.491803,
+          0.461155,
           0.846894
         ],
         [
-          0.299359,
+          0.355666,
           0.846894
         ]
       ],
       "bounds": {
-        "left": 0.299359,
-        "top": 0.790782,
-        "right": 0.491803,
+        "left": 0.355666,
+        "top": 0.818838,
+        "right": 0.461155,
         "bottom": 0.846894
       },
-      "rectangularity": 0.4513,
-      "aspectRatio": 1.9286
+      "rectangularity": 0.5775,
+      "aspectRatio": 2.1143
     },
     {
       "itemId": "chapter_6_item_27",
@@ -1224,30 +1265,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.403421,
-          0.816433
+          0.424617,
+          0.863773
         ],
         [
-          0.602994,
-          0.816433
+          0.432155,
+          0.81344
         ],
         [
-          0.602994,
-          0.884569
+          0.609745,
+          0.821849
         ],
         [
-          0.403421,
-          0.884569
+          0.602208,
+          0.872183
         ]
       ],
       "bounds": {
-        "left": 0.403421,
+        "left": 0.424804,
         "top": 0.816433,
         "right": 0.602994,
-        "bottom": 0.884569
+        "bottom": 0.868136
       },
-      "rectangularity": 0.8029,
-      "aspectRatio": 1.6471
+      "rectangularity": 0.7042,
+      "aspectRatio": 1.984
     },
     {
       "itemId": "chapter_6_item_28",
@@ -1255,30 +1296,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.617962,
+          0.6201,
           0.813226
         ],
         [
-          0.852459,
+          0.830364,
           0.813226
         ],
         [
-          0.852459,
+          0.830364,
           0.888577
         ],
         [
-          0.617962,
+          0.6201,
           0.888577
         ]
       ],
       "bounds": {
-        "left": 0.617962,
+        "left": 0.6201,
         "top": 0.813226,
-        "right": 0.852459,
+        "right": 0.830364,
         "bottom": 0.888577
       },
-      "rectangularity": 0.8755,
-      "aspectRatio": 1.75
+      "rectangularity": 0.5808,
+      "aspectRatio": 1.5691
     },
     {
       "itemId": "chapter_6_item_29",
@@ -1290,11 +1331,11 @@
           0.872545
         ],
         [
-          0.444761,
+          0.416251,
           0.872545
         ],
         [
-          0.444761,
+          0.416251,
           0.951102
         ],
         [
@@ -1305,11 +1346,11 @@
       "bounds": {
         "left": 0.203136,
         "top": 0.872545,
-        "right": 0.444761,
+        "right": 0.416251,
         "bottom": 0.951102
       },
-      "rectangularity": 0.6862,
-      "aspectRatio": 1.7296
+      "rectangularity": 0.6797,
+      "aspectRatio": 1.5255
     },
     {
       "itemId": "chapter_6_item_30",
@@ -1317,30 +1358,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.40556,
-          0.930261
+          0.408171,
+          0.870099
         ],
         [
-          0.40556,
-          0.841683
+          0.604404,
+          0.867034
         ],
         [
-          0.604419,
-          0.841683
+          0.607403,
+          0.927742
         ],
         [
-          0.604419,
-          0.930261
+          0.41117,
+          0.930808
         ]
       ],
       "bounds": {
-        "left": 0.40556,
-        "top": 0.841683,
+        "left": 0.408411,
+        "top": 0.867335,
         "right": 0.604419,
-        "bottom": 0.930261
+        "bottom": 0.928257
       },
-      "rectangularity": 0.8232,
-      "aspectRatio": 1.2624
+      "rectangularity": 0.7261,
+      "aspectRatio": 1.8177
     },
     {
       "itemId": "chapter_6_item_31",
@@ -1348,12 +1389,12 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.402784,
-          0.98768
+          0.40311,
+          0.98769
         ],
         [
-          0.407962,
-          0.936891
+          0.408287,
+          0.936902
         ],
         [
           0.56721,
@@ -1370,8 +1411,8 @@
         "right": 0.563792,
         "bottom": 0.991583
       },
-      "rectangularity": 0.868,
-      "aspectRatio": 1.7632
+      "rectangularity": 0.8691,
+      "aspectRatio": 1.7596
     },
     {
       "itemId": "chapter_6_item_32",
