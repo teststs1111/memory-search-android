@@ -240,24 +240,16 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
         raise SystemExit(str(error)) from error
 
     seeds = json.loads(seed_path.read_text(encoding="utf-8"))
-    detections = detect_label_quadrilaterals(annotated, base)
-    hsv_debug = cv2.cvtColor(annotated, cv2.COLOR_BGR2HSV)
-    debug_mask = cv2.bitwise_or(
-        cv2.inRange(hsv_debug, np.array([118, 40, 70], dtype=np.uint8), np.array([179, 255, 255], dtype=np.uint8)),
-        cv2.inRange(hsv_debug, np.array([0, 40, 70], dtype=np.uint8), np.array([18, 255, 255], dtype=np.uint8)),
-    )
+    debug_mask = make_label_color_mask(annotated)
     debug_mask_path = output_path.with_name("detected_label_frames_mask.png")
     debug_mask_path.parent.mkdir(parents=True, exist_ok=True)
     cv2.imwrite(str(debug_mask_path), debug_mask)
-    matches = match_detections(seeds["items"], detections, seeds["imageSize"], base.shape[1], base.shape[0])
+    matches = detect_seeded_label_quadrilaterals(
+        annotated, seeds["items"], seeds["imageSize"], base.shape[1], base.shape[0]
+    )
 
     result_items = []
     preview = base.copy()
-    for detection_index, detection in enumerate(detections, start=1):
-        polygon = np.round(detection["points"]).astype(np.int32).reshape((-1, 1, 2))
-        cv2.polylines(preview, [polygon], True, (255, 80, 0), 2, cv2.LINE_AA)
-        dx, dy = map(int, detection["center"])
-        cv2.putText(preview, f"D{detection_index}", (dx, dy), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (255, 255, 255), 1, cv2.LINE_AA)
     matched_count = 0
     for index, (seed, detection) in enumerate(zip(seeds["items"], matches), start=1):
         entry = {"itemId": seed["itemId"], "itemName": seed["itemName"]}
@@ -300,8 +292,8 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
         "coordinateReference": str(base_path),
         "runtimeEnabled": False,
         "dataStatus": "automatically_detected_candidates_pending_visual_review",
-        "detectionMethod": "hsv_pink_purple_red_fill_quadrilateral",
-        "detectedShapeCount": len(detections),
+        "detectionMethod": "seeded_local_hsv_fill_quadrilateral",
+        "detectedShapeCount": matched_count,
         "colorMaskPixelCount": int(np.count_nonzero(debug_mask)),
         "matchedItemCount": matched_count,
         "unmatchedItemCount": len(seeds["items"]) - matched_count,
@@ -313,7 +305,7 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
                 "aspectRatio": round(d["aspectRatio"], 4),
                 "bounds": list(d["bounds"]),
             }
-            for d in detections
+            for d in matches if d is not None
         ],
         "items": result_items,
     }
