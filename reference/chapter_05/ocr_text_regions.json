@@ -1,0 +1,626 @@
+{
+  "stageId": "chapter_5",
+  "sourceImage": "reference/chapter_05/annotated.jpg",
+  "purpose": "diagnostic_text_position_anchors_only",
+  "runtimeEnabled": false,
+  "lineCount": 52,
+  "matchedCatalogCount": 11,
+  "lines": [
+    {
+      "text": "ビニニニュー",
+      "confidence": 47.3,
+      "bounds": {
+        "left": 1224,
+        "top": 7,
+        "right": 1248,
+        "bottom": 17
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ラブザ",
+      "confidence": 46.7,
+      "bounds": {
+        "left": 1226,
+        "top": 17,
+        "right": 1281,
+        "bottom": 36
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "イッ",
+      "confidence": 6.1,
+      "bounds": {
+        "left": 1166,
+        "top": 30,
+        "right": 1181,
+        "bottom": 37
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "と",
+      "confidence": 65.9,
+      "bounds": {
+        "left": 1033,
+        "top": 31,
+        "right": 1066,
+        "bottom": 49
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ンーンン",
+      "confidence": 43.5,
+      "bounds": {
+        "left": 1167,
+        "top": 97,
+        "right": 1239,
+        "bottom": 135
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_5_item_13",
+        "itemName": "ロードコーン",
+        "similarity": 0.4
+      }
+    },
+    {
+      "text": "33.",
+      "confidence": 9.8,
+      "bounds": {
+        "left": 1000,
+        "top": 113,
+        "right": 1027,
+        "bottom": 128
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "5",
+      "confidence": 20.3,
+      "bounds": {
+        "left": 997,
+        "top": 145,
+        "right": 1028,
+        "bottom": 170
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "1",
+      "confidence": 33.7,
+      "bounds": {
+        "left": 986,
+        "top": 208,
+        "right": 1009,
+        "bottom": 217
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "リウし",
+      "confidence": 41.8,
+      "bounds": {
+        "left": 960,
+        "top": 226,
+        "right": 1023,
+        "bottom": 273
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "な",
+      "confidence": 64.4,
+      "bounds": {
+        "left": 1032,
+        "top": 237,
+        "right": 1044,
+        "bottom": 253
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "5",
+      "confidence": 33.8,
+      "bounds": {
+        "left": 1004,
+        "top": 304,
+        "right": 1030,
+        "bottom": 320
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "過",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 978,
+        "top": 443,
+        "right": 1009,
+        "bottom": 470
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "(大",
+      "confidence": 23.8,
+      "bounds": {
+        "left": 980,
+        "top": 463,
+        "right": 1014,
+        "bottom": 490
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "め",
+      "confidence": 54.2,
+      "bounds": {
+        "left": 970,
+        "top": 500,
+        "right": 1000,
+        "bottom": 531
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "9き竹",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 862,
+        "top": 504,
+        "right": 895,
+        "bottom": 522
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "リー",
+      "confidence": 69.9,
+      "bounds": {
+        "left": 365,
+        "top": 520,
+        "right": 465,
+        "bottom": 570
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_5_item_06",
+        "itemName": "バリケード",
+        "similarity": 0.571
+      }
+    },
+    {
+      "text": "記",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 190,
+        "top": 523,
+        "right": 232,
+        "bottom": 568
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ーーーーーー",
+      "confidence": 58.3,
+      "bounds": {
+        "left": 238,
+        "top": 527,
+        "right": 281,
+        "bottom": 532
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "4ROUTE",
+      "confidence": 86.0,
+      "bounds": {
+        "left": 1113,
+        "top": 531,
+        "right": 1320,
+        "bottom": 610
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "。作",
+      "confidence": 3.2,
+      "bounds": {
+        "left": 976,
+        "top": 535,
+        "right": 1027,
+        "bottom": 583
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "M",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 544,
+        "top": 568,
+        "right": 551,
+        "bottom": 592
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "4",
+      "confidence": 47.2,
+      "bounds": {
+        "left": 775,
+        "top": 647,
+        "right": 806,
+        "bottom": 706
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ンプ",
+      "confidence": 38.4,
+      "bounds": {
+        "left": 857,
+        "top": 676,
+        "right": 944,
+        "bottom": 728
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_5_item_19",
+        "itemName": "レンチ",
+        "similarity": 0.4
+      }
+    },
+    {
+      "text": "しヨ",
+      "confidence": 62.3,
+      "bounds": {
+        "left": 1186,
+        "top": 697,
+        "right": 1197,
+        "bottom": 708
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "き",
+      "confidence": 11.9,
+      "bounds": {
+        "left": 1134,
+        "top": 755,
+        "right": 1140,
+        "bottom": 764
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "講和",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 792,
+        "top": 756,
+        "right": 1013,
+        "bottom": 820
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "中",
+      "confidence": 2.6,
+      "bounds": {
+        "left": 753,
+        "top": 775,
+        "right": 762,
+        "bottom": 794
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_5_item_03",
+        "itemName": "懐中電灯",
+        "similarity": 0.4
+      }
+    },
+    {
+      "text": "デ一2\t1\t31\t0\t0\t0\t1649\t2379\t619\t177\t-1\t3\t1\t31\t1\t0\t0\t1649\t2379\t619\t177\t-1\t4\t1\t31\t1\t1\t0\t1649\t2379\t619\t177\t-1\t5\t1\t31\t1\t1\t1\t1649\t2379\t530\t177\t74.939003\t救急5\t1\t31\t1\t1\t2\t2045\t2375\t100\t240\t86.783569\t邊5\t1\t31\t1\t1\t3\t2145\t2375\t120\t240\t21.680317\t|2\t1\t32\t0\t0\t0\t2385\t2465\t459\t79\t-1\t3\t1\t32\t1\t0\t0\t2385\t2465\t459\t79\t-1\t4\t1\t32\t1\t1\t0\t2385\t2465\t459\t79\t-1\t5\t1\t32\t1\t1\t1\t2385\t2473\t65\t43\t81.475998\tに5\t1\t32\t1\t1\t2\t2461\t2471\t64\t66\t0.000000\t呈5\t1\t32\t1\t1\t3\t2550\t2469\t63\t70\t0.000000\t間5\t1\t32\t1\t1\t4\t2629\t2465\t215\t79\t0.000000\t本2\t1\t33\t0\t0\t0\t2387\t2547\t459\t99\t-1\t3\t1\t33\t1\t0\t0\t2387\t2547\t459\t99\t-1\t4\t1\t33\t1\t1\t0\t2387\t2547\t459\t99\t-1\t5\t1\t33\t1\t1\t1\t2387\t2547\t459\t99\t18.156424\tFT5\t1\t33\t1\t1\t2\t2590\t2543\t88\t131\t66.843353\tド5\t1\t33\t1\t1\t3\t2677\t2543\t78\t131\t0.000000\t当5\t1\t33\t1\t1\t4\t2754\t2543\t55\t131\t36.047443\t。2\t1\t34\t0\t0\t0\t2955\t2467\t192\t161\t-1\t3\t1\t34\t1\t0\t0\t2955\t2467\t192\t161\t-1\t4\t1\t34\t1\t1\t0\t2955\t2467\t192\t161\t-1\t5\t1\t34\t1\t1\t1\t2955\t2467\t192\t161\t27.256021\t12\t1\t35\t0\t0\t0\t731\t2672\t658\t151\t-1\t3\t1\t35\t1\t0\t0\t731\t2672\t658\t151\t-1\t4\t1\t35\t1\t1\t0\t731\t2672\t658\t151\t-1\t5\t1\t35\t1\t1\t1\t731\t2730\t53\t23\t0.000000\tm5\t1\t35\t1\t1\t2\t846\t2672\t99\t145\t15.108519\t随5\t1\t35\t1\t1\t3\t999\t2672\t86\t151\t35.693623\t中5\t1\t35\t1\t1\t4\t1135\t2676\t104\t138\t93.237976\t電5\t1\t35\t1\t1\t5\t1254\t2676\t135\t141\t0.000000\t誠2\t1\t36\t0\t0\t0\t1640\t2785\t93\t61\t-1\t3\t1\t36\t1\t0\t0\t1640\t2785\t93\t61\t-1\t4\t1\t36\t1\t1\t0\t1640\t2785\t93\t61\t-1\t5\t1\t36\t1\t1\t1\t1636\t2781\t29\t69\t11.019764\t.5\t1\t36\t1\t1\t2\t1664\t2785\t30\t61\t0.000000\t還5\t1\t36\t1\t1\t3\t1693\t2781\t41\t69\t0.000000\t軸2\t1\t37\t0\t0\t0\t2350\t2724\t369\t80\t-1\t3\t1\t37\t1\t0\t0\t2350\t2724\t369\t80\t-1\t4\t1\t37\t1\t1\t0\t2350\t2724\t369\t80\t-1\t5\t1\t37\t1\t1\t1\t2350\t2724\t369\t80\t36.413322\tJI5\t1\t37\t1\t1\t2\t2661\t2720\t59\t88\t0.327644\t。」2\t1\t38\t0\t0\t0\t1256\t2876\t76\t7\t-1\t3\t1\t38\t1\t0\t0\t1256\t2876\t76\t7\t-1\t4\t1\t38\t1\t1\t0\t1256\t2876\t76\t7\t-1\t5\t1\t38\t1\t1\t1\t1256\t2876\t76\t7\t49.434505\tーー5\t1\t38\t1\t1\t2\t1319\t2862\t17\t28\t16.075945\t一2\t1\t39\t0\t0\t0\t2375\t2798\t464\t149\t-1\t3\t1\t39\t1\t0\t0\t2243\t2798\t596\t155\t-1\t4\t1\t39\t1\t1\t0\t2375\t2798\t464\t149\t-1\t5\t1\t39\t1\t1\t1\t2375\t2798\t37\t85\t77.707108\t!5\t1\t39\t1\t1\t2\t2475\t2799\t134\t106\t29.666447\t3a5\t1\t39\t1\t1\t3\t2645\t2812\t71\t121\t0.000000\t帳5\t1\t39\t1\t1\t4\t2763\t2821\t76\t126\t0.000000\t是2\t1\t40\t0\t0\t0\t1585\t3036\t170\t124\t-1\t3\t1\t40\t1\t0\t0\t1585\t3036\t170\t124\t-1\t4\t1\t40\t1\t1\t0\t1585\t3036\t170\t124\t-1\t5\t1\t40\t1\t1\t1\t1585\t3036\t170\t124\t66.067986\tス2\t1\t41\t0\t0\t0\t2058\t2955\t269\t141\t-1\t3\t1\t41\t1\t0\t0\t2058\t2955\t269\t141\t-1\t4\t1\t41\t1\t1\t0\t2058\t2955\t269\t141\t-1\t5\t1\t41\t1\t1\t1\t2058\t2996\t101\t74\t0.000000\tまし5\t1\t41\t1\t1\t2\t2243\t2955\t5\t141\t32.661407\t|5\t1\t41\t1\t1\t3\t2318\t2965\t9\t22\t66.732971\t|2\t1\t42\t0\t0\t0\t2465\t3179\t355\t93\t-1\t3\t1\t42\t1\t0\t0\t2465\t3179\t355\t93\t-1\t4\t1\t42\t1\t1\t0\t2465\t3179\t355\t93\t-1\t5\t1\t42\t1\t1\t1\t2465\t3179\t355\t93\t0.000000\t 、2\t1\t43\t0\t0\t0\t2935\t3253\t319\t155\t-1\t3\t1\t43\t1\t0\t0\t2935\t3253\t319\t155\t-1\t4\t1\t43\t1\t1\t0\t2935\t3253\t319\t155\t-1\t5\t1\t43\t1\t1\t1\t2935\t3253\t319\t155\t59.396343\t燃料2\t1\t44\t0\t0\t0\t78\t3173\t497\t261\t-1\t3\t1\t44\t1\t0\t0\t78\t3173\t497\t261\t-1\t4\t1\t44\t1\t1\t0\t78\t3173\t497\t261\t-1\t5\t1\t44\t1\t1\t1\t78\t3173\t497\t261\t13.157387\tPE2\t1\t45\t0\t0\t0\t2223\t3396\t158\t64\t-1\t3\t1\t45\t1\t0\t0\t2223\t3396\t158\t64\t-1\t4\t1\t45\t1\t1\t0\t2223\t3396\t158\t64\t-1\t5\t1\t45\t1\t1\t1\t2223\t3396\t158\t64\t37.549576\tーー2\t1\t46\t0\t0\t0\t2127\t3525\t58\t11\t-1\t3\t1\t46\t1\t0\t0\t2127\t3525\t58\t11\t-1\t4\t1\t46\t1\t1\t0\t2127\t3525\t58\t11\t-1\t5\t1\t46\t1\t1\t1\t2127\t3525\t58\t11\t41.917015\tーー2\t1\t47\t0\t0\t0\t3549\t3362\t607\t196\t-1\t3\t1\t47\t1\t0\t0\t3549\t3362\t607\t196\t-1\t4\t1\t47\t1\t1\t0\t3549\t3362\t607\t196\t-1\t5\t1\t47\t1\t1\t1\t3549\t3362\t607\t196\t0.000000\tバリ2\t1\t48\t0\t0\t0\t732\t3533\t314\t58\t-1\t3\t1\t48\t1\t0\t0\t732\t3533\t314\t58\t-1\t4\t1\t48\t1\t1\t0\t732\t3533\t314\t58\t-1\t5\t1\t48\t1\t1\t1\t732\t3533\t252\t58\t37.380787\tーー5\t1\t48\t1\t1\t2\t1022\t3555\t24\t7\t78.734375\tー2\t1\t49\t0\t0\t0\t2447\t3431\t884\t190\t-1\t3\t1\t49\t1\t0\t0\t2447\t3431\t884\t190\t-1\t4\t1\t49\t1\t1\t0\t2447\t3431\t884\t190\t-1\t5\t1\t49\t1\t1\t1\t2447\t3431\t884\t190\t64.129059\tペッ5\t1\t49\t1\t1\t2\t2754\t3421\t148\t220\t22.949219\t時5\t1\t49\t1\t1\t3\t2901\t3421\t129\t220\t0.000000\tタ5\t1\t49\t1\t1\t4\t3029\t3431\t294\t190\t72.971191\tンク2\t1\t50\t0\t0\t0\t1519\t3538\t640\t204\t-1\t3\t1\t50\t1\t0\t0\t1519\t3538\t640\t204\t-1\t4\t1\t50\t1\t1\t0\t1519\t3538\t640\t204\t-1\t5\t1\t50\t1\t1\t1\t1519\t3597\t124\t126\t25.399179\t呈5\t1\t50\t1\t1\t2\t1683\t3527\t187\t224\t0.000000\tZZ5\t1\t50\t1\t1\t3\t1869\t3581\t132\t142\t66.343163\t人5\t1\t50\t1\t1\t4\t2018\t3594\t132\t135\t14.615040\t。2\t1\t51\t0\t0\t0\t2295\t3651\t130\t149\t-1\t3\t1\t51\t1\t0\t0\t2295\t3651\t130\t149\t-1\t4\t1\t51\t1\t1\t0\t2295\t3651\t130\t149\t-1\t5\t1\t51\t1\t1\t1\t2295\t3651\t130\t149\t60.927643\tと5\t1\t51\t1\t1\t2\t2360\t3646\t70\t208\t33.605305\tノ2\t1\t52\t0\t0\t0\t3658\t3579\t531\t185\t-1\t3\t1\t52\t1\t0\t0\t3658\t3579\t531\t185\t-1\t4\t1\t52\t1\t1\t0\t3658\t3579\t531\t185\t-1\t5\t1\t52\t1\t1\t1\t3658\t3579\t531\t185\t34.881344\tつば2\t1\t53\t0\t0\t0\t2483\t3849\t235\t10\t-1\t3\t1\t53\t1\t0\t0\t2483\t3849\t235\t10\t-1\t4\t1\t53\t1\t1\t0\t2483\t3849\t235\t10\t-1\t5\t1\t53\t1\t1\t1\t2483\t3840\t34\t28\t44.053314\tーー5\t1\t53\t1\t1\t2\t2525\t3856\t13\t3\t67.947876\t-5\t1\t53\t1\t1\t3\t2539\t3840\t15\t28\t87.540817\tミ5\t1\t53\t1\t1\t4\t2553\t3840\t36\t28\t73.089989\tーー5\t1\t53\t1\t1\t5\t2588\t3840\t15\t28\t18.661060\tを5\t1\t53\t1\t1\t6\t2619\t3840\t24\t28\t0.000000\t-$5\t1\t53\t1\t1\t7\t2661\t3849\t1\t10\t78.795258\tチ5\t1\t53\t1\t1\t8\t2677\t3856\t8\t3\t0.000000\tょ5\t1\t53\t1\t1\t9\t2684\t3840\t24\t28\t32.333874\tこす5\t1\t53\t1\t1\t10\t2707\t3857\t11\t2\t83.983772\t=2\t1\t54\t0\t0\t0\t2609\t3654\t143\t192\t-1\t3\t1\t54\t1\t0\t0\t2609\t3654\t143\t192\t-1\t4\t1\t54\t1\t1\t0\t2609\t3654\t143\t192\t-1\t5\t1\t54\t1\t1\t1\t2609\t3654\t143\t192\t0.000000\t品2\t1\t55\t0\t0\t0\t3813\t3818\t183\t58\t-1\t3\t1\t55\t1\t0\t0\t3813\t3818\t183\t58\t-1\t4\t1\t55\t1\t1\t0\t3813\t3818\t183\t58\t-1\t5\t1\t55\t1\t1\t1\t3813\t3818\t63\t58\t22.644672\tコ5\t1\t55\t1\t1\t2\t3928\t3825\t68\t38\t4.639053\t乱2\t1\t56\t0\t0\t0\t768\t3760\t653\t138\t-1\t3\t1\t56\t1\t0\t0\t768\t3760\t653\t138\t-1\t4\t1\t56\t1\t1\t0\t768\t3760\t653\t138\t-1\t5\t1\t56\t1\t1\t1\t768\t3760\t148\t101\t49.448353\tか5\t1\t56\t1\t1\t2\t1001\t3756\t422\t158\t33.621902\tーーー2\t1\t57\t0\t0\t0\t2527\t4001\t70\t18\t-1\t3\t1\t57\t1\t0\t0\t2527\t4001\t70\t18\t-1\t4\t1\t57\t1\t1\t0\t2527\t4001\t70\t18\t-1\t5\t1\t57\t1\t1\t1\t2523\t3993\t15\t30\t84.008606\t_5\t1\t57\t1\t1\t2\t2538\t4001\t15\t18\t85.895119\tつ5\t1\t57\t1\t1\t3\t2553\t4001\t44\t18\t43.882668\tLi2\t1\t58\t0\t0\t0\t3894\t3957\t72\t63\t-1\t3\t1\t58\t1\t0\t0\t3894\t3957\t72\t63\t-1\t4\t1\t58\t1\t1\t0\t3894\t3957\t72\t63\t-1\t5\t1\t58\t1\t1\t1\t3894\t3957\t72\t63\t24.962746\tみ5\t1\t58\t1\t1\t2\t3931\t3953\t36\t71\t86.970116\t/2\t1\t59\t0\t0\t0\t1773\t4067\t66\t49\t-1\t3\t1\t59\t1\t0\t0\t1773\t4067\t66\t49\t-1\t4\t1\t59\t1\t1\t0\t1773\t4067\t66\t49\t-1\t5\t1\t59\t1\t1\t1\t1773\t4067\t41\t49\t87.281395\t信5\t1\t59\t1\t1\t2\t1835\t4081\t4\t30\t0.000000\t四2\t1\t60\t0\t0\t0\t1748\t4112\t30\t31\t-1\t3\t1\t60\t1\t0\t0\t1748\t4112\t30\t31\t-1\t4\t1\t60\t1\t1\t0\t1748\t4112\t30\t31\t-1\t5\t1\t60\t1\t1\t1\t1748\t4112\t30\t31\t46.990429\tPe2\t1\t61\t0\t0\t0\t3135\t3996\t175\t176\t-1\t3\t1\t61\t1\t0\t0\t3135\t3996\t175\t176\t-1\t4\t1\t61\t1\t1\t0\t3135\t3996\t175\t176\t-1\t5\t1\t61\t1\t1\t1\t3135\t3996\t175\t176\t0.000000\t42\t1\t62\t0\t0\t0\t3383\t4201\t623\t63\t-1\t3\t1\t62\t1\t0\t0\t3383\t4201\t623\t63\t-1\t4\t1\t62\t1\t1\t0\t3383\t4201\t623\t63\t-1\t5\t1\t62\t1\t1\t1\t3383\t4201\t623\t63\t16.401348\tme2\t1\t63\t0\t0\t0\t11\t4343\t23\t18\t-1\t3\t1\t63\t1\t0\t0\t11\t4343\t23\t18\t-1\t4\t1\t63\t1\t1\t0\t11\t4343\t23\t18\t-1\t5\t1\t63\t1\t1\t1\t7\t4338\t12\t34\t13.834372\t|2\t1\t64\t0\t0\t0\t1249\t4275\t81\t44\t-1\t3\t1\t64\t1\t0\t0\t1249\t4275\t81\t44\t-1\t4\t1\t64\t1\t1\t0\t1249\t4275\t81\t44\t-1\t5\t1\t64\t1\t1\t1\t1249\t4275\t34\t25\t42.479416\tっ5\t1\t64\t1\t1\t2\t1325\t4307\t5\t12\t25.433083\tき2\t1\t65\t0\t0\t0\t2379\t4100\t742\t248\t-1\t3\t1\t65\t1\t0\t0\t2379\t4100\t742\t248\t-1\t4\t1\t65\t1\t1\t0\t2379\t4100\t742\t248\t-1\t5\t1\t65\t1\t1\t1\t2379\t4100\t136\t204\t0.000000\tョ5\t1\t65\t1\t1\t2\t2515\t4104\t204\t177\t0.000000\t具5\t1\t65\t1\t1\t3\t2719\t4100\t102\t204\t89.614914\t箱5\t1\t65\t1\t1\t4\t2855\t4176\t17\t16\t88.442368\t|5\t1\t65\t1\t1\t5\t2975\t4201\t146\t147\t85.950912\tツ2\t1\t66\t0\t0\t0\t411\t4333\t135\t81\t-1\t3\t1\t66\t1\t0\t0\t411\t4333\t135\t81\t-1\t4\t1\t66\t1\t1\t0\t411\t4333\t135\t81\t-1\t5\t1\t66\t1\t1\t1\t411\t4333\t135\t81\t18.768616\tyo2\t1\t67\t0\t0\t0\t1209\t4348\t45\t157\t-1\t3\t1\t67\t1\t0\t0\t1209\t4348\t45\t157\t-1\t4\t1\t67\t1\t1\t0\t1209\t4348\t45\t157\t-1\t5\t1\t67\t1\t1\t1\t1209\t4348\t45\t157\t84.646751\t/2\t1\t68\t0\t0\t0\t2068\t4345\t269\t145\t-1\t3\t1\t68\t1\t0\t0\t2068\t4345\t269\t145\t-1\t4\t1\t68\t1\t1\t0\t2068\t4345\t269\t145\t-1\t5\t1\t68\t1\t1\t1\t2068\t4345\t269\t145\t80.976814\tドル2\t1\t69\t0\t0\t0\t3454\t4295\t758\t173\t-1\t3\t1\t69\t1\t0\t0\t3454\t4295\t758\t173\t-1\t4\t1\t69\t1\t1\t0\t3454\t4295\t758\t173\t-1\t5\t1\t69\t1\t1\t1\t3454\t4305\t509\t163\t69.557053\t双眼鏡5\t1\t69\t1\t1\t2\t3998\t4291\t79\t235\t2.572689\t生2\t1\t70\t0\t0\t0\t2788\t4437\t438\t145\t-1\t3\t1\t70\t1\t0\t0\t2788\t4437\t438\t145\t-1\t4\t1\t70\t1\t1\t0\t2788\t4437\t438\t145\t-1\t5\t1\t70\t1\t1\t1\t2788\t4437\t438\t145\t72.091965\t誘導5\t1\t70\t1\t1\t2\t3100\t4433\t118\t200\t73.994263\t棒2\t1\t71\t0\t0\t0\t176\t4551\t369\t115\t-1\t3\t1\t71\t1\t0\t0\t176\t4551\t369\t115\t-1\t4\t1\t71\t1\t1\t0\t176\t4551\t369\t115\t-1\t5\t1\t71\t1\t1\t1\t176\t4551\t369\t115\t16.035957\tーー2\t1\t72\t0\t0\t0\t1096\t4579\t129\t61\t-1\t3\t1\t72\t1\t0\t0\t1096\t4579\t129\t61\t-1\t4\t1\t72\t1\t1\t0\t1096\t4579\t129\t61\t-1\t5\t1\t72\t1\t1\t1\t1096\t4579\t129\t61\t34.093857\twe2\t1\t73\t0\t0\t0\t768\t4594\t137\t126\t-1\t3\t1\t73\t1\t0\t0\t768\t4594\t137\t126\t-1\t4\t1\t73\t1\t1\t0\t768\t4594\t137\t126\t-1\t5\t1\t73\t1\t1\t1\t768\t4594\t137\t126\t54.284119\tDU2\t1\t74\t0\t0\t0\t500\t4728\t38\t60\t-1\t3\t1\t74\t1\t0\t0\t500\t4728\t38\t60\t-1\t4\t1\t74\t1\t1\t0\t500\t4728\t38\t60\t-1\t5\t1\t74\t1\t1\t1\t500\t4728\t38\t60\t74.774208\tN2\t1\t75\t0\t0\t0\t2286\t4686\t571\t151\t-1\t3\t1\t75\t1\t0\t0\t2286\t4686\t571\t151\t-1\t4\t1\t75\t1\t1\t0\t2286\t4686\t571\t151\t-1\t5\t1\t75\t1\t1\t1\t2286\t4682\t323\t206\t5.597601\tみん5\t1\t75\t1\t1\t2\t2608\t4682\t241\t206\t62.001099\t引き2\t1\t76\t0\t0\t0\t12\t4705\t483\t175\t-1\t3\t1\t76\t1\t0\t0\t12\t4705\t483\t175\t-1\t4\t1\t76\t1\t1\t0\t12\t4705\t483\t175\t-1\t5\t1\t76\t1\t1\t1\t12\t4701\t114\t235\t60.942951\tレル5\t1\t76\t1\t1\t2\t125\t4705\t370\t175\t46.037682\tレシ2\t1\t77\t0\t0\t0\t1417\t4715\t160\t157\t-1\t3\t1\t77\t1\t0\t0\t1417\t4715\t160\t157\t-1\t4\t1\t77\t1\t1\t0\t1417\t4715\t160\t157\t-1\t5\t1\t77\t1\t1\t1\t1417\t4715\t160\t157\t63.556480\t火2\t1\t78\t0\t0\t0\t1350\t4864\t362\t69\t-1\t3\t1\t78\t1\t0\t0\t1350\t4864\t362\t69\t-1\t4\t1\t78\t1\t1\t0\t1350\t4864\t362\t69\t-1\t5\t1\t78\t1\t1\t1\t1350\t4864\t362\t69\t52.602425\tここ2\t1\t79\t0\t0\t0\t2406\t4872\t243\t105\t-1\t3\t1\t79\t1\t0\t0\t2406\t4872\t245\t105\t-1\t4\t1\t79\t1\t1\t0\t2406\t4872\t243\t105\t-1\t5\t1\t79\t1\t1\t1\t2406\t4872\t243\t105\t0.000000\t=ー2\t1\t80\t0\t0\t0\t3110\t4971\t100\t60\t-1\t3\t1\t80\t1\t0\t0\t3110\t4971\t179\t60\t-1\t4\t1\t80\t1\t1\t0\t3110\t4971\t100\t60\t-1\t5\t1\t80\t1\t1\t1\t3110\t4971\t55\t60\t52.650902\tここ5\t1\t80\t1\t1\t2\t3165\t4984\t45\t43\t20.331730\t52\t1\t81\t0\t0\t0\t3724\t4971\t387\t151\t-1\t3\t1\t81\t1\t0\t0\t3724\t4971\t387\t151\t-1\t4\t1\t81\t1\t1\t0\t3724\t4971\t387\t151\t-1\t5\t1\t81\t1\t1\t1\t3720\t4967\t153\t166\t34.020344\thn2\t1\t82\t0\t0\t0\t3135\t5062\t325\t126\t-1\t3\t1\t82\t1\t0\t0\t3135\t5062\t325\t126\t-1\t4\t1\t82\t1\t1\t0\t3135\t5062\t325\t126\t-1\t5\t1\t82\t1\t1\t1\t3135\t5062\t325\t126\t0.000000\tジ5\t1\t82\t1\t1\t2\t3360\t5058\t101\t172\t0.000000\t22\t1\t83\t0\t0\t0\t2135\t5257\t94\t95\t-1\t3\t1\t83\t1\t0\t0\t2135\t5257\t94\t95\t-1\t4\t1\t83\t1\t1\t0\t2135\t5257\t94\t95\t-1\t5\t1\t83\t1\t1\t1\t2135\t5305\t8\t33\t23.225946\t/5\t1\t83\t1\t1\t2\t2168\t5257\t61\t95\t21.709381\tず2\t1\t84\t0\t0\t0\t3118\t5202\t243\t254\t-1\t3\t1\t84\t1\t0\t0\t3118\t5202\t243\t254\t-1\t4\t1\t84\t1\t1\t0\t3118\t5202\t243\t254\t-1\t5\t1\t84\t1\t1\t1\t3118\t5202\t243\t254\t18.659182\t22\t1\t85\t0\t0\t0\t1543\t5550\t44\t18\t-1\t3\t1\t85\t1\t0\t0\t1543\t5550\t44\t18\t-1\t4\t1\t85\t1\t1\t0\t1543\t5550\t44\t18\t-1\t5\t1\t85\t1\t1\t1\t1539\t5546\t15\t29\t39.598125\t、5\t1\t85\t1\t1\t2\t1543\t5550\t44\t18\t52.552193\tで2\t1\t86\t0\t0\t0\t1282\t5608\t63\t26\t-1\t3\t1\t86\t1\t0\t0\t1282\t5608\t63\t26\t-1\t4\t1\t86\t1\t1\t0\t1282\t5608\t63\t26\t-1\t5\t1\t86\t1\t1\t1\t1282\t5617\t20\t17\t0.000000\tこ5\t1\t86\t1\t1\t2\t1310\t5608\t35\t18\t6.264687\t、_2\t1\t87\t0\t0\t0\t1292\t5545\t53\t31\t-1\t3\t1\t87\t1\t0\t0\t1292\t5545\t53\t31\t-1\t4\t1\t87\t1\t1\t0\t1292\t5545\t53\t31\t-1\t5\t1\t87\t1\t1\t1\t1292\t5545\t53\t31\t55.662117\tー/2\t1\t88\t0\t0\t0\t2448\t5429\t604\t228\t-1\t3\t1\t88\t1\t0\t0\t1778\t5405\t1274\t252\t-1\t4\t1\t88\t1\t1\t0\t2448\t5429\t604\t228\t-1\t5\t1\t88\t1\t1\t1\t2448\t5567\t143\t90\t15.275984\t85\t1\t88\t1\t1\t2\t2697\t5429\t49\t41\t14.579668\t25\t1\t88\t1\t1\t3\t2988\t5472\t64\t49\t47.102135\t42\t1\t89\t0\t0\t0\t1236\t5614\t331\t185\t-1\t3\t1\t89\t1\t0\t0\t1236\t5614\t331\t185\t-1\t4\t1\t89\t1\t1\t0\t1236\t5614\t331\t185\t-1\t5\t1\t89\t1\t1\t1\t1236\t5614\t331\t185\t0.000000\t紀5\t1\t89\t1\t1\t2\t1450\t5610\t120\t238\t0.000000\t究2\t1\t90\t0\t0\t0\t2738\t5738\t81\t22\t-1\t3\t1\t90\t1\t0\t0\t2738\t5738\t81\t22\t-1\t4\t1\t90\t1\t1\t0\t2738\t5738\t81\t22\t-1\t5\t1\t90\t1\t1\t1\t2738\t5746\t31\t13\t0.000000\tの2\t1\t91\t0\t0\t0\t572\t5600\t234\t223\t-1\t3\t1\t91\t1\t0\t0\t572\t5600\t234\t223\t-1\t4\t1\t91\t1\t1\t0\t572\t5600\t234\t223\t-1\t5\t1\t91\t1\t1\t1\t572\t5600\t234\t223\t0.000000\t紹5\t1\t91\t1\t1\t2\t721\t5595\t78\t307\t82.195267\t|2\t1\t92\t0\t0\t0\t909\t5656\t324\t188\t-1\t3\t1\t92\t1\t0\t0\t909\t5656\t324\t188\t-1\t4\t1\t92\t1\t1\t0\t909\t5656\t324\t188\t-1\t5\t1\t92\t1\t1\t1\t909\t5656\t324\t188\t95.294960\t信号2\t1\t93\t0\t0\t0\t2674\t5791\t278\t30\t-1\t3\t1\t93\t1\t0\t0\t2674\t5791\t278\t30\t-1\t4\t1\t93\t1\t1\t0\t2674\t5791\t278\t30\t-1\t5\t1\t93\t1\t1\t1\t2674\t5791\t80\t22\t89.071808\tゃ5\t1\t93\t1\t1\t2\t2813\t5787\t85\t44\t42.379570\tam5\t1\t93\t1\t1\t3\t2923\t5803\t29\t18\t16.076393\tユ2\t1\t94\t0\t0\t0\t4116\t5765\t40\t51\t-1\t3\t1\t94\t1\t0\t0\t4116\t5765\t40\t51\t-1\t4\t1\t94\t1\t1\t0\t4116\t5765\t40\t51\t-1\t5\t1\t94\t1\t1\t1\t4116\t5765\t40\t51\t50.144024\t12\t1\t95\t0\t0\t0\t707\t5871\t74\t48\t-1\t3\t1\t95\t1\t0\t0\t707\t5871\t74\t48\t-1\t4\t1\t95\t1\t1\t0\t707\t5871\t74\t48\t-1\t5\t1\t95\t1\t1\t1\t707\t5871\t74\t48\t89.842522\tきり2\t1\t96\t0\t0\t0\t1687\t5656\t653\t233\t-1\t3\t1\t96\t1\t0\t0\t1687\t5656\t653\t233\t-1\t4\t1\t96\t1\t1\t0\t1687\t5656\t653\t233\t-1\t5\t1\t96\t1\t1\t1\t1687\t5656\t653\t233\t8.125057\tSZ5\t1\t96\t1\t1\t2\t1946\t5652\t132\t263\t88.570457\tツ5\t1\t96\t1\t1\t3\t2077\t5652\t132\t263\t86.401413\tン5\t1\t96\t1\t1\t4\t2209\t5652\t132\t263\t66.236153\t/2\t1\t97\t0\t0\t0\t424\t5872\t179\t168\t-1\t3\t1\t97\t1\t0\t0\t424\t5872\t179\t168\t-1\t4\t1\t97\t1\t1\t0\t424\t5872\t179\t168\t-1\t5\t1\t97\t1\t1\t1\t424\t5872\t179\t168\t83.398369\tウ2\t1\t98\t0\t0\t0\t761\t5977\t68\t22\t-1\t3\t1\t98\t1\t0\t0\t761\t5977\t68\t22\t-1\t4\t1\t98\t1\t1\t0\t761\t5977\t68\t22\t-1\t5\t1\t98\t1\t1\t1\t761\t5982\t20\t14\t48.238266\t<",
+      "confidence": 36.3,
+      "bounds": {
+        "left": 444,
+        "top": 839,
+        "right": 485,
+        "bottom": 849
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "缶詰人",
+      "confidence": 43.6,
+      "bounds": {
+        "left": 963,
+        "top": 1954,
+        "right": 1150,
+        "bottom": 2057
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_5_item_29",
+        "itemName": "缶詰",
+        "similarity": 0.8
+      }
+    },
+    {
+      "text": "メガホシ",
+      "confidence": 36.8,
+      "bounds": {
+        "left": 719,
+        "top": 1963,
+        "right": 927,
+        "bottom": 2044
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_5_item_28",
+        "itemName": "メガホン",
+        "similarity": 0.75
+      }
+    },
+    {
+      "text": "Ng/",
+      "confidence": 53.7,
+      "bounds": {
+        "left": 517,
+        "top": 1975,
+        "right": 605,
+        "bottom": 2010
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "食料稲上",
+      "confidence": 30.0,
+      "bounds": {
+        "left": 360,
+        "top": 2025,
+        "right": 624,
+        "bottom": 2120
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_5_item_27",
+        "itemName": "食料箱",
+        "similarity": 0.571
+      }
+    },
+    {
+      "text": "のさ",
+      "confidence": 7.3,
+      "bounds": {
+        "left": 284,
+        "top": 2033,
+        "right": 322,
+        "bottom": 2054
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ve-痢",
+      "confidence": 22.4,
+      "bounds": {
+        "left": 1078,
+        "top": 2051,
+        "right": 1104,
+        "bottom": 2063
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "と",
+      "confidence": 31.6,
+      "bounds": {
+        "left": 284,
+        "top": 2052,
+        "right": 305,
+        "bottom": 2060
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "YSd",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 829,
+        "top": 2054,
+        "right": 887,
+        "bottom": 2074
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "和ポ",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 14,
+        "top": 2060,
+        "right": 41,
+        "bottom": 2098
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "wm",
+      "confidence": 33.5,
+      "bounds": {
+        "left": 285,
+        "top": 2078,
+        "right": 299,
+        "bottom": 2088
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ここ】",
+      "confidence": 32.2,
+      "bounds": {
+        "left": 12,
+        "top": 2088,
+        "right": 42,
+        "bottom": 2103
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "タャーズ",
+      "confidence": 71.3,
+      "bounds": {
+        "left": 288,
+        "top": 2089,
+        "right": 325,
+        "bottom": 2103
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ーー",
+      "confidence": 5.6,
+      "bounds": {
+        "left": 831,
+        "top": 2089,
+        "right": 930,
+        "bottom": 2114
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_5_item_13",
+        "itemName": "ロードコーン",
+        "similarity": 0.5
+      }
+    },
+    {
+      "text": "に",
+      "confidence": 33.4,
+      "bounds": {
+        "left": 4,
+        "top": 2107,
+        "right": 38,
+        "bottom": 2128
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "EN",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 896,
+        "top": 2108,
+        "right": 935,
+        "bottom": 2128
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "区",
+      "confidence": 3.2,
+      "bounds": {
+        "left": 736,
+        "top": 2121,
+        "right": 922,
+        "bottom": 2241
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "入",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 576,
+        "top": 2160,
+        "right": 640,
+        "bottom": 2219
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_5_item_33",
+        "itemName": "入館証",
+        "similarity": 0.5
+      }
+    },
+    {
+      "text": "非常廊",
+      "confidence": 87.5,
+      "bounds": {
+        "left": 1156,
+        "top": 2173,
+        "right": 1347,
+        "bottom": 2266
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_5_item_31",
+        "itemName": "非常食",
+        "similarity": 0.667
+      }
+    },
+    {
+      "text": "ョシ",
+      "confidence": 69.1,
+      "bounds": {
+        "left": 962,
+        "top": 2229,
+        "right": 1019,
+        "bottom": 2283
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "記",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 959,
+        "top": 2278,
+        "right": 1002,
+        "bottom": 2327
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "軸送",
+      "confidence": 65.5,
+      "bounds": {
+        "left": 306,
+        "top": 2301,
+        "right": 425,
+        "bottom": 2380
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ん凍",
+      "confidence": 34.8,
+      "bounds": {
+        "left": 1005,
+        "top": 2304,
+        "right": 1082,
+        "bottom": 2343
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "を",
+      "confidence": 54.0,
+      "bounds": {
+        "left": 1163,
+        "top": 2310,
+        "right": 1182,
+        "bottom": 2319
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "車計",
+      "confidence": 46.1,
+      "bounds": {
+        "left": 1162,
+        "top": 2345,
+        "right": 1319,
+        "bottom": 2398
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_5_item_32",
+        "itemName": "車キー",
+        "similarity": 0.4
+      }
+    }
+  ]
+}
