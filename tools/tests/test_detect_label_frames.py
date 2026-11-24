@@ -7,7 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import cv2
 import numpy as np
 
-from detect_label_frames import align_annotated_to_base, detect_label_quadrilaterals
+from detect_label_frames import align_annotated_to_base, detect_label_quadrilaterals, detect_seeded_label_quadrilaterals
 
 
 class DetectLabelFramesTest(unittest.TestCase):
@@ -17,6 +17,16 @@ class DetectLabelFramesTest(unittest.TestCase):
         base = np.zeros((100, 50, 3), dtype=np.uint8)
         aligned = align_annotated_to_base(annotated, base)
         self.assertEqual(aligned.shape, base.shape)
+
+    def test_local_seed_detection_finds_rotated_label(self):
+        base = np.full((500, 500, 3), (180, 180, 180), dtype=np.uint8)
+        annotated = base.copy()
+        rotated = cv2.boxPoints(((175, 130), (150, 48), 17)).astype(np.int32)
+        cv2.fillConvexPoly(annotated, rotated, (190, 80, 210))
+        items = [{"sourceRect": [100, 100, 250, 160]}]
+        found = detect_seeded_label_quadrilaterals(annotated, items, {"width": 500, "height": 500}, 500, 500)
+        self.assertIsNotNone(found[0])
+        self.assertEqual(len(found[0]["points"]), 4)
 
     def test_rejects_different_aspect_ratios(self):
         annotated = np.zeros((200, 100, 3), dtype=np.uint8)
