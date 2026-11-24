@@ -64,12 +64,17 @@
       "unannotatedImages": [
         "https://img.atwiki.jp/eden_jp/attach/46/124/%E7%AC%AC5%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
       ],
-      "status": "candidate_label_boxes_drafted_pending_visual_review",
+      "status": "automatic_label_frame_detection_generated_pending_visual_review",
       "reviewNotes": [
         "信号紅炎を赤ペンと間違えないよう注意"
       ],
       "candidateDataset": "app/src/main/assets/stages/chapter_5_label_boxes.candidates.json",
-      "previewOutput": "reference/chapter_05/label_box_candidates.jpg"
+      "previewOutput": "reference/chapter_05/label_box_candidates.jpg",
+      "detectedAnnotatedReference": "reference/chapter_05/annotated.jpg",
+      "detectedCandidateDataset": "reference/chapter_05/detected_label_frames.candidates.json",
+      "detectedPreviewOutput": "reference/chapter_05/detected_label_frames_preview.jpg",
+      "detectedItemCount": 30,
+      "unmatchedItemCount": 4
     },
     {
       "stageId": "chapter_6",
@@ -80,12 +85,17 @@
       "unannotatedImages": [
         "https://img.atwiki.jp/eden_jp/attach/46/149/%E7%AC%AC6%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
       ],
-      "status": "candidate_label_boxes_drafted_pending_visual_review",
+      "status": "automatic_label_frame_detection_generated_pending_visual_review",
       "reviewNotes": [
         "ショベルと風車は背景に溶け込みやすい"
       ],
       "candidateDataset": "app/src/main/assets/stages/chapter_6_label_boxes.candidates.json",
-      "previewOutput": "reference/chapter_06/label_box_candidates.jpg"
+      "previewOutput": "reference/chapter_06/label_box_candidates.jpg",
+      "detectedAnnotatedReference": "reference/chapter_06/annotated.jpg",
+      "detectedCandidateDataset": "reference/chapter_06/detected_label_frames.candidates.json",
+      "detectedPreviewOutput": "reference/chapter_06/detected_label_frames_preview.jpg",
+      "detectedItemCount": 32,
+      "unmatchedItemCount": 0
     },
     {
       "stageId": "chapter_7",
