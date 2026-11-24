@@ -55,6 +55,7 @@ jobs:
           set -euo pipefail
           python tools/ocr_reference_labels.py \
             --image reference/chapter_05/annotated.jpg \
+            --base reference/chapter_05/base.jpg \
             --seeds app/src/main/assets/stages/chapter_5_label_boxes.candidates.json \
             --output reference/chapter_05/ocr_text_regions.json \
             --preview reference/chapter_05/ocr_text_regions_preview.jpg
