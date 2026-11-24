@@ -8,7 +8,7 @@
   "dataStatus": "automatically_detected_candidates_pending_visual_review",
   "detectionMethod": "seeded_paired_image_difference_quadrilateral",
   "detectedShapeCount": 30,
-  "differenceMaskPixelCount": 2238243,
+  "differenceMaskPixelCount": 1714249,
   "matchedItemCount": 30,
   "unmatchedItemCount": 2,
   "detectedShapes": [
@@ -18,7 +18,7 @@
         471.0
       ],
       "area": 38988.0,
-      "rectangularity": 0.8117,
+      "rectangularity": 0.6798,
       "aspectRatio": 3.0,
       "bounds": [
         45,
@@ -29,32 +29,32 @@
     },
     {
       "center": [
-        924.5,
+        920.5,
         654.0
       ],
-      "area": 62602.0,
-      "rectangularity": 0.8625,
-      "aspectRatio": 1.2257,
+      "area": 60794.0,
+      "rectangularity": 0.7809,
+      "aspectRatio": 1.1903,
       "bounds": [
         786,
         541,
-        1064,
+        1056,
         768
       ]
     },
     {
       "center": [
         1267.0,
-        694.5
+        688.0
       ],
-      "area": 55760.0,
-      "rectangularity": 0.8399,
-      "aspectRatio": 1.3268,
+      "area": 52224.0,
+      "rectangularity": 0.7915,
+      "aspectRatio": 1.4167,
       "bounds": [
         1131,
         592,
         1404,
-        798
+        785
       ]
     },
     {
@@ -62,8 +62,8 @@
         834.5,
         1037.0
       ],
-      "area": 35456.0,
-      "rectangularity": 0.8053,
+      "area": 35455.99,
+      "rectangularity": 0.6898,
       "aspectRatio": 2.1641,
       "bounds": [
         696,
@@ -75,14 +75,14 @@
     {
       "center": [
         435.5,
-        1297.0
+        1303.5
       ],
-      "area": 50666.0,
-      "rectangularity": 0.7963,
-      "aspectRatio": 2.1364,
+      "area": 46389.0,
+      "rectangularity": 0.7108,
+      "aspectRatio": 2.3333,
       "bounds": [
         271,
-        1220,
+        1233,
         601,
         1375
       ]
@@ -92,8 +92,8 @@
         323.0,
         1411.5
       ],
-      "area": 37506.0,
-      "rectangularity": 0.8961,
+      "area": 37505.98,
+      "rectangularity": 0.7293,
       "aspectRatio": 2.1203,
       "bounds": [
         182,
@@ -108,7 +108,7 @@
         1505.0
       ],
       "area": 58618.0,
-      "rectangularity": 0.8535,
+      "rectangularity": 0.7625,
       "aspectRatio": 2.3481,
       "bounds": [
         79,
@@ -120,16 +120,16 @@
     {
       "center": [
         399.0,
-        1536.5
+        1533.5
       ],
-      "area": 26909.99,
-      "rectangularity": 0.9475,
-      "aspectRatio": 1.413,
+      "area": 26081.99,
+      "rectangularity": 0.7781,
+      "aspectRatio": 1.3696,
       "bounds": [
         330,
         1439,
         469,
-        1635
+        1629
       ]
     },
     {
@@ -137,8 +137,8 @@
         657.5,
         1546.5
       ],
-      "area": 30753.0,
-      "rectangularity": 0.9679,
+      "area": 30752.99,
+      "rectangularity": 0.8708,
       "aspectRatio": 1.3137,
       "bounds": [
         581,
@@ -153,7 +153,7 @@
         1443.0
       ],
       "area": 47234.0,
-      "rectangularity": 0.8683,
+      "rectangularity": 0.7382,
       "aspectRatio": 1.0813,
       "bounds": [
         891,
@@ -167,8 +167,8 @@
         1280.0,
         1563.0
       ],
-      "area": 41819.99,
-      "rectangularity": 0.8733,
+      "area": 41820.0,
+      "rectangularity": 0.7042,
       "aspectRatio": 1.4471,
       "bounds": [
         1157,
@@ -183,7 +183,7 @@
         1655.0
       ],
       "area": 50560.0,
-      "rectangularity": 0.9304,
+      "rectangularity": 0.7634,
       "aspectRatio": 2.0253,
       "bounds": [
         676,
@@ -197,8 +197,8 @@
         875.5,
         1722.5
       ],
-      "area": 34054.99,
-      "rectangularity": 0.985,
+      "area": 34055.0,
+      "rectangularity": 0.8553,
       "aspectRatio": 1.7626,
       "bounds": [
         806,
@@ -209,12 +209,12 @@
     },
     {
       "center": [
-        1155.0,
-        1781.0
+        1155.02,
+        1781.29
       ],
-      "area": 18695.99,
-      "rectangularity": 0.92,
-      "aspectRatio": 1.4386,
+      "area": 18629.16,
+      "rectangularity": 0.7294,
+      "aspectRatio": 1.4684,
       "bounds": [
         1073,
         1724,
@@ -228,7 +228,7 @@
         1791.5
       ],
       "area": 37799.99,
-      "rectangularity": 0.8946,
+      "rectangularity": 0.7471,
       "aspectRatio": 1.0582,
       "bounds": [
         1203,
@@ -242,8 +242,8 @@
         539.0,
         1777.5
       ],
-      "area": 46199.98,
-      "rectangularity": 0.8275,
+      "area": 46200.0,
+      "rectangularity": 0.6728,
       "aspectRatio": 1.697,
       "bounds": [
         399,
@@ -254,12 +254,12 @@
     },
     {
       "center": [
-        424.5,
-        1878.5
+        424.44,
+        1876.83
       ],
-      "area": 29845.0,
-      "rectangularity": 0.7066,
-      "aspectRatio": 1.8504,
+      "area": 29787.95,
+      "rectangularity": 0.6078,
+      "aspectRatio": 1.9214,
       "bounds": [
         307,
         1815,
@@ -269,14 +269,14 @@
     },
     {
       "center": [
-        86.5,
+        88.5,
         1933.5
       ],
-      "area": 40655.0,
-      "rectangularity": 0.7562,
-      "aspectRatio": 1.3584,
+      "area": 39715.0,
+      "rectangularity": 0.7289,
+      "aspectRatio": 1.3905,
       "bounds": [
-        0,
+        4,
         1816,
         174,
         2052
@@ -284,12 +284,12 @@
     },
     {
       "center": [
-        248.5,
-        1930.0
+        248.45,
+        1929.06
       ],
-      "area": 48509.99,
-      "rectangularity": 0.8663,
-      "aspectRatio": 1.2374,
+      "area": 48141.21,
+      "rectangularity": 0.7124,
+      "aspectRatio": 1.3514,
       "bounds": [
         126,
         1831,
@@ -303,7 +303,7 @@
         1954.5
       ],
       "area": 57969.0,
-      "rectangularity": 0.8198,
+      "rectangularity": 0.6196,
       "aspectRatio": 1.9825,
       "bounds": [
         447,
@@ -318,7 +318,7 @@
         1965.5
       ],
       "area": 49000.0,
-      "rectangularity": 0.8732,
+      "rectangularity": 0.8101,
       "aspectRatio": 1.6,
       "bounds": [
         733,
@@ -332,8 +332,8 @@
         1259.0,
         1943.0
       ],
-      "area": 52416.0,
-      "rectangularity": 0.8921,
+      "area": 52415.98,
+      "rectangularity": 0.7828,
       "aspectRatio": 1.5824,
       "bounds": [
         1115,
@@ -347,8 +347,8 @@
         1136.5,
         2056.0
       ],
-      "area": 49700.0,
-      "rectangularity": 0.8942,
+      "area": 49699.98,
+      "rectangularity": 0.7975,
       "aspectRatio": 2.5357,
       "bounds": [
         959,
@@ -363,7 +363,7 @@
         2043.0
       ],
       "area": 37800.0,
-      "rectangularity": 0.9147,
+      "rectangularity": 0.4513,
       "aspectRatio": 1.9286,
       "bounds": [
         420,
@@ -378,7 +378,7 @@
         2122.0
       ],
       "area": 47600.0,
-      "rectangularity": 0.8928,
+      "rectangularity": 0.8029,
       "aspectRatio": 1.6471,
       "bounds": [
         566,
@@ -393,7 +393,7 @@
         2123.0
       ],
       "area": 61851.98,
-      "rectangularity": 0.9016,
+      "rectangularity": 0.8755,
       "aspectRatio": 1.75,
       "bounds": [
         867,
@@ -407,8 +407,8 @@
         454.5,
         2275.0
       ],
-      "area": 66443.98,
-      "rectangularity": 0.8257,
+      "area": 66444.0,
+      "rectangularity": 0.6862,
       "aspectRatio": 1.7296,
       "bounds": [
         285,
@@ -423,7 +423,7 @@
         2210.5
       ],
       "area": 61658.98,
-      "rectangularity": 0.9126,
+      "rectangularity": 0.8232,
       "aspectRatio": 1.2624,
       "bounds": [
         569,
@@ -434,31 +434,31 @@
     },
     {
       "center": [
-        697.5,
-        2409.0
+        680.45,
+        2407.31
       ],
-      "area": 32630.0,
-      "rectangularity": 0.7969,
-      "aspectRatio": 1.9308,
+      "area": 28404.87,
+      "rectangularity": 0.868,
+      "aspectRatio": 1.7632,
       "bounds": [
         572,
         2344,
-        824,
+        792,
         2475
       ]
     },
     {
       "center": [
-        1141.0,
+        1140.5,
         2376.5
       ],
-      "area": 55968.0,
-      "rectangularity": 0.8317,
-      "aspectRatio": 2.2138,
+      "area": 55809.0,
+      "rectangularity": 0.7356,
+      "aspectRatio": 2.2075,
       "bounds": [
         965,
         2297,
-        1318,
+        1317,
         2457
       ]
     }
@@ -492,7 +492,7 @@
         "right": 0.275837,
         "bottom": 0.211623
       },
-      "rectangularity": 0.8117,
+      "rectangularity": 0.6798,
       "aspectRatio": 3.0
     },
     {
@@ -505,11 +505,11 @@
           0.216834
         ],
         [
-          0.757662,
+          0.75196,
           0.216834
         ],
         [
-          0.757662,
+          0.75196,
           0.307415
         ],
         [
@@ -520,11 +520,11 @@
       "bounds": {
         "left": 0.560228,
         "top": 0.216834,
-        "right": 0.757662,
+        "right": 0.75196,
         "bottom": 0.307415
       },
-      "rectangularity": 0.8625,
-      "aspectRatio": 1.2257
+      "rectangularity": 0.7809,
+      "aspectRatio": 1.1903
     },
     {
       "itemId": "chapter_6_item_03",
@@ -541,21 +541,21 @@
         ],
         [
           1.0,
-          0.319439
+          0.314228
         ],
         [
           0.80613,
-          0.319439
+          0.314228
         ]
       ],
       "bounds": {
         "left": 0.80613,
         "top": 0.237275,
         "right": 1.0,
-        "bottom": 0.319439
+        "bottom": 0.314228
       },
-      "rectangularity": 0.8399,
-      "aspectRatio": 1.3268
+      "rectangularity": 0.7915,
+      "aspectRatio": 1.4167
     },
     {
       "itemId": "chapter_6_item_04",
@@ -564,18 +564,18 @@
       "corners": [
         [
           0.49608,
-          0.38998
-        ],
-        [
-          0.693514,
-          0.38998
-        ],
-        [
-          0.693514,
           0.441283
         ],
         [
           0.49608,
+          0.38998
+        ],
+        [
+          0.693514,
+          0.38998
+        ],
+        [
+          0.693514,
           0.441283
         ]
       ],
@@ -585,7 +585,7 @@
         "right": 0.693514,
         "bottom": 0.441283
       },
-      "rectangularity": 0.8053,
+      "rectangularity": 0.6898,
       "aspectRatio": 2.1641
     },
     {
@@ -595,11 +595,11 @@
       "corners": [
         [
           0.193158,
-          0.488978
+          0.494188
         ],
         [
           0.427655,
-          0.488978
+          0.494188
         ],
         [
           0.427655,
@@ -612,12 +612,12 @@
       ],
       "bounds": {
         "left": 0.193158,
-        "top": 0.488978,
+        "top": 0.494188,
         "right": 0.427655,
         "bottom": 0.550701
       },
-      "rectangularity": 0.7963,
-      "aspectRatio": 2.1364
+      "rectangularity": 0.7108,
+      "aspectRatio": 2.3333
     },
     {
       "itemId": "chapter_6_item_06",
@@ -647,7 +647,7 @@
         "right": 0.33072,
         "bottom": 0.592385
       },
-      "rectangularity": 0.8961,
+      "rectangularity": 0.7293,
       "aspectRatio": 2.1203
     },
     {
@@ -683,7 +683,7 @@
         "right": 0.320741,
         "bottom": 0.63487
       },
-      "rectangularity": 0.8535,
+      "rectangularity": 0.7625,
       "aspectRatio": 2.3481
     },
     {
@@ -693,7 +693,7 @@
       "corners": [
         [
           0.23521,
-          0.65491
+          0.652505
         ],
         [
           0.23521,
@@ -705,17 +705,17 @@
         ],
         [
           0.333571,
-          0.65491
+          0.652505
         ]
       ],
       "bounds": {
         "left": 0.23521,
         "top": 0.576754,
         "right": 0.333571,
-        "bottom": 0.65491
+        "bottom": 0.652505
       },
-      "rectangularity": 0.9475,
-      "aspectRatio": 1.413
+      "rectangularity": 0.7781,
+      "aspectRatio": 1.3696
     },
     {
       "itemId": "chapter_6_item_10",
@@ -724,18 +724,18 @@
       "corners": [
         [
           0.414113,
-          0.579559
-        ],
-        [
-          0.523165,
-          0.579559
-        ],
-        [
-          0.523165,
           0.66012
         ],
         [
           0.414113,
+          0.579559
+        ],
+        [
+          0.523165,
+          0.579559
+        ],
+        [
+          0.523165,
           0.66012
         ]
       ],
@@ -745,7 +745,7 @@
         "right": 0.523165,
         "bottom": 0.66012
       },
-      "rectangularity": 0.9679,
+      "rectangularity": 0.8708,
       "aspectRatio": 1.3137
     },
     {
@@ -776,7 +776,7 @@
         "right": 0.784034,
         "bottom": 0.623647
       },
-      "rectangularity": 0.8683,
+      "rectangularity": 0.7382,
       "aspectRatio": 1.0813
     },
     {
@@ -807,7 +807,7 @@
         "right": 1.0,
         "bottom": 0.660521
       },
-      "rectangularity": 0.8733,
+      "rectangularity": 0.7042,
       "aspectRatio": 1.4471
     },
     {
@@ -838,7 +838,7 @@
         "right": 0.709907,
         "bottom": 0.69499
       },
-      "rectangularity": 0.9304,
+      "rectangularity": 0.7634,
       "aspectRatio": 2.0253
     },
     {
@@ -869,7 +869,7 @@
         "right": 0.673557,
         "bottom": 0.739479
       },
-      "rectangularity": 0.985,
+      "rectangularity": 0.8553,
       "aspectRatio": 1.7626
     },
     {
@@ -878,20 +878,20 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.76479,
-          0.736673
+          0.763801,
+          0.736093
         ],
         [
-          0.76479,
-          0.690982
+          0.764817,
+          0.690952
         ],
         [
-          0.881682,
-          0.690982
+          0.882692,
+          0.691791
         ],
         [
-          0.881682,
-          0.736673
+          0.881676,
+          0.736932
         ]
       ],
       "bounds": {
@@ -900,8 +900,8 @@
         "right": 0.881682,
         "bottom": 0.736673
       },
-      "rectangularity": 0.92,
-      "aspectRatio": 1.4386
+      "rectangularity": 0.7294,
+      "aspectRatio": 1.4684
     },
     {
       "itemId": "chapter_6_item_16",
@@ -910,18 +910,18 @@
       "corners": [
         [
           0.857448,
-          0.68016
-        ],
-        [
-          1.0,
-          0.68016
-        ],
-        [
-          1.0,
           0.755912
         ],
         [
           0.857448,
+          0.68016
+        ],
+        [
+          1.0,
+          0.68016
+        ],
+        [
+          1.0,
           0.755912
         ]
       ],
@@ -931,7 +931,7 @@
         "right": 1.0,
         "bottom": 0.755912
       },
-      "rectangularity": 0.8946,
+      "rectangularity": 0.7471,
       "aspectRatio": 1.0582
     },
     {
@@ -962,7 +962,7 @@
         "right": 0.483963,
         "bottom": 0.745491
       },
-      "rectangularity": 0.8275,
+      "rectangularity": 0.6728,
       "aspectRatio": 1.697
     },
     {
@@ -971,20 +971,20 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.218817,
-          0.727455
+          0.215787,
+          0.728951
         ],
         [
-          0.386315,
-          0.727455
+          0.386204,
+          0.725647
         ],
         [
-          0.386315,
-          0.778357
+          0.389263,
+          0.775522
         ],
         [
-          0.218817,
-          0.778357
+          0.218846,
+          0.778826
         ]
       ],
       "bounds": {
@@ -993,8 +993,8 @@
         "right": 0.386315,
         "bottom": 0.778357
       },
-      "rectangularity": 0.7066,
-      "aspectRatio": 1.8504
+      "rectangularity": 0.6078,
+      "aspectRatio": 1.9214
     },
     {
       "itemId": "chapter_6_item_19",
@@ -1002,7 +1002,7 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          -0.0,
+          0.002851,
           0.727856
         ],
         [
@@ -1014,18 +1014,18 @@
           0.822044
         ],
         [
-          0.0,
+          0.002851,
           0.822044
         ]
       ],
       "bounds": {
-        "left": 0.0,
+        "left": 0.002851,
         "top": 0.727856,
         "right": 0.123307,
         "bottom": 0.822044
       },
-      "rectangularity": 0.7562,
-      "aspectRatio": 1.3584
+      "rectangularity": 0.7289,
+      "aspectRatio": 1.3905
     },
     {
       "itemId": "chapter_6_item_20",
@@ -1033,20 +1033,20 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.089808,
-          0.813226
+          0.082775,
+          0.738084
         ],
         [
-          0.089808,
-          0.733868
+          0.264325,
+          0.732711
         ],
         [
-          0.264433,
-          0.733868
+          0.271396,
+          0.808253
         ],
         [
-          0.264433,
-          0.813226
+          0.089845,
+          0.813626
         ]
       ],
       "bounds": {
@@ -1055,8 +1055,8 @@
         "right": 0.264433,
         "bottom": 0.813226
       },
-      "rectangularity": 0.8663,
-      "aspectRatio": 1.2374
+      "rectangularity": 0.7124,
+      "aspectRatio": 1.3514
     },
     {
       "itemId": "chapter_6_item_21",
@@ -1086,7 +1086,7 @@
         "right": 0.560228,
         "bottom": 0.817635
       },
-      "rectangularity": 0.8198,
+      "rectangularity": 0.6196,
       "aspectRatio": 1.9825
     },
     {
@@ -1117,7 +1117,7 @@
         "right": 0.722024,
         "bottom": 0.822846
       },
-      "rectangularity": 0.8732,
+      "rectangularity": 0.8101,
       "aspectRatio": 1.6
     },
     {
@@ -1153,7 +1153,7 @@
         "right": 1.0,
         "bottom": 0.81523
       },
-      "rectangularity": 0.8921,
+      "rectangularity": 0.7828,
       "aspectRatio": 1.5824
     },
     {
@@ -1184,7 +1184,7 @@
         "right": 0.936565,
         "bottom": 0.852104
       },
-      "rectangularity": 0.8942,
+      "rectangularity": 0.7975,
       "aspectRatio": 2.5357
     },
     {
@@ -1215,7 +1215,7 @@
         "right": 0.491803,
         "bottom": 0.846894
       },
-      "rectangularity": 0.9147,
+      "rectangularity": 0.4513,
       "aspectRatio": 1.9286
     },
     {
@@ -1246,7 +1246,7 @@
         "right": 0.602994,
         "bottom": 0.884569
       },
-      "rectangularity": 0.8928,
+      "rectangularity": 0.8029,
       "aspectRatio": 1.6471
     },
     {
@@ -1277,7 +1277,7 @@
         "right": 0.852459,
         "bottom": 0.888577
       },
-      "rectangularity": 0.9016,
+      "rectangularity": 0.8755,
       "aspectRatio": 1.75
     },
     {
@@ -1287,18 +1287,18 @@
       "corners": [
         [
           0.203136,
+          0.872545
+        ],
+        [
+          0.444761,
+          0.872545
+        ],
+        [
+          0.444761,
           0.951102
         ],
         [
           0.203136,
-          0.872545
-        ],
-        [
-          0.444761,
-          0.872545
-        ],
-        [
-          0.444761,
           0.951102
         ]
       ],
@@ -1308,7 +1308,7 @@
         "right": 0.444761,
         "bottom": 0.951102
       },
-      "rectangularity": 0.8257,
+      "rectangularity": 0.6862,
       "aspectRatio": 1.7296
     },
     {
@@ -1339,7 +1339,7 @@
         "right": 0.604419,
         "bottom": 0.930261
       },
-      "rectangularity": 0.9126,
+      "rectangularity": 0.8232,
       "aspectRatio": 1.2624
     },
     {
@@ -1348,30 +1348,30 @@
       "status": "detected_candidate_needs_visual_review",
       "corners": [
         [
-          0.407698,
-          0.939479
+          0.402784,
+          0.98768
         ],
         [
-          0.5866,
-          0.939479
+          0.407962,
+          0.936891
         ],
         [
-          0.5866,
-          0.991583
+          0.56721,
+          0.942025
         ],
         [
-          0.407698,
-          0.991583
+          0.562032,
+          0.992813
         ]
       ],
       "bounds": {
         "left": 0.407698,
         "top": 0.939479,
-        "right": 0.5866,
+        "right": 0.563792,
         "bottom": 0.991583
       },
-      "rectangularity": 0.7969,
-      "aspectRatio": 1.9308
+      "rectangularity": 0.868,
+      "aspectRatio": 1.7632
     },
     {
       "itemId": "chapter_6_item_32",
@@ -1383,11 +1383,11 @@
           0.920641
         ],
         [
-          0.938703,
+          0.93799,
           0.920641
         ],
         [
-          0.938703,
+          0.93799,
           0.984369
         ],
         [
@@ -1398,11 +1398,11 @@
       "bounds": {
         "left": 0.687812,
         "top": 0.920641,
-        "right": 0.938703,
+        "right": 0.93799,
         "bottom": 0.984369
       },
-      "rectangularity": 0.8317,
-      "aspectRatio": 2.2138
+      "rectangularity": 0.7356,
+      "aspectRatio": 2.2075
     }
   ]
 }
