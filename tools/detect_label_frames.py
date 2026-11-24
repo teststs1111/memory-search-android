@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Detect colored label backing shapes by subtracting paired annotated/base images.
+"""Detect label backing shapes with paired-image differences and per-item separation.
 
 The detector deliberately does not classify colors. It finds pixels changed by
 the annotation layer, then keeps compact rectangular components. Rotated labels
@@ -342,7 +342,9 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
         "coordinateReference": str(base_path),
         "runtimeEnabled": False,
         "dataStatus": "automatically_detected_candidates_pending_visual_review",
-        "detectionMethod": "seeded_paired_image_difference_quadrilateral",
+        "detectionMethod": "seeded_difference_mask_voronoi_quadrilateral",
+        "componentSeparation": "per_item_seed_center_voronoi",
+        "maskMorphology": "opening_only_no_closing",
         "detectedShapeCount": matched_count,
         "differenceMaskPixelCount": int(np.count_nonzero(debug_mask)),
         "matchedItemCount": matched_count,
