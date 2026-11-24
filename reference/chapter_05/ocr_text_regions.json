@@ -415,6 +415,277 @@
       "bounds": null
     }
   ],
+  "spatialAnchorCount": 18,
+  "spatialAnchors": [
+    {
+      "itemId": "chapter_5_item_01",
+      "itemName": "コードリール",
+      "ocrText": "当り誌",
+      "ocrConfidence": 15.6,
+      "textBounds": {
+        "left": 71,
+        "top": 140,
+        "right": 155,
+        "bottom": 175
+      },
+      "normalizedDistance": 0.075,
+      "distancePx": 9.1
+    },
+    {
+      "itemId": "chapter_5_item_02",
+      "itemName": "救急箱",
+      "ocrText": "救急箱",
+      "ocrConfidence": 87.4,
+      "textBounds": {
+        "left": 162,
+        "top": 233,
+        "right": 216,
+        "bottom": 258
+      },
+      "normalizedDistance": 0.035,
+      "distancePx": 2.7
+    },
+    null,
+    {
+      "itemId": "chapter_5_item_04",
+      "itemName": "防弾ベスト",
+      "ocrText": "防弾",
+      "ocrConfidence": 94.7,
+      "textBounds": {
+        "left": 148,
+        "top": 279,
+        "right": 178,
+        "bottom": 294
+      },
+      "normalizedDistance": 0.173,
+      "distancePx": 12.2
+    },
+    {
+      "itemId": "chapter_5_item_05",
+      "itemName": "燃料タンク",
+      "ocrText": "燃料",
+      "ocrConfidence": 90.2,
+      "textBounds": {
+        "left": 288,
+        "top": 319,
+        "right": 320,
+        "bottom": 335
+      },
+      "normalizedDistance": 0.131,
+      "distancePx": 10.5
+    },
+    null,
+    null,
+    {
+      "itemId": "chapter_5_item_08",
+      "itemName": "スペアタイヤ",
+      "ocrText": "スペッ硬タン",
+      "ocrConfidence": 57.6,
+      "textBounds": {
+        "left": 225,
+        "top": 338,
+        "right": 311,
+        "bottom": 358
+      },
+      "normalizedDistance": 0.254,
+      "distancePx": 20.1
+    },
+    null,
+    null,
+    {
+      "itemId": "chapter_5_item_11",
+      "itemName": "工具箱",
+      "ocrText": "占中具箱キキ",
+      "ocrConfidence": 33.8,
+      "textBounds": {
+        "left": 217,
+        "top": 405,
+        "right": 325,
+        "bottom": 428
+      },
+      "normalizedDistance": 0.224,
+      "distancePx": 13.2
+    },
+    null,
+    {
+      "itemId": "chapter_5_item_13",
+      "itemName": "ロードコーン",
+      "ocrText": "ェーーーーーー",
+      "ocrConfidence": 44.4,
+      "textBounds": {
+        "left": 332,
+        "top": 412,
+        "right": 394,
+        "bottom": 421
+      },
+      "normalizedDistance": 0.268,
+      "distancePx": 18.9
+    },
+    null,
+    {
+      "itemId": "chapter_5_item_15",
+      "itemName": "ガンベルト",
+      "ocrText": "-記ジペル5あ9",
+      "ocrConfidence": 30.5,
+      "textBounds": {
+        "left": 1,
+        "top": 416,
+        "right": 192,
+        "bottom": 449
+      },
+      "normalizedDistance": 0.196,
+      "distancePx": 23.7
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    {
+      "itemId": "chapter_5_item_22",
+      "itemName": "トランシーバー",
+      "ocrText": "220",
+      "ocrConfidence": 37.0,
+      "textBounds": {
+        "left": 306,
+        "top": 511,
+        "right": 331,
+        "bottom": 537
+      },
+      "normalizedDistance": 0.017,
+      "distancePx": 1.2
+    },
+    {
+      "itemId": "chapter_5_item_23",
+      "itemName": "毛布",
+      "ocrText": "話希",
+      "ocrConfidence": 30.9,
+      "textBounds": {
+        "left": 65,
+        "top": 506,
+        "right": 118,
+        "bottom": 546
+      },
+      "normalizedDistance": 0.061,
+      "distancePx": 5.0
+    },
+    {
+      "itemId": "chapter_5_item_24",
+      "itemName": "カゴネット",
+      "ocrText": "5ネッド",
+      "ocrConfidence": 66.9,
+      "textBounds": {
+        "left": 1,
+        "top": 573,
+        "right": 76,
+        "bottom": 604
+      },
+      "normalizedDistance": 0.193,
+      "distancePx": 17.4
+    },
+    {
+      "itemId": "chapter_5_item_25",
+      "itemName": "信号紅炎",
+      "ocrText": "ドニ",
+      "ocrConfidence": 0.0,
+      "textBounds": {
+        "left": 135,
+        "top": 584,
+        "right": 170,
+        "bottom": 592
+      },
+      "normalizedDistance": 0.438,
+      "distancePx": 37.3
+    },
+    {
+      "itemId": "chapter_5_item_26",
+      "itemName": "道路マップ",
+      "ocrText": "道路",
+      "ocrConfidence": 96.8,
+      "textBounds": {
+        "left": 174,
+        "top": 531,
+        "right": 220,
+        "bottom": 556
+      },
+      "normalizedDistance": 0.085,
+      "distancePx": 8.5
+    },
+    {
+      "itemId": "chapter_5_item_27",
+      "itemName": "食料箱",
+      "ocrText": "食料箱記",
+      "ocrConfidence": 57.2,
+      "textBounds": {
+        "left": 104,
+        "top": 588,
+        "right": 198,
+        "bottom": 625
+      },
+      "normalizedDistance": 0.202,
+      "distancePx": 17.5
+    },
+    null,
+    {
+      "itemId": "chapter_5_item_29",
+      "itemName": "缶詰",
+      "ocrText": "タン",
+      "ocrConfidence": 3.9,
+      "textBounds": {
+        "left": 283,
+        "top": 576,
+        "right": 374,
+        "bottom": 625
+      },
+      "normalizedDistance": 0.421,
+      "distancePx": 34.7
+    },
+    {
+      "itemId": "chapter_5_item_30",
+      "itemName": "補給バッグ",
+      "ocrText": "ン",
+      "ocrConfidence": 70.8,
+      "textBounds": {
+        "left": 279,
+        "top": 656,
+        "right": 300,
+        "bottom": 674
+      },
+      "normalizedDistance": 0.187,
+      "distancePx": 25.4
+    },
+    {
+      "itemId": "chapter_5_item_31",
+      "itemName": "非常食",
+      "ocrText": "非常食(",
+      "ocrConfidence": 58.5,
+      "textBounds": {
+        "left": 340,
+        "top": 640,
+        "right": 401,
+        "bottom": 670
+      },
+      "normalizedDistance": 0.067,
+      "distancePx": 5.0
+    },
+    {
+      "itemId": "chapter_5_item_32",
+      "itemName": "車キー",
+      "ocrText": "車",
+      "ocrConfidence": 0.0,
+      "textBounds": {
+        "left": 342,
+        "top": 691,
+        "right": 390,
+        "bottom": 708
+      },
+      "normalizedDistance": 0.008,
+      "distancePx": 0.6
+    },
+    null,
+    null
+  ],
   "lines": [
     {
       "text": "ンーでま",
