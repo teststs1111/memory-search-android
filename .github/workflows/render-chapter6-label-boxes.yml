@@ -23,14 +23,12 @@ jobs:
       - name: Install image processing dependency
         run: python -m pip install opencv-python-headless==4.10.0.84
       - name: Render draft label-frame rectangles
+        if: ${{ hashFiles('reference/chapter_06/base.jpg') != '' }}
         run: |
           set -euo pipefail
-          if [ ! -f reference/chapter_06/base.jpg ]; then
-            echo "Chapter 6 base image not imported yet; preview deferred."
-            exit 0
-          fi
           python tools/render_chapter6_label_boxes.py
       - name: Commit preview image
+        if: ${{ hashFiles('reference/chapter_06/base.jpg') != '' }}
         run: |
           set -euo pipefail
           test -f reference/chapter_06/label_box_candidates.jpg
