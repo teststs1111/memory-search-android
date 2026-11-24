@@ -5,7 +5,8 @@ on:
     branches: [ main ]
     paths:
       - ".github/workflows/detect-chapter5-label-frames.yml"
-      - "tools/detect_label_frames.py"\n      - "tools/ocr_reference_labels.py"
+      - "tools/detect_label_frames.py"
+      - "tools/ocr_reference_labels.py"
       - "tools/tests/test_detect_label_frames.py"
       - "app/src/main/assets/stages/chapter_5_label_boxes.candidates.json"
       - "reference/chapter_05/base.jpg"
@@ -24,8 +25,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install OpenCV
-        run: python -m pip install opencv-python-headless==4.10.0.84
+      - name: Install OpenCV and Japanese OCR
+        run: |
+          python -m pip install opencv-python-headless==4.10.0.84
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-jpn
       - name: Run detector unit tests
         run: |
           set -euo pipefail
@@ -37,7 +41,8 @@ jobs:
           curl --fail --location --retry 3 --retry-delay 2 \
             'https://img.atwiki.jp/eden_jp/attach/46/125/%E7%AC%AC5%E7%AB%A0.jpeg' \
             --output reference/chapter_05/annotated.jpg
-          test "$(od -An -tx1 -N2 reference/chapter_05/annotated.jpg | tr -d ' \\n')" = "ffd8"
+          test "$(od -An -tx1 -N2 reference/chapter_05/annotated.jpg | tr -d ' \
+')" = "ffd8"
       - name: Detect label backing rectangles
         run: |
           set -euo pipefail
