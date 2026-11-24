@@ -41,6 +41,7 @@ class MainActivity : Activity() {
                     // Use the chapter captured when permission was granted, not a later spinner selection.
                     val resultStageId = intent.getStringExtra(ScreenCaptureService.EXTRA_STAGE_ID) ?: selectedStageId
                     val itemNames = StageItemCatalogRepository.loadItemNames(assets, resultStageId)
+                    val rawBlockGeometry = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_BLOCK_GEOMETRY).orEmpty()
                     val located = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_LOCATED_ITEMS).orEmpty()
                     val locatedNames = located.mapNotNull { encoded ->
                         runCatching { JSONObject(encoded).getString("itemName") }.getOrNull()
@@ -54,6 +55,21 @@ class MainActivity : Activity() {
                         "一致したアイテム：\n" + matches.joinToString("、")
                     }
                     val recognized = lines.joinToString("\n").ifBlank { "文字を検出できませんでした。" }
+                    val blockGeometryText = if (rawBlockGeometry.isEmpty()) {
+                        "ML Kitブロック座標：取得なし"
+                    } else {
+                        "ML Kitブロック別テキスト・四隅座標：\\n" + rawBlockGeometry.mapNotNull { encoded ->
+                            runCatching {
+                                val block = JSONObject(encoded)
+                                val points = block.getJSONArray("corners")
+                                val coordinates = (0 until points.length()).map { index ->
+                                    val point = points.getJSONObject(index)
+                                    "${point.getInt("x")},${point.getInt("y")}"
+                                }.joinToString(" / ")
+                                "#${block.getInt("index")}「${block.getString("text").replace("\\n", " / ")}」：${coordinates}"
+                            }.getOrNull()
+                        }.joinToString("\\n")
+                    }
                     val locatedText = if (located.isEmpty()) {
                         "文字位置とアイテム名の完全一致：なし"
                     } else {
@@ -69,7 +85,7 @@ class MainActivity : Activity() {
                             }.getOrNull()
                         }.joinToString("\n")
                     }
-                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\n章：${resultStageId}\n\n${matchText}\n\n${locatedText}\n\nOCR行：\n${recognized.take(1200)}\n\n画像は保存せず、メモリ上で破棄しました。取得した座標は文字の四隅で、ラベル外周ではありません。"
+                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\n章：${resultStageId}\n\n${matchText}\n\n${locatedText}\n\n${blockGeometryText.take(2400)}\n\nOCR行：\n${recognized.take(1200)}\n\n画像は保存せず、メモリ上で破棄しました。取得した座標は文字の四隅で、ラベル外周ではありません。"
                 }
                 ScreenCaptureService.ACTION_CAPTURE_ERROR -> {
                     captureStatus.text = "画面取得/OCRエラー：${intent.getStringExtra(ScreenCaptureService.EXTRA_ERROR) ?: "不明"}"
