@@ -17,6 +17,12 @@ class DetectLabelFramesTest(unittest.TestCase):
         aligned = align_annotated_to_base(annotated, base)
         self.assertEqual(aligned.shape, base.shape)
 
+    def test_rejects_different_aspect_ratios(self):
+        annotated = np.zeros((200, 100, 3), dtype=np.uint8)
+        base = np.zeros((100, 100, 3), dtype=np.uint8)
+        with self.assertRaises(ValueError):
+            align_annotated_to_base(annotated, base)
+
     # Synthetic backings intentionally use unrelated hues to prevent color-specific logic.
     def test_detects_different_colors_and_rotated_label_rectangles(self):
         base = np.full((1000, 563, 3), (180, 180, 180), dtype=np.uint8)
