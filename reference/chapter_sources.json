@@ -96,10 +96,12 @@
       "unannotatedImages": [
         "https://img.atwiki.jp/eden_jp/attach/46/150/%E7%AC%AC7%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
       ],
-      "status": "source_located_catalog_and_coordinates_pending",
+      "status": "reference_import_workflow_added_catalog_ready_coordinates_pending",
       "reviewNotes": [
         "化学本は普通の本なので、名称を混同しない"
-      ]
+      ],
+      "annotatedReference": "reference/chapter_07/annotated.jpg",
+      "baseReference": "reference/chapter_07/base.jpg"
     },
     {
       "stageId": "chapter_8",
