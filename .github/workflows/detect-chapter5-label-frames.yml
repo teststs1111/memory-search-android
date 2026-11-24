@@ -52,7 +52,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reference/chapter_05/annotated.jpg reference/chapter_05/detected_label_frames.candidates.json reference/chapter_05/detected_label_frames_preview.jpg
+          git add reference/chapter_05/annotated.jpg reference/chapter_05/detected_label_frames.candidates.json reference/chapter_05/detected_label_frames_preview.jpg reference/chapter_05/detected_label_frames_mask.png
           if git diff --cached --quiet; then
             echo "Detection outputs are unchanged."
             exit 0
