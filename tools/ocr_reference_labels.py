@@ -86,7 +86,7 @@ def run_tesseract(image_path: Path, base_path: Path, scale: int = 4) -> list[dic
     return lines
 
 
-def run_seeded_tesseract(image: "cv2.Mat", item: dict, image_size: dict, scale: int = 5) -> dict:
+def run_seeded_tesseract(image: "cv2.Mat", item: dict, image_size: dict, scale: int = 7) -> dict:
     height, width = image.shape[:2]
     if "sourceRect" in item:
         x1, y1, x2, y2 = item["sourceRect"]
@@ -96,7 +96,7 @@ def run_seeded_tesseract(image: "cv2.Mat", item: dict, image_size: dict, scale: 
         b = item["bounds"]
         x1, y1 = int(b["left"] * width), int(b["top"] * height)
         x2, y2 = int(b["right"] * width), int(b["bottom"] * height)
-    pad_x, pad_y = max(8, (x2 - x1) // 4), max(8, (y2 - y1) // 3)
+    pad_x, pad_y = max(3, (x2 - x1) // 16), max(3, (y2 - y1) // 12)
     left, top = max(0, x1 - pad_x), max(0, y1 - pad_y)
     right, bottom = min(width, x2 + pad_x), min(height, y2 + pad_y)
     crop = image[top:bottom, left:right]
