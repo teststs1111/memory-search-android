@@ -146,7 +146,7 @@ def match_detections(items: list[dict], detections: list[dict], image_size: dict
     for score, distance, item_index, detection_index in pairs:
         if item_index in assigned_items or detection_index in used_detections:
             continue
-        if distance > diagonal * 0.09:
+        if distance > diagonal * 0.05:
             continue
         item = items[item_index]
         sx1, sy1, sx2, sy2 = _seed_rect(item, image_size, width, height)
@@ -174,8 +174,8 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
     detections = detect_label_quadrilaterals(annotated, base)
     hsv_debug = cv2.cvtColor(annotated, cv2.COLOR_BGR2HSV)
     debug_mask = cv2.bitwise_or(
-        cv2.inRange(hsv_debug, np.array([105, 18, 60], dtype=np.uint8), np.array([179, 255, 255], dtype=np.uint8)),
-        cv2.inRange(hsv_debug, np.array([0, 32, 70], dtype=np.uint8), np.array([18, 255, 255], dtype=np.uint8)),
+        cv2.inRange(hsv_debug, np.array([118, 40, 70], dtype=np.uint8), np.array([179, 255, 255], dtype=np.uint8)),
+        cv2.inRange(hsv_debug, np.array([0, 40, 70], dtype=np.uint8), np.array([18, 255, 255], dtype=np.uint8)),
     )
     debug_mask_path = output_path.with_name("detected_label_frames_mask.png")
     debug_mask_path.parent.mkdir(parents=True, exist_ok=True)
