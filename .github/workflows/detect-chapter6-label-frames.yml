@@ -1,0 +1,63 @@
+name: Detect Chapter 6 label frames
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - ".github/workflows/detect-chapter6-label-frames.yml"
+      - "tools/detect_label_frames.py"
+      - "tools/tests/test_detect_label_frames.py"
+      - "app/src/main/assets/stages/chapter_6_label_boxes.candidates.json"
+      - "reference/chapter_06/base.jpg"
+
+permissions:
+  contents: write
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install OpenCV
+        run: python -m pip install opencv-python-headless==4.10.0.84
+      - name: Run detector unit tests
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tools/tests -p 'test_*.py' -v
+      - name: Download Chapter 6 annotated reference
+        run: |
+          set -euo pipefail
+          mkdir -p reference/chapter_06
+          curl --fail --location --retry 3 --retry-delay 2 \
+            'https://img.atwiki.jp/eden_jp/attach/46/153/%E7%AC%AC6%E7%AB%A0.jpeg' \
+            --output reference/chapter_06/annotated.jpg
+          test "$(od -An -tx1 -N2 reference/chapter_06/annotated.jpg | tr -d ' \\n')" = "ffd8"
+      - name: Detect label backing rectangles
+        run: |
+          set -euo pipefail
+          python tools/detect_label_frames.py \
+            --annotated reference/chapter_06/annotated.jpg \
+            --base reference/chapter_06/base.jpg \
+            --seeds app/src/main/assets/stages/chapter_6_label_boxes.candidates.json \
+            --output reference/chapter_06/detected_label_frames.candidates.json \
+            --preview reference/chapter_06/detected_label_frames_preview.jpg
+      - name: Commit review-only detection results
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reference/chapter_06/annotated.jpg reference/chapter_06/detected_label_frames.candidates.json reference/chapter_06/detected_label_frames_preview.jpg reference/chapter_06/detected_label_frames_mask.png
+          if git diff --cached --quiet; then
+            echo "Detection outputs are unchanged."
+            exit 0
+          fi
+          git commit -m "Detect Chapter 6 label frames from paired references"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
