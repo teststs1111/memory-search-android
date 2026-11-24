@@ -17,6 +17,8 @@ android {
 
     // Reuse the original Chapter 1 reference image without modifying it.
     sourceSets.getByName("main").assets.srcDir("../reference/chapter_01")
+    // Reference OCR diagnostics are included only in debug builds.
+    sourceSets.getByName("debug").assets.srcDir("../reference/chapter_05")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
