@@ -140,6 +140,47 @@ def run_seeded_tesseract(image: "cv2.Mat", item: dict, image_size: dict, scale: 
     }
 
 
+def assign_spatial_anchors(lines: list[dict], items: list[dict], width: int, height: int) -> list[dict]:
+    """Associate OCR text boxes with nearby known item labels, even if OCR text is garbled."""
+    pairs = []
+    for item_index, item in enumerate(items):
+        if "sourceRect" in item:
+            x1, y1, x2, y2 = item["sourceRect"]
+            sx, sy = width / 563.0, height / 1000.0
+            x1, y1, x2, y2 = x1 * sx, y1 * sy, x2 * sx, y2 * sy
+        else:
+            b = item["bounds"]
+            x1, y1 = b["left"] * width, b["top"] * height
+            x2, y2 = b["right"] * width, b["bottom"] * height
+        cx, cy = (x1 + x2) / 2, (y1 + y2) / 2
+        diagonal = max(1.0, ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5)
+        for line_index, line in enumerate(lines):
+            b = line["bounds"]
+            tx, ty = (b["left"] + b["right"]) / 2, (b["top"] + b["bottom"]) / 2
+            distance = ((tx - cx) ** 2 + (ty - cy) ** 2) ** 0.5
+            if distance <= diagonal * 0.8:
+                pairs.append((distance / diagonal, item_index, line_index, distance))
+    pairs.sort()
+    assigned_items, used_lines = set(), set()
+    result = [None] * len(items)
+    for normalized_distance, item_index, line_index, distance in pairs:
+        if item_index in assigned_items or line_index in used_lines:
+            continue
+        line = lines[line_index]
+        result[item_index] = {
+            "itemId": items[item_index]["itemId"],
+            "itemName": items[item_index]["itemName"],
+            "ocrText": line["text"],
+            "ocrConfidence": line["confidence"],
+            "textBounds": line["bounds"],
+            "normalizedDistance": round(normalized_distance, 3),
+            "distancePx": round(distance, 1),
+        }
+        assigned_items.add(item_index)
+        used_lines.add(line_index)
+    return result
+
+
 def match_catalog(lines: list[dict], items: list[dict]) -> list[dict]:
     names = [(item["itemId"], item["itemName"], normalize(item["itemName"])) for item in items]
     for line in lines:
@@ -179,11 +220,14 @@ def main() -> None:
         run_seeded_tesseract(aligned_annotated, item, seeds["imageSize"])
         for item in seeds["items"]
     ]
+    spatial_anchors = assign_spatial_anchors(
+        lines, seeds["items"], base_image.shape[1], base_image.shape[0]
+    )
     image = base_image.copy()
-    for anchor in item_anchors:
-        if anchor.get("bounds"):
-            b = anchor["bounds"]
-            cv2.rectangle(image, (b["left"], b["top"]), (b["right"], b["bottom"]), (255, 220, 0), 1)
+    for anchor in spatial_anchors:
+        if anchor:
+            b = anchor["textBounds"]
+            cv2.rectangle(image, (b["left"], b["top"]), (b["right"], b["bottom"]), (255, 220, 0), 2)
     for index, line in enumerate(lines, 1):
         b = line["bounds"]
         cv2.rectangle(image, (b["left"], b["top"]), (b["right"], b["bottom"]), (255, 220, 0), 1)
@@ -203,6 +247,8 @@ def main() -> None:
         "matchedCatalogCount": sum(1 for line in lines if line.get("bestCatalogMatch")),
         "seededItemAnchorCount": sum(1 for anchor in item_anchors if anchor.get("bounds")),
         "itemAnchors": item_anchors,
+        "spatialAnchorCount": sum(1 for anchor in spatial_anchors if anchor),
+        "spatialAnchors": spatial_anchors,
         "lines": lines,
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -210,7 +256,7 @@ def main() -> None:
     args.preview.parent.mkdir(parents=True, exist_ok=True)
     if not cv2.imwrite(str(args.preview), image, [cv2.IMWRITE_JPEG_QUALITY, 94]):
         raise SystemExit(f"Could not write preview: {args.preview}")
-    print(f"OCR extracted {len(lines)} text lines; {result['matchedCatalogCount']} tentative matches; {result['seededItemAnchorCount']}/{len(item_anchors)} seeded item crops returned text.")
+    print(f"OCR extracted {len(lines)} text lines; {result['matchedCatalogCount']} tentative text matches; {result['spatialAnchorCount']}/{len(spatial_anchors)} items received spatial text anchors.")
 
 
 if __name__ == "__main__":
