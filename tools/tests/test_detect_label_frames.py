@@ -7,7 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import cv2
 import numpy as np
 
-from detect_label_frames import align_annotated_to_base, detect_label_quadrilaterals, detect_seeded_label_quadrilaterals
+from detect_label_frames import align_annotated_to_base, detect_label_quadrilaterals, detect_seeded_label_quadrilaterals, make_annotation_difference_mask
 
 
 class DetectLabelFramesTest(unittest.TestCase):
@@ -27,6 +27,33 @@ class DetectLabelFramesTest(unittest.TestCase):
         found = detect_seeded_label_quadrilaterals(annotated, items, {"width": 500, "height": 500}, 500, 500)
         self.assertIsNotNone(found[0])
         self.assertEqual(len(found[0]["points"]), 4)
+
+    def test_difference_mask_follows_translucent_purple_fill_over_varied_background(self):
+        height, width = 300, 300
+        base = np.zeros((height, width, 3), dtype=np.uint8)
+        # Use a textured, colorful scene so the overlay's final HSV color is
+        # not constant across the label backing.
+        for y in range(height):
+            for x in range(width):
+                base[y, x] = ((x * 3) % 255, (y * 2) % 255, (x + y) % 255)
+
+        annotated = base.copy()
+        roi = annotated[90:155, 70:245].astype(np.float32)
+        purple = np.array([190, 80, 210], dtype=np.float32)
+        annotated[90:155, 70:245] = np.clip(roi * 0.58 + purple * 0.42, 0, 255).astype(np.uint8)
+
+        mask = make_annotation_difference_mask(annotated, base)
+        self.assertGreater(cv2.countNonZero(mask[90:155, 70:245]), 9000)
+        self.assertLess(cv2.countNonZero(mask[:70, :]), 20)
+
+        items = [{"sourceRect": [70, 90, 245, 155]}]
+        found = detect_seeded_label_quadrilaterals(
+            annotated, items, {"width": width, "height": height},
+            width, height, base=base
+        )
+        self.assertIsNotNone(found[0])
+        self.assertAlmostEqual(found[0]["center"][0], 157.5, delta=3)
+        self.assertAlmostEqual(found[0]["center"][1], 122.5, delta=3)
 
     def test_rejects_different_aspect_ratios(self):
         annotated = np.zeros((200, 100, 3), dtype=np.uint8)
