@@ -159,6 +159,20 @@ class ScreenCaptureService : Service() {
                             }.orEmpty()
                         OcrBlockGeometry(block.text, block.lines.map { it.text }, corners)
                     }
+                    // Preserve each raw ML Kit block and its four corners for on-device diagnosis.
+                    // This lets us distinguish OCR segmentation failures from geometry-matching failures.
+                    val blockGeometryJson = ArrayList(geometryBlocks.mapIndexed { index, block ->
+                        JSONObject()
+                            .put("index", index)
+                            .put("text", block.text)
+                            .put("lines", JSONArray(block.lines))
+                            .put("corners", JSONArray().apply {
+                                block.corners.forEach { point ->
+                                    put(JSONObject().put("x", point.x).put("y", point.y))
+                                }
+                            })
+                            .toString()
+                    })
                     val locatedItems = OcrGeometryMatcher.match(geometryBlocks, itemNames)
                     val locatedJson = ArrayList(locatedItems.map { item ->
                         JSONObject()
@@ -179,6 +193,7 @@ class ScreenCaptureService : Service() {
                         putStringArrayListExtra(EXTRA_OCR_LINES, ArrayList(lines))
                         // Keep OCR block boundaries so separate labels are never joined.
                         putStringArrayListExtra(EXTRA_OCR_BLOCKS, ArrayList(blocks.map { it.joinToString("\n") }))
+                        putStringArrayListExtra(EXTRA_OCR_BLOCK_GEOMETRY, blockGeometryJson)
                         // Exact catalog matches retain ML Kit's original four-corner geometry.
                         putStringArrayListExtra(EXTRA_OCR_LOCATED_ITEMS, locatedJson)
                     })
@@ -238,6 +253,7 @@ class ScreenCaptureService : Service() {
         const val EXTRA_OCR_TEXT = "ocr_text"
         const val EXTRA_OCR_LINES = "ocr_lines"
         const val EXTRA_OCR_BLOCKS = "ocr_blocks"
+        const val EXTRA_OCR_BLOCK_GEOMETRY = "ocr_block_geometry"
         const val EXTRA_OCR_LOCATED_ITEMS = "ocr_located_items"
         const val EXTRA_STAGE_ID = "stage_id"
         const val EXTRA_ERROR = "error"
