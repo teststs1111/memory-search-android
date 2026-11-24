@@ -108,7 +108,7 @@ def run_seeded_tesseract(image: "cv2.Mat", item: dict, image_size: dict, scale: 
         return {"itemId": item["itemId"], "text": "", "confidence": 0, "bounds": None}
     try:
         result = subprocess.run(
-            ["tesseract", str(temp), "stdout", "-l", "jpn", "--psm", "6", "tsv"],
+            ["tesseract", str(temp), "stdout", "-l", "jpn", "--psm", "11", "tsv"],
             check=True, capture_output=True, text=True, encoding="utf-8"
         )
     finally:
