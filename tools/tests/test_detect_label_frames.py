@@ -7,6 +7,7 @@ from detect_label_frames import detect_label_quadrilaterals
 
 
 class DetectLabelFramesTest(unittest.TestCase):
+    # Synthetic backings intentionally use unrelated hues to prevent color-specific logic.
     def test_detects_different_colors_and_rotated_label_rectangles(self):
         base = np.full((1000, 563, 3), (180, 180, 180), dtype=np.uint8)
         annotated = base.copy()
