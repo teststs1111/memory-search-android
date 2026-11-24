@@ -8,6 +8,7 @@ on:
       - "tools/detect_label_frames.py"
       - "tools/ocr_reference_labels.py"
       - "tools/tests/test_detect_label_frames.py"
+      - "tools/tests/test_ocr_reference_labels.py"
       - "app/src/main/assets/stages/chapter_5_label_boxes.candidates.json"
       - "reference/chapter_05/base.jpg"
 
@@ -30,7 +31,7 @@ jobs:
           python -m pip install opencv-python-headless==4.10.0.84
           sudo apt-get update
           sudo apt-get install -y tesseract-ocr tesseract-ocr-jpn
-      - name: Run detector unit tests
+      - name: Run detector and OCR unit tests
         run: |
           set -euo pipefail
           python -m unittest discover -s tools/tests -p 'test_*.py' -v
@@ -38,11 +39,8 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p reference/chapter_05
-          curl --fail --location --retry 3 --retry-delay 2 \
-            'https://img.atwiki.jp/eden_jp/attach/46/125/%E7%AC%AC5%E7%AB%A0.jpeg' \
-            --output reference/chapter_05/annotated.jpg
-          test "$(od -An -tx1 -N2 reference/chapter_05/annotated.jpg | tr -d ' \
-')" = "ffd8"
+          curl --fail --location --retry 3 --retry-delay 2 'https://img.atwiki.jp/eden_jp/attach/46/125/%E7%AC%AC5%E7%AB%A0.jpeg' --output reference/chapter_05/annotated.jpg
+          python -c "from pathlib import Path; p=Path('reference/chapter_05/annotated.jpg'); assert p.read_bytes()[:2] == bytes.fromhex('ffd8')"
       - name: Detect label backing rectangles
         run: |
           set -euo pipefail
@@ -70,7 +68,7 @@ jobs:
             echo "Detection outputs are unchanged."
             exit 0
           fi
-          git commit -m "Detect Chapter 5 label frames from paired references"
+          git commit -m "Add OCR text positions for Chapter 5 reference"
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
