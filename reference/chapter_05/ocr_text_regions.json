@@ -5,6 +5,346 @@
   "runtimeEnabled": false,
   "lineCount": 34,
   "matchedCatalogCount": 14,
+  "seededItemAnchorCount": 19,
+  "itemAnchors": [
+    {
+      "itemId": "chapter_5_item_01",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_02",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_03",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_04",
+      "itemName": "防弾ベスト",
+      "text": "ii1トコNiま『<*護",
+      "confidence": 49.6,
+      "similarity": 0.143,
+      "bounds": {
+        "left": 151,
+        "top": 259,
+        "right": 206,
+        "bottom": 336
+      }
+    },
+    {
+      "itemId": "chapter_5_item_05",
+      "itemName": "燃料タンク",
+      "text": "ーーっ|",
+      "confidence": 46.0,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 276,
+        "top": 327,
+        "right": 332,
+        "bottom": 372
+      }
+    },
+    {
+      "itemId": "chapter_5_item_06",
+      "itemName": "バリケード",
+      "text": "||ン",
+      "confidence": 57.3,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 347,
+        "top": 313,
+        "right": 413,
+        "bottom": 386
+      }
+    },
+    {
+      "itemId": "chapter_5_item_07",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_08",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_09",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_10",
+      "itemName": "ペットボトル",
+      "text": ">二さ",
+      "confidence": 21.8,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 184,
+        "top": 390,
+        "right": 247,
+        "bottom": 435
+      }
+    },
+    {
+      "itemId": "chapter_5_item_11",
+      "itemName": "工具箱",
+      "text": "Auだ",
+      "confidence": 29.4,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 222,
+        "top": 415,
+        "right": 294,
+        "bottom": 446
+      }
+    },
+    {
+      "itemId": "chapter_5_item_12",
+      "itemName": "ジャッキ",
+      "text": "<",
+      "confidence": 32.7,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 273,
+        "top": 398,
+        "right": 335,
+        "bottom": 443
+      }
+    },
+    {
+      "itemId": "chapter_5_item_13",
+      "itemName": "ロードコーン",
+      "text": "ンーママ3じグてでて計5。ーーの38PE",
+      "confidence": 43.3,
+      "similarity": 0.08,
+      "bounds": {
+        "left": 309,
+        "top": 388,
+        "right": 387,
+        "bottom": 443
+      }
+    },
+    {
+      "itemId": "chapter_5_item_14",
+      "itemName": "双眼鏡",
+      "text": "ヘンあー",
+      "confidence": 36.8,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 346,
+        "top": 427,
+        "right": 413,
+        "bottom": 454
+      }
+    },
+    {
+      "itemId": "chapter_5_item_15",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_16",
+      "itemName": "保護ヘルメット",
+      "text": "kJ語",
+      "confidence": 7.1,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 114,
+        "top": 407,
+        "right": 213,
+        "bottom": 441
+      }
+    },
+    {
+      "itemId": "chapter_5_item_17",
+      "itemName": "誘導棒",
+      "text": "ーで",
+      "confidence": 46.0,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 299,
+        "top": 426,
+        "right": 338,
+        "bottom": 446
+      }
+    },
+    {
+      "itemId": "chapter_5_item_18",
+      "itemName": "けん引きロープ",
+      "text": "こてこてで科ーー",
+      "confidence": 2.3,
+      "similarity": 0.133,
+      "bounds": {
+        "left": 218,
+        "top": 479,
+        "right": 276,
+        "bottom": 506
+      }
+    },
+    {
+      "itemId": "chapter_5_item_19",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_20",
+      "itemName": "黒い軍手",
+      "text": ">5Hちち<Se+ピピで",
+      "confidence": 15.9,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 43,
+        "top": 435,
+        "right": 103,
+        "bottom": 502
+      }
+    },
+    {
+      "itemId": "chapter_5_item_21",
+      "itemName": "消火器",
+      "text": "IT2。ぇマブノel",
+      "confidence": 24.5,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 92,
+        "top": 446,
+        "right": 186,
+        "bottom": 501
+      }
+    },
+    {
+      "itemId": "chapter_5_item_22",
+      "itemName": "トランシーバー",
+      "text": "の",
+      "confidence": 53.0,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 292,
+        "top": 501,
+        "right": 341,
+        "bottom": 546
+      }
+    },
+    {
+      "itemId": "chapter_5_item_23",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_24",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_25",
+      "itemName": "信号紅炎",
+      "text": "ーーョ",
+      "confidence": 0.0,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 95,
+        "top": 549,
+        "right": 170,
+        "bottom": 594
+      }
+    },
+    {
+      "itemId": "chapter_5_item_26",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_27",
+      "itemName": "食料箱",
+      "text": "'に9",
+      "confidence": 23.8,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 84,
+        "top": 576,
+        "right": 166,
+        "bottom": 642
+      }
+    },
+    {
+      "itemId": "chapter_5_item_28",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_29",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_30",
+      "itemName": "補給バッグ",
+      "text": "ト、がv3|UM2ンーうーて(A『には1かの)き.コKi。と11あので-。1。な_本者1o=で人",
+      "confidence": 30.6,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 190,
+        "top": 619,
+        "right": 358,
+        "bottom": 700
+      }
+    },
+    {
+      "itemId": "chapter_5_item_31",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_32",
+      "itemName": "車キー",
+      "text": "に",
+      "confidence": 33.8,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 315,
+        "top": 676,
+        "right": 414,
+        "bottom": 721
+      }
+    },
+    {
+      "itemId": "chapter_5_item_33",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_5_item_34",
+      "itemName": "輸送書類",
+      "text": "私",
+      "confidence": 21.0,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 66,
+        "top": 661,
+        "right": 76,
+        "bottom": 671
+      }
+    }
+  ],
   "lines": [
     {
       "text": "ンーでま",
