@@ -6,9 +6,9 @@
   "coordinateReference": "reference/chapter_06/base.jpg",
   "runtimeEnabled": false,
   "dataStatus": "automatically_detected_candidates_pending_visual_review",
-  "detectionMethod": "seeded_local_hsv_fill_quadrilateral",
+  "detectionMethod": "seeded_paired_image_difference_quadrilateral",
   "detectedShapeCount": 30,
-  "colorMaskPixelCount": 950208,
+  "differenceMaskPixelCount": 2238243,
   "matchedItemCount": 30,
   "unmatchedItemCount": 2,
   "detectedShapes": [
