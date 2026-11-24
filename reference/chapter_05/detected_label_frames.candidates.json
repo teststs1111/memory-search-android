@@ -8,6 +8,7 @@
   "dataStatus": "automatically_detected_candidates_pending_visual_review",
   "detectionMethod": "hsv_pink_purple_red_fill_quadrilateral",
   "detectedShapeCount": 0,
+  "colorMaskPixelCount": 188676,
   "matchedItemCount": 0,
   "unmatchedItemCount": 34,
   "detectedShapes": [],
