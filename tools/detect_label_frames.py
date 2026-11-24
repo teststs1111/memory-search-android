@@ -172,6 +172,14 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
 
     seeds = json.loads(seed_path.read_text(encoding="utf-8"))
     detections = detect_label_quadrilaterals(annotated, base)
+    hsv_debug = cv2.cvtColor(annotated, cv2.COLOR_BGR2HSV)
+    debug_mask = cv2.bitwise_or(
+        cv2.inRange(hsv_debug, np.array([105, 18, 60], dtype=np.uint8), np.array([179, 255, 255], dtype=np.uint8)),
+        cv2.inRange(hsv_debug, np.array([0, 32, 70], dtype=np.uint8), np.array([18, 255, 255], dtype=np.uint8)),
+    )
+    debug_mask_path = output_path.with_name("detected_label_frames_mask.png")
+    debug_mask_path.parent.mkdir(parents=True, exist_ok=True)
+    cv2.imwrite(str(debug_mask_path), debug_mask)
     matches = match_detections(seeds["items"], detections, seeds["imageSize"], base.shape[1], base.shape[0])
 
     result_items = []
@@ -225,6 +233,7 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
         "dataStatus": "automatically_detected_candidates_pending_visual_review",
         "detectionMethod": "hsv_pink_purple_red_fill_quadrilateral",
         "detectedShapeCount": len(detections),
+        "colorMaskPixelCount": int(np.count_nonzero(debug_mask)),
         "matchedItemCount": matched_count,
         "unmatchedItemCount": len(seeds["items"]) - matched_count,
         "detectedShapes": [
