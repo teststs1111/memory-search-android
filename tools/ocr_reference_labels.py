@@ -140,13 +140,13 @@ def run_seeded_tesseract(image: "cv2.Mat", item: dict, image_size: dict, scale: 
     }
 
 
-def assign_spatial_anchors(lines: list[dict], items: list[dict], width: int, height: int) -> list[dict]:
+def assign_spatial_anchors(lines: list[dict], items: list[dict], image_size: dict, width: int, height: int) -> list[dict]:
     """Associate OCR text boxes with nearby known item labels, even if OCR text is garbled."""
     pairs = []
     for item_index, item in enumerate(items):
         if "sourceRect" in item:
             x1, y1, x2, y2 = item["sourceRect"]
-            sx, sy = width / 563.0, height / 1000.0
+            sx, sy = width / image_size["width"], height / image_size["height"]
             x1, y1, x2, y2 = x1 * sx, y1 * sy, x2 * sx, y2 * sy
         else:
             b = item["bounds"]
@@ -221,7 +221,7 @@ def main() -> None:
         for item in seeds["items"]
     ]
     spatial_anchors = assign_spatial_anchors(
-        lines, seeds["items"], base_image.shape[1], base_image.shape[0]
+        lines, seeds["items"], seeds["imageSize"], base_image.shape[1], base_image.shape[0]
     )
     image = base_image.copy()
     for anchor in spatial_anchors:
