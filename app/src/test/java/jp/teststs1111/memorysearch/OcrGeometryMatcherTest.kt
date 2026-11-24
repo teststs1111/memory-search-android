@@ -5,6 +5,13 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class OcrGeometryMatcherTest {
+    private fun block(text: String, left: Int, top: Int, right: Int, bottom: Int) =
+        OcrBlockGeometry(
+            text,
+            listOf(text),
+            listOf(OcrPoint(left, top), OcrPoint(right, top), OcrPoint(right, bottom), OcrPoint(left, bottom))
+        )
+
     @Test
     fun keepsRotatedFourCornersForExactTextMatch() {
         val corners = listOf(
@@ -36,11 +43,52 @@ class OcrGeometryMatcherTest {
     }
 
     @Test
-    fun doesNotJoinTextAcrossDifferentBlocks() {
+    fun joinsTwoVerticallyStackedBlocksForBothKnownTwoLineLabels() {
         val result = OcrGeometryMatcher.match(
             listOf(
-                OcrBlockGeometry("バリ", listOf("バリ"), listOf(OcrPoint(0, 0), OcrPoint(20, 0), OcrPoint(20, 10), OcrPoint(0, 10))),
-                OcrBlockGeometry("ケード", listOf("ケード"), listOf(OcrPoint(30, 0), OcrPoint(70, 0), OcrPoint(70, 10), OcrPoint(30, 10)))
+                block("バリ", 350, 350, 405, 370),
+                block("ケード", 352, 373, 408, 393),
+                block("輸送", 80, 675, 132, 695),
+                block("書類", 82, 698, 134, 718)
+            ),
+            listOf("バリケード", "輸送書類")
+        )
+
+        assertEquals(listOf("バリケード", "輸送書類"), result.map { it.itemName })
+        assertEquals(listOf("バリケード", "輸送書類"), result.map { it.recognizedText })
+        assertEquals(4, result.size.let { 2 * it })
+    }
+
+    @Test
+    fun doesNotJoinSideBySideBlocks() {
+        val result = OcrGeometryMatcher.match(
+            listOf(block("バリ", 0, 0, 20, 10), block("ケード", 30, 0, 70, 10)),
+            listOf("バリケード")
+        )
+        assertTrue(result.isEmpty())
+    }
+
+    @Test
+    fun doesNotJoinDistantOrUnevenlySizedBlocks() {
+        val distant = OcrGeometryMatcher.match(
+            listOf(block("バリ", 0, 0, 20, 10), block("ケード", 0, 40, 40, 50)),
+            listOf("バリケード")
+        )
+        val uneven = OcrGeometryMatcher.match(
+            listOf(block("バリ", 0, 0, 20, 5), block("ケード", 0, 8, 40, 30)),
+            listOf("バリケード")
+        )
+        assertTrue(distant.isEmpty())
+        assertTrue(uneven.isEmpty())
+    }
+
+    @Test
+    fun doesNotSkipAnInterveningTextBlock() {
+        val result = OcrGeometryMatcher.match(
+            listOf(
+                block("バリ", 0, 0, 40, 10),
+                block("別", 2, 12, 38, 22),
+                block("ケード", 0, 24, 40, 34)
             ),
             listOf("バリケード")
         )
