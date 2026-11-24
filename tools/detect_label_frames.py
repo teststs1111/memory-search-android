@@ -43,11 +43,11 @@ def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list
     # the shared annotation palette as a hue family rather than one exact RGB
     # value, so JPEG variation and the different label colors are tolerated.
     pink_purple = cv2.inRange(
-        hsv, np.array([105, 18, 60], dtype=np.uint8),
+        hsv, np.array([118, 40, 70], dtype=np.uint8),
         np.array([179, 255, 255], dtype=np.uint8)
     )
     red = cv2.inRange(
-        hsv, np.array([0, 32, 70], dtype=np.uint8),
+        hsv, np.array([0, 40, 70], dtype=np.uint8),
         np.array([18, 255, 255], dtype=np.uint8)
     )
     mask = cv2.bitwise_or(pink_purple, red)
