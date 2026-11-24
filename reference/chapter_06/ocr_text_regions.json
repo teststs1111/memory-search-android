@@ -1,0 +1,1797 @@
+{
+  "stageId": "chapter_6",
+  "sourceImage": "reference/chapter_06/annotated.jpg",
+  "imageSize": {
+    "width": 1404,
+    "height": 2496
+  },
+  "purpose": "diagnostic_text_position_anchors_only",
+  "runtimeEnabled": false,
+  "lineCount": 90,
+  "matchedCatalogCount": 12,
+  "seededItemAnchorCount": 29,
+  "itemAnchors": [
+    {
+      "itemId": "chapter_6_item_01",
+      "itemName": "バルーン",
+      "text": "|7ルージ",
+      "confidence": 34.4,
+      "similarity": 0.5,
+      "bounds": {
+        "left": 68,
+        "top": 422,
+        "right": 324,
+        "bottom": 521
+      }
+    },
+    {
+      "itemId": "chapter_6_item_02",
+      "itemName": "バードハウス",
+      "text": "が二ド/ペウジ",
+      "confidence": 35.4,
+      "similarity": 0.333,
+      "bounds": {
+        "left": 845,
+        "top": 582,
+        "right": 1028,
+        "bottom": 739
+      }
+    },
+    {
+      "itemId": "chapter_6_item_03",
+      "itemName": "バードフィーダー",
+      "text": "に2ーークルー",
+      "confidence": 56.5,
+      "similarity": 0.4,
+      "bounds": {
+        "left": 1115,
+        "top": 607,
+        "right": 1401,
+        "bottom": 783
+      }
+    },
+    {
+      "itemId": "chapter_6_item_04",
+      "itemName": "リボン",
+      "text": "リボッジ凡",
+      "confidence": 42.5,
+      "similarity": 0.5,
+      "bounds": {
+        "left": 766,
+        "top": 1005,
+        "right": 955,
+        "bottom": 1066
+      }
+    },
+    {
+      "itemId": "chapter_6_item_05",
+      "itemName": "カメラ",
+      "text": "9る3",
+      "confidence": 50.1,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 336,
+        "top": 1260,
+        "right": 528,
+        "bottom": 1328
+      }
+    },
+    {
+      "itemId": "chapter_6_item_06",
+      "itemName": "バケツ",
+      "text": "os/バクォン",
+      "confidence": 45.3,
+      "similarity": 0.222,
+      "bounds": {
+        "left": 221,
+        "top": 1379,
+        "right": 410,
+        "bottom": 1470
+      }
+    },
+    {
+      "itemId": "chapter_6_item_07",
+      "itemName": "バスケット",
+      "text": "グツド",
+      "confidence": 56.5,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 493,
+        "top": 1416,
+        "right": 619,
+        "bottom": 1464
+      }
+    },
+    {
+      "itemId": "chapter_6_item_08",
+      "itemName": "ネズミぬいぐるみ",
+      "text": "にュー3ンく所",
+      "confidence": 22.9,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 177,
+        "top": 1438,
+        "right": 382,
+        "bottom": 1522
+      }
+    },
+    {
+      "itemId": "chapter_6_item_09",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_6_item_10",
+      "itemName": "風車",
+      "text": "風。mi。",
+      "confidence": 29.7,
+      "similarity": 0.4,
+      "bounds": {
+        "left": 591,
+        "top": 1460,
+        "right": 722,
+        "bottom": 1634
+      }
+    },
+    {
+      "itemId": "chapter_6_item_11",
+      "itemName": "ショベル",
+      "text": "計ンイコバリドレィイ/電王ー-",
+      "confidence": 30.8,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 905,
+        "top": 1395,
+        "right": 1087,
+        "bottom": 1540
+      }
+    },
+    {
+      "itemId": "chapter_6_item_12",
+      "itemName": "ハンカチ",
+      "text": "7Nジ。たと",
+      "confidence": 47.9,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 1211,
+        "top": 1515,
+        "right": 1404,
+        "bottom": 1637
+      }
+    },
+    {
+      "itemId": "chapter_6_item_13",
+      "itemName": "双眼鏡",
+      "text": "aイマンく、XX眼唄oN「",
+      "confidence": 28.3,
+      "similarity": 0.143,
+      "bounds": {
+        "left": 698,
+        "top": 1588,
+        "right": 968,
+        "bottom": 1723
+      }
+    },
+    {
+      "itemId": "chapter_6_item_14",
+      "itemName": "傘",
+      "text": "役。",
+      "confidence": 21.1,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 868,
+        "top": 1703,
+        "right": 926,
+        "bottom": 1757
+      }
+    },
+    {
+      "itemId": "chapter_6_item_15",
+      "itemName": "本",
+      "text": "の",
+      "confidence": 29.4,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 1085,
+        "top": 1786,
+        "right": 1226,
+        "bottom": 1831
+      }
+    },
+    {
+      "itemId": "chapter_6_item_16",
+      "itemName": "スクールバッグ",
+      "text": "人ペクニル記バパック。Rs",
+      "confidence": 46.6,
+      "similarity": 0.421,
+      "bounds": {
+        "left": 1219,
+        "top": 1711,
+        "right": 1404,
+        "bottom": 1873
+      }
+    },
+    {
+      "itemId": "chapter_6_item_17",
+      "itemName": "サッカーボール",
+      "text": "サッルカ2まゆデー<へ",
+      "confidence": 44.6,
+      "similarity": 0.353,
+      "bounds": {
+        "left": 451,
+        "top": 1721,
+        "right": 661,
+        "bottom": 1849
+      }
+    },
+    {
+      "itemId": "chapter_6_item_18",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_6_item_19",
+      "itemName": "鉢植え",
+      "text": "W'目",
+      "confidence": 28.6,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 129,
+        "top": 1938,
+        "right": 161,
+        "bottom": 1961
+      }
+    },
+    {
+      "itemId": "chapter_6_item_20",
+      "itemName": "キャンディ",
+      "text": "aoフェシィ6",
+      "confidence": 54.8,
+      "similarity": 0.167,
+      "bounds": {
+        "left": 171,
+        "top": 1866,
+        "right": 319,
+        "bottom": 1984
+      }
+    },
+    {
+      "itemId": "chapter_6_item_21",
+      "itemName": "紙飛行機",
+      "text": "ーー|",
+      "confidence": 16.8,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 637,
+        "top": 1881,
+        "right": 764,
+        "bottom": 1992
+      }
+    },
+    {
+      "itemId": "chapter_6_item_22",
+      "itemName": "シャトルコック",
+      "text": "ン。ヤ4ルドルルョ/ョトッツク前!",
+      "confidence": 63.5,
+      "similarity": 0.286,
+      "bounds": {
+        "left": 784,
+        "top": 1906,
+        "right": 995,
+        "bottom": 2007
+      }
+    },
+    {
+      "itemId": "chapter_6_item_23",
+      "itemName": "水筒",
+      "text": "ーい5=コム-だ",
+      "confidence": 44.5,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 986,
+        "top": 1857,
+        "right": 1146,
+        "bottom": 2021
+      }
+    },
+    {
+      "itemId": "chapter_6_item_24",
+      "itemName": "ラケット",
+      "text": "2Ce",
+      "confidence": 24.9,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 1154,
+        "top": 1891,
+        "right": 1385,
+        "bottom": 2022
+      }
+    },
+    {
+      "itemId": "chapter_6_item_25",
+      "itemName": "スニーカー",
+      "text": "%%二力三",
+      "confidence": 21.9,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 1031,
+        "top": 2002,
+        "right": 1278,
+        "bottom": 2071
+      }
+    },
+    {
+      "itemId": "chapter_6_item_26",
+      "itemName": "虫メガネ",
+      "text": "グ|",
+      "confidence": 46.8,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 438,
+        "top": 1983,
+        "right": 467,
+        "bottom": 2087
+      }
+    },
+    {
+      "itemId": "chapter_6_item_27",
+      "itemName": "カチューシャ",
+      "text": "2520選る|an1onPTPS",
+      "confidence": 26.3,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 585,
+        "top": 2077,
+        "right": 782,
+        "bottom": 2196
+      }
+    },
+    {
+      "itemId": "chapter_6_item_28",
+      "itemName": "ヘッドホン",
+      "text": "ペペ4ドッ|",
+      "confidence": 53.2,
+      "similarity": 0.2,
+      "bounds": {
+        "left": 947,
+        "top": 2136,
+        "right": 1174,
+        "bottom": 2204
+      }
+    },
+    {
+      "itemId": "chapter_6_item_29",
+      "itemName": "手袋",
+      "text": "引王袋",
+      "confidence": 25.0,
+      "similarity": 0.4,
+      "bounds": {
+        "left": 308,
+        "top": 2236,
+        "right": 546,
+        "bottom": 2360
+      }
+    },
+    {
+      "itemId": "chapter_6_item_30",
+      "itemName": "サンドイッチ",
+      "text": "ンマてバブプーマツン秋ツ4プニリンルド",
+      "confidence": 40.3,
+      "similarity": 0.16,
+      "bounds": {
+        "left": 588,
+        "top": 2116,
+        "right": 830,
+        "bottom": 2306
+      }
+    },
+    {
+      "itemId": "chapter_6_item_31",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
+      "itemId": "chapter_6_item_32",
+      "itemName": "ジュース",
+      "text": "<も存SNRK5。セや=。、omジューッ",
+      "confidence": 22.5,
+      "similarity": 0.316,
+      "bounds": {
+        "left": 1038,
+        "top": 2309,
+        "right": 1282,
+        "bottom": 2445
+      }
+    }
+  ],
+  "spatialAnchorCount": 24,
+  "spatialAnchors": [
+    {
+      "itemId": "chapter_6_item_01",
+      "itemName": "バルーン",
+      "ocrText": "/バパリレシ",
+      "ocrConfidence": 73.0,
+      "textBounds": {
+        "left": 106,
+        "top": 435,
+        "right": 325,
+        "bottom": 520
+      },
+      "normalizedDistance": 0.021,
+      "distancePx": 5.9
+    },
+    {
+      "itemId": "chapter_6_item_02",
+      "itemName": "バードハウス",
+      "ocrText": "ペー",
+      "ocrConfidence": 68.8,
+      "textBounds": {
+        "left": 874,
+        "top": 584,
+        "right": 964,
+        "bottom": 642
+      },
+      "normalizedDistance": 0.16,
+      "distancePx": 45.7
+    },
+    {
+      "itemId": "chapter_6_item_03",
+      "itemName": "バードフィーダー",
+      "ocrText": "が二",
+      "ocrConfidence": 4.8,
+      "textBounds": {
+        "left": 1207,
+        "top": 634,
+        "right": 1300,
+        "bottom": 694
+      },
+      "normalizedDistance": 0.11,
+      "distancePx": 34.4
+    },
+    null,
+    null,
+    null,
+    null,
+    {
+      "itemId": "chapter_6_item_08",
+      "itemName": "ネズミぬいぐるみ",
+      "ocrText": "CAUDOKS6の",
+      "ocrConfidence": 22.7,
+      "textBounds": {
+        "left": 137,
+        "top": 1508,
+        "right": 345,
+        "bottom": 1571
+      },
+      "normalizedDistance": 0.133,
+      "distancePx": 41.3
+    },
+    null,
+    {
+      "itemId": "chapter_6_item_10",
+      "itemName": "風車",
+      "ocrText": "みあ:四",
+      "ocrConfidence": 8.1,
+      "textBounds": {
+        "left": 582,
+        "top": 1541,
+        "right": 694,
+        "bottom": 1618
+      },
+      "normalizedDistance": 0.198,
+      "distancePx": 37.9
+    },
+    {
+      "itemId": "chapter_6_item_11",
+      "itemName": "ショベル",
+      "ocrText": "とあの\"|/",
+      "ocrConfidence": 60.1,
+      "textBounds": {
+        "left": 764,
+        "top": 1518,
+        "right": 971,
+        "bottom": 1581
+      },
+      "normalizedDistance": 0.715,
+      "distancePx": 166.5
+    },
+    {
+      "itemId": "chapter_6_item_12",
+      "itemName": "ハンカチ",
+      "ocrText": "9状光",
+      "ocrConfidence": 2.1,
+      "textBounds": {
+        "left": 977,
+        "top": 1518,
+        "right": 1316,
+        "bottom": 1585
+      },
+      "normalizedDistance": 0.605,
+      "distancePx": 150.8
+    },
+    {
+      "itemId": "chapter_6_item_13",
+      "itemName": "双眼鏡",
+      "ocrText": "双眼鏡議",
+      "ocrConfidence": 42.1,
+      "textBounds": {
+        "left": 720,
+        "top": 1622,
+        "right": 989,
+        "bottom": 1688
+      },
+      "normalizedDistance": 0.065,
+      "distancePx": 17.9
+    },
+    {
+      "itemId": "chapter_6_item_14",
+      "itemName": "傘",
+      "ocrText": "1",
+      "ocrConfidence": 36.9,
+      "textBounds": {
+        "left": 946,
+        "top": 1743,
+        "right": 979,
+        "bottom": 1766
+      },
+      "normalizedDistance": 0.432,
+      "distancePx": 91.4
+    },
+    {
+      "itemId": "chapter_6_item_15",
+      "itemName": "本",
+      "ocrText": "本ジペ",
+      "ocrConfidence": 25.7,
+      "textBounds": {
+        "left": 1129,
+        "top": 1741,
+        "right": 1283,
+        "bottom": 1795
+      },
+      "normalizedDistance": 0.341,
+      "distancePx": 52.1
+    },
+    {
+      "itemId": "chapter_6_item_16",
+      "itemName": "スクールバッグ",
+      "ocrText": "パック。",
+      "ocrConfidence": 35.2,
+      "textBounds": {
+        "left": 1266,
+        "top": 1784,
+        "right": 1389,
+        "bottom": 1842
+      },
+      "normalizedDistance": 0.105,
+      "distancePx": 23.5
+    },
+    {
+      "itemId": "chapter_6_item_17",
+      "itemName": "サッカーボール",
+      "ocrText": "2",
+      "ocrConfidence": 0.0,
+      "textBounds": {
+        "left": 451,
+        "top": 1718,
+        "right": 611,
+        "bottom": 1826
+      },
+      "normalizedDistance": 0.044,
+      "distancePx": 11.0
+    },
+    {
+      "itemId": "chapter_6_item_18",
+      "itemName": "円盤",
+      "ocrText": "RE",
+      "ocrConfidence": 17.8,
+      "textBounds": {
+        "left": 270,
+        "top": 1836,
+        "right": 449,
+        "bottom": 1895
+      },
+      "normalizedDistance": 0.327,
+      "distancePx": 67.2
+    },
+    {
+      "itemId": "chapter_6_item_19",
+      "itemName": "鉢植え",
+      "ocrText": "コ",
+      "ocrConfidence": 0.0,
+      "textBounds": {
+        "left": 38,
+        "top": 1843,
+        "right": 49,
+        "bottom": 1853
+      },
+      "normalizedDistance": 0.399,
+      "distancePx": 92.3
+    },
+    {
+      "itemId": "chapter_6_item_20",
+      "itemName": "キャンディ",
+      "ocrText": "。ディ",
+      "ocrConfidence": 71.6,
+      "textBounds": {
+        "left": 129,
+        "top": 1920,
+        "right": 290,
+        "bottom": 1982
+      },
+      "normalizedDistance": 0.187,
+      "distancePx": 44.8
+    },
+    {
+      "itemId": "chapter_6_item_21",
+      "itemName": "紙飛行機",
+      "ocrText": "紙飛行機",
+      "ocrConfidence": 47.7,
+      "textBounds": {
+        "left": 501,
+        "top": 1942,
+        "right": 704,
+        "bottom": 1992
+      },
+      "normalizedDistance": 0.064,
+      "distancePx": 18.6
+    },
+    {
+      "itemId": "chapter_6_item_22",
+      "itemName": "シャトルコック",
+      "ocrText": "52引つ",
+      "ocrConfidence": 17.9,
+      "textBounds": {
+        "left": 744,
+        "top": 2058,
+        "right": 931,
+        "bottom": 2115
+      },
+      "normalizedDistance": 0.495,
+      "distancePx": 125.1
+    },
+    {
+      "itemId": "chapter_6_item_23",
+      "itemName": "水筒",
+      "ocrText": "ンクとず",
+      "ocrConfidence": 59.3,
+      "textBounds": {
+        "left": 935,
+        "top": 1835,
+        "right": 1024,
+        "bottom": 1884
+      },
+      "normalizedDistance": 0.502,
+      "distancePx": 109.0
+    },
+    {
+      "itemId": "chapter_6_item_24",
+      "itemName": "ラケット",
+      "ocrText": "ee",
+      "ocrConfidence": 51.0,
+      "textBounds": {
+        "left": 1296,
+        "top": 1907,
+        "right": 1353,
+        "bottom": 1943
+      },
+      "normalizedDistance": 0.176,
+      "distancePx": 50.3
+    },
+    {
+      "itemId": "chapter_6_item_25",
+      "itemName": "スニーカー",
+      "ocrText": "(三才三",
+      "ocrConfidence": 0.0,
+      "textBounds": {
+        "left": 1036,
+        "top": 1995,
+        "right": 1270,
+        "bottom": 2076
+      },
+      "normalizedDistance": 0.09,
+      "distancePx": 26.5
+    },
+    null,
+    null,
+    {
+      "itemId": "chapter_6_item_28",
+      "itemName": "ヘッドホン",
+      "ocrText": "ツ天ヽ",
+      "ocrConfidence": 49.2,
+      "textBounds": {
+        "left": 1022,
+        "top": 2115,
+        "right": 1196,
+        "bottom": 2200
+      },
+      "normalizedDistance": 0.288,
+      "distancePx": 83.5
+    },
+    {
+      "itemId": "chapter_6_item_29",
+      "itemName": "手袋",
+      "ocrText": "皇伏",
+      "ocrConfidence": 0.0,
+      "textBounds": {
+        "left": 375,
+        "top": 2243,
+        "right": 543,
+        "bottom": 2353
+      },
+      "normalizedDistance": 0.074,
+      "distancePx": 22.0
+    },
+    {
+      "itemId": "chapter_6_item_30",
+      "itemName": "サンドイッチ",
+      "ocrText": "peク|S",
+      "ocrConfidence": 63.7,
+      "textBounds": {
+        "left": 619,
+        "top": 2183,
+        "right": 782,
+        "bottom": 2262
+      },
+      "normalizedDistance": 0.052,
+      "distancePx": 14.2
+    },
+    {
+      "itemId": "chapter_6_item_31",
+      "itemName": "扇子",
+      "ocrText": "扇起",
+      "ocrConfidence": 0.0,
+      "textBounds": {
+        "left": 611,
+        "top": 2373,
+        "right": 748,
+        "bottom": 2458
+      },
+      "normalizedDistance": 0.09,
+      "distancePx": 19.6
+    },
+    null
+  ],
+  "lines": [
+    {
+      "text": "ンーンンンタ",
+      "confidence": 48.6,
+      "bounds": {
+        "left": 431,
+        "top": 33,
+        "right": 538,
+        "bottom": 70
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_01",
+        "itemName": "バルーン",
+        "similarity": 0.4
+      }
+    },
+    {
+      "text": "'eo",
+      "confidence": 41.9,
+      "bounds": {
+        "left": 741,
+        "top": 38,
+        "right": 811,
+        "bottom": 76
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "On",
+      "confidence": 2.9,
+      "bounds": {
+        "left": 998,
+        "top": 63,
+        "right": 1078,
+        "bottom": 105
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "いいN",
+      "confidence": 14.0,
+      "bounds": {
+        "left": 439,
+        "top": 78,
+        "right": 483,
+        "bottom": 116
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "「王表B",
+      "confidence": 16.6,
+      "bounds": {
+        "left": 827,
+        "top": 78,
+        "right": 914,
+        "bottom": 108
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ムジ",
+      "confidence": 16.8,
+      "bounds": {
+        "left": 452,
+        "top": 130,
+        "right": 534,
+        "bottom": 173
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "レア",
+      "confidence": 21.8,
+      "bounds": {
+        "left": 858,
+        "top": 130,
+        "right": 948,
+        "bottom": 168
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "が拓",
+      "confidence": 20.2,
+      "bounds": {
+        "left": 549,
+        "top": 150,
+        "right": 600,
+        "bottom": 177
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "へ",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 763,
+        "top": 181,
+        "right": 833,
+        "bottom": 221
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "っで",
+      "confidence": 36.0,
+      "bounds": {
+        "left": 1055,
+        "top": 185,
+        "right": 1124,
+        "bottom": 226
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "-9\"",
+      "confidence": 23.4,
+      "bounds": {
+        "left": 665,
+        "top": 204,
+        "right": 694,
+        "bottom": 226
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "パク",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 910,
+        "top": 207,
+        "right": 1012,
+        "bottom": 251
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "る<」",
+      "confidence": 38.5,
+      "bounds": {
+        "left": 1048,
+        "top": 228,
+        "right": 1114,
+        "bottom": 261
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "Prレア",
+      "confidence": 12.7,
+      "bounds": {
+        "left": 529,
+        "top": 249,
+        "right": 630,
+        "bottom": 285
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ーー。",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 511,
+        "top": 280,
+        "right": 670,
+        "bottom": 335
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_25",
+        "itemName": "スニーカー",
+        "similarity": 0.571
+      }
+    },
+    {
+      "text": "re」",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 807,
+        "top": 284,
+        "right": 858,
+        "bottom": 315
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "OS",
+      "confidence": 48.3,
+      "bounds": {
+        "left": 1222,
+        "top": 287,
+        "right": 1337,
+        "bottom": 358
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "し",
+      "confidence": 29.3,
+      "bounds": {
+        "left": 254,
+        "top": 320,
+        "right": 313,
+        "bottom": 359
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "LU",
+      "confidence": 50.0,
+      "bounds": {
+        "left": 1064,
+        "top": 324,
+        "right": 1108,
+        "bottom": 405
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "と",
+      "confidence": 16.5,
+      "bounds": {
+        "left": 440,
+        "top": 334,
+        "right": 548,
+        "bottom": 399
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "お。",
+      "confidence": 43.9,
+      "bounds": {
+        "left": 694,
+        "top": 343,
+        "right": 729,
+        "bottom": 362
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "のつ",
+      "confidence": 42.0,
+      "bounds": {
+        "left": 639,
+        "top": 359,
+        "right": 654,
+        "bottom": 383
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "K、",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 1308,
+        "top": 360,
+        "right": 1374,
+        "bottom": 426
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ダミ。",
+      "confidence": 34.9,
+      "bounds": {
+        "left": 391,
+        "top": 369,
+        "right": 440,
+        "bottom": 396
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "をゃ",
+      "confidence": 43.5,
+      "bounds": {
+        "left": 599,
+        "top": 377,
+        "right": 661,
+        "bottom": 406
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "てug2",
+      "confidence": 42.6,
+      "bounds": {
+        "left": 758,
+        "top": 382,
+        "right": 1003,
+        "bottom": 486
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "_e",
+      "confidence": 10.9,
+      "bounds": {
+        "left": 561,
+        "top": 396,
+        "right": 597,
+        "bottom": 417
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ャ』",
+      "confidence": 17.5,
+      "bounds": {
+        "left": 1198,
+        "top": 405,
+        "right": 1220,
+        "bottom": 423
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "いあ",
+      "confidence": 15.2,
+      "bounds": {
+        "left": 417,
+        "top": 410,
+        "right": 443,
+        "bottom": 422
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "1",
+      "confidence": 80.6,
+      "bounds": {
+        "left": 1076,
+        "top": 413,
+        "right": 1096,
+        "bottom": 469
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "|ラム汗",
+      "confidence": 29.2,
+      "bounds": {
+        "left": 1201,
+        "top": 427,
+        "right": 1404,
+        "bottom": 506
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "2テ",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 529,
+        "top": 429,
+        "right": 590,
+        "bottom": 443
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "/バパリレシ",
+      "confidence": 73.0,
+      "bounds": {
+        "left": 106,
+        "top": 435,
+        "right": 325,
+        "bottom": 520
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "補",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 679,
+        "top": 447,
+        "right": 698,
+        "bottom": 464
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "24",
+      "confidence": 42.3,
+      "bounds": {
+        "left": 667,
+        "top": 466,
+        "right": 730,
+        "bottom": 498
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "うう",
+      "confidence": 34.9,
+      "bounds": {
+        "left": 540,
+        "top": 472,
+        "right": 607,
+        "bottom": 487
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "NN",
+      "confidence": 19.1,
+      "bounds": {
+        "left": 950,
+        "top": 496,
+        "right": 989,
+        "bottom": 507
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "っここ",
+      "confidence": 39.1,
+      "bounds": {
+        "left": 648,
+        "top": 539,
+        "right": 714,
+        "bottom": 578
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ぼぼ.あき*",
+      "confidence": 23.4,
+      "bounds": {
+        "left": 490,
+        "top": 552,
+        "right": 536,
+        "bottom": 569
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "デア",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 1254,
+        "top": 582,
+        "right": 1287,
+        "bottom": 623
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ペー",
+      "confidence": 68.8,
+      "bounds": {
+        "left": 874,
+        "top": 584,
+        "right": 964,
+        "bottom": 642
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "いい",
+      "confidence": 69.3,
+      "bounds": {
+        "left": 1002,
+        "top": 591,
+        "right": 1022,
+        "bottom": 608
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "引ロ",
+      "confidence": 66.9,
+      "bounds": {
+        "left": 272,
+        "top": 615,
+        "right": 316,
+        "bottom": 646
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "へ",
+      "confidence": 14.3,
+      "bounds": {
+        "left": 1338,
+        "top": 627,
+        "right": 1369,
+        "bottom": 649
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "が二",
+      "confidence": 4.8,
+      "bounds": {
+        "left": 1207,
+        "top": 634,
+        "right": 1300,
+        "bottom": 694
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ド",
+      "confidence": 86.4,
+      "bounds": {
+        "left": 1315,
+        "top": 638,
+        "right": 1345,
+        "bottom": 682
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "に",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 65,
+        "top": 656,
+        "right": 316,
+        "bottom": 717
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "地ー",
+      "confidence": 13.3,
+      "bounds": {
+        "left": 776,
+        "top": 661,
+        "right": 790,
+        "bottom": 670
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ずく\n2\t1\t54\t0\t0\t0\t2605\t2728\t160\t172\t-1\t\n3\t1\t54\t1\t0\t0\t2605\t2728\t160\t172\t-1\t\n4\t1\t54\t1\t1\t0\t2605\t2728\t160\t172\t-1\t\n5\t1\t54\t1\t1\t1\t2601\t2721\t80\t192\t58.863071\tレ\n5\t1\t54\t1\t1\t2\t2681\t2728\t80\t172\t84.188637\tゃ\n2\t1\t55\t0\t0\t0\t2774\t2746\t330\t155\t-1\t\n3\t1\t55\t1\t0\t0\t2774\t2746\t330\t155\t-1\t\n4\t1\t55\t1\t1\t0\t2774\t2746\t330\t155\t-1\t\n5\t1\t55\t1\t1\t1\t2774\t2746\t330\t155\t21.213617\t4\n2\t1\t56\t0\t0\t0\t2826\t2599\t248\t264\t-1\t\n3\t1\t56\t1\t0\t0\t2826\t2599\t248\t264\t-1\t\n4\t1\t56\t1\t1\t0\t2826\t2599\t248\t264\t-1\t\n5\t1\t56\t1\t1\t1\t2826\t2599\t248\t264\t55.657345\tと\n2\t1\t57\t0\t0\t0\t3402\t2648\t687\t209\t-1\t\n3\t1\t57\t1\t0\t0\t3402\t2648\t687\t209\t-1\t\n4\t1\t57\t1\t1\t0\t3402\t2648\t687\t209\t-1\t\n5\t1\t57\t1\t1\t1\t3402\t2666\t224\t181\t75.699883\t人\n5\t1\t57\t1\t1\t2\t3660\t2644\t257\t283\t27.285343\tウル\n5\t1\t57\t1\t1\t3\t3916\t2644\t166\t283\t30.702772\tみく\n2\t1\t58\t0\t0\t0\t4579\t2803\t404\t159\t-1\t\n3\t1\t58\t1\t0\t0\t4579\t2803\t404\t159\t-1\t\n4\t1\t58\t1\t1\t0\t4579\t2803\t404\t159\t-1\t\n5\t1\t58\t1\t1\t1\t4579\t2803\t404\t159\t47.654655\tレシ\n5\t1\t58\t1\t1\t2\t4753\t2799\t126\t214\t58.036362\tルレ\n5\t1\t58\t1\t1\t3\t4878\t2799\t108\t214\t74.576332\t(\n2\t1\t59\t0\t0\t0\t516\t2991\t574\t125\t-1\t\n3\t1\t59\t1\t0\t0\t516\t2991\t574\t125\t-1\t\n4\t1\t59\t1\t1\t0\t516\t2991\t574\t125\t-1\t\n5\t1\t59\t1\t1\t1\t516\t2991\t118\t44\t93.729675\t=\n5\t1\t59\t1\t1\t2\t650\t3005\t116\t111\t86.934570\tに\n5\t1\t59\t1\t1\t3\t814\t3000\t276\t109\t0.000000\tに\n2\t1\t60\t0\t0\t0\t861\t3185\t196\t30\t-1\t\n3\t1\t60\t1\t0\t0\t861\t3185\t196\t30\t-1\t\n4\t1\t60\t1\t1\t0\t861\t3185\t196\t30\t-1\t\n5\t1\t60\t1\t1\t1\t861\t3185\t196\t30\t0.932188\tーー\n2\t1\t61\t0\t0\t0\t1625\t3087\t524\t122\t-1\t\n3\t1\t61\t1\t0\t0\t1625\t3087\t524\t122\t-1\t\n4\t1\t61\t1\t1\t0\t1625\t3087\t524\t122\t-1\t\n5\t1\t61\t1\t1\t1\t1625\t3087\t113\t64\t29.407421\t中\n5\t1\t61\t1\t1\t2\t1785\t3097\t238\t112\t27.103119\t国境\n5\t1\t61\t1\t1\t3\t2053\t3121\t91\t82\t0.000000\t思\n2\t1\t62\t0\t0\t0\t3575\t3081\t6\t114\t-1\t\n3\t1\t62\t1\t0\t0\t3575\t3081\t141\t114\t-1\t\n4\t1\t62\t1\t1\t0\t3575\t3081\t6\t114\t-1\t\n5\t1\t62\t1\t1\t1\t3575\t3081\t6\t114\t0.000000\t「\n2\t1\t63\t0\t0\t0\t1762\t3255\t223\t27\t-1\t\n3\t1\t63\t1\t0\t0\t1762\t3255\t223\t27\t-1\t\n4\t1\t63\t1\t1\t0\t1762\t3255\t223\t27\t-1\t\n5\t1\t63\t1\t1\t1\t1762\t3255\t223\t27\t0.000000\teo\n2\t1\t64\t0\t0\t0\t2858\t3339\t213\t42\t-1\t\n3\t1\t64\t1\t0\t0\t2858\t3339\t213\t42\t-1\t\n4\t1\t64\t1\t1\t0\t2858\t3339\t213\t42\t-1\t\n5\t1\t64\t1\t1\t1\t2858\t3343\t171\t34\t13.891764\tーー\n5\t1\t64\t1\t1\t2\t3039\t3339\t32\t42\t13.891764\tマ\n2\t1\t65\t0\t0\t0\t2700\t3178\t368\t83\t-1\t\n3\t1\t65\t1\t0\t0\t2700\t3178\t368\t83\t-1\t\n4\t1\t65\t1\t1\t0\t2700\t3178\t368\t83\t-1\t\n5\t1\t65\t1\t1\t1\t2700\t3178\t249\t83\t77.466782\tコー\n5\t1\t65\t1\t1\t2\t2949\t3130\t119\t179\t31.156788\tュー\n2\t1\t66\t0\t0\t0\t3818\t3290\t241\t92\t-1\t\n3\t1\t66\t1\t0\t0\t3818\t3290\t241\t92\t-1\t\n4\t1\t66\t1\t1\t0\t3818\t3290\t241\t92\t-1\t\n5\t1\t66\t1\t1\t1\t3818\t3290\t241\t92\t71.770386\t『\n5\t1\t66\t1\t1\t2\t4010\t3286\t45\t131\t57.364037\t1\n2\t1\t67\t0\t0\t0\t522\t3309\t536\t162\t-1\t\n3\t1\t67\t1\t0\t0\t522\t3309\t536\t162\t-1\t\n4\t1\t67\t1\t1\t0\t522\t3309\t536\t162\t-1\t\n5\t1\t67\t1\t1\t1\t522\t3309\t536\t162\t80.817177\t画\n5\t1\t67\t1\t1\t2\t686\t3305\t85\t202\t0.000000\t還\n5\t1\t67\t1\t1\t3\t871\t3309\t186\t162\t0.000000\t記\n2\t1\t68\t0\t0\t0\t1630\t3387\t198\t68\t-1\t\n3\t1\t68\t1\t0\t0\t1630\t3387\t238\t68\t-1\t\n4\t1\t68\t1\t1\t0\t1630\t3387\t198\t68\t-1\t\n5\t1\t68\t1\t1\t1\t1630\t3387\t100\t22\t0.000000\t間\n5\t1\t68\t1\t1\t2\t1764\t3399\t64\t56\t0.000000\te\n2\t1\t69\t0\t0\t0\t2753\t3471\t196\t30\t-1\t\n3\t1\t69\t1\t0\t0\t2753\t3471\t196\t30\t-1\t\n4\t1\t69\t1\t1\t0\t2753\t3471\t196\t30\t-1\t\n5\t1\t69\t1\t1\t1\t2753\t3471\t196\t30\t0.000000\teS\n2\t1\t70\t0\t0\t0\t3191\t3214\t517\t287\t-1\t\n3\t1\t70\t1\t0\t0\t3191\t3214\t517\t287\t-1\t\n4\t1\t70\t1\t1\t0\t3191\t3214\t517\t287\t-1\t\n5\t1\t70\t1\t1\t1\t3191\t3218\t267\t283\t71.367081\tWW\n5\t1\t70\t1\t1\t2\t3664\t3214\t44\t31\t0.000000\t久\n2\t1\t71\t0\t0\t0\t5162\t3436\t206\t66\t-1\t\n3\t1\t71\t1\t0\t0\t5162\t3436\t206\t66\t-1\t\n4\t1\t71\t1\t1\t0\t5162\t3436\t206\t66\t-1\t\n5\t1\t71\t1\t1\t1\t5162\t3436\t60\t66\t33.361073\t本\n5\t1\t71\t1\t1\t2\t5269\t3432\t25\t74\t79.981911\t-\n5\t1\t71\t1\t1\t3\t5293\t3432\t20\t74\t70.742699\tず\n5\t1\t71\t1\t1\t4\t5312\t3432\t56\t74\t19.503927\tギィ\n2\t1\t72\t0\t0\t0\t520\t3461\t539\t156\t-1\t\n3\t1\t72\t1\t0\t0\t520\t3461\t539\t156\t-1\t\n4\t1\t72\t1\t1\t0\t520\t3461\t539\t156\t-1\t\n5\t1\t72\t1\t1\t1\t520\t3461\t539\t156\t25.696739\t昌男\n5\t1\t72\t1\t1\t2\t849\t3402\t105\t250\t87.237045\t画\n5\t1\t72\t1\t1\t3\t953\t3402\t105\t250\t0.000000\t較\n2\t1\t73\t0\t0\t0\t1629\t3531\t515\t153\t-1\t\n3\t1\t73\t1\t0\t0\t1629\t3531\t515\t153\t-1\t\n4\t1\t73\t1\t1\t0\t1629\t3531\t515\t153\t-1\t\n5\t1\t73\t1\t1\t1\t1629\t3531\t515\t153\t0.000000\t四\n5\t1\t73\t1\t1\t2\t1798\t3527\t111\t189\t0.000000\t園\n5\t1\t73\t1\t1\t3\t1971\t3527\t80\t189\t0.000000\t軸\n5\t1\t73\t1\t1\t4\t2050\t3527\t95\t189\t0.000000\tこ\n2\t1\t74\t0\t0\t0\t1771\t3558\t242\t86\t-1\t\n3\t1\t74\t1\t0\t0\t1771\t3558\t242\t86\t-1\t\n4\t1\t74\t1\t1\t0\t1771\t3558\t242\t86\t-1\t\n5\t1\t74\t1\t1\t1\t1771\t3558\t242\t86\t25.971584\t回\n5\t1\t74\t1\t1\t2\t1930\t3529\t89\t151\t32.130760\t人\n2\t1\t75\t0\t0\t0\t283\t3673\t883\t92\t-1\t\n3\t1\t75\t1\t0\t0\t283\t3673\t883\t92\t-1\t\n4\t1\t75\t1\t1\t0\t283\t3673\t883\t92\t-1\t\n5\t1\t75\t1\t1\t1\t283\t3719\t28\t46\t33.473923\tて\n5\t1\t75\t1\t1\t2\t465\t3673\t701\t84\t21.050882\t2\n2\t1\t76\t0\t0\t0\t2702\t3605\t106\t124\t-1\t\n3\t1\t76\t1\t0\t0\t2702\t3605\t249\t124\t-1\t\n4\t1\t76\t1\t1\t0\t2702\t3605\t106\t124\t-1\t\n5\t1\t76\t1\t1\t1\t2702\t3605\t106\t124\t0.000000\t較\n2\t1\t77\t0\t0\t0\t5079\t3624\t457\t155\t-1\t\n3\t1\t77\t1\t0\t0\t5079\t3624\t457\t155\t-1\t\n4\t1\t77\t1\t1\t0\t5079\t3624\t457\t155\t-1\t\n5\t1\t77\t1\t1\t1\t5079\t3624\t138\t132\t0.000000\t二\n5\t1\t77\t1\t1\t2\t5216\t3618\t111\t189\t62.349884\tま\n5\t1\t77\t1\t1\t3\t5337\t3657\t199\t122\t50.821121\tミー\n2\t1\t78\t0\t0\t0\t713\t3984\t218\t34\t-1\t\n3\t1\t78\t1\t0\t0\t713\t3984\t218\t34\t-1\t\n4\t1\t78\t1\t1\t0\t713\t3984\t218\t34\t-1\t\n5\t1\t78\t1\t1\t1\t713\t3984\t218\t34\t9.568377\t=\n2\t1\t79\t0\t0\t0\t3198\t3707\t817\t159\t-1\t\n3\t1\t79\t1\t0\t0\t3198\t3707\t817\t159\t-1\t\n4\t1\t79\t1\t1\t0\t3198\t3707\t817\t159\t-1\t\n5\t1\t79\t1\t1\t1\t3198\t3707\t817\t159\t0.000000\t朝一\n2\t1\t80\t0\t0\t0\t3066\t4035\t390\t205\t-1\t\n3\t1\t80\t1\t0\t0\t3066\t4035\t390\t205\t-1\t\n4\t1\t80\t1\t1\t0\t3066\t4035\t390\t205\t-1\t\n5\t1\t80\t1\t1\t1\t3066\t4035\t390\t205\t46.699547\tリボ\n2\t1\t81\t0\t0\t0\t3492\t4060\t182\t173\t-1\t\n3\t1\t81\t1\t0\t0\t3492\t4060\t182\t173\t-1\t\n4\t1\t81\t1\t1\t0\t3492\t4060\t182\t173\t-1\t\n5\t1\t81\t1\t1\t1\t3492\t4060\t182\t173\t51.505287\tジノ\n2\t1\t82\t0\t0\t0\t229\t4174\t467\t283\t-1\t\n3\t1\t82\t1\t0\t0\t229\t4174\t467\t283\t-1\t\n4\t1\t82\t1\t1\t0\t229\t4174\t467\t283\t-1\t\n5\t1\t82\t1\t1\t1\t229\t4174\t467\t283\t0.000000\t肌\n2\t1\t83\t0\t0\t0\t5054\t4160\t289\t246\t-1\t\n3\t1\t83\t1\t0\t0\t5054\t4160\t289\t246\t-1\t\n4\t1\t83\t1\t1\t0\t5054\t4160\t289\t246\t-1\t\n5\t1\t83\t1\t1\t1\t5054\t4174\t64\t232\t45.262379\t+\n5\t1\t83\t1\t1\t2\t5231\t4160\t112\t198\t11.229439\t貼\n2\t1\t84\t0\t0\t0\t2408\t4467\t110\t143\t-1\t\n3\t1\t84\t1\t0\t0\t2408\t4467\t110\t143\t-1\t\n4\t1\t84\t1\t1\t0\t2408\t4467\t110\t143\t-1\t\n5\t1\t84\t1\t1\t1\t2408\t4467\t110\t143\t37.133972\t4\n2\t1\t85\t0\t0\t0\t3430\t4331\t205\t305\t-1\t\n3\t1\t85\t1\t0\t0\t3430\t4331\t205\t305\t-1\t\n4\t1\t85\t1\t1\t0\t3430\t4331\t205\t305\t-1\t\n5\t1\t85\t1\t1\t1\t3430\t4331\t205\t305\t55.275566\tか\n2\t1\t86\t0\t0\t0\t2229\t4623\t227\t96\t-1\t\n3\t1\t86\t1\t0\t0\t2229\t4623\t227\t96\t-1\t\n4\t1\t86\t1\t1\t0\t2229\t4623\t227\t96\t-1\t\n5\t1\t86\t1\t1\t1\t2229\t4623\t227\t96\t35.743710\t2\n2\t1\t87\t0\t0\t0\t5006\t4554\t198\t181\t-1\t\n3\t1\t87\t1\t0\t0\t5006\t4554\t198\t181\t-1\t\n4\t1\t87\t1\t1\t0\t5006\t4554\t198\t181\t-1\t\n5\t1\t87\t1\t1\t1\t5006\t4554\t198\t181\t17.568512\t7\n2\t1\t88\t0\t0\t0\t709\t4887\t45\t101\t-1\t\n3\t1\t88\t1\t0\t0\t709\t4887\t45\t101\t-1\t\n4\t1\t88\t1\t1\t0\t709\t4887\t45\t101\t-1\t\n5\t1\t88\t1\t1\t1\t709\t4887\t45\t101\t80.520401\t|\n2\t1\t89\t0\t0\t0\t3744\t4961\t155\t151\t-1\t\n3\t1\t89\t1\t0\t0\t3744\t4961\t158\t151\t-1\t\n4\t1\t89\t1\t1\t0\t3744\t4961\t155\t151\t-1\t\n5\t1\t89\t1\t1\t1\t3744\t4983\t48\t129\t90.880943\t/\n5\t1\t89\t1\t1\t2\t3819\t4961\t80\t77\t70.095055\t十\n2\t1\t90\t0\t0\t0\t5254\t4738\t359\t290\t-1\t\n3\t1\t90\t1\t0\t0\t5254\t4738\t362\t290\t-1\t\n4\t1\t90\t1\t1\t0\t5254\t4738\t359\t290\t-1\t\n5\t1\t90\t1\t1\t1\t5254\t4790\t83\t120\t75.325150\t2\n5\t1\t90\t1\t1\t2\t5346\t4738\t122\t290\t37.055977\t用\n5\t1\t90\t1\t1\t3\t5467\t4742\t146\t282\t65.475571\tに\n2\t1\t91\t0\t0\t0\t608\t4987\t388\t156\t-1\t\n3\t1\t91\t1\t0\t0\t608\t4987\t388\t156\t-1\t\n4\t1\t91\t1\t1\t0\t608\t4987\t388\t156\t-1\t\n5\t1\t91\t1\t1\t1\t604\t4982\t154\t184\t40.958462\t_M\n5\t1\t91\t1\t1\t2\t844\t5026\t152\t114\t56.989624\tll\n2\t1\t92\t0\t0\t0\t3613\t4935\t128\t273\t-1\t\n3\t1\t92\t1\t0\t0\t3613\t4935\t128\t273\t-1\t\n4\t1\t92\t1\t1\t0\t3613\t4935\t128\t273\t-1\t\n5\t1\t92\t1\t1\t1\t3613\t4935\t128\t273\t0.000000\tN\n2\t1\t93\t0\t0\t0\t4599\t5085\t298\t155\t-1\t\n3\t1\t93\t1\t0\t0\t4599\t5085\t298\t155\t-1\t\n4\t1\t93\t1\t1\t0\t4599\t5085\t298\t155\t-1\t\n5\t1\t93\t1\t1\t1\t4599\t5085\t298\t155\t0.000000\t 。\n2\t1\t94\t0\t0\t0\t5248\t5036\t366\t185\t-1\t\n3\t1\t94\t1\t0\t0\t5248\t5036\t368\t185\t-1\t\n4\t1\t94\t1\t1\t0\t5248\t5036\t366\t185\t-1\t\n5\t1\t94\t1\t1\t1\t5248\t5103\t71\t68\t56.457256\tど\n5\t1\t94\t1\t1\t2\t5479\t5036\t135\t185\t8.636961\tNNW\n2\t1\t95\t0\t0\t0\t1340\t5037\t1085\t277\t-1\t\n3\t1\t95\t1\t0\t0\t1340\t5037\t1085\t277\t-1\t\n4\t1\t95\t1\t1\t0\t1340\t5037\t1085\t277\t-1\t\n5\t1\t95\t1\t1\t1\t1340\t5037\t260\t274\t60.326496\tの\n5\t1\t95\t1\t1\t2\t1616\t5033\t250\t374\t0.000000\t以\n5\t1\t95\t1\t1\t3\t1865\t5046\t188\t268\t0.000000\tラ\n5\t1\t95\t1\t1\t4\t2374\t5042\t51\t65\t0.000000\t人\n2\t1\t96\t0\t0\t0\t990\t5389\t649\t100\t-1\t\n3\t1\t96\t1\t0\t0\t990\t5389\t649\t100\t-1\t\n4\t1\t96\t1\t1\t0\t990\t5389\t649\t100\t-1\t\n5\t1\t96\t1\t1\t1\t990\t5421\t105\t54\t0.000000\t区\n5\t1\t96\t1\t1\t2\t1169\t5389\t92\t100\t7.359867\tAP\n5\t1\t96\t1\t1\t3\t1302\t5389\t84\t100\t0.000000\tあま\n5\t1\t96\t1\t1\t4\t1386\t5389\t34\t100\t62.268166\t。\n5\t1\t96\t1\t1\t5\t1452\t5438\t26\t35\t62.268166\t。\n5\t1\t96\t1\t1\t6\t1519\t5436\t32\t39\t60.162449\t。\n5\t1\t96\t1\t1\t7\t1593\t5422\t46\t50\t55.686615\tか\n2\t1\t97\t0\t0\t0\t3297\t5547\t120\t56\t-1\t\n3\t1\t97\t1\t0\t0\t3297\t5547\t120\t56\t-1\t\n4\t1\t97\t1\t1\t0\t3297\t5547\t120\t56\t-1\t\n5\t1\t97\t1\t1\t1\t3297\t5561\t28\t42\t87.072868\tヶ\n5\t1\t97\t1\t1\t2\t3353\t5547\t64\t39\t5.049019\t>\n2\t1\t98\t0\t0\t0\t3578\t5583\t596\t156\t-1\t\n3\t1\t98\t1\t0\t0\t3578\t5583\t596\t156\t-1\t\n4\t1\t98\t1\t1\t0\t3578\t5583\t596\t156\t-1\t\n5\t1\t98\t1\t1\t1\t3578\t5583\t596\t156\t29.364513\tsa\n5\t1\t98\t1\t1\t2\t3775\t5579\t118\t201\t0.000000\tン\n5\t1\t98\t1\t1\t3\t3892\t5583\t282\t156\t6.254759\tシヨ\n2\t1\t99\t0\t0\t0\t4323\t5463\t120\t257\t-1\t\n3\t1\t99\t1\t0\t0\t4323\t5463\t120\t257\t-1\t\n4\t1\t99\t1\t1\t0\t4323\t5463\t120\t257\t-1\t\n5\t1\t99\t1\t1\t1\t4323\t5463\t120\t257\t89.503777\t/\n2\t1\t100\t0\t0\t0\t4829\t5603\t362\t61\t-1\t\n3\t1\t100\t1\t0\t0\t4829\t5603\t362\t61\t-1\t\n4\t1\t100\t1\t1\t0\t4829\t5603\t362\t61\t-1\t\n5\t1\t100\t1\t1\t1\t4829\t5603\t362\t61\t29.355183\t2\n2\t1\t101\t0\t0\t0\t2973\t5831\t404\t127\t-1\t\n3\t1\t101\t1\t0\t0\t2973\t5831\t404\t127\t-1\t\n4\t1\t101\t1\t1\t0\t2973\t5831\t404\t127\t-1\t\n5\t1\t101\t1\t1\t1\t2973\t5831\t404\t127\t23.312950\tNX\n5\t1\t101\t1\t1\t2\t3328\t5827\t46\t135\t21.952061\t。\n2\t1\t102\t0\t0\t0\t3399\t5797\t817\t219\t-1\t\n3\t1\t102\t1\t0\t0\t3399\t5797\t817\t219\t-1\t\n4\t1\t102\t1\t1\t0\t3399\t5797\t817\t219\t-1\t\n5\t1\t102\t1\t1\t1\t3399\t5797\t244\t219\t26.359787\tg\n5\t1\t102\t1\t1\t2\t3778\t5816\t117\t170\t0.000000\t誤\n5\t1\t102\t1\t1\t3\t4003\t5811\t213\t193\t68.306427\tベル\n2\t1\t103\t0\t0\t0\t4538\t5878\t391\t147\t-1\t\n3\t1\t103\t1\t0\t0\t4538\t5878\t391\t147\t-1\t\n4\t1\t103\t1\t1\t0\t4538\t5878\t391\t147\t-1\t\n5\t1\t103\t1\t1\t1\t4538\t5911\t46\t32\t17.355309\tァ\n5\t1\t103\t1\t1\t2\t4629\t5878\t60\t79\t73.687637\tマ\n5\t1\t103\t1\t1\t3\t4812\t5920\t117\t105\t74.469162\tで\n2\t1\t104\t0\t0\t0\t4949\t5807\t178\t133\t-1\t\n3\t1\t104\t1\t0\t0\t4949\t5807\t178\t133\t-1\t\n4\t1\t104\t1\t1\t0\t4949\t5807\t178\t133\t-1\t\n5\t1\t104\t1\t1\t1\t4949\t5807\t178\t133\t0.000000\tデア\n5\t1\t104\t1\t1\t2\t5073\t5803\t52\t154\t18.061428\t、\n2\t1\t105\t0\t0\t0\t564\t6058\t239\t138\t-1\t\n3\t1\t105\t1\t0\t0\t564\t6058\t239\t138\t-1\t\n4\t1\t105\t1\t1\t0\t564\t6058\t239\t138\t-1\t\n5\t1\t105\t1\t1\t1\t564\t6058\t239\t138\t71.413589\tぬ\n5\t1\t105\t1\t1\t2\t685\t6054\t110\t188\t75.473236\tV\n2\t1\t106\t0\t0\t0\t2548\t5902\t236\t216\t-1\t\n3\t1\t106\t1\t0\t0\t2548\t5902\t236\t216\t-1\t\n4\t1\t106\t1\t1\t0\t2548\t5902\t236\t216\t-1\t\n5\t1\t106\t1\t1\t1\t2548\t5902\t236\t216\t70.047813\t風\n2\t1\t107\t0\t0\t0\t3222\t6030\t266\t85\t-1\t\n3\t1\t107\t1\t0\t0\t3222\t6030\t266\t85\t-1\t\n4\t1\t107\t1\t1\t0\t3222\t6030\t266\t85\t-1\t\n5\t1\t107\t1\t1\t1\t3222\t6030\t266\t85\t44.112732\tも",
+      "confidence": 1.3,
+      "bounds": {
+        "left": 458,
+        "top": 700,
+        "right": 521,
+        "bottom": 723
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "CAUDOKS6の",
+      "confidence": 22.7,
+      "bounds": {
+        "left": 137,
+        "top": 1508,
+        "right": 345,
+        "bottom": 1571
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "とあの\"|/",
+      "confidence": 60.1,
+      "bounds": {
+        "left": 764,
+        "top": 1518,
+        "right": 971,
+        "bottom": 1581
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "9状光",
+      "confidence": 2.1,
+      "bounds": {
+        "left": 977,
+        "top": 1518,
+        "right": 1316,
+        "bottom": 1585
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "みあ:四",
+      "confidence": 8.1,
+      "bounds": {
+        "left": 582,
+        "top": 1541,
+        "right": 694,
+        "bottom": 1618
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "62w",
+      "confidence": 61.4,
+      "bounds": {
+        "left": 800,
+        "top": 1575,
+        "right": 839,
+        "bottom": 1596
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "S",
+      "confidence": 40.8,
+      "bounds": {
+        "left": 927,
+        "top": 1582,
+        "right": 946,
+        "bottom": 1619
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "双眼鏡議",
+      "confidence": 42.1,
+      "bounds": {
+        "left": 720,
+        "top": 1622,
+        "right": 989,
+        "bottom": 1688
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_13",
+        "itemName": "双眼鏡",
+        "similarity": 0.857
+      }
+    },
+    {
+      "text": "でw",
+      "confidence": 7.3,
+      "bounds": {
+        "left": 1076,
+        "top": 1660,
+        "right": 1120,
+        "bottom": 1681
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "Si",
+      "confidence": 4.0,
+      "bounds": {
+        "left": 492,
+        "top": 1672,
+        "right": 537,
+        "bottom": 1712
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "了y",
+      "confidence": 31.3,
+      "bounds": {
+        "left": 597,
+        "top": 1675,
+        "right": 641,
+        "bottom": 1712
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "2",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 451,
+        "top": 1718,
+        "right": 611,
+        "bottom": 1826
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "クニル",
+      "confidence": 77.2,
+      "bounds": {
+        "left": 1288,
+        "top": 1739,
+        "right": 1404,
+        "bottom": 1777
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_16",
+        "itemName": "スクールバッグ",
+        "similarity": 0.4
+      }
+    },
+    {
+      "text": "本ジペ",
+      "confidence": 25.7,
+      "bounds": {
+        "left": 1129,
+        "top": 1741,
+        "right": 1283,
+        "bottom": 1795
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_15",
+        "itemName": "本",
+        "similarity": 0.5
+      }
+    },
+    {
+      "text": "1",
+      "confidence": 36.9,
+      "bounds": {
+        "left": 946,
+        "top": 1743,
+        "right": 979,
+        "bottom": 1766
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "NL",
+      "confidence": 63.6,
+      "bounds": {
+        "left": 659,
+        "top": 1762,
+        "right": 689,
+        "bottom": 1785
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "7“・",
+      "confidence": 10.8,
+      "bounds": {
+        "left": 963,
+        "top": 1763,
+        "right": 1028,
+        "bottom": 1813
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ペル",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 627,
+        "top": 1776,
+        "right": 654,
+        "bottom": 1795
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "パック。",
+      "confidence": 35.2,
+      "bounds": {
+        "left": 1266,
+        "top": 1784,
+        "right": 1389,
+        "bottom": 1842
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_22",
+        "itemName": "シャトルコック",
+        "similarity": 0.4
+      }
+    },
+    {
+      "text": "+ぎ",
+      "confidence": 16.0,
+      "bounds": {
+        "left": 1071,
+        "top": 1819,
+        "right": 1090,
+        "bottom": 1831
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ムN",
+      "confidence": 40.5,
+      "bounds": {
+        "left": 728,
+        "top": 1832,
+        "right": 779,
+        "bottom": 1892
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "N//",
+      "confidence": 46.5,
+      "bounds": {
+        "left": 772,
+        "top": 1833,
+        "right": 845,
+        "bottom": 1880
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ンクとず",
+      "confidence": 59.3,
+      "bounds": {
+        "left": 935,
+        "top": 1835,
+        "right": 1024,
+        "bottom": 1884
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "RE",
+      "confidence": 17.8,
+      "bounds": {
+        "left": 270,
+        "top": 1836,
+        "right": 449,
+        "bottom": 1895
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "コ",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 38,
+        "top": 1843,
+        "right": 49,
+        "bottom": 1853
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ee",
+      "confidence": 51.0,
+      "bounds": {
+        "left": 1296,
+        "top": 1907,
+        "right": 1353,
+        "bottom": 1943
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "。ディ",
+      "confidence": 71.6,
+      "bounds": {
+        "left": 129,
+        "top": 1920,
+        "right": 290,
+        "bottom": 1982
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_20",
+        "itemName": "キャンディ",
+        "similarity": 0.571
+      }
+    },
+    {
+      "text": "紙飛行機",
+      "confidence": 47.7,
+      "bounds": {
+        "left": 501,
+        "top": 1942,
+        "right": 704,
+        "bottom": 1992
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_21",
+        "itemName": "紙飛行機",
+        "similarity": 1.0
+      }
+    },
+    {
+      "text": "(三才三",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 1036,
+        "top": 1995,
+        "right": 1270,
+        "bottom": 2076
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "イス還馬メガネ",
+      "confidence": 6.4,
+      "bounds": {
+        "left": 61,
+        "top": 2013,
+        "right": 453,
+        "bottom": 2090
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_26",
+        "itemName": "虫メガネ",
+        "similarity": 0.545
+      }
+    },
+    {
+      "text": "52引つ",
+      "confidence": 17.9,
+      "bounds": {
+        "left": 744,
+        "top": 2058,
+        "right": 931,
+        "bottom": 2115
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "と",
+      "confidence": 63.4,
+      "bounds": {
+        "left": 1336,
+        "top": 2085,
+        "right": 1404,
+        "bottom": 2192
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "1",
+      "confidence": 41.0,
+      "bounds": {
+        "left": 1254,
+        "top": 2091,
+        "right": 1266,
+        "bottom": 2122
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ツ天ヽ",
+      "confidence": 49.2,
+      "bounds": {
+        "left": 1022,
+        "top": 2115,
+        "right": 1196,
+        "bottom": 2200
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_06",
+        "itemName": "バケツ",
+        "similarity": 0.4
+      }
+    },
+    {
+      "text": "か",
+      "confidence": 61.8,
+      "bounds": {
+        "left": 178,
+        "top": 2152,
+        "right": 231,
+        "bottom": 2167
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "RE」",
+      "confidence": 31.9,
+      "bounds": {
+        "left": 86,
+        "top": 2164,
+        "right": 114,
+        "bottom": 2188
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ンン。",
+      "confidence": 82.2,
+      "bounds": {
+        "left": 1361,
+        "top": 2167,
+        "right": 1404,
+        "bottom": 2196
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_04",
+        "itemName": "リボン",
+        "similarity": 0.4
+      }
+    },
+    {
+      "text": "peク|S",
+      "confidence": 63.7,
+      "bounds": {
+        "left": 619,
+        "top": 2183,
+        "right": 782,
+        "bottom": 2262
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "ョa\\",
+      "confidence": 13.7,
+      "bounds": {
+        "left": 157,
+        "top": 2209,
+        "right": 173,
+        "bottom": 2223
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "皇伏",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 375,
+        "top": 2243,
+        "right": 543,
+        "bottom": 2353
+      },
+      "bestCatalogMatch": null
+    },
+    {
+      "text": "扇起",
+      "confidence": 0.0,
+      "bounds": {
+        "left": 611,
+        "top": 2373,
+        "right": 748,
+        "bottom": 2458
+      },
+      "bestCatalogMatch": {
+        "itemId": "chapter_6_item_31",
+        "itemName": "扇子",
+        "similarity": 0.5
+      }
+    },
+    {
+      "text": "sNe",
+      "confidence": 20.8,
+      "bounds": {
+        "left": 304,
+        "top": 2380,
+        "right": 548,
+        "bottom": 2481
+      },
+      "bestCatalogMatch": null
+    }
+  ]
+}
