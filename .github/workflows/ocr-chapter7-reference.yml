@@ -1,0 +1,56 @@
+name: OCR Chapter 7 reference labels
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - ".github/workflows/ocr-chapter7-reference.yml"
+      - "tools/ocr_catalog_reference.py"
+      - "tools/detect_label_frames.py"
+      - "app/src/main/assets/stages/item_catalogs.json"
+      - "reference/chapter_07/base.jpg"
+      - "reference/chapter_07/annotated.jpg"
+
+permissions:
+  contents: write
+
+jobs:
+  ocr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install OCR dependencies
+        run: |
+          python -m pip install opencv-python-headless==4.10.0.84
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-jpn
+      - name: Extract Chapter 7 label text positions
+        run: |
+          set -euo pipefail
+          python tools/ocr_catalog_reference.py \
+            --image reference/chapter_07/annotated.jpg \
+            --base reference/chapter_07/base.jpg \
+            --catalog app/src/main/assets/stages/item_catalogs.json \
+            --stage-id chapter_7 \
+            --output reference/chapter_07/ocr_text_regions.json \
+            --preview reference/chapter_07/ocr_text_regions_preview.jpg
+      - name: Commit review-only OCR diagnostics
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reference/chapter_07/ocr_text_regions.json reference/chapter_07/ocr_text_regions_preview.jpg
+          if git diff --cached --quiet; then
+            echo "OCR diagnostics are unchanged."
+            exit 0
+          fi
+          git commit -m "Add Chapter 7 OCR text position diagnostics"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
