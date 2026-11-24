@@ -25,7 +25,7 @@ class DetectLabelFramesTest(unittest.TestCase):
             align_annotated_to_base(annotated, base)
 
     # Synthetic backings intentionally use unrelated hues to prevent color-specific logic.
-    # The output preview is diagnostic only; runtime candidate data stays disabled. The raw contour list remains review-only; seed matching filters unrelated saturated scene details. A saved mask is used for threshold tuning and remains a diagnostic asset only; it is not a runtime overlay.
+    # The output preview is diagnostic only; runtime candidate data stays disabled. The raw contour list remains review-only; seed matching filters unrelated saturated scene details. A saved mask is used for threshold tuning and remains a diagnostic asset only; it is not a runtime overlay. Blue scene hues are excluded.
     def test_detects_different_colors_and_rotated_label_rectangles(self):
         base = np.full((1000, 563, 3), (180, 180, 180), dtype=np.uint8)
         annotated = base.copy()
