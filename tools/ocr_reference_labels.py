@@ -47,7 +47,7 @@ def run_tesseract(image_path: Path, base_path: Path, scale: int = 4) -> list[dic
         ocr_input.unlink(missing_ok=True)
 
     groups: dict[tuple[str, str, str, str], list[dict]] = defaultdict(list)
-    reader = csv.DictReader(result.stdout.splitlines(), delimiter="\t")
+    reader = csv.DictReader(io.StringIO(result.stdout), delimiter="\t")
     for row in reader:
         text = (row.get("text") or "").strip()
         try:
@@ -116,7 +116,7 @@ def main() -> None:
 
     seeds = json.loads(args.seeds.read_text(encoding="utf-8"))
     lines = match_catalog(run_tesseract(args.image, args.base), seeds["items"])
-    image = cv2.imread(str(args.image), cv2.IMREAD_COLOR)
+    image = cv2.imread(str(args.base), cv2.IMREAD_COLOR)
     for index, line in enumerate(lines, 1):
         b = line["bounds"]
         cv2.rectangle(image, (b["left"], b["top"]), (b["right"], b["bottom"]), (255, 220, 0), 1)
