@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import csv
 import difflib
+import io
 import json
 import re
 import subprocess
@@ -16,16 +17,19 @@ from collections import defaultdict
 from pathlib import Path
 
 import cv2
+from detect_label_frames import align_annotated_to_base
 
 
 def normalize(text: str) -> str:
     return re.sub(r"[^0-9A-Za-zぁ-んァ-ヶ一-龠ー]", "", text).lower()
 
 
-def run_tesseract(image_path: Path, scale: int = 3) -> list[dict]:
+def run_tesseract(image_path: Path, base_path: Path, scale: int = 4) -> list[dict]:
     image = cv2.imread(str(image_path), cv2.IMREAD_COLOR)
-    if image is None:
-        raise ValueError(f"Could not read image: {image_path}")
+    base = cv2.imread(str(base_path), cv2.IMREAD_COLOR)
+    if image is None or base is None:
+        raise ValueError(f"Could not read annotated/base image: {image_path}, {base_path}")
+    image = align_annotated_to_base(image, base)
     height, width = image.shape[:2]
     enlarged = cv2.resize(image, (width * scale, height * scale), interpolation=cv2.INTER_CUBIC)
     gray = cv2.cvtColor(enlarged, cv2.COLOR_BGR2GRAY)
@@ -104,13 +108,14 @@ def match_catalog(lines: list[dict], items: list[dict]) -> list[dict]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--image", type=Path, required=True)
+    parser.add_argument("--base", type=Path, required=True)
     parser.add_argument("--seeds", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--preview", type=Path, required=True)
     args = parser.parse_args()
 
     seeds = json.loads(args.seeds.read_text(encoding="utf-8"))
-    lines = match_catalog(run_tesseract(args.image), seeds["items"])
+    lines = match_catalog(run_tesseract(args.image, args.base), seeds["items"])
     image = cv2.imread(str(args.image), cv2.IMREAD_COLOR)
     for index, line in enumerate(lines, 1):
         b = line["bounds"]
