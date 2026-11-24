@@ -1,0 +1,1490 @@
+{
+  "stageId": "chapter_6",
+  "sourceAnnotated": "reference/chapter_06/annotated.jpg",
+  "sourceBase": "reference/chapter_06/base.jpg",
+  "coordinateSystem": "normalized_0_to_1",
+  "coordinateReference": "reference/chapter_06/base.jpg",
+  "runtimeEnabled": false,
+  "dataStatus": "automatically_detected_candidates_pending_visual_review",
+  "detectionMethod": "seeded_local_hsv_fill_quadrilateral",
+  "detectedShapeCount": 32,
+  "colorMaskPixelCount": 950208,
+  "matchedItemCount": 32,
+  "unmatchedItemCount": 0,
+  "detectedShapes": [
+    {
+      "center": [
+        197.0,
+        471.0
+      ],
+      "area": 34656.0,
+      "rectangularity": 0.8016,
+      "aspectRatio": 2.6667,
+      "bounds": [
+        45,
+        414,
+        350,
+        529
+      ]
+    },
+    {
+      "center": [
+        939.0,
+        655.5
+      ],
+      "area": 40828.0,
+      "rectangularity": 0.9567,
+      "aspectRatio": 1.3642,
+      "bounds": [
+        821,
+        569,
+        1058,
+        743
+      ]
+    },
+    {
+      "center": [
+        1268.0,
+        691.0
+      ],
+      "area": 38340.0,
+      "rectangularity": 0.9764,
+      "aspectRatio": 1.9014,
+      "bounds": [
+        1133,
+        620,
+        1404,
+        763
+      ]
+    },
+    {
+      "center": [
+        839.5,
+        1037.5
+      ],
+      "area": 21184.99,
+      "rectangularity": 0.97,
+      "aspectRatio": 2.3474,
+      "bounds": [
+        728,
+        990,
+        952,
+        1086
+      ]
+    },
+    {
+      "center": [
+        432.97,
+        1295.7
+      ],
+      "area": 26864.18,
+      "rectangularity": 0.9772,
+      "aspectRatio": 2.3708,
+      "bounds": [
+        307,
+        1242,
+        560,
+        1350
+      ]
+    },
+    {
+      "center": [
+        309.0,
+        1423.5
+      ],
+      "area": 27686.0,
+      "rectangularity": 0.7942,
+      "aspectRatio": 2.3303,
+      "bounds": [
+        182,
+        1369,
+        437,
+        1479
+      ]
+    },
+    {
+      "center": [
+        553.0,
+        1428.0
+      ],
+      "area": 23088.0,
+      "rectangularity": 0.8517,
+      "aspectRatio": 1.0541,
+      "bounds": [
+        475,
+        1354,
+        632,
+        1503
+      ]
+    },
+    {
+      "center": [
+        285.5,
+        1505.0
+      ],
+      "area": 51982.0,
+      "rectangularity": 0.6989,
+      "aspectRatio": 2.0823,
+      "bounds": [
+        121,
+        1426,
+        451,
+        1585
+      ]
+    },
+    {
+      "center": [
+        399.0,
+        1533.5
+      ],
+      "area": 26081.99,
+      "rectangularity": 0.7603,
+      "aspectRatio": 1.3696,
+      "bounds": [
+        330,
+        1439,
+        469,
+        1629
+      ]
+    },
+    {
+      "center": [
+        657.5,
+        1546.5
+      ],
+      "area": 30753.0,
+      "rectangularity": 0.6838,
+      "aspectRatio": 1.3137,
+      "bounds": [
+        581,
+        1446,
+        735,
+        1648
+      ]
+    },
+    {
+      "center": [
+        1001.99,
+        1447.39
+      ],
+      "area": 40386.64,
+      "rectangularity": 0.707,
+      "aspectRatio": 1.0803,
+      "bounds": [
+        896,
+        1330,
+        1087,
+        1557
+      ]
+    },
+    {
+      "center": [
+        1295.5,
+        1573.5
+      ],
+      "area": 32034.99,
+      "rectangularity": 0.8535,
+      "aspectRatio": 1.443,
+      "bounds": [
+        1188,
+        1499,
+        1404,
+        1649
+      ]
+    },
+    {
+      "center": [
+        826.0,
+        1655.0
+      ],
+      "area": 47400.0,
+      "rectangularity": 0.7334,
+      "aspectRatio": 1.8987,
+      "bounds": [
+        676,
+        1576,
+        977,
+        1735
+      ]
+    },
+    {
+      "center": [
+        875.5,
+        1722.5
+      ],
+      "area": 34055.0,
+      "rectangularity": 0.6685,
+      "aspectRatio": 1.7626,
+      "bounds": [
+        806,
+        1600,
+        946,
+        1846
+      ]
+    },
+    {
+      "center": [
+        1155.0,
+        1781.0
+      ],
+      "area": 18696.0,
+      "rectangularity": 0.7667,
+      "aspectRatio": 1.4386,
+      "bounds": [
+        1073,
+        1724,
+        1238,
+        1839
+      ]
+    },
+    {
+      "center": [
+        1303.0,
+        1791.5
+      ],
+      "area": 37800.0,
+      "rectangularity": 0.8681,
+      "aspectRatio": 1.0582,
+      "bounds": [
+        1203,
+        1697,
+        1404,
+        1887
+      ]
+    },
+    {
+      "center": [
+        540.03,
+        1773.76
+      ],
+      "area": 45135.19,
+      "rectangularity": 0.5506,
+      "aspectRatio": 1.9743,
+      "bounds": [
+        399,
+        1695,
+        680,
+        1861
+      ]
+    },
+    {
+      "center": [
+        424.45,
+        1877.23
+      ],
+      "area": 29573.49,
+      "rectangularity": 0.5598,
+      "aspectRatio": 1.9371,
+      "bounds": [
+        307,
+        1815,
+        543,
+        1943
+      ]
+    },
+    {
+      "center": [
+        88.5,
+        1933.5
+      ],
+      "area": 39715.0,
+      "rectangularity": 0.7732,
+      "aspectRatio": 1.3905,
+      "bounds": [
+        4,
+        1816,
+        174,
+        2052
+      ]
+    },
+    {
+      "center": [
+        248.5,
+        1930.0
+      ],
+      "area": 48509.99,
+      "rectangularity": 0.7823,
+      "aspectRatio": 1.2374,
+      "bounds": [
+        126,
+        1831,
+        372,
+        2030
+      ]
+    },
+    {
+      "center": [
+        616.52,
+        1965.81
+      ],
+      "area": 45699.52,
+      "rectangularity": 0.5929,
+      "aspectRatio": 2.6452,
+      "bounds": [
+        447,
+        1891,
+        787,
+        2041
+      ]
+    },
+    {
+      "center": [
+        873.0,
+        1965.5
+      ],
+      "area": 49000.0,
+      "rectangularity": 0.6563,
+      "aspectRatio": 1.6,
+      "bounds": [
+        733,
+        1878,
+        1014,
+        2054
+      ]
+    },
+    {
+      "center": [
+        1059.0,
+        1951.0
+      ],
+      "area": 33600.0,
+      "rectangularity": 0.8101,
+      "aspectRatio": 1.1905,
+      "bounds": [
+        959,
+        1867,
+        1160,
+        2036
+      ]
+    },
+    {
+      "center": [
+        1259.0,
+        1943.0
+      ],
+      "area": 52415.98,
+      "rectangularity": 0.744,
+      "aspectRatio": 1.5824,
+      "bounds": [
+        1115,
+        1852,
+        1404,
+        2035
+      ]
+    },
+    {
+      "center": [
+        1129.0,
+        2029.5
+      ],
+      "area": 29580.0,
+      "rectangularity": 0.8294,
+      "aspectRatio": 3.908,
+      "bounds": [
+        959,
+        1986,
+        1300,
+        2074
+      ]
+    },
+    {
+      "center": [
+        555.0,
+        2043.0
+      ],
+      "area": 37800.0,
+      "rectangularity": 0.2867,
+      "aspectRatio": 1.9286,
+      "bounds": [
+        420,
+        1973,
+        691,
+        2114
+      ]
+    },
+    {
+      "center": [
+        706.0,
+        2127.5
+      ],
+      "area": 44520.0,
+      "rectangularity": 0.7278,
+      "aspectRatio": 1.761,
+      "bounds": [
+        566,
+        2048,
+        847,
+        2208
+      ]
+    },
+    {
+      "center": [
+        1031.5,
+        2127.5
+      ],
+      "area": 58890.98,
+      "rectangularity": 0.5441,
+      "aspectRatio": 1.838,
+      "bounds": [
+        867,
+        2038,
+        1197,
+        2218
+      ]
+    },
+    {
+      "center": [
+        468.0,
+        2275.0
+      ],
+      "area": 61152.0,
+      "rectangularity": 0.6698,
+      "aspectRatio": 1.5918,
+      "bounds": [
+        312,
+        2177,
+        625,
+        2374
+      ]
+    },
+    {
+      "center": [
+        708.5,
+        2210.5
+      ],
+      "area": 61659.0,
+      "rectangularity": 0.7133,
+      "aspectRatio": 1.2624,
+      "bounds": [
+        569,
+        2100,
+        849,
+        2322
+      ]
+    },
+    {
+      "center": [
+        677.91,
+        2409.07
+      ],
+      "area": 27067.86,
+      "rectangularity": 0.8996,
+      "aspectRatio": 1.6981,
+      "bounds": [
+        572,
+        2344,
+        785,
+        2475
+      ]
+    },
+    {
+      "center": [
+        1145.5,
+        2376.5
+      ],
+      "area": 51675.0,
+      "rectangularity": 0.7629,
+      "aspectRatio": 2.044,
+      "bounds": [
+        983,
+        2297,
+        1309,
+        2457
+      ]
+    }
+  ],
+  "items": [
+    {
+      "itemId": "chapter_6_item_01",
+      "itemName": "バルーン",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.032074,
+          0.165932
+        ],
+        [
+          0.248753,
+          0.165932
+        ],
+        [
+          0.248753,
+          0.211623
+        ],
+        [
+          0.032074,
+          0.211623
+        ]
+      ],
+      "bounds": {
+        "left": 0.032074,
+        "top": 0.165932,
+        "right": 0.248753,
+        "bottom": 0.211623
+      },
+      "rectangularity": 0.8016,
+      "aspectRatio": 2.6667
+    },
+    {
+      "itemId": "chapter_6_item_02",
+      "itemName": "バードハウス",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.585175,
+          0.228056
+        ],
+        [
+          0.753386,
+          0.228056
+        ],
+        [
+          0.753386,
+          0.297395
+        ],
+        [
+          0.585175,
+          0.297395
+        ]
+      ],
+      "bounds": {
+        "left": 0.585175,
+        "top": 0.228056,
+        "right": 0.753386,
+        "bottom": 0.297395
+      },
+      "rectangularity": 0.9567,
+      "aspectRatio": 1.3642
+    },
+    {
+      "itemId": "chapter_6_item_03",
+      "itemName": "バードフィーダー",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.807555,
+          0.248497
+        ],
+        [
+          1.0,
+          0.248497
+        ],
+        [
+          1.0,
+          0.305411
+        ],
+        [
+          0.807555,
+          0.305411
+        ]
+      ],
+      "bounds": {
+        "left": 0.807555,
+        "top": 0.248497,
+        "right": 1.0,
+        "bottom": 0.305411
+      },
+      "rectangularity": 0.9764,
+      "aspectRatio": 1.9014
+    },
+    {
+      "itemId": "chapter_6_item_04",
+      "itemName": "リボン",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.518888,
+          0.43487
+        ],
+        [
+          0.518888,
+          0.396794
+        ],
+        [
+          0.677833,
+          0.396794
+        ],
+        [
+          0.677833,
+          0.43487
+        ]
+      ],
+      "bounds": {
+        "left": 0.518888,
+        "top": 0.396794,
+        "right": 0.677833,
+        "bottom": 0.43487
+      },
+      "rectangularity": 0.97,
+      "aspectRatio": 2.3474
+    },
+    {
+      "itemId": "chapter_6_item_05",
+      "itemName": "カメラ",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.218504,
+          0.540438
+        ],
+        [
+          0.218823,
+          0.497774
+        ],
+        [
+          0.398698,
+          0.498199
+        ],
+        [
+          0.39838,
+          0.540863
+        ]
+      ],
+      "bounds": {
+        "left": 0.218817,
+        "top": 0.497796,
+        "right": 0.398432,
+        "bottom": 0.540681
+      },
+      "rectangularity": 0.9772,
+      "aspectRatio": 2.3708
+    },
+    {
+      "itemId": "chapter_6_item_06",
+      "itemName": "バケツ",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.129722,
+          0.548697
+        ],
+        [
+          0.310763,
+          0.548697
+        ],
+        [
+          0.310763,
+          0.592385
+        ],
+        [
+          0.129722,
+          0.592385
+        ]
+      ],
+      "bounds": {
+        "left": 0.129722,
+        "top": 0.548697,
+        "right": 0.310763,
+        "bottom": 0.592385
+      },
+      "rectangularity": 0.7942,
+      "aspectRatio": 2.3303
+    },
+    {
+      "itemId": "chapter_6_item_07",
+      "itemName": "バスケット",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.33856,
+          0.542685
+        ],
+        [
+          0.449751,
+          0.542685
+        ],
+        [
+          0.449751,
+          0.602004
+        ],
+        [
+          0.33856,
+          0.602004
+        ]
+      ],
+      "bounds": {
+        "left": 0.33856,
+        "top": 0.542685,
+        "right": 0.449751,
+        "bottom": 0.602004
+      },
+      "rectangularity": 0.8517,
+      "aspectRatio": 1.0541
+    },
+    {
+      "itemId": "chapter_6_item_08",
+      "itemName": "ネズミぬいぐるみ",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.086244,
+          0.571543
+        ],
+        [
+          0.320741,
+          0.571543
+        ],
+        [
+          0.320741,
+          0.63487
+        ],
+        [
+          0.086244,
+          0.63487
+        ]
+      ],
+      "bounds": {
+        "left": 0.086244,
+        "top": 0.571543,
+        "right": 0.320741,
+        "bottom": 0.63487
+      },
+      "rectangularity": 0.6989,
+      "aspectRatio": 2.0823
+    },
+    {
+      "itemId": "chapter_6_item_09",
+      "itemName": "鈴",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.23521,
+          0.652505
+        ],
+        [
+          0.23521,
+          0.576754
+        ],
+        [
+          0.333571,
+          0.576754
+        ],
+        [
+          0.333571,
+          0.652505
+        ]
+      ],
+      "bounds": {
+        "left": 0.23521,
+        "top": 0.576754,
+        "right": 0.333571,
+        "bottom": 0.652505
+      },
+      "rectangularity": 0.7603,
+      "aspectRatio": 1.3696
+    },
+    {
+      "itemId": "chapter_6_item_10",
+      "itemName": "風車",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.414113,
+          0.579559
+        ],
+        [
+          0.523165,
+          0.579559
+        ],
+        [
+          0.523165,
+          0.66012
+        ],
+        [
+          0.414113,
+          0.66012
+        ]
+      ],
+      "bounds": {
+        "left": 0.414113,
+        "top": 0.579559,
+        "right": 0.523165,
+        "bottom": 0.66012
+      },
+      "rectangularity": 0.6838,
+      "aspectRatio": 1.3137
+    },
+    {
+      "itemId": "chapter_6_item_11",
+      "itemName": "ショベル",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.633729,
+          0.545375
+        ],
+        [
+          0.769574,
+          0.532333
+        ],
+        [
+          0.79463,
+          0.614858
+        ],
+        [
+          0.658785,
+          0.6279
+        ]
+      ],
+      "bounds": {
+        "left": 0.638632,
+        "top": 0.533066,
+        "right": 0.774056,
+        "bottom": 0.623647
+      },
+      "rectangularity": 0.707,
+      "aspectRatio": 1.0803
+    },
+    {
+      "itemId": "chapter_6_item_12",
+      "itemName": "ハンカチ",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.846757,
+          0.660521
+        ],
+        [
+          0.846757,
+          0.600802
+        ],
+        [
+          1.0,
+          0.600802
+        ],
+        [
+          1.0,
+          0.660521
+        ]
+      ],
+      "bounds": {
+        "left": 0.846757,
+        "top": 0.600802,
+        "right": 1.0,
+        "bottom": 0.660521
+      },
+      "rectangularity": 0.8535,
+      "aspectRatio": 1.443
+    },
+    {
+      "itemId": "chapter_6_item_13",
+      "itemName": "双眼鏡",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.481825,
+          0.631663
+        ],
+        [
+          0.695652,
+          0.631663
+        ],
+        [
+          0.695652,
+          0.69499
+        ],
+        [
+          0.481825,
+          0.69499
+        ]
+      ],
+      "bounds": {
+        "left": 0.481825,
+        "top": 0.631663,
+        "right": 0.695652,
+        "bottom": 0.69499
+      },
+      "rectangularity": 0.7334,
+      "aspectRatio": 1.8987
+    },
+    {
+      "itemId": "chapter_6_item_14",
+      "itemName": "傘",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.574483,
+          0.641283
+        ],
+        [
+          0.673557,
+          0.641283
+        ],
+        [
+          0.673557,
+          0.739479
+        ],
+        [
+          0.574483,
+          0.739479
+        ]
+      ],
+      "bounds": {
+        "left": 0.574483,
+        "top": 0.641283,
+        "right": 0.673557,
+        "bottom": 0.739479
+      },
+      "rectangularity": 0.6685,
+      "aspectRatio": 1.7626
+    },
+    {
+      "itemId": "chapter_6_item_15",
+      "itemName": "本",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.76479,
+          0.690982
+        ],
+        [
+          0.881682,
+          0.690982
+        ],
+        [
+          0.881682,
+          0.736673
+        ],
+        [
+          0.76479,
+          0.736673
+        ]
+      ],
+      "bounds": {
+        "left": 0.76479,
+        "top": 0.690982,
+        "right": 0.881682,
+        "bottom": 0.736673
+      },
+      "rectangularity": 0.7667,
+      "aspectRatio": 1.4386
+    },
+    {
+      "itemId": "chapter_6_item_16",
+      "itemName": "スクールバッグ",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.857448,
+          0.68016
+        ],
+        [
+          1.0,
+          0.68016
+        ],
+        [
+          1.0,
+          0.755912
+        ],
+        [
+          0.857448,
+          0.755912
+        ]
+      ],
+      "bounds": {
+        "left": 0.857448,
+        "top": 0.68016,
+        "right": 1.0,
+        "bottom": 0.755912
+      },
+      "rectangularity": 0.8681,
+      "aspectRatio": 1.0582
+    },
+    {
+      "itemId": "chapter_6_item_17",
+      "itemName": "サッカーボール",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.271619,
+          0.689992
+        ],
+        [
+          0.481953,
+          0.67195
+        ],
+        [
+          0.498204,
+          0.731858
+        ],
+        [
+          0.28787,
+          0.7499
+        ]
+      ],
+      "bounds": {
+        "left": 0.284391,
+        "top": 0.679359,
+        "right": 0.483963,
+        "bottom": 0.745491
+      },
+      "rectangularity": 0.5506,
+      "aspectRatio": 1.9743
+    },
+    {
+      "itemId": "chapter_6_item_18",
+      "itemName": "円盤",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.215732,
+          0.729347
+        ],
+        [
+          0.386221,
+          0.725953
+        ],
+        [
+          0.389336,
+          0.775445
+        ],
+        [
+          0.218847,
+          0.778838
+        ]
+      ],
+      "bounds": {
+        "left": 0.218817,
+        "top": 0.727455,
+        "right": 0.386315,
+        "bottom": 0.778357
+      },
+      "rectangularity": 0.5598,
+      "aspectRatio": 1.9371
+    },
+    {
+      "itemId": "chapter_6_item_19",
+      "itemName": "鉢植え",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.002851,
+          0.727856
+        ],
+        [
+          0.123307,
+          0.727856
+        ],
+        [
+          0.123307,
+          0.822044
+        ],
+        [
+          0.002851,
+          0.822044
+        ]
+      ],
+      "bounds": {
+        "left": 0.002851,
+        "top": 0.727856,
+        "right": 0.123307,
+        "bottom": 0.822044
+      },
+      "rectangularity": 0.7732,
+      "aspectRatio": 1.3905
+    },
+    {
+      "itemId": "chapter_6_item_20",
+      "itemName": "キャンディ",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.089808,
+          0.813226
+        ],
+        [
+          0.089808,
+          0.733868
+        ],
+        [
+          0.264433,
+          0.733868
+        ],
+        [
+          0.264433,
+          0.813226
+        ]
+      ],
+      "bounds": {
+        "left": 0.089808,
+        "top": 0.733868,
+        "right": 0.264433,
+        "bottom": 0.813226
+      },
+      "rectangularity": 0.7823,
+      "aspectRatio": 1.2374
+    },
+    {
+      "itemId": "chapter_6_item_21",
+      "itemName": "紙飛行機",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.312825,
+          0.765988
+        ],
+        [
+          0.560152,
+          0.757238
+        ],
+        [
+          0.566035,
+          0.809815
+        ],
+        [
+          0.318707,
+          0.818565
+        ]
+      ],
+      "bounds": {
+        "left": 0.318603,
+        "top": 0.757916,
+        "right": 0.560228,
+        "bottom": 0.817635
+      },
+      "rectangularity": 0.5929,
+      "aspectRatio": 2.6452
+    },
+    {
+      "itemId": "chapter_6_item_22",
+      "itemName": "シャトルコック",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.522452,
+          0.752705
+        ],
+        [
+          0.722024,
+          0.752705
+        ],
+        [
+          0.722024,
+          0.822846
+        ],
+        [
+          0.522452,
+          0.822846
+        ]
+      ],
+      "bounds": {
+        "left": 0.522452,
+        "top": 0.752705,
+        "right": 0.722024,
+        "bottom": 0.822846
+      },
+      "rectangularity": 0.6563,
+      "aspectRatio": 1.6
+    },
+    {
+      "itemId": "chapter_6_item_23",
+      "itemName": "水筒",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.683535,
+          0.815631
+        ],
+        [
+          0.683535,
+          0.748297
+        ],
+        [
+          0.826087,
+          0.748297
+        ],
+        [
+          0.826087,
+          0.815631
+        ]
+      ],
+      "bounds": {
+        "left": 0.683535,
+        "top": 0.748297,
+        "right": 0.826087,
+        "bottom": 0.815631
+      },
+      "rectangularity": 0.8101,
+      "aspectRatio": 1.1905
+    },
+    {
+      "itemId": "chapter_6_item_24",
+      "itemName": "ラケット",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.794726,
+          0.742285
+        ],
+        [
+          1.0,
+          0.742285
+        ],
+        [
+          1.0,
+          0.81523
+        ],
+        [
+          0.794726,
+          0.81523
+        ]
+      ],
+      "bounds": {
+        "left": 0.794726,
+        "top": 0.742285,
+        "right": 1.0,
+        "bottom": 0.81523
+      },
+      "rectangularity": 0.744,
+      "aspectRatio": 1.5824
+    },
+    {
+      "itemId": "chapter_6_item_25",
+      "itemName": "スニーカー",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.683535,
+          0.795992
+        ],
+        [
+          0.925873,
+          0.795992
+        ],
+        [
+          0.925873,
+          0.830862
+        ],
+        [
+          0.683535,
+          0.830862
+        ]
+      ],
+      "bounds": {
+        "left": 0.683535,
+        "top": 0.795992,
+        "right": 0.925873,
+        "bottom": 0.830862
+      },
+      "rectangularity": 0.8294,
+      "aspectRatio": 3.908
+    },
+    {
+      "itemId": "chapter_6_item_26",
+      "itemName": "虫メガネ",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.299359,
+          0.790782
+        ],
+        [
+          0.491803,
+          0.790782
+        ],
+        [
+          0.491803,
+          0.846894
+        ],
+        [
+          0.299359,
+          0.846894
+        ]
+      ],
+      "bounds": {
+        "left": 0.299359,
+        "top": 0.790782,
+        "right": 0.491803,
+        "bottom": 0.846894
+      },
+      "rectangularity": 0.2867,
+      "aspectRatio": 1.9286
+    },
+    {
+      "itemId": "chapter_6_item_27",
+      "itemName": "カチューシャ",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.403421,
+          0.820842
+        ],
+        [
+          0.602994,
+          0.820842
+        ],
+        [
+          0.602994,
+          0.884569
+        ],
+        [
+          0.403421,
+          0.884569
+        ]
+      ],
+      "bounds": {
+        "left": 0.403421,
+        "top": 0.820842,
+        "right": 0.602994,
+        "bottom": 0.884569
+      },
+      "rectangularity": 0.7278,
+      "aspectRatio": 1.761
+    },
+    {
+      "itemId": "chapter_6_item_28",
+      "itemName": "ヘッドホン",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.617962,
+          0.888577
+        ],
+        [
+          0.617962,
+          0.816834
+        ],
+        [
+          0.852459,
+          0.816834
+        ],
+        [
+          0.852459,
+          0.888577
+        ]
+      ],
+      "bounds": {
+        "left": 0.617962,
+        "top": 0.816834,
+        "right": 0.852459,
+        "bottom": 0.888577
+      },
+      "rectangularity": 0.5441,
+      "aspectRatio": 1.838
+    },
+    {
+      "itemId": "chapter_6_item_29",
+      "itemName": "手袋",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.222381,
+          0.872545
+        ],
+        [
+          0.444761,
+          0.872545
+        ],
+        [
+          0.444761,
+          0.951102
+        ],
+        [
+          0.222381,
+          0.951102
+        ]
+      ],
+      "bounds": {
+        "left": 0.222381,
+        "top": 0.872545,
+        "right": 0.444761,
+        "bottom": 0.951102
+      },
+      "rectangularity": 0.6698,
+      "aspectRatio": 1.5918
+    },
+    {
+      "itemId": "chapter_6_item_30",
+      "itemName": "サンドイッチ",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.40556,
+          0.841683
+        ],
+        [
+          0.604419,
+          0.841683
+        ],
+        [
+          0.604419,
+          0.930261
+        ],
+        [
+          0.40556,
+          0.930261
+        ]
+      ],
+      "bounds": {
+        "left": 0.40556,
+        "top": 0.841683,
+        "right": 0.604419,
+        "bottom": 0.930261
+      },
+      "rectangularity": 0.7133,
+      "aspectRatio": 1.2624
+    },
+    {
+      "itemId": "chapter_6_item_31",
+      "itemName": "扇子",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.405892,
+          0.989992
+        ],
+        [
+          0.407701,
+          0.939398
+        ],
+        [
+          0.560477,
+          0.941125
+        ],
+        [
+          0.558669,
+          0.991719
+        ]
+      ],
+      "bounds": {
+        "left": 0.407698,
+        "top": 0.939479,
+        "right": 0.558803,
+        "bottom": 0.991583
+      },
+      "rectangularity": 0.8996,
+      "aspectRatio": 1.6981
+    },
+    {
+      "itemId": "chapter_6_item_32",
+      "itemName": "ジュース",
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.700641,
+          0.920641
+        ],
+        [
+          0.932288,
+          0.920641
+        ],
+        [
+          0.932288,
+          0.984369
+        ],
+        [
+          0.700641,
+          0.984369
+        ]
+      ],
+      "bounds": {
+        "left": 0.700641,
+        "top": 0.920641,
+        "right": 0.932288,
+        "bottom": 0.984369
+      },
+      "rectangularity": 0.7629,
+      "aspectRatio": 2.044
+    }
+  ]
+}
