@@ -6,7 +6,9 @@ on:
     paths:
       - ".github/workflows/detect-chapter6-label-frames.yml"
       - "tools/detect_label_frames.py"
+      - "tools/ocr_reference_labels.py"
       - "tools/tests/test_detect_label_frames.py"
+      - "tools/tests/test_ocr_reference_labels.py"
       - "app/src/main/assets/stages/chapter_6_label_boxes.candidates.json"
       - "reference/chapter_06/base.jpg"
 
@@ -24,8 +26,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install OpenCV
-        run: python -m pip install opencv-python-headless==4.10.0.84
+      - name: Install OpenCV and Japanese OCR
+        run: |
+          python -m pip install opencv-python-headless==4.10.0.84
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-jpn
       - name: Run detector unit tests
         run: |
           set -euo pipefail
@@ -47,12 +52,21 @@ jobs:
             --seeds app/src/main/assets/stages/chapter_6_label_boxes.candidates.json \
             --output reference/chapter_06/detected_label_frames.candidates.json \
             --preview reference/chapter_06/detected_label_frames_preview.jpg
+      - name: Extract OCR text positions for comparison
+        run: |
+          set -euo pipefail
+          python tools/ocr_reference_labels.py \
+            --image reference/chapter_06/annotated.jpg \
+            --base reference/chapter_06/base.jpg \
+            --seeds app/src/main/assets/stages/chapter_6_label_boxes.candidates.json \
+            --output reference/chapter_06/ocr_text_regions.json \
+            --preview reference/chapter_06/ocr_text_regions_preview.jpg
       - name: Commit review-only detection results
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reference/chapter_06/annotated.jpg reference/chapter_06/detected_label_frames.candidates.json reference/chapter_06/detected_label_frames_preview.jpg reference/chapter_06/detected_label_frames_mask.png
+          git add reference/chapter_06/annotated.jpg reference/chapter_06/detected_label_frames.candidates.json reference/chapter_06/detected_label_frames_preview.jpg reference/chapter_06/detected_label_frames_mask.png reference/chapter_06/ocr_text_regions.json reference/chapter_06/ocr_text_regions_preview.jpg
           if git diff --cached --quiet; then
             echo "Detection outputs are unchanged."
             exit 0
