@@ -71,7 +71,9 @@ object OcrGeometryMatcher {
                 val pair = verticalPair(firstBounds, secondBounds) ?: continue
                 if (hasInterveningBlock(blocks, firstIndex, secondIndex, pair.first, pair.second)) continue
 
-                val recognized = pair.third.first + pair.third.second
+                val upperText = if (firstBounds.centerY <= secondBounds.centerY) firstLine else secondLine
+                val lowerText = if (firstBounds.centerY <= secondBounds.centerY) secondLine else firstLine
+                val recognized = upperText + lowerText
                 val normalized = OcrItemMatcher.normalize(recognized)
                 if (normalized.isEmpty()) continue
                 byNormalizedText.putIfAbsent(
@@ -103,7 +105,7 @@ object OcrGeometryMatcher {
         return Bounds(left, top, right, bottom)
     }
 
-    private fun verticalPair(a: Bounds, b: Bounds): Triple<Bounds, Bounds, Pair<String, String>>? {
+    private fun verticalPair(a: Bounds, b: Bounds): Pair<Bounds, Bounds>? {
         val (upper, lower) = if (a.centerY <= b.centerY) a to b else b to a
         val minWidth = minOf(upper.width, lower.width).toDouble()
         val maxWidth = maxOf(upper.width, lower.width).toDouble()
@@ -120,7 +122,7 @@ object OcrGeometryMatcher {
         if (centerOffset > maxWidth * 0.45) return null
         if (verticalGap < -maxHeight * 0.25 || verticalGap > maxHeight * 1.0) return null
         if (maxHeight / minHeight > 2.0) return null
-        return Triple(upper, lower, Pair("", ""))
+        return upper to lower
     }
 
     private fun hasInterveningBlock(
