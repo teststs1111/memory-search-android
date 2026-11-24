@@ -55,6 +55,26 @@ class DetectLabelFramesTest(unittest.TestCase):
         self.assertAlmostEqual(found[0]["center"][0], 157.5, delta=3)
         self.assertAlmostEqual(found[0]["center"][1], 122.5, delta=3)
 
+    def test_seeded_detector_splits_two_touching_label_fills(self):
+        base = np.full((300, 500, 3), (130, 140, 150), dtype=np.uint8)
+        annotated = base.copy()
+        purple = np.array([190, 80, 210], dtype=np.float32)
+        for x1, x2 in ((80, 220), (220, 360)):
+            roi = annotated[100:150, x1:x2].astype(np.float32)
+            annotated[100:150, x1:x2] = np.clip(roi * 0.55 + purple * 0.45, 0, 255).astype(np.uint8)
+        items = [
+            {"sourceRect": [80, 100, 220, 150]},
+            {"sourceRect": [220, 100, 360, 150]},
+        ]
+        found = detect_seeded_label_quadrilaterals(
+            annotated, items, {"width": 500, "height": 300},
+            500, 300, base=base
+        )
+        self.assertEqual(len(found), 2)
+        self.assertTrue(all(item is not None for item in found))
+        self.assertAlmostEqual(found[0]["center"][0], 150, delta=5)
+        self.assertAlmostEqual(found[1]["center"][0], 290, delta=5)
+
     def test_difference_mask_does_not_bridge_nearby_label_fills(self):
         base = np.full((180, 260, 3), (120, 150, 170), dtype=np.uint8)
         annotated = base.copy()
