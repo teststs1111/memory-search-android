@@ -141,7 +141,7 @@ def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, heig
         seed_area = sw * sh
         seed_diag = math.hypot(sw, sh)
         seed_aspect = max(sw, sh) / min(sw, sh)
-        px, py = max(8, int(sw * 0.55)), max(8, int(sh * 0.65))
+        px, py = max(4, int(sw * 0.15)), max(4, int(sh * 0.18))
         x1, y1 = max(0, int(sx1) - px), max(0, int(sy1) - py)
         x2, y2 = min(width, int(sx2) + px), min(height, int(sy2) + py)
         roi = mask[y1:y2, x1:x2]
@@ -154,7 +154,7 @@ def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, heig
                 continue
             rect_area = float(rw * rh)
             ratio = rect_area / seed_area
-            if not 0.12 <= ratio <= 4.5:
+            if not 0.18 <= ratio <= 2.5:
                 continue
             aspect = max(rw, rh) / min(rw, rh)
             if not 1.05 <= aspect <= 12.0:
@@ -165,7 +165,7 @@ def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, heig
             cx, cy = rect[0][0] + x1, rect[0][1] + y1
             scx, scy = (sx1 + sx2) / 2, (sy1 + sy2) / 2
             distance = math.hypot(cx - scx, cy - scy)
-            if distance > seed_diag * 0.82:
+            if distance > seed_diag * 0.55:
                 continue
             score = distance / seed_diag + 0.12 * abs(math.log(max(0.01, ratio))) + 0.08 * abs(math.log(max(0.01, aspect / seed_aspect))) + 0.05 * (1.0 - rectangularity)
             points = cv2.boxPoints(rect).astype(np.float32)
