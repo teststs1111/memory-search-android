@@ -58,7 +58,7 @@ class MainActivity : Activity() {
                     val blockGeometryText = if (rawBlockGeometry.isEmpty()) {
                         "ML Kitブロック座標：取得なし"
                     } else {
-                        "ML Kitブロック別テキスト・四隅座標：\\n" + rawBlockGeometry.mapNotNull { encoded ->
+                        "ML Kitブロック別テキスト・四隅座標：\n" + rawBlockGeometry.mapNotNull { encoded ->
                             runCatching {
                                 val block = JSONObject(encoded)
                                 val points = block.getJSONArray("corners")
@@ -66,9 +66,9 @@ class MainActivity : Activity() {
                                     val point = points.getJSONObject(index)
                                     "${point.getInt("x")},${point.getInt("y")}"
                                 }.joinToString(" / ")
-                                "#${block.getInt("index")}「${block.getString("text").replace("\\n", " / ")}」：${coordinates}"
+                                "#${block.getInt("index")}「${block.getString("text").replace("\n", " / ")}」：${coordinates}"
                             }.getOrNull()
-                        }.joinToString("\\n")
+                        }.joinToString("\n")
                     }
                     val locatedText = if (located.isEmpty()) {
                         "文字位置とアイテム名の完全一致：なし"
