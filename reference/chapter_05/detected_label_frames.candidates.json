@@ -8,9 +8,9 @@
   "dataStatus": "automatically_detected_candidates_pending_visual_review",
   "detectionMethod": "hsv_pink_purple_red_fill_quadrilateral",
   "detectedShapeCount": 15,
-  "colorMaskPixelCount": 188676,
-  "matchedItemCount": 4,
-  "unmatchedItemCount": 30,
+  "colorMaskPixelCount": 70419,
+  "matchedItemCount": 3,
+  "unmatchedItemCount": 31,
   "detectedShapes": [
     {
       "center": [
@@ -304,33 +304,7 @@
     {
       "itemId": "chapter_5_item_03",
       "itemName": "懐中電灯",
-      "status": "detected_candidate_needs_visual_review",
-      "corners": [
-        [
-          0.053269,
-          0.368707
-        ],
-        [
-          0.130751,
-          0.368707
-        ],
-        [
-          0.130751,
-          0.393197
-        ],
-        [
-          0.053269,
-          0.393197
-        ]
-      ],
-      "bounds": {
-        "left": 0.053269,
-        "top": 0.368707,
-        "right": 0.130751,
-        "bottom": 0.393197
-      },
-      "rectangularity": 0.401,
-      "aspectRatio": 1.7778
+      "status": "unmatched_needs_manual_review"
     },
     {
       "itemId": "chapter_5_item_04",
