@@ -15,6 +15,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
+import org.json.JSONObject
 
 class MainActivity : Activity() {
     private lateinit var captureStatus: TextView
@@ -46,7 +47,23 @@ class MainActivity : Activity() {
                         "一致したアイテム：\n" + matches.joinToString("、")
                     }
                     val recognized = lines.joinToString("\n").ifBlank { "文字を検出できませんでした。" }
-                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\n章：${resultStageId}\n\n${matchText}\n\nOCR行：\n${recognized.take(1200)}\n\n画像は保存せず、メモリ上で破棄しました。枠座標は未検証のため光りません。"
+                    val located = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_LOCATED_ITEMS).orEmpty()
+                    val locatedText = if (located.isEmpty()) {
+                        "文字位置とアイテム名の完全一致：なし"
+                    } else {
+                        "文字位置から取得した一致座標：\n" + located.mapNotNull { encoded ->
+                            runCatching {
+                                val item = JSONObject(encoded)
+                                val points = item.getJSONArray("corners")
+                                val coordinates = (0 until points.length()).map { index ->
+                                    val point = points.getJSONObject(index)
+                                    "${point.getInt("x")},${point.getInt("y")}"
+                                }.joinToString(" / ")
+                                "${item.getString("itemName")}：${coordinates}"
+                            }.getOrNull()
+                        }.joinToString("\n")
+                    }
+                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\n章：${resultStageId}\n\n${matchText}\n\n${locatedText}\n\nOCR行：\n${recognized.take(1200)}\n\n画像は保存せず、メモリ上で破棄しました。取得した座標は文字の四隅で、ラベル外周ではありません。"
                 }
                 ScreenCaptureService.ACTION_CAPTURE_ERROR -> {
                     captureStatus.text = "画面取得/OCRエラー：${intent.getStringExtra(ScreenCaptureService.EXTRA_ERROR) ?: "不明"}"
