@@ -5,7 +5,7 @@ on:
     branches: [ main ]
     paths:
       - ".github/workflows/detect-chapter5-label-frames.yml"
-      - "tools/detect_label_frames.py"
+      - "tools/detect_label_frames.py"\n      - "tools/ocr_reference_labels.py"
       - "tools/tests/test_detect_label_frames.py"
       - "app/src/main/assets/stages/chapter_5_label_boxes.candidates.json"
       - "reference/chapter_05/base.jpg"
@@ -47,12 +47,20 @@ jobs:
             --seeds app/src/main/assets/stages/chapter_5_label_boxes.candidates.json \
             --output reference/chapter_05/detected_label_frames.candidates.json \
             --preview reference/chapter_05/detected_label_frames_preview.jpg
+      - name: Extract OCR text positions for comparison
+        run: |
+          set -euo pipefail
+          python tools/ocr_reference_labels.py \
+            --image reference/chapter_05/annotated.jpg \
+            --seeds app/src/main/assets/stages/chapter_5_label_boxes.candidates.json \
+            --output reference/chapter_05/ocr_text_regions.json \
+            --preview reference/chapter_05/ocr_text_regions_preview.jpg
       - name: Commit review-only detection results
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reference/chapter_05/annotated.jpg reference/chapter_05/detected_label_frames.candidates.json reference/chapter_05/detected_label_frames_preview.jpg reference/chapter_05/detected_label_frames_mask.png
+          git add reference/chapter_05/annotated.jpg reference/chapter_05/detected_label_frames.candidates.json reference/chapter_05/detected_label_frames_preview.jpg reference/chapter_05/detected_label_frames_mask.png reference/chapter_05/ocr_text_regions.json reference/chapter_05/ocr_text_regions_preview.jpg
           if git diff --cached --quiet; then
             echo "Detection outputs are unchanged."
             exit 0
