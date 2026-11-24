@@ -165,8 +165,13 @@ def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, heig
         if base is not None else make_label_color_mask(annotated)
     )
     proposals = []
+    seed_rects = [_seed_rect(item, image_size, width, height) for item in items]
+    seed_centers = [
+        ((rect[0] + rect[2]) / 2.0, (rect[1] + rect[3]) / 2.0)
+        for rect in seed_rects
+    ]
     for item_index, item in enumerate(items):
-        sx1, sy1, sx2, sy2 = _seed_rect(item, image_size, width, height)
+        sx1, sy1, sx2, sy2 = seed_rects[item_index]
         sw, sh = max(4.0, sx2 - sx1), max(4.0, sy2 - sy1)
         seed_area = sw * sh
         seed_diag = math.hypot(sw, sh)
@@ -174,7 +179,21 @@ def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, heig
         px, py = max(4, int(sw * 0.15)), max(4, int(sh * 0.18))
         x1, y1 = max(0, int(sx1) - px), max(0, int(sy1) - py)
         x2, y2 = min(width, int(sx2) + px), min(height, int(sy2) + py)
-        roi = mask[y1:y2, x1:x2]
+        roi = mask[y1:y2, x1:x2].copy()
+        # Split touching/overlapping annotation components by a local Voronoi
+        # partition around each item's known approximate center. This lets
+        # adjacent label fills remain independently detectable even when the
+        # binary mask has one connected contour.
+        yy, xx = np.ogrid[y1:y2, x1:x2]
+        own_cx, own_cy = seed_centers[item_index]
+        own_distance = (xx - own_cx) ** 2 + (yy - own_cy) ** 2
+        nearest = np.ones(roi.shape, dtype=bool)
+        for other_index, (other_cx, other_cy) in enumerate(seed_centers):
+            if other_index == item_index:
+                continue
+            other_distance = (xx - other_cx) ** 2 + (yy - other_cy) ** 2
+            nearest &= own_distance <= other_distance
+        roi[~nearest] = 0
         contours, _ = cv2.findContours(roi, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         for contour in contours:
             area = float(cv2.contourArea(contour))
