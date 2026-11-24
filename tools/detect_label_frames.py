@@ -43,12 +43,12 @@ def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list
     # the shared annotation palette as a hue family rather than one exact RGB
     # value, so JPEG variation and the different label colors are tolerated.
     pink_purple = cv2.inRange(
-        hsv, np.array([125, 32, 70], dtype=np.uint8),
+        hsv, np.array([105, 18, 60], dtype=np.uint8),
         np.array([179, 255, 255], dtype=np.uint8)
     )
     red = cv2.inRange(
         hsv, np.array([0, 32, 70], dtype=np.uint8),
-        np.array([12, 255, 255], dtype=np.uint8)
+        np.array([18, 255, 255], dtype=np.uint8)
     )
     mask = cv2.bitwise_or(pink_purple, red)
 
@@ -65,7 +65,7 @@ def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list
 
     for contour in contours:
         contour_area = float(cv2.contourArea(contour))
-        if contour_area < max(35.0, image_area * 0.00012):
+        if contour_area < max(35.0, image_area * 0.000045):
             continue
 
         rect = cv2.minAreaRect(contour)
@@ -78,7 +78,7 @@ def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list
 
         aspect = max(rw, rh) / min(rw, rh)
         rectangularity = contour_area / rect_area
-        if not 1.12 <= aspect <= 9.0 or rectangularity < 0.55:
+        if not 1.06 <= aspect <= 12.0 or rectangularity < 0.32:
             continue
 
         points = cv2.boxPoints(rect).astype(np.float32)
@@ -104,7 +104,7 @@ def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list
             px, py = prior["center"]
             center_distance = math.hypot(cx - px, cy - py)
             area_ratio = min(candidate["area"], prior["area"]) / max(candidate["area"], prior["area"])
-            if center_distance < diagonal * 0.018 and area_ratio > 0.62:
+            if center_distance < diagonal * 0.018 and area_ratio > 0.55:
                 duplicate = True
                 break
         if not duplicate:
@@ -146,13 +146,13 @@ def match_detections(items: list[dict], detections: list[dict], image_size: dict
     for score, distance, item_index, detection_index in pairs:
         if item_index in assigned_items or detection_index in used_detections:
             continue
-        if distance > diagonal * 0.075:
+        if distance > diagonal * 0.09:
             continue
         item = items[item_index]
         sx1, sy1, sx2, sy2 = _seed_rect(item, image_size, width, height)
         seed_area = max(1.0, (sx2 - sx1) * (sy2 - sy1))
         area_ratio = detections[detection_index]["area"] / seed_area
-        if not 0.28 <= area_ratio <= 3.2:
+        if not 0.18 <= area_ratio <= 4.0:
             continue
         assigned_items[item_index] = detection_index
         used_detections.add(detection_index)
