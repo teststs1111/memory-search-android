@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - fix/geometry-aware-two-line-ocr
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "app/src/main/**"
+      - ".github/workflows/validate-ocr-geometry-branch.yml"
   workflow_dispatch:
 
 permissions:
