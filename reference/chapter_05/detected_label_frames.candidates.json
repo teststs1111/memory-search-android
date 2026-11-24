@@ -10,6 +10,53 @@
   "detectedShapeCount": 3,
   "matchedItemCount": 0,
   "unmatchedItemCount": 34,
+  "detectedShapes": [
+    {
+      "center": [
+        388.5,
+        56.5
+      ],
+      "area": 637.0,
+      "rectangularity": 0.7057,
+      "aspectRatio": 3.7692,
+      "bounds": [
+        364,
+        50,
+        414,
+        64
+      ]
+    },
+    {
+      "center": [
+        402.33,
+        571.52
+      ],
+      "area": 161.98,
+      "rectangularity": 0.7038,
+      "aspectRatio": 4.5981,
+      "bounds": [
+        399,
+        558,
+        406,
+        586
+      ]
+    },
+    {
+      "center": [
+        240.0,
+        700.5
+      ],
+      "area": 390.0,
+      "rectangularity": 0.8282,
+      "aspectRatio": 1.7333,
+      "bounds": [
+        227,
+        693,
+        254,
+        709
+      ]
+    }
+  ],
   "items": [
     {
       "itemId": "chapter_5_item_01",
