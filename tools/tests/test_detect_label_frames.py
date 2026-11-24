@@ -34,7 +34,7 @@ class DetectLabelFramesTest(unittest.TestCase):
         cv2.fillConvexPoly(annotated, rotated, (90, 90, 235))
 
         found = detect_label_quadrilaterals(annotated, base)
-        self.assertGreaterEqual(len(found), 2)
+        self.assertGreaterEqual(len(found), 2)\n        self.assertTrue(all(item['rectangularity'] >= 0.55 for item in found))
         self.assertTrue(any(item["aspectRatio"] > 2.0 for item in found))
 
     def test_ignores_thin_arrow_like_annotation(self):
