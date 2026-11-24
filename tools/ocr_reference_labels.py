@@ -114,7 +114,7 @@ def run_seeded_tesseract(image: "cv2.Mat", item: dict, image_size: dict, scale: 
     finally:
         temp.unlink(missing_ok=True)
     words = []
-    for row in csv.DictReader(io.StringIO(result.stdout), delimiter="\\t"):
+    for row in csv.DictReader(io.StringIO(result.stdout), delimiter="\t"):
         text = (row.get("text") or "").strip()
         try:
             conf = float(row.get("conf", "-1"))
