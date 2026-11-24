@@ -273,7 +273,7 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
         raise SystemExit(str(error)) from error
 
     seeds = json.loads(seed_path.read_text(encoding="utf-8"))
-    debug_mask = make_label_color_mask(annotated)
+    debug_mask = make_annotation_difference_mask(annotated, base)
     debug_mask_path = output_path.with_name("detected_label_frames_mask.png")
     debug_mask_path.parent.mkdir(parents=True, exist_ok=True)
     cv2.imwrite(str(debug_mask_path), debug_mask)
@@ -326,9 +326,9 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
         "coordinateReference": str(base_path),
         "runtimeEnabled": False,
         "dataStatus": "automatically_detected_candidates_pending_visual_review",
-        "detectionMethod": "seeded_local_hsv_fill_quadrilateral",
+        "detectionMethod": "seeded_paired_image_difference_quadrilateral",
         "detectedShapeCount": matched_count,
-        "colorMaskPixelCount": int(np.count_nonzero(debug_mask)),
+        "differenceMaskPixelCount": int(np.count_nonzero(debug_mask)),
         "matchedItemCount": matched_count,
         "unmatchedItemCount": len(seeds["items"]) - matched_count,
         "detectedShapes": [
