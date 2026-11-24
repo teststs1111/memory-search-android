@@ -146,12 +146,9 @@ def make_annotation_difference_mask(annotated, base):
     difference = cv2.absdiff(annotated, base)
     intensity = cv2.cvtColor(difference, cv2.COLOR_BGR2GRAY)
     changed = cv2.threshold(intensity, 18, 255, cv2.THRESH_BINARY)[1]
-    # Fill tiny gaps caused by JPEG blocks and text cut-outs inside the
-    # translucent label backing. Keep the operation local to each seed crop.
-    changed = cv2.morphologyEx(
-        changed, cv2.MORPH_CLOSE,
-        cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5)), iterations=2
-    )
+    # Do not aggressively close the mask: neighboring translucent labels
+    # can touch, and a large closing kernel fuses them into one component.
+    # External contours do not require text-shaped holes to be filled.
     return cv2.morphologyEx(
         changed, cv2.MORPH_OPEN,
         cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2)), iterations=1
