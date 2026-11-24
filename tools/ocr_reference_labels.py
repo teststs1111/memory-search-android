@@ -169,13 +169,17 @@ def main() -> None:
     args = parser.parse_args()
 
     seeds = json.loads(args.seeds.read_text(encoding="utf-8"))
-    aligned = cv2.imread(str(args.base), cv2.IMREAD_COLOR)
+    base_image = cv2.imread(str(args.base), cv2.IMREAD_COLOR)
+    annotated_image = cv2.imread(str(args.image), cv2.IMREAD_COLOR)
+    if base_image is None or annotated_image is None:
+        raise ValueError("Could not load aligned preview images")
+    aligned_annotated = align_annotated_to_base(annotated_image, base_image)
     lines = match_catalog(run_tesseract(args.image, args.base), seeds["items"])
     item_anchors = [
-        run_seeded_tesseract(aligned, item, seeds["imageSize"])
+        run_seeded_tesseract(aligned_annotated, item, seeds["imageSize"])
         for item in seeds["items"]
     ]
-    image = aligned.copy()
+    image = base_image.copy()
     for anchor in item_anchors:
         if anchor.get("bounds"):
             b = anchor["bounds"]
