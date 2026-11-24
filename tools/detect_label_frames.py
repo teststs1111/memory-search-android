@@ -17,6 +17,18 @@ import cv2
 import numpy as np
 
 
+def align_annotated_to_base(annotated: np.ndarray, base: np.ndarray) -> np.ndarray:
+    if annotated is None or base is None:
+        raise ValueError("Both annotated and base images are required")
+    ah, aw = annotated.shape[:2]
+    bh, bw = base.shape[:2]
+    if (ah, aw) == (bh, bw):
+        return annotated
+    if abs((aw / ah) - (bw / bh)) > 0.01:
+        raise ValueError("Annotated and base image aspect ratios do not match")
+    return cv2.resize(annotated, (bw, bh), interpolation=cv2.INTER_AREA)
+
+
 def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list[dict]:
     if annotated is None or base is None:
         raise ValueError("Both annotated and base images are required")
@@ -146,11 +158,10 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
     base = cv2.imread(str(base_path), cv2.IMREAD_COLOR)
     if annotated is None or base is None:
         raise SystemExit("Could not read annotated/base image")
-    if annotated.shape[:2] != base.shape[:2]:
-        raise SystemExit(
-            f"Image dimensions differ: annotated={annotated.shape[1]}x{annotated.shape[0]}, "
-            f"base={base.shape[1]}x{base.shape[0]}. Align the source images before detection."
-        )
+    try:
+        annotated = align_annotated_to_base(annotated, base)
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
 
     seeds = json.loads(seed_path.read_text(encoding="utf-8"))
     detections = detect_label_quadrilaterals(annotated, base)
