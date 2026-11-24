@@ -8,6 +8,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.graphics.Bitmap
+import android.graphics.Point
+import org.json.JSONArray
+import org.json.JSONObject
 import android.hardware.display.DisplayManager
 import android.hardware.display.VirtualDisplay
 import android.media.Image
@@ -143,6 +146,31 @@ class ScreenCaptureService : Service() {
                 .addOnSuccessListener { result ->
                     val blocks = result.textBlocks.map { block -> block.lines.map { line -> line.text } }
                     val lines = blocks.flatten()
+                    val itemNames = StageItemCatalogRepository.loadItemNames(assets, requestedStageId)
+                    val geometryBlocks = result.textBlocks.map { block ->
+                        val corners = block.cornerPoints?.map { point -> OcrPoint(point.x, point.y) }
+                            ?: block.boundingBox?.let { rect ->
+                                listOf(
+                                    OcrPoint(rect.left, rect.top),
+                                    OcrPoint(rect.right, rect.top),
+                                    OcrPoint(rect.right, rect.bottom),
+                                    OcrPoint(rect.left, rect.bottom)
+                                )
+                            }.orEmpty()
+                        OcrBlockGeometry(block.text, block.lines.map { it.text }, corners)
+                    }
+                    val locatedItems = OcrGeometryMatcher.match(geometryBlocks, itemNames)
+                    val locatedJson = ArrayList(locatedItems.map { item ->
+                        JSONObject()
+                            .put("itemName", item.itemName)
+                            .put("recognizedText", item.recognizedText)
+                            .put("corners", JSONArray().apply {
+                                item.corners.forEach { point ->
+                                    put(JSONObject().put("x", point.x).put("y", point.y))
+                                }
+                            })
+                            .toString()
+                    })
                     sendBroadcast(Intent(ACTION_OCR_RESULT).setPackage(packageName).apply {
                         putExtra(EXTRA_WIDTH, bitmap.width)
                         putExtra(EXTRA_HEIGHT, bitmap.height)
@@ -151,6 +179,8 @@ class ScreenCaptureService : Service() {
                         putStringArrayListExtra(EXTRA_OCR_LINES, ArrayList(lines))
                         // Keep OCR block boundaries so separate labels are never joined.
                         putStringArrayListExtra(EXTRA_OCR_BLOCKS, ArrayList(blocks.map { it.joinToString("\n") }))
+                        // Exact catalog matches retain ML Kit's original four-corner geometry.
+                        putStringArrayListExtra(EXTRA_OCR_LOCATED_ITEMS, locatedJson)
                     })
                 }
                 .addOnFailureListener { error ->
@@ -208,6 +238,7 @@ class ScreenCaptureService : Service() {
         const val EXTRA_OCR_TEXT = "ocr_text"
         const val EXTRA_OCR_LINES = "ocr_lines"
         const val EXTRA_OCR_BLOCKS = "ocr_blocks"
+        const val EXTRA_OCR_LOCATED_ITEMS = "ocr_located_items"
         const val EXTRA_STAGE_ID = "stage_id"
         const val EXTRA_ERROR = "error"
         private const val CHANNEL_ID = "screen_capture_test"
