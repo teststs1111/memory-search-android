@@ -10,67 +10,67 @@
     {
       "itemId": "chapter_5_item_01",
       "itemName": "コードリール",
-      "text": "EE",
-      "confidence": 29.3,
+      "text": "計り計",
+      "confidence": 16.4,
       "similarity": 0.0,
       "bounds": {
-        "left": 51,
-        "top": 135,
-        "right": 192,
-        "bottom": 146
+        "left": 54,
+        "top": 143,
+        "right": 157,
+        "bottom": 185
       }
     },
     {
       "itemId": "chapter_5_item_02",
-      "itemName": "救急箱",
-      "text": "CCY]生居",
-      "confidence": 0.0,
-      "similarity": 0.0,
-      "bounds": {
-        "left": 135,
-        "top": 217,
-        "right": 240,
-        "bottom": 268
-      }
-    },
-    {
-      "itemId": "chapter_5_item_03",
       "text": "",
       "confidence": 0,
       "bounds": null
     },
     {
+      "itemId": "chapter_5_item_03",
+      "itemName": "懐中電灯",
+      "text": "懐中電誠",
+      "confidence": 51.4,
+      "similarity": 0.75,
+      "bounds": {
+        "left": 78,
+        "top": 262,
+        "right": 137,
+        "bottom": 283
+      }
+    },
+    {
       "itemId": "chapter_5_item_04",
       "itemName": "防弾ベスト",
-      "text": "cc防弾放ペスト肖三モエエエ",
-      "confidence": 24.3,
-      "similarity": 0.421,
+      "text": "|主ベスド言",
+      "confidence": 32.4,
+      "similarity": 0.4,
       "bounds": {
         "left": 127,
-        "top": 259,
+        "top": 261,
         "right": 206,
-        "bottom": 336
+        "bottom": 317
       }
     },
     {
       "itemId": "chapter_5_item_05",
       "itemName": "燃料タンク",
-      "text": "・IEをeeンク」",
-      "confidence": 23.4,
-      "similarity": 0.333,
+      "text": "6",
+      "confidence": 13.4,
+      "similarity": 0.0,
       "bounds": {
         "left": 256,
         "top": 297,
-        "right": 352,
+        "right": 349,
         "bottom": 377
       }
     },
     {
       "itemId": "chapter_5_item_06",
       "itemName": "バリケード",
-      "text": "、NNやこバリ必2WsDーー大",
-      "confidence": 13.3,
-      "similarity": 0.316,
+      "text": "、Nsのーーンドーー大",
+      "confidence": 14.3,
+      "similarity": 0.267,
       "bounds": {
         "left": 347,
         "top": 313,
@@ -81,34 +81,34 @@
     {
       "itemId": "chapter_5_item_07",
       "itemName": "コンパス",
-      "text": "-ZZAくーー",
-      "confidence": 18.8,
+      "text": "選ゥ2ーーピー'才WW",
+      "confidence": 16.2,
       "similarity": 0.0,
       "bounds": {
-        "left": 120,
-        "top": 341,
-        "right": 214,
+        "left": 147,
+        "top": 351,
+        "right": 231,
         "bottom": 391
       }
     },
     {
       "itemId": "chapter_5_item_08",
       "itemName": "スペアタイヤ",
-      "text": "6",
-      "confidence": 0.0,
-      "similarity": 0.0,
+      "text": "スペパッ量人千ウイヤII5",
+      "confidence": 32.3,
+      "similarity": 0.421,
       "bounds": {
         "left": 202,
-        "top": 346,
-        "right": 253,
-        "bottom": 380
+        "top": 338,
+        "right": 294,
+        "bottom": 395
       }
     },
     {
       "itemId": "chapter_5_item_09",
       "itemName": "コア",
       "text": "|多|",
-      "confidence": 20.4,
+      "confidence": 22.9,
       "similarity": 0.0,
       "bounds": {
         "left": 136,
@@ -120,38 +120,38 @@
     {
       "itemId": "chapter_5_item_10",
       "itemName": "ペットボトル",
-      "text": "に四ドル:E",
-      "confidence": 34.7,
-      "similarity": 0.182,
+      "text": "ョエエドに軌",
+      "confidence": 47.7,
+      "similarity": 0.0,
       "bounds": {
         "left": 184,
         "top": 404,
-        "right": 246,
+        "right": 247,
         "bottom": 455
       }
     },
     {
       "itemId": "chapter_5_item_11",
       "itemName": "工具箱",
-      "text": "ーーニー",
-      "confidence": 19.2,
+      "text": "人5記",
+      "confidence": 12.5,
       "similarity": 0.0,
       "bounds": {
         "left": 222,
         "top": 393,
         "right": 295,
-        "bottom": 411
+        "bottom": 449
       }
     },
     {
       "itemId": "chapter_5_item_12",
       "itemName": "ジャッキ",
-      "text": "|2",
-      "confidence": 15.4,
-      "similarity": 0.0,
+      "text": "ジジ5ZE3EE",
+      "confidence": 27.2,
+      "similarity": 0.167,
       "bounds": {
         "left": 273,
-        "top": 403,
+        "top": 386,
         "right": 332,
         "bottom": 443
       }
@@ -159,51 +159,44 @@
     {
       "itemId": "chapter_5_item_13",
       "itemName": "ロードコーン",
-      "text": "ュー時2",
-      "confidence": 6.5,
-      "similarity": 0.2,
+      "text": "引テこ還引ee一双眼争",
+      "confidence": 3.1,
+      "similarity": 0.0,
       "bounds": {
         "left": 309,
         "top": 366,
         "right": 387,
-        "bottom": 428
-      }
-    },
-    {
-      "itemId": "chapter_5_item_14",
-      "itemName": "双眼鏡",
-      "text": "眼鏡",
-      "confidence": 14.5,
-      "similarity": 0.8,
-      "bounds": {
-        "left": 346,
-        "top": 423,
-        "right": 405,
         "bottom": 443
       }
     },
     {
+      "itemId": "chapter_5_item_14",
+      "text": "",
+      "confidence": 0,
+      "bounds": null
+    },
+    {
       "itemId": "chapter_5_item_15",
       "itemName": "ガンベルト",
-      "text": "-認交下二",
-      "confidence": 1.1,
-      "similarity": 0.0,
+      "text": "ーーCoーーガンペル",
+      "confidence": 46.1,
+      "similarity": 0.4,
       "bounds": {
-        "left": 0,
-        "top": 403,
-        "right": 155,
-        "bottom": 460
+        "left": 16,
+        "top": 416,
+        "right": 158,
+        "bottom": 469
       }
     },
     {
       "itemId": "chapter_5_item_16",
       "itemName": "保護ヘルメット",
-      "text": "3人了隊ッペリルXツトド年トーーデー",
-      "confidence": 49.3,
-      "similarity": 0.16,
+      "text": "コバル※%ツ保護二uzだロロ",
+      "confidence": 37.2,
+      "similarity": 0.211,
       "bounds": {
         "left": 114,
-        "top": 407,
+        "top": 410,
         "right": 213,
         "bottom": 469
       }
@@ -217,34 +210,34 @@
     {
       "itemId": "chapter_5_item_18",
       "itemName": "けん引きロープ",
-      "text": "上にし瑞叶。",
-      "confidence": 24.1,
-      "similarity": 0.0,
+      "text": "屋ーベバアナーンし",
+      "confidence": 51.2,
+      "similarity": 0.125,
       "bounds": {
-        "left": 212,
+        "left": 267,
         "top": 445,
         "right": 308,
-        "bottom": 506
+        "bottom": 457
       }
     },
     {
       "itemId": "chapter_5_item_19",
       "itemName": "レンチ",
-      "text": "5",
-      "confidence": 0.0,
-      "similarity": 0.0,
+      "text": "ws2レルレジチチ邊",
+      "confidence": 16.7,
+      "similarity": 0.308,
       "bounds": {
         "left": 0,
         "top": 452,
         "right": 65,
-        "bottom": 482
+        "bottom": 483
       }
     },
     {
       "itemId": "chapter_5_item_20",
       "itemName": "黒い軍手",
-      "text": "あこーーLE",
-      "confidence": 18.2,
+      "text": "|ンーLE",
+      "confidence": 29.6,
       "similarity": 0.0,
       "bounds": {
         "left": 43,
@@ -256,124 +249,138 @@
     {
       "itemId": "chapter_5_item_21",
       "itemName": "消火器",
-      "text": "|了宮",
-      "confidence": 39.4,
+      "text": "rr|上較宮",
+      "confidence": 18.7,
       "similarity": 0.0,
       "bounds": {
         "left": 92,
         "top": 446,
         "right": 186,
-        "bottom": 490
+        "bottom": 496
       }
     },
     {
       "itemId": "chapter_5_item_22",
       "itemName": "トランシーバー",
-      "text": "に",
-      "confidence": 6.3,
-      "similarity": 0.0,
+      "text": "ドシ",
+      "confidence": 92.3,
+      "similarity": 0.222,
       "bounds": {
         "left": 308,
         "top": 497,
         "right": 330,
-        "bottom": 524
+        "bottom": 510
       }
     },
     {
       "itemId": "chapter_5_item_23",
       "itemName": "毛布",
-      "text": "「代重。",
-      "confidence": 12.1,
+      "text": "のEE",
+      "confidence": 0.0,
       "similarity": 0.0,
       "bounds": {
         "left": 41,
         "top": 494,
-        "right": 143,
-        "bottom": 549
+        "right": 145,
+        "bottom": 566
       }
     },
     {
       "itemId": "chapter_5_item_24",
       "itemName": "カゴネット",
-      "text": "位と衣力三画人ネッド",
-      "confidence": 36.1,
-      "similarity": 0.267,
+      "text": "CD用カ三ヨコ6",
+      "confidence": 35.6,
+      "similarity": 0.154,
       "bounds": {
-        "left": 0,
-        "top": 529,
+        "left": 3,
+        "top": 546,
         "right": 103,
-        "bottom": 620
+        "bottom": 617
       }
     },
     {
       "itemId": "chapter_5_item_25",
       "itemName": "信号紅炎",
-      "text": "っ",
-      "confidence": 31.3,
+      "text": "ニンンデ",
+      "confidence": 57.5,
       "similarity": 0.0,
       "bounds": {
-        "left": 65,
+        "left": 80,
         "top": 534,
-        "right": 93,
-        "bottom": 571
+        "right": 114,
+        "bottom": 547
       }
     },
     {
       "itemId": "chapter_5_item_26",
       "itemName": "道路マップ",
-      "text": "デーほX^ガホホ",
-      "confidence": 31.7,
+      "text": "デーほガホホS/ツンーっ",
+      "confidence": 45.2,
       "similarity": 0.0,
       "bounds": {
         "left": 135,
-        "top": 578,
+        "top": 555,
         "right": 260,
         "bottom": 594
       }
     },
     {
       "itemId": "chapter_5_item_27",
-      "text": "",
-      "confidence": 0,
-      "bounds": null
+      "itemName": "食料箱",
+      "text": "人",
+      "confidence": 0.0,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 83,
+        "top": 576,
+        "right": 103,
+        "bottom": 589
+      }
     },
     {
       "itemId": "chapter_5_item_28",
-      "text": "",
-      "confidence": 0,
-      "bounds": null
+      "itemName": "メガホン",
+      "text": "ププ。少-一",
+      "confidence": 30.4,
+      "similarity": 0.0,
+      "bounds": {
+        "left": 191,
+        "top": 569,
+        "right": 274,
+        "bottom": 629
+      }
     },
     {
       "itemId": "chapter_5_item_29",
-      "itemName": "缶詰",
-      "text": "<ンプ",
-      "confidence": 22.6,
-      "similarity": 0.0,
-      "bounds": {
-        "left": 240,
-        "top": 600,
-        "right": 351,
-        "bottom": 617
-      }
+      "text": "",
+      "confidence": 0,
+      "bounds": null
     },
     {
       "itemId": "chapter_5_item_30",
       "itemName": "補給バッグ",
-      "text": "Soきら",
-      "confidence": 21.8,
+      "text": "4bsに、マー",
+      "confidence": 47.8,
       "similarity": 0.0,
       "bounds": {
         "left": 182,
-        "top": 615,
+        "top": 595,
         "right": 359,
-        "bottom": 692
+        "bottom": 700
       }
     },
     {
       "itemId": "chapter_5_item_31",
-      "text": "",
-      "confidence": 0,
-      "bounds": null
+      "itemName": "非常食",
+      "text": "非常食(",
+      "confidence": 38.9,
+      "similarity": 1.0,
+      "bounds": {
+        "left": 340,
+        "top": 640,
+        "right": 401,
+        "bottom": 670
+      }
     },
     {
       "itemId": "chapter_5_item_32",
@@ -384,35 +391,28 @@
       "bounds": {
         "left": 315,
         "top": 676,
-        "right": 395,
+        "right": 400,
         "bottom": 722
       }
     },
     {
       "itemId": "chapter_5_item_33",
       "itemName": "入館証",
-      "text": "ビンンーAN",
-      "confidence": 24.9,
+      "text": "ー",
+      "confidence": 4.2,
       "similarity": 0.0,
       "bounds": {
-        "left": 142,
+        "left": 157,
         "top": 615,
-        "right": 188,
-        "bottom": 655
+        "right": 168,
+        "bottom": 618
       }
     },
     {
       "itemId": "chapter_5_item_34",
-      "itemName": "輸送書類",
-      "text": "園",
-      "confidence": 0.0,
-      "similarity": 0.0,
-      "bounds": {
-        "left": 66,
-        "top": 661,
-        "right": 137,
-        "bottom": 724
-      }
+      "text": "",
+      "confidence": 0,
+      "bounds": null
     }
   ],
   "lines": [
