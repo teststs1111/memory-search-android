@@ -46,7 +46,7 @@ jobs:
             --base reference/chapter_05/base.jpg \
             --seeds app/src/main/assets/stages/chapter_5_label_boxes.candidates.json \
             --output reference/chapter_05/detected_label_frames.candidates.json \
-            --preview reference/chapter_05/detected_label_frames_preview.jpg reference/chapter_05/detected_label_frames_mask.png
+            --preview reference/chapter_05/detected_label_frames_preview.jpg
       - name: Commit review-only detection results
         run: |
           set -euo pipefail
