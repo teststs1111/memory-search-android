@@ -11,6 +11,7 @@ from detect_label_frames import align_annotated_to_base, detect_label_quadrilate
 
 
 class DetectLabelFramesTest(unittest.TestCase):
+    # The detector must preserve rotated corners and ignore thin markup strokes.
     def test_resizes_same_aspect_annotated_image_to_base(self):
         annotated = np.zeros((200, 100, 3), dtype=np.uint8)
         base = np.zeros((100, 50, 3), dtype=np.uint8)
