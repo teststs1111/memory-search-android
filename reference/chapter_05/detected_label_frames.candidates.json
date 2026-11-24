@@ -1,0 +1,185 @@
+{
+  "stageId": "chapter_5",
+  "sourceAnnotated": "reference/chapter_05/annotated.jpg",
+  "sourceBase": "reference/chapter_05/base.jpg",
+  "coordinateSystem": "normalized_0_to_1",
+  "coordinateReference": "reference/chapter_05/base.jpg",
+  "runtimeEnabled": false,
+  "dataStatus": "automatically_detected_candidates_pending_visual_review",
+  "detectionMethod": "paired_image_difference_color_independent_quadrilateral",
+  "detectedShapeCount": 3,
+  "matchedItemCount": 0,
+  "unmatchedItemCount": 34,
+  "items": [
+    {
+      "itemId": "chapter_5_item_01",
+      "itemName": "コードリール",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_02",
+      "itemName": "救急箱",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_03",
+      "itemName": "懐中電灯",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_04",
+      "itemName": "防弾ベスト",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_05",
+      "itemName": "燃料タンク",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_06",
+      "itemName": "バリケード",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_07",
+      "itemName": "コンパス",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_08",
+      "itemName": "スペアタイヤ",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_09",
+      "itemName": "コア",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_10",
+      "itemName": "ペットボトル",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_11",
+      "itemName": "工具箱",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_12",
+      "itemName": "ジャッキ",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_13",
+      "itemName": "ロードコーン",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_14",
+      "itemName": "双眼鏡",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_15",
+      "itemName": "ガンベルト",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_16",
+      "itemName": "保護ヘルメット",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_17",
+      "itemName": "誘導棒",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_18",
+      "itemName": "けん引きロープ",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_19",
+      "itemName": "レンチ",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_20",
+      "itemName": "黒い軍手",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_21",
+      "itemName": "消火器",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_22",
+      "itemName": "トランシーバー",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_23",
+      "itemName": "毛布",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_24",
+      "itemName": "カゴネット",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_25",
+      "itemName": "信号紅炎",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_26",
+      "itemName": "道路マップ",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_27",
+      "itemName": "食料箱",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_28",
+      "itemName": "メガホン",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_29",
+      "itemName": "缶詰",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_30",
+      "itemName": "補給バッグ",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_31",
+      "itemName": "非常食",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_32",
+      "itemName": "車キー",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_33",
+      "itemName": "入館証",
+      "status": "unmatched_needs_manual_review"
+    },
+    {
+      "itemId": "chapter_5_item_34",
+      "itemName": "輸送書類",
+      "status": "unmatched_needs_manual_review"
+    }
+  ]
+}
