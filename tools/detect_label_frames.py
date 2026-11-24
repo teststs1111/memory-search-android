@@ -168,12 +168,12 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
     matches = match_detections(seeds["items"], detections, seeds["imageSize"], base.shape[1], base.shape[0])
 
     result_items = []
+    preview = base.copy()
     for detection_index, detection in enumerate(detections, start=1):
         polygon = np.round(detection["points"]).astype(np.int32).reshape((-1, 1, 2))
         cv2.polylines(preview, [polygon], True, (255, 80, 0), 2, cv2.LINE_AA)
         dx, dy = map(int, detection["center"])
         cv2.putText(preview, f"D{detection_index}", (dx, dy), cv2.FONT_HERSHEY_SIMPLEX, 0.35, (255, 255, 255), 1, cv2.LINE_AA)
-    preview = base.copy()
     matched_count = 0
     for index, (seed, detection) in enumerate(zip(seeds["items"], matches), start=1):
         entry = {"itemId": seed["itemId"], "itemName": seed["itemName"]}
