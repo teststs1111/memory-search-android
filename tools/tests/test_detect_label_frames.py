@@ -55,6 +55,22 @@ class DetectLabelFramesTest(unittest.TestCase):
         self.assertAlmostEqual(found[0]["center"][0], 157.5, delta=3)
         self.assertAlmostEqual(found[0]["center"][1], 122.5, delta=3)
 
+    def test_difference_mask_does_not_bridge_nearby_label_fills(self):
+        base = np.full((180, 260, 3), (120, 150, 170), dtype=np.uint8)
+        annotated = base.copy()
+        purple = np.array([190, 80, 210], dtype=np.float32)
+        for x1, x2 in ((20, 115), (118, 215)):
+            roi = annotated[60:100, x1:x2].astype(np.float32)
+            annotated[60:100, x1:x2] = np.clip(roi * 0.55 + purple * 0.45, 0, 255).astype(np.uint8)
+        mask = make_annotation_difference_mask(annotated, base)
+        count, labels, stats, _ = cv2.connectedComponentsWithStats(mask, 8)
+        components = [
+            stats[i, cv2.CC_STAT_AREA]
+            for i in range(1, count)
+            if stats[i, cv2.CC_STAT_AREA] > 100
+        ]
+        self.assertEqual(len(components), 2)
+
     def test_rejects_different_aspect_ratios(self):
         annotated = np.zeros((200, 100, 3), dtype=np.uint8)
         base = np.zeros((100, 100, 3), dtype=np.uint8)
