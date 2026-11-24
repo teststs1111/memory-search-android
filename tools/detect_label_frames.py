@@ -113,6 +113,14 @@ def detect_label_quadrilaterals(annotated: np.ndarray, base: np.ndarray) -> list
     kept.sort(key=lambda item: (item["center"][1], item["center"][0]))
     return kept
 
+
+def make_label_color_mask(annotated):
+    hsv = cv2.cvtColor(annotated, cv2.COLOR_BGR2HSV)
+    pink_purple = cv2.inRange(hsv, np.array([118, 40, 70], dtype=np.uint8), np.array([179, 255, 255], dtype=np.uint8))
+    red = cv2.inRange(hsv, np.array([0, 40, 70], dtype=np.uint8), np.array([18, 255, 255], dtype=np.uint8))
+    mask = cv2.bitwise_or(pink_purple, red)
+    return cv2.morphologyEx(mask, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2)), iterations=1)
+
 def _seed_rect(item: dict, image_size: dict, width: int, height: int) -> tuple[float, float, float, float]:
     if "sourceRect" in item:
         x1, y1, x2, y2 = item["sourceRect"]
@@ -123,6 +131,67 @@ def _seed_rect(item: dict, image_size: dict, width: int, height: int) -> tuple[f
         bounds["left"] * (width - 1), bounds["top"] * (height - 1),
         bounds["right"] * (width - 1), bounds["bottom"] * (height - 1),
     )
+
+def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, height):
+    mask = make_label_color_mask(annotated)
+    proposals = []
+    for item_index, item in enumerate(items):
+        sx1, sy1, sx2, sy2 = _seed_rect(item, image_size, width, height)
+        sw, sh = max(4.0, sx2 - sx1), max(4.0, sy2 - sy1)
+        seed_area = sw * sh
+        seed_diag = math.hypot(sw, sh)
+        seed_aspect = max(sw, sh) / min(sw, sh)
+        px, py = max(8, int(sw * 0.55)), max(8, int(sh * 0.65))
+        x1, y1 = max(0, int(sx1) - px), max(0, int(sy1) - py)
+        x2, y2 = min(width, int(sx2) + px), min(height, int(sy2) + py)
+        roi = mask[y1:y2, x1:x2]
+        contours, _ = cv2.findContours(roi, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        for contour in contours:
+            area = float(cv2.contourArea(contour))
+            rect = cv2.minAreaRect(contour)
+            rw, rh = rect[1]
+            if rw <= 1 or rh <= 1:
+                continue
+            rect_area = float(rw * rh)
+            ratio = rect_area / seed_area
+            if not 0.12 <= ratio <= 4.5:
+                continue
+            aspect = max(rw, rh) / min(rw, rh)
+            if not 1.05 <= aspect <= 12.0:
+                continue
+            rectangularity = area / rect_area
+            if rectangularity < 0.25:
+                continue
+            cx, cy = rect[0][0] + x1, rect[0][1] + y1
+            scx, scy = (sx1 + sx2) / 2, (sy1 + sy2) / 2
+            distance = math.hypot(cx - scx, cy - scy)
+            if distance > seed_diag * 0.82:
+                continue
+            score = distance / seed_diag + 0.12 * abs(math.log(max(0.01, ratio))) + 0.08 * abs(math.log(max(0.01, aspect / seed_aspect))) + 0.05 * (1.0 - rectangularity)
+            points = cv2.boxPoints(rect).astype(np.float32)
+            points[:, 0] += x1
+            points[:, 1] += y1
+            bx, by, bw, bh = cv2.boundingRect(contour)
+            proposals.append({
+                "itemIndex": item_index, "score": score,
+                "center": (float(cx), float(cy)), "area": rect_area,
+                "rectangularity": rectangularity, "aspectRatio": aspect,
+                "points": points, "bounds": (bx + x1, by + y1, bx + x1 + bw, by + y1 + bh)
+            })
+
+    proposals.sort(key=lambda p: p["score"])
+    assigned = [None] * len(items)
+    used = []
+    for proposal in proposals:
+        index = proposal["itemIndex"]
+        if assigned[index] is not None:
+            continue
+        cx, cy = proposal["center"]
+        if any(math.hypot(cx - ux, cy - uy) < 8.0 for ux, uy in used):
+            continue
+        assigned[index] = proposal
+        used.append((cx, cy))
+    return assigned
 
 
 def match_detections(items: list[dict], detections: list[dict], image_size: dict, width: int, height: int) -> list[dict | None]:
