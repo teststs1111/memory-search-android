@@ -7,26 +7,330 @@
   "runtimeEnabled": false,
   "dataStatus": "automatically_detected_candidates_pending_visual_review",
   "detectionMethod": "hsv_pink_purple_red_fill_quadrilateral",
-  "detectedShapeCount": 0,
+  "detectedShapeCount": 15,
   "colorMaskPixelCount": 188676,
-  "matchedItemCount": 0,
-  "unmatchedItemCount": 34,
-  "detectedShapes": [],
+  "matchedItemCount": 4,
+  "unmatchedItemCount": 30,
+  "detectedShapes": [
+    {
+      "center": [
+        104.73,
+        160.34
+      ],
+      "area": 3756.83,
+      "rectangularity": 0.8735,
+      "aspectRatio": 3.6491,
+      "bounds": [
+        46,
+        143,
+        164,
+        177
+      ]
+    },
+    {
+      "center": [
+        357.73,
+        234.79
+      ],
+      "area": 6283.28,
+      "rectangularity": 0.7079,
+      "aspectRatio": 1.7271,
+      "bounds": [
+        306,
+        204,
+        411,
+        266
+      ]
+    },
+    {
+      "center": [
+        189.0,
+        243.5
+      ],
+      "area": 2170.0,
+      "rectangularity": 0.9465,
+      "aspectRatio": 2.2581,
+      "bounds": [
+        154,
+        228,
+        225,
+        260
+      ]
+    },
+    {
+      "center": [
+        38.0,
+        280.0
+      ],
+      "area": 576.0,
+      "rectangularity": 0.401,
+      "aspectRatio": 1.7778,
+      "bounds": [
+        22,
+        271,
+        55,
+        290
+      ]
+    },
+    {
+      "center": [
+        136.55,
+        286.37
+      ],
+      "area": 10262.65,
+      "rectangularity": 0.6666,
+      "aspectRatio": 2.1477,
+      "bounds": [
+        63,
+        252,
+        213,
+        325
+      ]
+    },
+    {
+      "center": [
+        47.14,
+        295.49
+      ],
+      "area": 72.3,
+      "rectangularity": 0.5325,
+      "aspectRatio": 2.45,
+      "bounds": [
+        44,
+        289,
+        51,
+        303
+      ]
+    },
+    {
+      "center": [
+        35.6,
+        307.81
+      ],
+      "area": 667.22,
+      "rectangularity": 0.3327,
+      "aspectRatio": 1.8034,
+      "bounds": [
+        17,
+        292,
+        55,
+        313
+      ]
+    },
+    {
+      "center": [
+        405.0,
+        316.5
+      ],
+      "area": 132.0,
+      "rectangularity": 0.7992,
+      "aspectRatio": 1.0909,
+      "bounds": [
+        399,
+        311,
+        412,
+        323
+      ]
+    },
+    {
+      "center": [
+        47.5,
+        404.0
+      ],
+      "area": 110.0,
+      "rectangularity": 0.7864,
+      "aspectRatio": 4.4,
+      "bounds": [
+        45,
+        393,
+        51,
+        416
+      ]
+    },
+    {
+      "center": [
+        8.5,
+        404.5
+      ],
+      "area": 119.0,
+      "rectangularity": 0.7899,
+      "aspectRatio": 2.4286,
+      "bounds": [
+        5,
+        396,
+        13,
+        414
+      ]
+    },
+    {
+      "center": [
+        17.54,
+        644.76
+      ],
+      "area": 570.21,
+      "rectangularity": 0.413,
+      "aspectRatio": 3.2704,
+      "bounds": [
+        0,
+        632,
+        33,
+        663
+      ]
+    },
+    {
+      "center": [
+        7.64,
+        672.02
+      ],
+      "area": 184.24,
+      "rectangularity": 0.4912,
+      "aspectRatio": 1.9184,
+      "bounds": [
+        0,
+        666,
+        14,
+        683
+      ]
+    },
+    {
+      "center": [
+        108.05,
+        699.0
+      ],
+      "area": 2854.23,
+      "rectangularity": 0.9213,
+      "aspectRatio": 1.0677,
+      "bounds": [
+        80,
+        673,
+        137,
+        725
+      ]
+    },
+    {
+      "center": [
+        240.15,
+        702.53
+      ],
+      "area": 280.16,
+      "rectangularity": 0.7014,
+      "aspectRatio": 1.6489,
+      "bounds": [
+        229,
+        696,
+        252,
+        710
+      ]
+    },
+    {
+      "center": [
+        12.86,
+        712.19
+      ],
+      "area": 415.46,
+      "rectangularity": 0.349,
+      "aspectRatio": 2.0656,
+      "bounds": [
+        0,
+        697,
+        27,
+        722
+      ]
+    }
+  ],
   "items": [
     {
       "itemId": "chapter_5_item_01",
       "itemName": "コードリール",
-      "status": "unmatched_needs_manual_review"
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.110959,
+          0.198224
+        ],
+        [
+          0.39438,
+          0.194432
+        ],
+        [
+          0.396229,
+          0.238074
+        ],
+        [
+          0.112808,
+          0.241866
+        ]
+      ],
+      "bounds": {
+        "left": 0.11138,
+        "top": 0.194558,
+        "right": 0.394673,
+        "bottom": 0.239456
+      },
+      "rectangularity": 0.8735,
+      "aspectRatio": 3.6491
     },
     {
       "itemId": "chapter_5_item_02",
       "itemName": "救急箱",
-      "status": "unmatched_needs_manual_review"
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.372881,
+          0.310204
+        ],
+        [
+          0.542373,
+          0.310204
+        ],
+        [
+          0.542373,
+          0.352381
+        ],
+        [
+          0.372881,
+          0.352381
+        ]
+      ],
+      "bounds": {
+        "left": 0.372881,
+        "top": 0.310204,
+        "right": 0.542373,
+        "bottom": 0.352381
+      },
+      "rectangularity": 0.9465,
+      "aspectRatio": 2.2581
     },
     {
       "itemId": "chapter_5_item_03",
       "itemName": "懐中電灯",
-      "status": "unmatched_needs_manual_review"
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.053269,
+          0.368707
+        ],
+        [
+          0.130751,
+          0.368707
+        ],
+        [
+          0.130751,
+          0.393197
+        ],
+        [
+          0.053269,
+          0.393197
+        ]
+      ],
+      "bounds": {
+        "left": 0.053269,
+        "top": 0.368707,
+        "right": 0.130751,
+        "bottom": 0.393197
+      },
+      "rectangularity": 0.401,
+      "aspectRatio": 1.7778
     },
     {
       "itemId": "chapter_5_item_04",
@@ -181,7 +485,33 @@
     {
       "itemId": "chapter_5_item_34",
       "itemName": "輸送書類",
-      "status": "unmatched_needs_manual_review"
+      "status": "detected_candidate_needs_visual_review",
+      "corners": [
+        [
+          0.192743,
+          0.984925
+        ],
+        [
+          0.196913,
+          0.914618
+        ],
+        [
+          0.330502,
+          0.91712
+        ],
+        [
+          0.326331,
+          0.987428
+        ]
+      ],
+      "bounds": {
+        "left": 0.193705,
+        "top": 0.915646,
+        "right": 0.329298,
+        "bottom": 0.985034
+      },
+      "rectangularity": 0.9213,
+      "aspectRatio": 1.0677
     }
   ]
 }
