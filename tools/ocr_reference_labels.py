@@ -241,6 +241,7 @@ def main() -> None:
     result = {
         "stageId": seeds["stageId"],
         "sourceImage": str(args.image),
+        "imageSize": {"width": int(base_image.shape[1]), "height": int(base_image.shape[0])},
         "purpose": "diagnostic_text_position_anchors_only",
         "runtimeEnabled": False,
         "lineCount": len(lines),
