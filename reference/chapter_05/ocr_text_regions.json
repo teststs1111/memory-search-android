@@ -1,6 +1,10 @@
 {
   "stageId": "chapter_5",
   "sourceImage": "reference/chapter_05/annotated.jpg",
+  "imageSize": {
+    "width": 414,
+    "height": 736
+  },
   "purpose": "diagnostic_text_position_anchors_only",
   "runtimeEnabled": false,
   "lineCount": 34,
@@ -102,7 +106,7 @@
       "itemId": "chapter_5_item_08",
       "itemName": "スペアタイヤ",
       "text": "2",
-      "confidence": 39.3,
+      "confidence": 34.4,
       "similarity": 0.0,
       "bounds": {
         "left": 215,
@@ -284,7 +288,7 @@
       "itemId": "chapter_5_item_22",
       "itemName": "トランシーバー",
       "text": "上e列|1",
-      "confidence": 29.1,
+      "confidence": 28.2,
       "similarity": 0.0,
       "bounds": {
         "left": 297,
