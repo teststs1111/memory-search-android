@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.ApplicationInfo
 import android.media.projection.MediaProjectionManager
 import android.os.Build
 import android.os.Bundle
@@ -132,6 +133,13 @@ class MainActivity : Activity() {
             }
         } catch (error: Exception) {
             stageStatus.text = "ステージデータを読み込めませんでした。\n${error.message ?: "データ形式を確認してください。"}"
+        }
+
+        if ((applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
+            root.addView(Button(this).apply {
+                text = "第5章 OCR位置比較（検証用）"
+                setOnClickListener { startActivity(Intent(this@MainActivity, ReferenceOcrActivity::class.java)) }
+            })
         }
 
         root.addView(TextView(this).apply {
