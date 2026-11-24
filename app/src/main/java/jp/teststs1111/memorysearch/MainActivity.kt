@@ -36,7 +36,7 @@ class MainActivity : Activity() {
                     val height = intent.getIntExtra(ScreenCaptureService.EXTRA_HEIGHT, 0)
                     val lines = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_LINES).orEmpty()
                     val blocks = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_BLOCKS)
-                        ?.map { encoded -> encoded.split('\\n') }
+                        ?.map { encoded -> encoded.split('\n') }
                         ?: lines.map { listOf(it) }
                     // Use the chapter captured when permission was granted, not a later spinner selection.
                     val resultStageId = intent.getStringExtra(ScreenCaptureService.EXTRA_STAGE_ID) ?: selectedStageId
@@ -51,13 +51,13 @@ class MainActivity : Activity() {
                     val matchText = if (matches.isEmpty()) {
                         "${resultStageId} のアイテム名との完全一致はありません。"
                     } else {
-                        "一致したアイテム：\\n" + matches.joinToString("、")
+                        "一致したアイテム：\n" + matches.joinToString("、")
                     }
-                    val recognized = lines.joinToString("\\n").ifBlank { "文字を検出できませんでした。" }
+                    val recognized = lines.joinToString("\n").ifBlank { "文字を検出できませんでした。" }
                     val locatedText = if (located.isEmpty()) {
                         "文字位置とアイテム名の完全一致：なし"
                     } else {
-                        "文字位置から取得した一致座標：\\n" + located.mapNotNull { encoded ->
+                        "文字位置から取得した一致座標：\n" + located.mapNotNull { encoded ->
                             runCatching {
                                 val item = JSONObject(encoded)
                                 val points = item.getJSONArray("corners")
@@ -67,9 +67,9 @@ class MainActivity : Activity() {
                                 }.joinToString(" / ")
                                 "${item.getString("itemName")}：${coordinates}"
                             }.getOrNull()
-                        }.joinToString("\\n")
+                        }.joinToString("\n")
                     }
-                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\\n章：${resultStageId}\\n\\n${matchText}\\n\\n${locatedText}\\n\\nOCR行：\\n${recognized.take(1200)}\\n\\n画像は保存せず、メモリ上で破棄しました。取得した座標は文字の四隅で、ラベル外周ではありません。"
+                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\n章：${resultStageId}\n\n${matchText}\n\n${locatedText}\n\nOCR行：\n${recognized.take(1200)}\n\n画像は保存せず、メモリ上で破棄しました。取得した座標は文字の四隅で、ラベル外周ではありません。"
                 }
                 ScreenCaptureService.ACTION_CAPTURE_ERROR -> {
                     captureStatus.text = "画面取得/OCRエラー：${intent.getStringExtra(ScreenCaptureService.EXTRA_ERROR) ?: "不明"}"
@@ -121,10 +121,10 @@ class MainActivity : Activity() {
                     val message = if (stage.dataStatus == "verified") {
                         "確認済み名称枠：${stage.items.size}件"
                     } else {
-                        "照合用アイテム名：${catalogCount}件\\n名称枠の座標：確認待ち（実プレイでは非表示）"
+                        "照合用アイテム名：${catalogCount}件\n名称枠の座標：確認待ち（実プレイでは非表示）"
                     }
-                    val caution = if (reviewNotes.isEmpty()) "" else "\\n\\n精度注意ポイント：\\n・" + reviewNotes.joinToString("\\n・")
-                    stageStatus.text = "\\n${stage.stageName}\\n${message}${caution}\\n\\n番号付きプレビューは確認専用です。実プレイ画面には番号を表示しません。"
+                    val caution = if (reviewNotes.isEmpty()) "" else "\n\n精度注意ポイント：\n・" + reviewNotes.joinToString("\n・")
+                    stageStatus.text = "\n${stage.stageName}\n${message}${caution}\n\n番号付きプレビューは確認専用です。実プレイ画面には番号を表示しません。"
                 }
                 selector.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) = updateStatus(position)
@@ -137,7 +137,7 @@ class MainActivity : Activity() {
                 })
             }
         } catch (error: Exception) {
-            stageStatus.text = "ステージデータを読み込めませんでした。\\n${error.message ?: "データ形式を確認してください。"}"
+            stageStatus.text = "ステージデータを読み込めませんでした。\n${error.message ?: "データ形式を確認してください。"}"
         }
 
         if ((applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
