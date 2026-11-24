@@ -132,8 +132,41 @@ def _seed_rect(item: dict, image_size: dict, width: int, height: int) -> tuple[f
         bounds["right"] * (width - 1), bounds["bottom"] * (height - 1),
     )
 
-def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, height):
-    mask = make_label_color_mask(annotated)
+def make_annotation_difference_mask(annotated, base):
+    """Isolate translucent annotation fills by comparing the paired source images.
+
+    Unlike HSV thresholding, this detects the overlay even when its purple/pink
+    tint is blended with very different scene colors. The threshold also
+    suppresses small JPEG-compression differences.
+    """
+    if annotated is None or base is None:
+        raise ValueError("Annotated and base images are required")
+    if annotated.shape[:2] != base.shape[:2]:
+        raise ValueError("Annotated and base images must be aligned")
+    difference = cv2.absdiff(annotated, base)
+    intensity = cv2.cvtColor(difference, cv2.COLOR_BGR2GRAY)
+    changed = cv2.threshold(intensity, 18, 255, cv2.THRESH_BINARY)[1]
+    # Fill tiny gaps caused by JPEG blocks and text cut-outs inside the
+    # translucent label backing. Keep the operation local to each seed crop.
+    changed = cv2.morphologyEx(
+        changed, cv2.MORPH_CLOSE,
+        cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5)), iterations=2
+    )
+    return cv2.morphologyEx(
+        changed, cv2.MORPH_OPEN,
+        cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2)), iterations=1
+    )
+
+
+def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, height, base=None):
+    # Paired-image subtraction is the primary signal: it follows the actual
+    # translucent backing area, regardless of the hue of the scene beneath it.
+    # Retain the old palette mask only as a fallback for references without a
+    # usable paired base image.
+    mask = (
+        make_annotation_difference_mask(annotated, base)
+        if base is not None else make_label_color_mask(annotated)
+    )
     proposals = []
     for item_index, item in enumerate(items):
         sx1, sy1, sx2, sy2 = _seed_rect(item, image_size, width, height)
@@ -245,7 +278,8 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
     debug_mask_path.parent.mkdir(parents=True, exist_ok=True)
     cv2.imwrite(str(debug_mask_path), debug_mask)
     matches = detect_seeded_label_quadrilaterals(
-        annotated, seeds["items"], seeds["imageSize"], base.shape[1], base.shape[0]
+        annotated, seeds["items"], seeds["imageSize"], base.shape[1], base.shape[0],
+        base=base
     )
 
     result_items = []
