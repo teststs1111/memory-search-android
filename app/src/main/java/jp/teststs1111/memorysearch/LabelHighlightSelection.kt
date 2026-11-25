@@ -1,12 +1,16 @@
 package jp.teststs1111.memorysearch
 
-/**
- * Resolves a requested item to exactly one candidate label by its catalog name.
- * This selector is preview-only until the corresponding frame coordinates are verified.
- */
+/** Selects up to three exact catalog matches recognized on the game screen. */
 object LabelHighlightSelection {
-    fun isTarget(itemName: String, requestedItemName: String?): Boolean {
-        val requested = requestedItemName?.trim().orEmpty()
-        return requested.isNotEmpty() && itemName == requested
+    const val MAX_VISIBLE_GAME_ITEMS = 3
+
+    fun targets(itemNames: List<String>, requestedItemNames: Collection<String>): Set<String> {
+        val requested = requestedItemNames.map(String::trim).filter(String::isNotEmpty).toSet()
+        if (requested.isEmpty()) return emptySet()
+        return itemNames.asSequence().filter { it in requested }.distinct()
+            .take(MAX_VISIBLE_GAME_ITEMS).toCollection(LinkedHashSet())
     }
+
+    fun isTarget(itemName: String, requestedItemNames: Set<String>): Boolean =
+        itemName in requestedItemNames
 }
