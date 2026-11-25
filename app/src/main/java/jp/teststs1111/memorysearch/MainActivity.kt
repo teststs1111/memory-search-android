@@ -326,6 +326,8 @@ class MainActivity : Activity() {
                 requestContinuousCapture = false
                 requestLiveHighlight = false
             } else {
+                requestLiveHighlight = false
+                requestContinuousCapture = false
                 captureStatus.text = "画面取得はキャンセルされました。ゲームには影響ありません。"
             }
         }
