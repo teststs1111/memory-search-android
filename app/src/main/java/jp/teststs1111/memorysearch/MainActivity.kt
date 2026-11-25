@@ -52,9 +52,16 @@ class MainActivity : Activity() {
                         runCatching { JSONObject(encoded).getString("itemName") }.getOrNull()
                     }.toSet()
                     val twoLinePatterns = TwoLineOcrPatterns.forStage(resultStageId)
+                    val targetStripMatches = intent.getStringArrayListExtra(
+                        ScreenCaptureService.EXTRA_TARGET_STRIP_MATCHES
+                    )
                     val blockMatches = OcrItemMatcher.matchBlocks(blocks, itemNames, twoLinePatterns).toSet()
-                    // Geometry matches can recover a two-line label split across separate ML Kit blocks.
-                    val matches = itemNames.filter { it in blockMatches || it in locatedNames }
+                    // Prefer the common three-button strip; the fallback keeps older service results readable.
+                    val matches = if (targetStripMatches != null) {
+                        itemNames.filter { it in targetStripMatches }
+                    } else {
+                        itemNames.filter { it in blockMatches || it in locatedNames }
+                    }
                     // The live game shows three labels at a time; only exact matches are selected.
                     latestDetectedItemNames = if (intent.getBooleanExtra(ScreenCaptureService.EXTRA_CONTINUOUS, false)) {
                         intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_ACTIVE_TARGETS).orEmpty().let(::ArrayList)
