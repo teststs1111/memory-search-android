@@ -113,7 +113,6 @@ class ScreenCaptureService : Service() {
                     }
                     frameHandled = true
                 }
-                ocrInFlight = true
                 val bitmap = try {
                     imageToBitmap(image)
                 } catch (error: Exception) {
@@ -123,6 +122,7 @@ class ScreenCaptureService : Service() {
                     return@setOnImageAvailableListener
                 }
                 image.close()
+                ocrInFlight = true
                 runJapaneseOcr(bitmap)
             }, handler)
 
