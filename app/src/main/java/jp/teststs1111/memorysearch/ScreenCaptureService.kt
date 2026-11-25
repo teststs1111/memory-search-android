@@ -37,7 +37,7 @@ class ScreenCaptureService : Service() {
     private var worker: HandlerThread? = null
     private var stopped = false
     private var frameHandled = false
-    private var continuousMode = false
+    @Volatile private var continuousMode = false
     @Volatile private var ocrInFlight = false
     private var lastOcrStartedAt = 0L
     private var recognizer: com.google.mlkit.vision.text.TextRecognizer? = null
