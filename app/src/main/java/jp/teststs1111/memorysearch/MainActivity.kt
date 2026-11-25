@@ -22,6 +22,8 @@ class MainActivity : Activity() {
     private lateinit var captureStatus: TextView
     private var receiverRegistered = false
     private var selectedStageId: String = "chapter_1"
+    private var latestDetectedItemNames: ArrayList<String> = arrayListOf()
+    private lateinit var detectedPreviewButton: Button
 
     private val captureReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -50,10 +52,13 @@ class MainActivity : Activity() {
                     val blockMatches = OcrItemMatcher.matchBlocks(blocks, itemNames, twoLinePatterns).toSet()
                     // Geometry matches can recover a two-line label split across separate ML Kit blocks.
                     val matches = itemNames.filter { it in blockMatches || it in locatedNames }
-                    val matchText = if (matches.isEmpty()) {
+                    // The live game shows three labels at a time; only exact matches are selected.
+                    latestDetectedItemNames = ArrayList(LabelHighlightSelection.targets(itemNames, matches))
+                    detectedPreviewButton.visibility = if (latestDetectedItemNames.isEmpty()) android.view.View.GONE else android.view.View.VISIBLE
+                    val matchText = if (latestDetectedItemNames.isEmpty()) {
                         "${resultStageId} のアイテム名との完全一致はありません。"
                     } else {
-                        "一致したアイテム：\n" + matches.joinToString("、")
+                        "画面内の一致（最大3項目）：\n" + latestDetectedItemNames.joinToString("、")
                     }
                     val recognized = lines.joinToString("\n").ifBlank { "文字を検出できませんでした。" }
                     val blockGeometryText = if (rawBlockGeometry.isEmpty()) {
@@ -184,6 +189,18 @@ class MainActivity : Activity() {
             setPadding(0, padding / 2, 0, padding / 2)
         }
         root.addView(captureStatus)
+        detectedPreviewButton = Button(this).apply {
+            text = "認識した3項目を同時に発光プレビュー"
+            visibility = android.view.View.GONE
+            setOnClickListener {
+                startActivity(
+                    Intent(this@MainActivity, LabelBoxPreviewActivity::class.java)
+                        .putExtra(LabelBoxPreviewActivity.EXTRA_STAGE_ID, selectedStageId)
+                        .putStringArrayListExtra(LabelBoxPreviewActivity.EXTRA_HIGHLIGHT_ITEM_NAMES, latestDetectedItemNames)
+                )
+            }
+        }
+        root.addView(detectedPreviewButton)
         root.addView(Button(this).apply {
             text = "画面取得・日本語OCRテスト"
             setOnClickListener {
