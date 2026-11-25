@@ -197,11 +197,24 @@ class ScreenCaptureService : Service() {
                             .toString()
                     })
                     val twoLinePatterns = TwoLineOcrPatterns.forStage(requestedStageId)
+                    // Keep full-screen geometry for board-label diagnostics, but derive the
+                    // three live targets only from the shared bottom target-button strip.
                     val locatedItems = OcrGeometryMatcher.match(geometryBlocks, itemNames, twoLinePatterns)
-                    val blockMatches = OcrItemMatcher.matchBlocks(blocks, itemNames, twoLinePatterns).toSet()
-                    val locatedNames = locatedItems.map { it.itemName }.toSet()
-                    val matchedNames = itemNames.filter { it in blockMatches || it in locatedNames }
-                    val targetUpdate = if (continuousMode) targetSetTracker.observe(matchedNames) else null
+                    val targetStripBlocks = TargetStripRegion.filter(geometryBlocks, bitmap.width, bitmap.height)
+                    val targetStripBlockMatches = OcrItemMatcher.matchBlocks(
+                        targetStripBlocks.map { it.lines },
+                        itemNames,
+                        twoLinePatterns
+                    ).toSet()
+                    val targetStripLocatedNames = OcrGeometryMatcher.match(
+                        targetStripBlocks,
+                        itemNames,
+                        twoLinePatterns
+                    ).map { it.itemName }.toSet()
+                    val targetStripMatches = itemNames.filter {
+                        it in targetStripBlockMatches || it in targetStripLocatedNames
+                    }
+                    val targetUpdate = if (continuousMode) targetSetTracker.observe(targetStripMatches) else null
                     val locatedJson = ArrayList(locatedItems.map { item ->
                         JSONObject()
                             .put("itemName", item.itemName)
@@ -218,6 +231,7 @@ class ScreenCaptureService : Service() {
                         putExtra(EXTRA_HEIGHT, bitmap.height)
                         putExtra(EXTRA_STAGE_ID, requestedStageId)
                         putExtra(EXTRA_CONTINUOUS, continuousMode)
+                        putStringArrayListExtra(EXTRA_TARGET_STRIP_MATCHES, ArrayList(targetStripMatches))
                         targetUpdate?.let { update ->
                             putStringArrayListExtra(EXTRA_ACTIVE_TARGETS, ArrayList(update.activeTargets))
                             putExtra(EXTRA_TARGET_SET_CHANGED, update.changed)
@@ -307,6 +321,7 @@ class ScreenCaptureService : Service() {
         const val EXTRA_STAGE_ID = "stage_id"
         const val EXTRA_CONTINUOUS = "continuous_capture"
         const val EXTRA_ACTIVE_TARGETS = "active_targets"
+        const val EXTRA_TARGET_STRIP_MATCHES = "target_strip_matches"
         const val EXTRA_TARGET_SET_CHANGED = "target_set_changed"
         const val EXTRA_ERROR = "error"
         private const val CHANNEL_ID = "screen_capture_test"
