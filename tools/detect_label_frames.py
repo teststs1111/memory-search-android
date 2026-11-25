@@ -155,7 +155,7 @@ def make_annotation_difference_mask(annotated, base):
     )
 
 
-def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, height, base=None):
+def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, height, base=None, diagnostics=None):
     # Paired-image subtraction is the primary signal: it follows the actual
     # translucent backing area, regardless of the hue of the scene beneath it.
     # Retain the old palette mask only as a fallback for references without a
@@ -195,38 +195,48 @@ def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, heig
             nearest &= own_distance <= other_distance
         roi[~nearest] = 0
         contours, _ = cv2.findContours(roi, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        item_diagnostic = {"itemId": item.get("itemId"), "roiBounds": [x1, y1, x2, y2], "maskPixels": int(cv2.countNonZero(roi)), "contourCount": len(contours), "rejected": {"degenerate": 0, "area_ratio": 0, "aspect_ratio": 0, "rectangularity": 0, "center_distance": 0}, "proposalCount": 0}
         for contour in contours:
             area = float(cv2.contourArea(contour))
             rect = cv2.minAreaRect(contour)
             rw, rh = rect[1]
             if rw <= 1 or rh <= 1:
+                item_diagnostic["rejected"]["degenerate"] += 1
                 continue
             rect_area = float(rw * rh)
             ratio = rect_area / seed_area
             if not 0.18 <= ratio <= 2.5:
+                item_diagnostic["rejected"]["area_ratio"] += 1
                 continue
             aspect = max(rw, rh) / min(rw, rh)
             if not 1.05 <= aspect <= 12.0:
+                item_diagnostic["rejected"]["aspect_ratio"] += 1
                 continue
             rectangularity = area / rect_area
             if rectangularity < 0.25:
+                item_diagnostic["rejected"]["rectangularity"] += 1
                 continue
             cx, cy = rect[0][0] + x1, rect[0][1] + y1
             scx, scy = (sx1 + sx2) / 2, (sy1 + sy2) / 2
             distance = math.hypot(cx - scx, cy - scy)
             if distance > seed_diag * 0.55:
+                item_diagnostic["rejected"]["center_distance"] += 1
                 continue
             score = distance / seed_diag + 0.12 * abs(math.log(max(0.01, ratio))) + 0.08 * abs(math.log(max(0.01, aspect / seed_aspect))) + 0.05 * (1.0 - rectangularity)
             points = cv2.boxPoints(rect).astype(np.float32)
             points[:, 0] += x1
             points[:, 1] += y1
             bx, by, bw, bh = cv2.boundingRect(contour)
+            item_diagnostic["proposalCount"] += 1
             proposals.append({
                 "itemIndex": item_index, "score": score,
                 "center": (float(cx), float(cy)), "area": rect_area,
                 "rectangularity": rectangularity, "aspectRatio": aspect,
                 "points": points, "bounds": (bx + x1, by + y1, bx + x1 + bw, by + y1 + bh)
             })
+
+        if diagnostics is not None:
+            diagnostics.append(item_diagnostic)
 
     proposals.sort(key=lambda p: p["score"])
     assigned = [None] * len(items)
@@ -293,9 +303,10 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
     debug_mask_path = output_path.with_name("detected_label_frames_mask.png")
     debug_mask_path.parent.mkdir(parents=True, exist_ok=True)
     cv2.imwrite(str(debug_mask_path), debug_mask)
+    detector_diagnostics = []
     matches = detect_seeded_label_quadrilaterals(
         annotated, seeds["items"], seeds["imageSize"], base.shape[1], base.shape[0],
-        base=base
+        base=base, diagnostics=detector_diagnostics
     )
 
     result_items = []
@@ -349,6 +360,7 @@ def build_result(annotated_path: Path, base_path: Path, seed_path: Path, output_
         "differenceMaskPixelCount": int(np.count_nonzero(debug_mask)),
         "matchedItemCount": matched_count,
         "unmatchedItemCount": len(seeds["items"]) - matched_count,
+        "perItemDiagnostics": detector_diagnostics,
         "detectedShapes": [
             {
                 "center": [round(d["center"][0], 2), round(d["center"][1], 2)],
