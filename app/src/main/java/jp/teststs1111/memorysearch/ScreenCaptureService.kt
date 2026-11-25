@@ -197,23 +197,16 @@ class ScreenCaptureService : Service() {
                             .toString()
                     })
                     val twoLinePatterns = TwoLineOcrPatterns.forStage(requestedStageId)
-                    // Keep full-screen geometry for board-label diagnostics, but derive the
-                    // three live targets only from the shared bottom target-button strip.
+                    // Full-screen geometry is retained only for reference/diagnostic output.
+                    // Live target names come exclusively from the three bottom buttons, whose
+                    // labels are displayed on one line during gameplay. Do not apply the
+                    // two-row reference-image exceptions to this runtime recognition path.
                     val locatedItems = OcrGeometryMatcher.match(geometryBlocks, itemNames, twoLinePatterns)
                     val targetStripBlocks = TargetStripRegion.filter(geometryBlocks, bitmap.width, bitmap.height)
-                    val targetStripBlockMatches = OcrItemMatcher.matchBlocks(
-                        targetStripBlocks.map { it.lines },
-                        itemNames,
-                        twoLinePatterns
-                    ).toSet()
-                    val targetStripLocatedNames = OcrGeometryMatcher.match(
-                        targetStripBlocks,
-                        itemNames,
-                        twoLinePatterns
-                    ).map { it.itemName }.toSet()
-                    val targetStripMatches = itemNames.filter {
-                        it in targetStripBlockMatches || it in targetStripLocatedNames
-                    }
+                    val targetStripMatches = OcrItemMatcher.matchLines(
+                        targetStripBlocks.flatMap { it.lines },
+                        itemNames
+                    )
                     val targetUpdate = if (continuousMode) targetSetTracker.observe(targetStripMatches) else null
                     val locatedJson = ArrayList(locatedItems.map { item ->
                         JSONObject()
