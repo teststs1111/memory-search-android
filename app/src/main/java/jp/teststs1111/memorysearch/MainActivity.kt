@@ -9,6 +9,8 @@ import android.content.pm.ApplicationInfo
 import android.media.projection.MediaProjectionManager
 import android.os.Build
 import android.os.Bundle
+import android.net.Uri
+import android.provider.Settings
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -25,6 +27,7 @@ class MainActivity : Activity() {
     private var latestDetectedStageId: String = "chapter_1"
     private var latestDetectedItemNames: ArrayList<String> = arrayListOf()
     private var requestContinuousCapture = false
+    private var requestLiveHighlight = false
     private lateinit var detectedPreviewButton: Button
 
     private val captureReceiver = object : BroadcastReceiver() {
@@ -226,6 +229,22 @@ class MainActivity : Activity() {
             }
         })
         root.addView(Button(this).apply {
+            text = "ゲーム画面に3項目を発光表示（開始）"
+            setOnClickListener {
+                requestLiveHighlight = true
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this@MainActivity)) {
+                    val permissionIntent = Intent(
+                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:$packageName")
+                    )
+                    @Suppress("DEPRECATION")
+                    startActivityForResult(permissionIntent, REQUEST_OVERLAY_PERMISSION)
+                } else {
+                    requestProjectionPermission()
+                }
+            }
+        })
+        root.addView(Button(this).apply {
             text = "継続監視を開始（3項目の切り替え検出）"
             setOnClickListener {
                 requestContinuousCapture = true
@@ -238,7 +257,8 @@ class MainActivity : Activity() {
             text = "継続監視を停止"
             setOnClickListener {
                 startService(Intent(this@MainActivity, ScreenCaptureService::class.java).setAction(ScreenCaptureService.ACTION_STOP_CAPTURE))
-                captureStatus.text = "継続監視の停止を要求しました。"
+                startService(Intent(this@MainActivity, HighlightOverlayService::class.java).setAction(HighlightOverlayService.ACTION_STOP_OVERLAY))
+                captureStatus.text = "継続監視と発光表示の停止を要求しました。"
             }
         })
         setContentView(root)
@@ -270,20 +290,41 @@ class MainActivity : Activity() {
         super.onStop()
     }
 
+    private fun requestProjectionPermission() {
+        requestContinuousCapture = true
+        val manager = getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
+        @Suppress("DEPRECATION")
+        startActivityForResult(manager.createScreenCaptureIntent(), REQUEST_CAPTURE)
+    }
+
     @Deprecated("Uses the platform permission result callback")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_OVERLAY_PERMISSION) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || Settings.canDrawOverlays(this)) {
+                requestProjectionPermission()
+            } else {
+                requestLiveHighlight = false
+                captureStatus.text = "他のアプリの上に表示する許可が必要です。許可後にもう一度開始してください。"
+            }
+            return
+        }
         if (requestCode == REQUEST_CAPTURE) {
             if (resultCode == RESULT_OK && data != null) {
                 captureStatus.text = if (requestContinuousCapture) "継続監視を開始します。新しい指定3項目を安定認識した時点で切り替えます…" else "許可を受け取りました。1フレームを取得して日本語OCRを実行します…"
+                val liveHighlight = requestLiveHighlight
+                if (liveHighlight) {
+                    startService(Intent(this, HighlightOverlayService::class.java).putExtra(HighlightOverlayService.EXTRA_STAGE_ID, selectedStageId))
+                }
                 val serviceIntent = Intent(this, ScreenCaptureService::class.java).apply {
                     putExtra(ScreenCaptureService.EXTRA_RESULT_CODE, resultCode)
                     putExtra(ScreenCaptureService.EXTRA_RESULT_DATA, data)
                     putExtra(ScreenCaptureService.EXTRA_STAGE_ID, selectedStageId)
-                    putExtra(ScreenCaptureService.EXTRA_CONTINUOUS, requestContinuousCapture)
+                    putExtra(ScreenCaptureService.EXTRA_CONTINUOUS, requestContinuousCapture || liveHighlight)
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) startForegroundService(serviceIntent) else startService(serviceIntent)
                 requestContinuousCapture = false
+                requestLiveHighlight = false
             } else {
                 captureStatus.text = "画面取得はキャンセルされました。ゲームには影響ありません。"
             }
@@ -292,5 +333,6 @@ class MainActivity : Activity() {
 
     companion object {
         private const val REQUEST_CAPTURE = 5101
+        private const val REQUEST_OVERLAY_PERMISSION = 5102
     }
 }
