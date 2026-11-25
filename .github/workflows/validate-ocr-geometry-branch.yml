@@ -46,6 +46,8 @@ jobs:
 
   reference-image-mlkit:
     runs-on: ubuntu-latest
+    env:
+      ANDROID_I_WANT_MY_TCG: "yes"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
