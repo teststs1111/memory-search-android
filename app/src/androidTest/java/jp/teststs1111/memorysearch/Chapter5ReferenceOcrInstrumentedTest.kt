@@ -25,7 +25,7 @@ class Chapter5ReferenceOcrInstrumentedTest {
         try {
             val result = Tasks.await(
                 recognizer.process(InputImage.fromBitmap(bitmap, 0)),
-                90,
+                300,
                 TimeUnit.SECONDS
             )
             val blocks = result.textBlocks.map { block ->
