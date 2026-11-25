@@ -20,6 +20,7 @@ import android.media.projection.MediaProjectionManager
 import android.os.Build
 import android.os.Handler
 import android.os.HandlerThread
+import android.os.SystemClock
 import android.os.IBinder
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
@@ -36,15 +37,25 @@ class ScreenCaptureService : Service() {
     private var worker: HandlerThread? = null
     private var stopped = false
     private var frameHandled = false
+    private var continuousMode = false
+    private var ocrInFlight = false
+    private var lastOcrStartedAt = 0L
+    private var recognizer: com.google.mlkit.vision.text.TextRecognizer? = null
+    private val targetSetTracker = TargetSetTransitionTracker()
     private var requestedStageId: String = "chapter_1"
 
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        if (intent?.action == ACTION_STOP_CAPTURE) {
+            stopCapture()
+            return START_NOT_STICKY
+        }
+        continuousMode = intent?.getBooleanExtra(EXTRA_CONTINUOUS, false) == true
         createNotificationChannel()
         val notification = Notification.Builder(this, CHANNEL_ID)
             .setContentTitle("記憶探索サポート")
-            .setContentText("画面取得・日本語OCRテストを実行中")
+            .setContentText(if (continuousMode) "画面を継続確認中（停止するまで動作）" else "画面取得・日本語OCRテストを実行中")
             .setSmallIcon(android.R.drawable.ic_menu_view)
             .setOngoing(true)
             .build()
@@ -85,10 +96,24 @@ class ScreenCaptureService : Service() {
             worker = HandlerThread("screen-capture-ocr").also { it.start() }
             val handler = Handler(worker!!.looper)
             imageReader = ImageReader.newInstance(width, height, android.graphics.PixelFormat.RGBA_8888, 2)
+            recognizer = TextRecognition.getClient(JapaneseTextRecognizerOptions.Builder().build())
             imageReader?.setOnImageAvailableListener({ reader ->
-                if (frameHandled) return@setOnImageAvailableListener
                 val image = reader.acquireLatestImage() ?: return@setOnImageAvailableListener
-                frameHandled = true
+                if (continuousMode) {
+                    val now = SystemClock.elapsedRealtime()
+                    if (ocrInFlight || now - lastOcrStartedAt < MIN_OCR_INTERVAL_MS) {
+                        image.close()
+                        return@setOnImageAvailableListener
+                    }
+                    ocrInFlight = true
+                    lastOcrStartedAt = now
+                } else {
+                    if (frameHandled) {
+                        image.close()
+                        return@setOnImageAvailableListener
+                    }
+                    frameHandled = true
+                }
                 val bitmap = try {
                     imageToBitmap(image)
                 } catch (error: Exception) {
@@ -102,7 +127,7 @@ class ScreenCaptureService : Service() {
             }, handler)
 
             virtualDisplay = projection?.createVirtualDisplay(
-                "MemorySearchOneShot",
+                if (continuousMode) "MemorySearchContinuous" else "MemorySearchOneShot",
                 width,
                 height,
                 density,
@@ -138,10 +163,8 @@ class ScreenCaptureService : Service() {
     }
 
     private fun runJapaneseOcr(bitmap: Bitmap) {
-        var recognizer: com.google.mlkit.vision.text.TextRecognizer? = null
         try {
-            val activeRecognizer = TextRecognition.getClient(JapaneseTextRecognizerOptions.Builder().build())
-            recognizer = activeRecognizer
+            val activeRecognizer = recognizer ?: throw IllegalStateException("OCRエンジンが初期化されていません")
             activeRecognizer.process(InputImage.fromBitmap(bitmap, 0))
                 .addOnSuccessListener { result ->
                     val blocks = result.textBlocks.map { block -> block.lines.map { line -> line.text } }
@@ -190,6 +213,11 @@ class ScreenCaptureService : Service() {
                         putExtra(EXTRA_WIDTH, bitmap.width)
                         putExtra(EXTRA_HEIGHT, bitmap.height)
                         putExtra(EXTRA_STAGE_ID, requestedStageId)
+                        putExtra(EXTRA_CONTINUOUS, continuousMode)
+                        targetUpdate?.let { update ->
+                            putStringArrayListExtra(EXTRA_ACTIVE_TARGETS, ArrayList(update.activeTargets))
+                            putExtra(EXTRA_TARGET_SET_CHANGED, update.changed)
+                        }
                         putExtra(EXTRA_OCR_TEXT, result.text)
                         putStringArrayListExtra(EXTRA_OCR_LINES, ArrayList(lines))
                         // Keep OCR block boundaries so separate labels are never joined.
@@ -203,16 +231,16 @@ class ScreenCaptureService : Service() {
                     reportFailure("日本語OCRに失敗しました：${error.message ?: "不明"}")
                 }
                 .addOnCompleteListener {
-                    activeRecognizer.close()
                     if (!bitmap.isRecycled) bitmap.recycle()
-                    stopCapture()
+                    ocrInFlight = false
+                    if (!continuousMode) stopCapture()
                 }
         } catch (error: Exception) {
             // ML Kit setup or task submission can fail before async listeners run.
-            recognizer?.close()
             if (!bitmap.isRecycled) bitmap.recycle()
+            ocrInFlight = false
             reportFailure("日本語OCRを開始できませんでした：${error.message ?: "不明"}")
-            stopCapture()
+            if (!continuousMode) stopCapture()
         }
     }
 
@@ -230,6 +258,8 @@ class ScreenCaptureService : Service() {
         imageReader = null
         projection?.stop()
         projection = null
+        recognizer?.close()
+        recognizer = null
         worker?.quitSafely()
         worker = null
         stopForeground(STOP_FOREGROUND_REMOVE)
@@ -247,6 +277,7 @@ class ScreenCaptureService : Service() {
         const val ACTION_CAPTURE_RESULT = "jp.teststs1111.memorysearch.CAPTURE_RESULT"
         const val ACTION_CAPTURE_ERROR = "jp.teststs1111.memorysearch.CAPTURE_ERROR"
         const val ACTION_OCR_RESULT = "jp.teststs1111.memorysearch.OCR_RESULT"
+        const val ACTION_STOP_CAPTURE = "jp.teststs1111.memorysearch.STOP_CAPTURE"
         const val EXTRA_RESULT_CODE = "result_code"
         const val EXTRA_RESULT_DATA = "result_data"
         const val EXTRA_WIDTH = "frame_width"
@@ -257,8 +288,12 @@ class ScreenCaptureService : Service() {
         const val EXTRA_OCR_BLOCK_GEOMETRY = "ocr_block_geometry"
         const val EXTRA_OCR_LOCATED_ITEMS = "ocr_located_items"
         const val EXTRA_STAGE_ID = "stage_id"
+        const val EXTRA_CONTINUOUS = "continuous_capture"
+        const val EXTRA_ACTIVE_TARGETS = "active_targets"
+        const val EXTRA_TARGET_SET_CHANGED = "target_set_changed"
         const val EXTRA_ERROR = "error"
         private const val CHANNEL_ID = "screen_capture_test"
         private const val NOTIFICATION_ID = 41
+        private const val MIN_OCR_INTERVAL_MS = 200L
     }
 }
