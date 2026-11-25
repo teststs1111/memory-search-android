@@ -22,6 +22,7 @@ class MainActivity : Activity() {
     private lateinit var captureStatus: TextView
     private var receiverRegistered = false
     private var selectedStageId: String = "chapter_1"
+    private var latestDetectedStageId: String = "chapter_1"
     private var latestDetectedItemNames: ArrayList<String> = arrayListOf()
     private var requestContinuousCapture = false
     private lateinit var detectedPreviewButton: Button
@@ -43,6 +44,7 @@ class MainActivity : Activity() {
                         ?: lines.map { listOf(it) }
                     // Use the chapter captured when permission was granted, not a later spinner selection.
                     val resultStageId = intent.getStringExtra(ScreenCaptureService.EXTRA_STAGE_ID) ?: selectedStageId
+                    latestDetectedStageId = resultStageId
                     val itemNames = StageItemCatalogRepository.loadItemNames(assets, resultStageId)
                     val rawBlockGeometry = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_BLOCK_GEOMETRY).orEmpty()
                     val located = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_LOCATED_ITEMS).orEmpty()
@@ -202,7 +204,7 @@ class MainActivity : Activity() {
             setOnClickListener {
                 startActivity(
                     Intent(this@MainActivity, LabelBoxPreviewActivity::class.java)
-                        .putExtra(LabelBoxPreviewActivity.EXTRA_STAGE_ID, selectedStageId)
+                        .putExtra(LabelBoxPreviewActivity.EXTRA_STAGE_ID, latestDetectedStageId)
                         .putStringArrayListExtra(LabelBoxPreviewActivity.EXTRA_HIGHLIGHT_ITEM_NAMES, latestDetectedItemNames)
                 )
             }
