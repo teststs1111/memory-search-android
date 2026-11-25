@@ -35,7 +35,7 @@ class ScreenCaptureService : Service() {
     private var virtualDisplay: VirtualDisplay? = null
     private var imageReader: ImageReader? = null
     private var worker: HandlerThread? = null
-    private var stopped = false
+    @Volatile private var stopped = false
     private var frameHandled = false
     @Volatile private var continuousMode = false
     @Volatile private var ocrInFlight = false
@@ -248,8 +248,12 @@ class ScreenCaptureService : Service() {
             // ML Kit setup or task submission can fail before async listeners run.
             if (!bitmap.isRecycled) bitmap.recycle()
             ocrInFlight = false
+            if (stopped) {
+                recognizer?.close()
+                recognizer = null
+            }
             reportFailure("日本語OCRを開始できませんでした：${error.message ?: "不明"}")
-            if (!continuousMode) stopCapture()
+            if (!continuousMode && !stopped) stopCapture()
         }
     }
 
