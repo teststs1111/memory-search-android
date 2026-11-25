@@ -173,7 +173,8 @@ class ScreenCaptureService : Service() {
                             })
                             .toString()
                     })
-                    val locatedItems = OcrGeometryMatcher.match(geometryBlocks, itemNames)
+                    val twoLinePatterns = TwoLineOcrPatterns.forStage(requestedStageId)
+                    val locatedItems = OcrGeometryMatcher.match(geometryBlocks, itemNames, twoLinePatterns)
                     val locatedJson = ArrayList(locatedItems.map { item ->
                         JSONObject()
                             .put("itemName", item.itemName)

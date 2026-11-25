@@ -40,18 +40,34 @@ class OcrItemMatcherTest {
     }
 
     @Test
-    fun matchesTwoAdjacentLinesInsideOneBlock() {
+    fun matchesOnlyAnExplicitlyRegisteredTwoLinePatternInsideOneBlock() {
         assertEquals(
-            listOf("星型チャーム"),
-            OcrItemMatcher.matchBlocks(listOf(listOf("星型", "チャーム")), listOf("星型チャーム"))
+            listOf("バリケード"),
+            OcrItemMatcher.matchBlocks(
+                listOf(listOf("バリ", "ケード")),
+                listOf("バリケード"),
+                listOf(TwoLineOcrPattern("バリケード", "バリ", "ケード"))
+            )
         )
     }
 
     @Test
-    fun doesNotJoinLinesAcrossDifferentBlocks() {
+    fun doesNotJoinAnUnregisteredTwoLineLabel() {
         assertEquals(
             emptyList<String>(),
-            OcrItemMatcher.matchBlocks(listOf(listOf("星型"), listOf("チャーム")), listOf("星型チャーム"))
+            OcrItemMatcher.matchBlocks(
+                listOf(listOf("星型", "チャーム")),
+                listOf("星型チャーム"),
+                listOf(TwoLineOcrPattern("バリケード", "バリ", "ケード"))
+            )
+        )
+    }
+
+    @Test
+    fun doesNotJoinLinesAcrossDifferentBlocksWithoutGeometryMatcher() {
+        assertEquals(
+            emptyList<String>(),
+            OcrItemMatcher.matchBlocks(listOf(listOf("バリ"), listOf("ケード")), listOf("バリケード"))
         )
     }
 
@@ -66,10 +82,11 @@ class OcrItemMatcherTest {
     @Test
     fun preservesExactLineMatchesAlongsideSplitMatches() {
         assertEquals(
-            listOf("星型チャーム", "テディベア"),
+            listOf("バリケード", "テディベア"),
             OcrItemMatcher.matchBlocks(
-                listOf(listOf("星型", "チャーム"), listOf("テディベア")),
-                listOf("星型チャーム", "テディベア")
+                listOf(listOf("バリ", "ケード"), listOf("テディベア")),
+                listOf("バリケード", "テディベア"),
+                listOf(TwoLineOcrPattern("バリケード", "バリ", "ケード"))
             )
         )
     }

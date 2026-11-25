@@ -23,14 +23,18 @@ object OcrItemMatcher {
      * Joining is deliberately limited to one pair per block to avoid
      * accidentally combining neighboring item labels.
      */
-    fun matchBlocks(ocrBlocks: List<List<String>>, itemNames: List<String>): List<String> {
+    fun matchBlocks(
+        ocrBlocks: List<List<String>>,
+        itemNames: List<String>,
+        twoLinePatterns: List<TwoLineOcrPattern> = emptyList()
+    ): List<String> {
         val candidates = ArrayList<String>()
         ocrBlocks.forEach { block ->
             block.forEach { line ->
                 if (line.isNotBlank()) candidates.add(line)
             }
             block.zipWithNext().forEach { (first, second) ->
-                if (first.isNotBlank() && second.isNotBlank()) {
+                if (twoLinePatterns.any { it.matches(first, second) }) {
                     candidates.add(first + second)
                 }
             }

@@ -42,7 +42,8 @@ class Chapter5ReferenceOcrInstrumentedTest {
             }
 
             val names = StageItemCatalogRepository.loadItemNames(context.assets, "chapter_5")
-            val matches = OcrGeometryMatcher.match(blocks, names)
+            val twoLinePatterns = TwoLineOcrPatterns.forStage("chapter_5")
+            val matches = OcrGeometryMatcher.match(blocks, names, twoLinePatterns)
             val matchedNames = matches.map { it.itemName }.toSet()
             val diagnostic = blocks.mapIndexed { index, block ->
                 val coordinates = block.corners.joinToString(" ") { "${it.x},${it.y}" }

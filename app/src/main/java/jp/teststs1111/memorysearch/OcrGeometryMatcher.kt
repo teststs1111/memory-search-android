@@ -36,7 +36,11 @@ object OcrGeometryMatcher {
         val centerY: Double get() = (top + bottom) / 2.0
     }
 
-    fun match(blocks: List<OcrBlockGeometry>, itemNames: List<String>): List<OcrLocatedItem> {
+    fun match(
+        blocks: List<OcrBlockGeometry>,
+        itemNames: List<String>,
+        twoLinePatterns: List<TwoLineOcrPattern> = emptyList()
+    ): List<OcrLocatedItem> {
         val byNormalizedText = LinkedHashMap<String, OcrLocatedItem>()
 
         blocks.forEach { block ->
@@ -45,7 +49,9 @@ object OcrGeometryMatcher {
             candidates.add(block.text)
             candidates.addAll(block.lines)
             block.lines.zipWithNext().forEach { (first, second) ->
-                candidates.add(first + second)
+                if (twoLinePatterns.any { it.matches(first, second) }) {
+                    candidates.add(first + second)
+                }
             }
             candidates.map(OcrItemMatcher::normalize)
                 .filter(String::isNotEmpty)
@@ -73,6 +79,7 @@ object OcrGeometryMatcher {
 
                 val upperText = if (firstBounds.centerY <= secondBounds.centerY) firstLine else secondLine
                 val lowerText = if (firstBounds.centerY <= secondBounds.centerY) secondLine else firstLine
+                if (twoLinePatterns.none { it.matches(upperText, lowerText) }) continue
                 val recognized = upperText + lowerText
                 val normalized = OcrItemMatcher.normalize(recognized)
                 if (normalized.isEmpty()) continue

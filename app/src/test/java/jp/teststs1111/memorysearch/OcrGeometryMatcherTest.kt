@@ -51,7 +51,11 @@ class OcrGeometryMatcherTest {
                 block("輸送", 80, 675, 132, 695),
                 block("書類", 82, 698, 134, 718)
             ),
-            listOf("バリケード", "輸送書類")
+            listOf("バリケード", "輸送書類"),
+            listOf(
+                TwoLineOcrPattern("バリケード", "バリ", "ケード"),
+                TwoLineOcrPattern("輸送書類", "輸送", "書類")
+            )
         )
 
         assertEquals(listOf("バリケード", "輸送書類"), result.map { it.itemName })
@@ -63,7 +67,8 @@ class OcrGeometryMatcherTest {
     fun doesNotJoinSideBySideBlocks() {
         val result = OcrGeometryMatcher.match(
             listOf(block("バリ", 0, 0, 20, 10), block("ケード", 30, 0, 70, 10)),
-            listOf("バリケード")
+            listOf("バリケード"),
+            listOf(TwoLineOcrPattern("バリケード", "バリ", "ケード"))
         )
         assertTrue(result.isEmpty())
     }
@@ -72,11 +77,13 @@ class OcrGeometryMatcherTest {
     fun doesNotJoinDistantOrUnevenlySizedBlocks() {
         val distant = OcrGeometryMatcher.match(
             listOf(block("バリ", 0, 0, 20, 10), block("ケード", 0, 40, 40, 50)),
-            listOf("バリケード")
+            listOf("バリケード"),
+            listOf(TwoLineOcrPattern("バリケード", "バリ", "ケード"))
         )
         val uneven = OcrGeometryMatcher.match(
             listOf(block("バリ", 0, 0, 20, 5), block("ケード", 0, 8, 40, 30)),
-            listOf("バリケード")
+            listOf("バリケード"),
+            listOf(TwoLineOcrPattern("バリケード", "バリ", "ケード"))
         )
         assertTrue(distant.isEmpty())
         assertTrue(uneven.isEmpty())
@@ -90,7 +97,8 @@ class OcrGeometryMatcherTest {
                 block("別", 2, 12, 38, 22),
                 block("ケード", 0, 24, 40, 34)
             ),
-            listOf("バリケード")
+            listOf("バリケード"),
+            listOf(TwoLineOcrPattern("バリケード", "バリ", "ケード"))
         )
         assertTrue(result.isEmpty())
     }

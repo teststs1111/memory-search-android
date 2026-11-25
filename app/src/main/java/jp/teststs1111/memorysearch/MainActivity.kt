@@ -46,7 +46,8 @@ class MainActivity : Activity() {
                     val locatedNames = located.mapNotNull { encoded ->
                         runCatching { JSONObject(encoded).getString("itemName") }.getOrNull()
                     }.toSet()
-                    val blockMatches = OcrItemMatcher.matchBlocks(blocks, itemNames).toSet()
+                    val twoLinePatterns = TwoLineOcrPatterns.forStage(resultStageId)
+                    val blockMatches = OcrItemMatcher.matchBlocks(blocks, itemNames, twoLinePatterns).toSet()
                     // Geometry matches can recover a two-line label split across separate ML Kit blocks.
                     val matches = itemNames.filter { it in blockMatches || it in locatedNames }
                     val matchText = if (matches.isEmpty()) {
