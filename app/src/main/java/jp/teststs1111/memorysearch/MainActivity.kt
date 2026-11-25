@@ -65,7 +65,7 @@ class MainActivity : Activity() {
                         if (isContinuous) "指定3項目を安定認識中…" else "${resultStageId} のアイテム名との完全一致はありません。"
                     } else {
                         (if (isContinuous) "現在のハイライト対象：" else "画面内の一致（最大3項目）：") +
-                            "\\n" + latestDetectedItemNames.joinToString("、")
+                            "\n" + latestDetectedItemNames.joinToString("、")
                     }
                     val recognized = lines.joinToString("\n").ifBlank { "文字を検出できませんでした。" }
                     val blockGeometryText = if (rawBlockGeometry.isEmpty()) {
