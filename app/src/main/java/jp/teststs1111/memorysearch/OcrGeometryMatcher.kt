@@ -46,7 +46,9 @@ object OcrGeometryMatcher {
         blocks.forEach { block ->
             if (block.corners.size != 4) return@forEach
             val candidates = ArrayList<String>()
-            candidates.add(block.text)
+            // A multi-line block is not accepted as a whole unless its rows
+            // are one of the explicitly registered item-specific patterns.
+            if (block.lines.count { it.isNotBlank() } <= 1) candidates.add(block.text)
             candidates.addAll(block.lines)
             block.lines.zipWithNext().forEach { (first, second) ->
                 if (twoLinePatterns.any { it.matches(first, second) }) {

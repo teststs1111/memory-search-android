@@ -35,7 +35,8 @@ class OcrGeometryMatcherTest {
         val corners = listOf(OcrPoint(10, 20), OcrPoint(90, 25), OcrPoint(88, 80), OcrPoint(8, 75))
         val result = OcrGeometryMatcher.match(
             listOf(OcrBlockGeometry("バリ\nケード", listOf("バリ", "ケード"), corners)),
-            listOf("バリケード")
+            listOf("バリケード"),
+            listOf(TwoLineOcrPattern("バリケード", "バリ", "ケード"))
         )
 
         assertEquals("バリケード", result.single().itemName)
