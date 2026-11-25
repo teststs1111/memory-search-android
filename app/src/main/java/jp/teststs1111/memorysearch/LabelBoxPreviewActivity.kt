@@ -12,6 +12,7 @@ import android.widget.TextView
 class LabelBoxPreviewActivity : Activity() {
     companion object {
         const val EXTRA_STAGE_ID = "jp.teststs1111.memorysearch.EXTRA_STAGE_ID"
+        const val EXTRA_HIGHLIGHT_ITEM_NAMES = "jp.teststs1111.memorysearch.EXTRA_HIGHLIGHT_ITEM_NAMES"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +31,7 @@ class LabelBoxPreviewActivity : Activity() {
             textSize = 20f
         })
         root.addView(TextView(this).apply {
-            text = "黄色い枠は座標候補です。下でアイテムを指定すると、その候補だけが発光します。これはアプリ内テスト表示で、ゲーム画面には重なりません。"
+            text = "黄色い枠は座標候補です。ゲーム画面から認識した最大3項目を同時に青く発光します。これはアプリ内プレビューで、ゲーム画面にはまだ重なりません。"
             textSize = 13f
             setPadding(0, padding / 2, 0, padding)
         })
@@ -45,11 +46,18 @@ class LabelBoxPreviewActivity : Activity() {
                 textSize = 14f
                 setPadding(0, 0, 0, padding / 4)
             })
+            val detectedNames = intent.getStringArrayListExtra(EXTRA_HIGHLIGHT_ITEM_NAMES).orEmpty()
+            root.addView(TextView(this).apply {
+                text = if (detectedNames.isEmpty()) "OCR一致：なし（手動選択で確認できます）"
+                    else "OCR一致・同時発光：${detectedNames.joinToString(" / ")}"
+                textSize = 14f
+                setPadding(0, 0, 0, padding / 2)
+            })
             val selector = Spinner(this)
             selector.adapter = ArrayAdapter(
                 this,
                 android.R.layout.simple_spinner_dropdown_item,
-                listOf("指定なし") + dataset.items.map { it.itemName }
+                listOf("OCR結果を表示") + dataset.items.map { it.itemName }
             )
             root.addView(selector, LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
@@ -60,9 +68,16 @@ class LabelBoxPreviewActivity : Activity() {
                 setPadding(0, padding / 2, 0, padding / 2)
             })
             val candidatePreview = CandidateLabelBoxPreviewView(this, bitmap, dataset.items)
+            candidatePreview.setHighlightedItemNames(
+                LabelHighlightSelection.targets(dataset.items.map { it.itemName }, detectedNames)
+            )
             selector.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
-                    candidatePreview.setHighlightedItemName(dataset.items.getOrNull(position - 1)?.itemName)
+                    val manualName = dataset.items.getOrNull(position - 1)?.itemName
+                    candidatePreview.setHighlightedItemNames(
+                        if (manualName == null) LabelHighlightSelection.targets(dataset.items.map { it.itemName }, detectedNames)
+                        else setOf(manualName)
+                    )
                 }
                 override fun onNothingSelected(parent: android.widget.AdapterView<*>?) = Unit
             }
