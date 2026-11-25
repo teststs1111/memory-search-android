@@ -15,11 +15,22 @@ class CandidateLabelBoxPreviewView(
     private val candidates: List<StageLabelBox>
 ) : View(context) {
     private val density = resources.displayMetrics.density
+    private var highlightedItemName: String? = null
     private val imagePaint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
     private val outlinePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.rgb(255, 220, 40)
         style = Paint.Style.STROKE
         strokeWidth = 2f * density
+    }
+    private val glowPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.CYAN
+        style = Paint.Style.STROKE
+        strokeWidth = 8f * density
+    }
+    private val highlightPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.rgb(80, 255, 255)
+        style = Paint.Style.STROKE
+        strokeWidth = 3.5f * density
     }
     private val markerPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.argb(220, 20, 20, 20)
@@ -30,6 +41,16 @@ class CandidateLabelBoxPreviewView(
         textAlign = Paint.Align.CENTER
         textSize = 10f * density
         typeface = android.graphics.Typeface.DEFAULT_BOLD
+    }
+
+    init {
+        // setShadowLayer requires a software canvas; this is confined to the preview screen.
+        setLayerType(LAYER_TYPE_SOFTWARE, null)
+    }
+
+    fun setHighlightedItemName(name: String?) {
+        highlightedItemName = name?.takeIf { it.isNotBlank() }
+        invalidate()
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -53,7 +74,14 @@ class CandidateLabelBoxPreviewView(
                 offsetX + bounds.right.toFloat() * drawWidth,
                 offsetY + bounds.bottom.toFloat() * drawHeight
             )
-            canvas.drawRect(rect, outlinePaint)
+            val isHighlighted = LabelHighlightSelection.isTarget(item.itemName, highlightedItemName)
+            if (isHighlighted) {
+                glowPaint.setShadowLayer(12f * density, 0f, 0f, Color.CYAN)
+                canvas.drawRect(rect, glowPaint)
+                canvas.drawRect(rect, highlightPaint)
+            } else {
+                canvas.drawRect(rect, outlinePaint)
+            }
             val radius = 9f * density
             val markerX = (rect.left + radius).coerceIn(offsetX + radius, offsetX + drawWidth - radius)
             val markerY = (rect.top + radius).coerceIn(offsetY + radius, offsetY + drawHeight - radius)
