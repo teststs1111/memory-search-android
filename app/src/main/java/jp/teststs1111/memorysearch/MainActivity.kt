@@ -60,10 +60,12 @@ class MainActivity : Activity() {
                         ArrayList(LabelHighlightSelection.targets(itemNames, matches))
                     }
                     detectedPreviewButton.visibility = if (latestDetectedItemNames.isEmpty()) android.view.View.GONE else android.view.View.VISIBLE
+                    val isContinuous = intent.getBooleanExtra(ScreenCaptureService.EXTRA_CONTINUOUS, false)
                     val matchText = if (latestDetectedItemNames.isEmpty()) {
-                        "${resultStageId} のアイテム名との完全一致はありません。"
+                        if (isContinuous) "指定3項目を安定認識中…" else "${resultStageId} のアイテム名との完全一致はありません。"
                     } else {
-                        "画面内の一致（最大3項目）：\n" + latestDetectedItemNames.joinToString("、")
+                        (if (isContinuous) "現在のハイライト対象：" else "画面内の一致（最大3項目）：") +
+                            "\\n" + latestDetectedItemNames.joinToString("、")
                     }
                     val recognized = lines.joinToString("\n").ifBlank { "文字を検出できませんでした。" }
                     val blockGeometryText = if (rawBlockGeometry.isEmpty()) {
