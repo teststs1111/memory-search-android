@@ -183,7 +183,9 @@ class MainActivity : Activity() {
                     override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) = updateStatus(position)
                     override fun onNothingSelected(parent: android.widget.AdapterView<*>?) = Unit
                 }
-                updateStatus(0)
+                val initialIndex = stages.indexOfFirst { it.stageId == "chapter_5" }.takeIf { it >= 0 } ?: 0
+                selector.setSelection(initialIndex)
+                updateStatus(initialIndex)
                 root.addView(previewButton)
             }
         } catch (error: Exception) {
@@ -231,6 +233,11 @@ class MainActivity : Activity() {
         root.addView(Button(this).apply {
             text = "ゲーム画面に3項目を発光表示（開始）"
             setOnClickListener {
+                val selectedDataset = StageDatasetRepository.loadStages(assets).firstOrNull { it.stageId == selectedStageId }
+                if (selectedDataset?.dataStatus != "verified") {
+                    captureStatus.text = "この章の座標はまだ確認待ちです。現在は第5章のみ発光表示できます。"
+                    return@setOnClickListener
+                }
                 requestLiveHighlight = true
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this@MainActivity)) {
                     val permissionIntent = Intent(
