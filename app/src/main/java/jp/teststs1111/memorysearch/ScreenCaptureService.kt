@@ -38,7 +38,7 @@ class ScreenCaptureService : Service() {
     private var stopped = false
     private var frameHandled = false
     private var continuousMode = false
-    private var ocrInFlight = false
+    @Volatile private var ocrInFlight = false
     private var lastOcrStartedAt = 0L
     private var recognizer: com.google.mlkit.vision.text.TextRecognizer? = null
     private val targetSetTracker = TargetSetTransitionTracker()
