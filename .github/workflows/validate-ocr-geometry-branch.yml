@@ -4,19 +4,12 @@ on:
   push:
     branches:
       - fix/geometry-aware-two-line-ocr
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "app/src/**"
-      - "app/build.gradle.kts"
-      - ".github/workflows/validate-ocr-geometry-branch.yml"
   workflow_dispatch:
 
 # Keep only the newest validation run for this branch. Multiple emulator boots
 # were competing for runner resources and causing ADB startup failures.
 concurrency:
-  group: geometry-aware-ocr-${{ github.ref }}
+  group: geometry-aware-ocr-validation
   cancel-in-progress: true
 
 permissions:
