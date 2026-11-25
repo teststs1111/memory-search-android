@@ -130,6 +130,14 @@ class MainActivity : Activity() {
                     adapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_dropdown_item, stages.map { it.stageName })
                 }
                 root.addView(selector, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+                val previewButton = Button(this).apply {
+                    setOnClickListener {
+                        startActivity(
+                            Intent(this@MainActivity, LabelBoxPreviewActivity::class.java)
+                                .putExtra(LabelBoxPreviewActivity.EXTRA_STAGE_ID, selectedStageId)
+                        )
+                    }
+                }
                 fun updateStatus(index: Int) {
                     val stage = stages[index]
                     selectedStageId = stage.stageId
@@ -141,17 +149,18 @@ class MainActivity : Activity() {
                         "照合用アイテム名：${catalogCount}件\n名称枠の座標：確認待ち（実プレイでは非表示）"
                     }
                     val caution = if (reviewNotes.isEmpty()) "" else "\n\n精度注意ポイント：\n・" + reviewNotes.joinToString("\n・")
-                    stageStatus.text = "\n${stage.stageName}\n${message}${caution}\n\n番号付きプレビューは確認専用です。実プレイ画面には番号を表示しません。"
+                    stageStatus.text = "\n${stage.stageName}\n${message}${caution}\n\n番号付きプレビューは座標確認専用です。実プレイ画面には表示しません。"
+                    val candidateFile = "${stage.stageId}_label_boxes.candidates.json"
+                    val hasCandidates = assets.list("stages")?.contains(candidateFile) == true
+                    previewButton.visibility = if (hasCandidates) android.view.View.VISIBLE else android.view.View.GONE
+                    previewButton.text = "${stage.stageName}の名称枠・座標プレビュー"
                 }
                 selector.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) = updateStatus(position)
                     override fun onNothingSelected(parent: android.widget.AdapterView<*>?) = Unit
                 }
                 updateStatus(0)
-                root.addView(Button(this).apply {
-                    text = "第1章の名称枠プレビュー（候補）"
-                    setOnClickListener { startActivity(Intent(this@MainActivity, LabelBoxPreviewActivity::class.java)) }
-                })
+                root.addView(previewButton)
             }
         } catch (error: Exception) {
             stageStatus.text = "ステージデータを読み込めませんでした。\n${error.message ?: "データ形式を確認してください。"}"
