@@ -15,7 +15,7 @@ class CandidateLabelBoxPreviewView(
     private val candidates: List<StageLabelBox>
 ) : View(context) {
     private val density = resources.displayMetrics.density
-    private var highlightedItemName: String? = null
+    private var highlightedItemNames: Set<String> = emptySet()
     private val imagePaint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
     private val outlinePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.rgb(255, 220, 40)
@@ -48,8 +48,8 @@ class CandidateLabelBoxPreviewView(
         setLayerType(LAYER_TYPE_SOFTWARE, null)
     }
 
-    fun setHighlightedItemName(name: String?) {
-        highlightedItemName = name?.takeIf { it.isNotBlank() }
+    fun setHighlightedItemNames(names: Collection<String>) {
+        highlightedItemNames = names.filter { it.isNotBlank() }.toSet()
         invalidate()
     }
 
@@ -74,7 +74,7 @@ class CandidateLabelBoxPreviewView(
                 offsetX + bounds.right.toFloat() * drawWidth,
                 offsetY + bounds.bottom.toFloat() * drawHeight
             )
-            val isHighlighted = LabelHighlightSelection.isTarget(item.itemName, highlightedItemName)
+            val isHighlighted = LabelHighlightSelection.isTarget(item.itemName, highlightedItemNames)
             if (isHighlighted) {
                 glowPaint.setShadowLayer(12f * density, 0f, 0f, Color.CYAN)
                 canvas.drawRect(rect, glowPaint)
