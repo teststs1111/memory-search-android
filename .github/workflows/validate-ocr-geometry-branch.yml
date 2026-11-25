@@ -13,6 +13,12 @@ on:
       - ".github/workflows/validate-ocr-geometry-branch.yml"
   workflow_dispatch:
 
+# Keep only the newest validation run for this branch. Multiple emulator boots
+# were competing for runner resources and causing ADB startup failures.
+concurrency:
+  group: geometry-aware-ocr-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -65,7 +71,8 @@ jobs:
           arch: x86_64
           profile: Nexus 6
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -memory 2048 -cores 2
-          disable-animations: true
+          # Avoid extra ADB settings writes; these were failing after emulator boot.
+          disable-animations: false
           script: gradle --no-daemon :app:connectedDebugAndroidTest
       - name: Upload instrumented test reports
         if: always()
