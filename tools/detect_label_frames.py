@@ -222,7 +222,7 @@ def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, heig
             if not 0.18 <= ratio <= 2.5:
                 item_diagnostic["rejected"]["area_ratio"] += 1
                 continue
-            if not 1.05 <= aspect <= 12.0:
+            if not 1.0 <= aspect <= 12.0:
                 item_diagnostic["rejected"]["aspect_ratio"] += 1
                 continue
             if rectangularity < 0.25:
