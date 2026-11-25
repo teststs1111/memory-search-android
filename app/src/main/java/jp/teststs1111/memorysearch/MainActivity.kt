@@ -23,6 +23,7 @@ class MainActivity : Activity() {
     private var receiverRegistered = false
     private var selectedStageId: String = "chapter_1"
     private var latestDetectedItemNames: ArrayList<String> = arrayListOf()
+    private var requestContinuousCapture = false
     private lateinit var detectedPreviewButton: Button
 
     private val captureReceiver = object : BroadcastReceiver() {
@@ -53,7 +54,11 @@ class MainActivity : Activity() {
                     // Geometry matches can recover a two-line label split across separate ML Kit blocks.
                     val matches = itemNames.filter { it in blockMatches || it in locatedNames }
                     // The live game shows three labels at a time; only exact matches are selected.
-                    latestDetectedItemNames = ArrayList(LabelHighlightSelection.targets(itemNames, matches))
+                    latestDetectedItemNames = if (intent.getBooleanExtra(ScreenCaptureService.EXTRA_CONTINUOUS, false)) {
+                        intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_ACTIVE_TARGETS).orEmpty().let(::ArrayList)
+                    } else {
+                        ArrayList(LabelHighlightSelection.targets(itemNames, matches))
+                    }
                     detectedPreviewButton.visibility = if (latestDetectedItemNames.isEmpty()) android.view.View.GONE else android.view.View.VISIBLE
                     val matchText = if (latestDetectedItemNames.isEmpty()) {
                         "${resultStageId} のアイテム名との完全一致はありません。"
@@ -184,7 +189,7 @@ class MainActivity : Activity() {
             setPadding(0, padding, 0, 0)
         })
         captureStatus = TextView(this).apply {
-            text = "許可を求めたときだけ1フレームを取得して日本語OCRを行います。画像は保存しません。"
+            text = "単発テスト、または継続監視を選べます。画像は保存せずメモリ上で処理します。"
             textSize = 14f
             setPadding(0, padding / 2, 0, padding / 2)
         }
@@ -207,6 +212,22 @@ class MainActivity : Activity() {
                 val manager = getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
                 @Suppress("DEPRECATION")
                 startActivityForResult(manager.createScreenCaptureIntent(), REQUEST_CAPTURE)
+            }
+        })
+        root.addView(Button(this).apply {
+            text = "継続監視を開始（3項目の切り替え検出）"
+            setOnClickListener {
+                requestContinuousCapture = true
+                val manager = getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
+                @Suppress("DEPRECATION")
+                startActivityForResult(manager.createScreenCaptureIntent(), REQUEST_CAPTURE)
+            }
+        })
+        root.addView(Button(this).apply {
+            text = "継続監視を停止"
+            setOnClickListener {
+                startService(Intent(this@MainActivity, ScreenCaptureService::class.java).setAction(ScreenCaptureService.ACTION_STOP_CAPTURE))
+                captureStatus.text = "継続監視の停止を要求しました。"
             }
         })
         setContentView(root)
@@ -243,13 +264,15 @@ class MainActivity : Activity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CAPTURE) {
             if (resultCode == RESULT_OK && data != null) {
-                captureStatus.text = "許可を受け取りました。1フレームを取得して日本語OCRを実行します…"
+                captureStatus.text = if (requestContinuousCapture) "継続監視を開始します。新しい指定3項目を安定認識した時点で切り替えます…" else "許可を受け取りました。1フレームを取得して日本語OCRを実行します…"
                 val serviceIntent = Intent(this, ScreenCaptureService::class.java).apply {
                     putExtra(ScreenCaptureService.EXTRA_RESULT_CODE, resultCode)
                     putExtra(ScreenCaptureService.EXTRA_RESULT_DATA, data)
                     putExtra(ScreenCaptureService.EXTRA_STAGE_ID, selectedStageId)
+                    putExtra(ScreenCaptureService.EXTRA_CONTINUOUS, requestContinuousCapture)
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) startForegroundService(serviceIntent) else startService(serviceIntent)
+                requestContinuousCapture = false
             } else {
                 captureStatus.text = "画面取得はキャンセルされました。ゲームには影響ありません。"
             }
