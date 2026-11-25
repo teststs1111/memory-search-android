@@ -64,6 +64,19 @@ class OcrItemMatcherTest {
     }
 
     @Test
+    fun liveSingleLineMatcherDoesNotJoinReferenceImageRows() {
+        val catalog = listOf("バリケード", "輸送書類")
+        assertEquals(
+            listOf("バリケード"),
+            OcrItemMatcher.matchLines(listOf("バリケード", "輸送", "書類"), catalog)
+        )
+        assertEquals(
+            listOf("輸送書類"),
+            OcrItemMatcher.matchLines(listOf("輸送書類"), catalog)
+        )
+    }
+
+    @Test
     fun doesNotJoinLinesAcrossDifferentBlocksWithoutGeometryMatcher() {
         assertEquals(
             emptyList<String>(),
