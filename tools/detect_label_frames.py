@@ -195,7 +195,7 @@ def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, heig
             nearest &= own_distance <= other_distance
         roi[~nearest] = 0
         contours, _ = cv2.findContours(roi, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        item_diagnostic = {"itemId": item.get("itemId"), "roiBounds": [x1, y1, x2, y2], "maskPixels": int(cv2.countNonZero(roi)), "contourCount": len(contours), "rejected": {"degenerate": 0, "area_ratio": 0, "aspect_ratio": 0, "rectangularity": 0, "center_distance": 0}, "proposalCount": 0}
+        item_diagnostic = {"itemId": item.get("itemId"), "roiBounds": [x1, y1, x2, y2], "maskPixels": int(cv2.countNonZero(roi)), "contourCount": len(contours), "rejected": {"degenerate": 0, "area_ratio": 0, "aspect_ratio": 0, "rectangularity": 0, "center_distance": 0}, "contours": [], "proposalCount": 0}
         for contour in contours:
             area = float(cv2.contourArea(contour))
             rect = cv2.minAreaRect(contour)
@@ -205,20 +205,29 @@ def detect_seeded_label_quadrilaterals(annotated, items, image_size, width, heig
                 continue
             rect_area = float(rw * rh)
             ratio = rect_area / seed_area
-            if not 0.18 <= ratio <= 2.5:
-                item_diagnostic["rejected"]["area_ratio"] += 1
-                continue
             aspect = max(rw, rh) / min(rw, rh)
-            if not 1.05 <= aspect <= 12.0:
-                item_diagnostic["rejected"]["aspect_ratio"] += 1
-                continue
             rectangularity = area / rect_area
-            if rectangularity < 0.25:
-                item_diagnostic["rejected"]["rectangularity"] += 1
-                continue
             cx, cy = rect[0][0] + x1, rect[0][1] + y1
             scx, scy = (sx1 + sx2) / 2, (sy1 + sy2) / 2
             distance = math.hypot(cx - scx, cy - scy)
+            item_diagnostic["contours"].append({
+                "area": round(area, 2), "rectArea": round(rect_area, 2),
+                "areaRatio": round(ratio, 4), "width": round(float(rw), 2),
+                "height": round(float(rh), 2), "aspectRatio": round(aspect, 4),
+                "rectangularity": round(rectangularity, 4),
+                "center": [round(float(cx), 2), round(float(cy), 2)],
+                "centerDistance": round(distance, 2),
+                "centerDistanceLimit": round(seed_diag * 0.55, 2)
+            })
+            if not 0.18 <= ratio <= 2.5:
+                item_diagnostic["rejected"]["area_ratio"] += 1
+                continue
+            if not 1.05 <= aspect <= 12.0:
+                item_diagnostic["rejected"]["aspect_ratio"] += 1
+                continue
+            if rectangularity < 0.25:
+                item_diagnostic["rejected"]["rectangularity"] += 1
+                continue
             if distance > seed_diag * 0.55:
                 item_diagnostic["rejected"]["center_distance"] += 1
                 continue
