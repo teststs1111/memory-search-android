@@ -237,7 +237,12 @@ class ScreenCaptureService : Service() {
                 .addOnCompleteListener {
                     if (!bitmap.isRecycled) bitmap.recycle()
                     ocrInFlight = false
-                    if (!continuousMode) stopCapture()
+                    if (stopped) {
+                        recognizer?.close()
+                        recognizer = null
+                    } else if (!continuousMode) {
+                        stopCapture()
+                    }
                 }
         } catch (error: Exception) {
             // ML Kit setup or task submission can fail before async listeners run.
@@ -252,6 +257,7 @@ class ScreenCaptureService : Service() {
         sendBroadcast(Intent(ACTION_CAPTURE_ERROR).setPackage(packageName).putExtra(EXTRA_ERROR, message))
     }
 
+    @Synchronized
     private fun stopCapture() {
         if (stopped) return
         stopped = true
@@ -262,8 +268,11 @@ class ScreenCaptureService : Service() {
         imageReader = null
         projection?.stop()
         projection = null
-        recognizer?.close()
-        recognizer = null
+        // ML Kit may still be using the recognizer; close it after its task completes.
+        if (!ocrInFlight) {
+            recognizer?.close()
+            recognizer = null
+        }
         worker?.quitSafely()
         worker = null
         stopForeground(STOP_FOREGROUND_REMOVE)
