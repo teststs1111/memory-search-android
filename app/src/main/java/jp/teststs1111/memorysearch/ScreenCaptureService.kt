@@ -105,7 +105,6 @@ class ScreenCaptureService : Service() {
                         image.close()
                         return@setOnImageAvailableListener
                     }
-                    ocrInFlight = true
                     lastOcrStartedAt = now
                 } else {
                     if (frameHandled) {
@@ -114,6 +113,7 @@ class ScreenCaptureService : Service() {
                     }
                     frameHandled = true
                 }
+                ocrInFlight = true
                 val bitmap = try {
                     imageToBitmap(image)
                 } catch (error: Exception) {
