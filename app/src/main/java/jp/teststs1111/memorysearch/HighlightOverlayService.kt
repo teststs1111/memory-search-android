@@ -15,7 +15,6 @@ import android.os.IBinder
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
-import org.json.JSONObject
 
 /**
  * Click-through overlay. Marker positions come only from the verified stage dataset;
@@ -143,10 +142,10 @@ private class HighlightView(
         val dataset = currentDataset() ?: return
         if (width <= 0 || height <= 0) return
 
-        val options = android.graphics.BitmapFactory.Options().apply { inJustDecodeBounds = true }
-        runCatching { context.assets.open(dataset.referenceImage).use { android.graphics.BitmapFactory.decodeStream(it, null, options) } }
-        val sourceWidth = options.outWidth.takeIf { it > 0 } ?: 563
-        val sourceHeight = options.outHeight.takeIf { it > 0 } ?: 1000
+        // Chapter 5 reference image is 563×1000. Keep its content rectangle stable;
+        // no board or label coordinates are detected from the live game screen.
+        val sourceWidth = 563
+        val sourceHeight = 1000
         val scale = minOf(width.toFloat() / sourceWidth, height.toFloat() / sourceHeight)
         val contentWidth = sourceWidth * scale
         val contentHeight = sourceHeight * scale
