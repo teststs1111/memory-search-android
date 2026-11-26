@@ -9,7 +9,7 @@
     "width": 563,
     "height": 1000
   },
-  "reviewNote": "First-pass approximate label-frame candidates derived from the annotated wiki image. Frames are guidance markers only; visually review against the unannotated base image before use. Runtime remains disabled.",
+  "reviewNote": "Visual review performed against the original annotated reference and the clean base at the same 563x1000 scale. 27 candidate boxes have complete visible boundaries; five touch an image edge and remain pending because the full original frame extent is not visible. Candidate coordinates remain disabled for runtime use.",
   "sourceImage": "https://img.atwiki.jp/eden_jp/attach/46/153/%E7%AC%AC6%E7%AB%A0.jpeg",
   "items": [
     {
@@ -28,7 +28,8 @@
         140,
         206
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_02",
@@ -46,7 +47,8 @@
         422,
         296
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_03",
@@ -64,7 +66,8 @@
         563,
         309
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
     },
     {
       "itemId": "chapter_6_item_04",
@@ -82,7 +85,8 @@
         378,
         435
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_05",
@@ -100,7 +104,8 @@
         226,
         543
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_06",
@@ -118,7 +123,8 @@
         174,
         586
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_07",
@@ -136,7 +142,8 @@
         246,
         594
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_08",
@@ -154,7 +161,8 @@
         164,
         627
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_09",
@@ -172,7 +180,8 @@
         182,
         645
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_10",
@@ -190,7 +199,8 @@
         288,
         650
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_11",
@@ -208,7 +218,8 @@
         432,
         612
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_12",
@@ -226,7 +237,8 @@
         563,
         652
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
     },
     {
       "itemId": "chapter_6_item_13",
@@ -244,7 +256,8 @@
         385,
         687
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_14",
@@ -262,7 +275,8 @@
         373,
         727
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_15",
@@ -280,7 +294,8 @@
         489,
         731
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_16",
@@ -298,7 +313,8 @@
         563,
         746
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
     },
     {
       "itemId": "chapter_6_item_17",
@@ -316,7 +332,8 @@
         260,
         737
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_18",
@@ -334,7 +351,8 @@
         207,
         772
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_19",
@@ -352,7 +370,8 @@
         61,
         810
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
     },
     {
       "itemId": "chapter_6_item_20",
@@ -370,7 +389,8 @@
         138,
         803
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_21",
@@ -388,7 +408,8 @@
         300,
         809
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_22",
@@ -406,7 +427,8 @@
         394,
         814
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_23",
@@ -424,7 +446,8 @@
         456,
         805
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_manual_red_label"
     },
     {
       "itemId": "chapter_6_item_24",
@@ -442,7 +465,8 @@
         563,
         806
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
     },
     {
       "itemId": "chapter_6_item_25",
@@ -460,7 +484,8 @@
         511,
         845
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_26",
@@ -478,7 +503,8 @@
         265,
         840
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_27",
@@ -496,7 +522,8 @@
         327,
         876
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_28",
@@ -514,7 +541,8 @@
         465,
         879
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_29",
@@ -532,7 +560,8 @@
         235,
         941
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_30",
@@ -550,7 +579,8 @@
         328,
         919
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_31",
@@ -568,7 +598,8 @@
         319,
         985
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     },
     {
       "itemId": "chapter_6_item_32",
@@ -586,7 +617,97 @@
         525,
         976
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
     }
-  ]
+  ],
+  "visualReview": {
+    "status": "partially_reviewed_candidate_only",
+    "reviewedAtBranchHead": "2735e04aee836266da423592ff26aef1b63259ed",
+    "reviewedAgainst": {
+      "annotatedImage": "reference/chapter_06/annotated.jpg",
+      "cleanBaseImage": "reference/chapter_06/base.jpg"
+    },
+    "imageSize": {
+      "width": 563,
+      "height": 1000
+    },
+    "visuallyGroundedCompleteBoxCount": 27,
+    "edgeClippedCandidateCount": 5,
+    "edgeClippedItemNames": [
+      "バードフィーダー",
+      "ハンカチ",
+      "スクールバッグ",
+      "鉢植え",
+      "ラケット"
+    ],
+    "overlappingCandidatePairs": [
+      [
+        "バケツ",
+        "ネズミぬいぐるみ"
+      ],
+      [
+        "バスケット",
+        "風車"
+      ],
+      [
+        "ネズミぬいぐるみ",
+        "鈴"
+      ],
+      [
+        "風車",
+        "双眼鏡"
+      ],
+      [
+        "双眼鏡",
+        "傘"
+      ],
+      [
+        "サッカーボール",
+        "円盤"
+      ],
+      [
+        "円盤",
+        "キャンディ"
+      ],
+      [
+        "円盤",
+        "紙飛行機"
+      ],
+      [
+        "紙飛行機",
+        "虫メガネ"
+      ],
+      [
+        "水筒",
+        "スニーカー"
+      ],
+      [
+        "ラケット",
+        "スニーカー"
+      ],
+      [
+        "スニーカー",
+        "ヘッドホン"
+      ],
+      [
+        "虫メガネ",
+        "カチューシャ"
+      ],
+      [
+        "カチューシャ",
+        "サンドイッチ"
+      ]
+    ],
+    "automatedDetector": {
+      "detectedCandidateCount": 31,
+      "unmatchedItemNames": [
+        "水筒"
+      ],
+      "method": "seeded_difference_mask_voronoi_quadrilateral",
+      "usedAsCoordinateSource": false,
+      "note": "水筒 is a red annotated label and was not returned by the detector; its candidate position was checked visually against the annotated image instead."
+    },
+    "note": "All 32 item labels were identified by name and position in the reference. The five edge-touching boxes are not promoted because the full label-frame boundary cannot be confirmed inside the supplied image. Overlap pairs are retained for review, not treated as automatic errors. Runtime stage data remains empty and unverified."
+  }
 }
