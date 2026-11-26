@@ -22,7 +22,7 @@ Last reviewed: 2026-11-26
 ## Chapter 6 review
 
 - Chapter: 第6章「学園の中庭」.
-- Reference pair: `reference/chapter_06/annotated.jpg` and `reference/chapter_06/base.jpg`, both 563×1000.
+- Reference pair: `reference/chapter_06/annotated.jpg` and `reference/chapter_06/base.jpg`, both 1404×2496. Candidate `imageSize`/`sourceRect` use the original 563×1000 coordinate basis; the render tool maps the normalized bounds onto the larger source pair after checking the matching aspect ratio.
 - Catalog and candidate list contain 32 items in the same order.
 - The 32 label identities/placements were reviewed against the annotated image and clean base at the same scale. 27 candidate boxes have complete visible boundaries.
 - Five boxes touch the image boundary and remain pending because the full label-frame extent cannot be established from this image:

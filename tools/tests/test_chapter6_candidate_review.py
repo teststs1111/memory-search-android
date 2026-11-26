@@ -53,6 +53,7 @@ class Chapter6CandidateReviewTests(unittest.TestCase):
         self.assertEqual(actual, expected)
         self.assertEqual(set(review["edgeClippedItemNames"]), expected)
         self.assertEqual(review["edgeClippedCandidateCount"], 5)
+        self.assertEqual(review["actualReferenceImageSize"], {"width": 1404, "height": 2496})
 
     def test_red_water_bottle_label_is_manual_not_detector_verified(self):
         water_bottle = next(

@@ -48,9 +48,9 @@ def find_overlaps(items):
         a = first["bounds"]
         for second in items[index + 1:]:
             b = second["bounds"]
-            width = max(0.0, min(a["right"], b["right"]) - max(a["left"], b["left"]))
-            height = max(0.0, min(a["bottom"], b["bottom"]) - max(a["top"], b["top"]))
-            if width * height > 0:
+            overlap_width = max(0.0, min(a["right"], b["right"]) - max(a["left"], b["left"]))
+            overlap_height = max(0.0, min(a["bottom"], b["bottom"]) - max(a["top"], b["top"]))
+            if overlap_width * overlap_height > 0:
                 overlaps.append((first["itemName"], second["itemName"]))
     return overlaps
 
@@ -64,21 +64,30 @@ def main() -> None:
 
     height, width = base.shape[:2]
     expected = data["imageSize"]
-    if (width, height) != (expected["width"], expected["height"]):
+    actual_ratio = width / height
+    expected_ratio = expected["width"] / expected["height"]
+    if abs(actual_ratio - expected_ratio) > 0.001:
         raise SystemExit(
-            f"Base image size {(width, height)} does not match candidate reference "
-            f"{(expected['width'], expected['height'])}"
+            f"Base aspect ratio {actual_ratio:.6f} does not match candidate "
+            f"coordinate basis {expected_ratio:.6f}"
         )
     if annotated.shape[:2] != base.shape[:2]:
         raise SystemExit("Annotated and clean reference images must have identical dimensions")
 
+    actual_size = data.get("visualReview", {}).get("actualReferenceImageSize")
+    if actual_size and (width, height) != (actual_size["width"], actual_size["height"]):
+        raise SystemExit(
+            f"Reference image size {(width, height)} does not match reviewed source "
+            f"{(actual_size['width'], actual_size['height'])}"
+        )
+
     for item in data["items"]:
         x1, y1, x2, y2 = item["sourceRect"]
         expected_bounds = {
-            "left": x1 / width,
-            "top": y1 / height,
-            "right": x2 / width,
-            "bottom": y2 / height,
+            "left": x1 / expected["width"],
+            "top": y1 / expected["height"],
+            "right": x2 / expected["width"],
+            "bottom": y2 / expected["height"],
         }
         for key, value in expected_bounds.items():
             if abs(item["bounds"][key] - value) > 1e-6:

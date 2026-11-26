@@ -9,7 +9,7 @@
     "width": 563,
     "height": 1000
   },
-  "reviewNote": "Visual review performed against the original annotated reference and the clean base at the same 563x1000 scale. 27 candidate boxes have complete visible boundaries; five touch an image edge and remain pending because the full original frame extent is not visible. Candidate coordinates remain disabled for runtime use.",
+  "reviewNote": "Visual review performed against the original annotated reference and clean base using normalized coordinates on the 563x1000 coordinate basis. The committed source pair is 1404x2496 with the same framing/aspect ratio. 27 candidate boxes have complete visible boundaries; five touch an image edge and remain pending because the full original frame extent is not visible. Candidate coordinates remain disabled for runtime use.",
   "sourceImage": "https://img.atwiki.jp/eden_jp/attach/46/153/%E7%AC%AC6%E7%AB%A0.jpeg",
   "items": [
     {
@@ -708,6 +708,10 @@
       "usedAsCoordinateSource": false,
       "note": "水筒 is a red annotated label and was not returned by the detector; its candidate position was checked visually against the annotated image instead."
     },
-    "note": "All 32 item labels were identified by name and position in the reference. The five edge-touching boxes are not promoted because the full label-frame boundary cannot be confirmed inside the supplied image. Overlap pairs are retained for review, not treated as automatic errors. Runtime stage data remains empty and unverified."
+    "note": "All 32 item labels were identified by name and position in the reference. The five edge-touching boxes are not promoted because the full label-frame boundary cannot be confirmed inside the supplied image. Overlap pairs are retained for review, not treated as automatic errors. Runtime stage data remains empty and unverified.",
+    "actualReferenceImageSize": {
+      "width": 1404,
+      "height": 2496
+    }
   }
 }
