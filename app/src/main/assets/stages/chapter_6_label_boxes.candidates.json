@@ -700,13 +700,12 @@
       ]
     ],
     "automatedDetector": {
-      "detectedCandidateCount": 31,
-      "unmatchedItemNames": [
-        "水筒"
-      ],
+      "detectedCandidateCount": 32,
+      "unmatchedItemNames": [],
       "method": "seeded_difference_mask_voronoi_quadrilateral",
       "usedAsCoordinateSource": false,
-      "note": "水筒 is a red annotated label and was not returned by the detector; its candidate position was checked visually against the annotated image instead."
+      "runId": 45767830077,
+      "note": "The latest branch run associated all 32 seeds, but its preview contains oversized/contaminated rectangles that include nearby scene objects. It is diagnostic only; none of its detected bounds were copied into the candidate coordinates."
     },
     "note": "All 32 item labels were identified by name and position in the reference. The five edge-touching boxes are not promoted because the full label-frame boundary cannot be confirmed inside the supplied image. Overlap pairs are retained for review, not treated as automatic errors. Runtime stage data remains empty and unverified.",
     "actualReferenceImageSize": {

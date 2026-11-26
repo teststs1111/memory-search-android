@@ -32,7 +32,7 @@ Last reviewed: 2026-11-26
   - 鉢植え (left edge)
   - ラケット (right edge)
 - Fourteen overlapping candidate pairs are recorded in `chapter_6_label_boxes.candidates.json`; these are retained for review and were not automatically adjusted.
-- The difference-mask detector returned 31/32 items and missed 水筒. 水筒 is a red annotated label; its candidate was visually matched manually. Detector output is diagnostic only and is not used as the coordinate source.
+- The latest branch detector run (45767830077) associated 32/32 seeds, but its preview rectangles are oversized/contaminated by nearby scene objects. No detector bounds were copied into the coordinate candidates. 水筒 is a red annotated label and its candidate remains visually grounded from the annotated image.
 - Every candidate's normalized bounds exactly match its integer `sourceRect` against the 563×1000 reference.
 - `app/src/main/assets/stages/chapter_6.json` remains `awaiting_coordinate_verification` with an empty `items` array. No Chapter 6 coordinates are enabled at runtime.
 - The source image itself is edge-cropped for the five pending labels. Search for an uncropped/alternate reference before promoting those five; do not infer missing frame edges.
@@ -41,12 +41,12 @@ Last reviewed: 2026-11-26
 
 - Chapter 6 render and detector workflows previously checked out/pushed `main` with `contents: write`. They must remain branch-only, read-only, and artifact-upload-only on this working branch.
 - Added a same-scale annotated/base comparison preview and focused Chapter 6 candidate-review tests.
-- Latest known branch validation before this handoff: run 45724732757 at commit `2735e04aee836266da423592ff26aef1b63259ed`. Catalog validation, stage validation, Kotlin unit tests, and debug APK build succeeded. The Chapter 5 ML Kit instrumented job failed after the test started with an instrumentation process crash; it is not a successful OCR verification.
+- At commit `cc598825ffa0481324053294687b61793841ef8a`, the catalog validator, stage validator, Kotlin unit tests, debug APK build, 17 Python detector/review tests, Chapter 6 detection job, and Chapter 6 render/comparison job succeeded. The Chapter 5 ML Kit instrumented job was still running at last check; earlier run 45724732757 failed after the test started with an instrumentation process crash, so no emulator OCR pass is claimed.
 - No real-device test has been performed.
 
 ## Next work
 
 1. Look for an alternate or uncropped Chapter 6 reference that fully shows the five edge-touching label frames. If none exists, keep those five pending.
-2. Do not populate the Chapter 6 runtime dataset until every promoted box is grounded in a complete visible frame.
-3. Continue with Chapter 7 only after Chapter 6's remaining source ambiguity is resolved; then proceed through Chapters 8–10 in order.
+2. Do not promote the five clipped Chapter 6 boxes or populate Chapter 6 runtime data from incomplete bounds.
+3. Continue Chapter 7 candidate generation/review even if those five Chapter 6 boxes remain pending; then proceed through Chapters 8–10 in order.
 4. Keep Chapter 5's user-approved boxes unchanged unless a clear source-image defect is found.

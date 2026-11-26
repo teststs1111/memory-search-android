@@ -55,13 +55,15 @@ class Chapter6CandidateReviewTests(unittest.TestCase):
         self.assertEqual(review["edgeClippedCandidateCount"], 5)
         self.assertEqual(review["actualReferenceImageSize"], {"width": 1404, "height": 2496})
 
-    def test_red_water_bottle_label_is_manual_not_detector_verified(self):
+    def test_red_water_bottle_label_is_visually_grounded_and_detector_is_not_coordinate_source(self):
         water_bottle = next(
             item for item in self.candidates["items"] if item["itemName"] == "水筒"
         )
         self.assertEqual(water_bottle["visualReviewStatus"], "visually_grounded_manual_red_label")
-        self.assertIn("水筒", self.candidates["visualReview"]["automatedDetector"]["unmatchedItemNames"])
-        self.assertFalse(self.candidates["visualReview"]["automatedDetector"]["usedAsCoordinateSource"])
+        detector = self.candidates["visualReview"]["automatedDetector"]
+        self.assertEqual(detector["detectedCandidateCount"], 32)
+        self.assertEqual(detector["unmatchedItemNames"], [])
+        self.assertFalse(detector["usedAsCoordinateSource"])
 
     def test_overlapping_boxes_are_recorded_without_auto_correction(self):
         self.assertEqual(len(self.candidates["visualReview"]["overlappingCandidatePairs"]), 14)
