@@ -1,0 +1,818 @@
+{
+  "stageId": "chapter_7",
+  "coordinateSystem": "normalized_0_to_1",
+  "coordinateReference": "reference/chapter_07/base.jpg",
+  "purpose": "highlight_item_name_label_box",
+  "runtimeEnabled": false,
+  "dataStatus": "partially_reviewed_candidate_only",
+  "imageSize": {
+    "width": 563,
+    "height": 1000
+  },
+  "actualReferenceImageSize": {
+    "width": 1206,
+    "height": 2144
+  },
+  "sourceImage": "https://img.atwiki.jp/eden_jp/attach/46/154/%E7%AC%AC7%E7%AB%A0.jpeg",
+  "reviewNote": "All 35 item labels were traced from the committed annotated reference and compared with the clean base at identical 1206x2144 dimensions. 25 complete visible boxes are retained as visually grounded candidates; 10 touch an image edge and remain pending because their full rectangle extent is not visible. Candidate bounds were traced from the annotation layer; the OCR text-region and connected-component detector outputs were not used as coordinate sources. Axis-aligned boxes for rotated labels can overlap; overlaps are recorded without automatic adjustment. This file is review-only and is not enabled at runtime.",
+  "visualReview": {
+    "status": "partially_reviewed_candidate_only",
+    "reviewedItemCount": 35,
+    "visuallyGroundedCompleteCount": 25,
+    "edgeClippedCandidateCount": 10,
+    "edgeClippedItemNames": [
+      "ビーチボール",
+      "壊れたロボット",
+      "卓上カレンダー",
+      "ハサミ",
+      "ストップウォッチ",
+      "メガネ",
+      "ゴーグル",
+      "ルービックキューブ",
+      "救急箱",
+      "ボールペン"
+    ],
+    "overlappingCandidatePairs": [
+      [
+        "デスクライト",
+        "化学本"
+      ],
+      [
+        "デスクライト",
+        "タブレット"
+      ],
+      [
+        "化学本",
+        "砂時計"
+      ],
+      [
+        "砂時計",
+        "タブレット"
+      ],
+      [
+        "砂時計",
+        "クリップボード"
+      ],
+      [
+        "傘",
+        "壊れたロボット"
+      ],
+      [
+        "卓上カレンダー",
+        "ノートパソコン"
+      ],
+      [
+        "卓上カレンダー",
+        "デジタル時計"
+      ],
+      [
+        "ノートパソコン",
+        "デジタル時計"
+      ],
+      [
+        "デジタル時計",
+        "電卓"
+      ],
+      [
+        "デジタル時計",
+        "メガネ"
+      ],
+      [
+        "デジタル時計",
+        "キーボード"
+      ],
+      [
+        "デジタル時計",
+        "ウェットティッシュ"
+      ],
+      [
+        "電卓",
+        "キーボード"
+      ],
+      [
+        "タブレット",
+        "クリップボード"
+      ],
+      [
+        "タブレット",
+        "ハンドミラー"
+      ],
+      [
+        "クリップボード",
+        "ハサミ"
+      ],
+      [
+        "クリップボード",
+        "ハンドミラー"
+      ],
+      [
+        "キーボード",
+        "ウェットティッシュ"
+      ],
+      [
+        "ウェットティッシュ",
+        "ハンドミラー"
+      ],
+      [
+        "トランプ",
+        "割れマグカップ"
+      ],
+      [
+        "メジャー",
+        "ゴミ箱"
+      ],
+      [
+        "メジャー",
+        "割れマグカップ"
+      ],
+      [
+        "ゴミ箱",
+        "ゴーグル"
+      ],
+      [
+        "ゴーグル",
+        "ルービックキューブ"
+      ],
+      [
+        "メモ用紙",
+        "ボールペン"
+      ]
+    ],
+    "overlapMethod": "Intersection of axis-aligned bounds; rotated label boxes can overlap in this representation. No overlap was auto-corrected.",
+    "sourcePair": {
+      "annotated": "reference/chapter_07/annotated.jpg",
+      "base": "reference/chapter_07/base.jpg",
+      "width": 1206,
+      "height": 2144
+    },
+    "detectorOutputUsedAsCoordinateSource": false,
+    "reviewedAt": "2026-11-27"
+  },
+  "items": [
+    {
+      "itemId": "chapter_7_item_01",
+      "itemName": "鉢植え",
+      "bounds": {
+        "left": 0.408526,
+        "top": 0.037,
+        "right": 0.534636,
+        "bottom": 0.106
+      },
+      "source": "annotated",
+      "sourceRect": [
+        230,
+        37,
+        301,
+        106
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_02",
+      "itemName": "積み木",
+      "bounds": {
+        "left": 0.369449,
+        "top": 0.111,
+        "right": 0.55595,
+        "bottom": 0.157
+      },
+      "source": "annotated",
+      "sourceRect": [
+        208,
+        111,
+        313,
+        157
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_03",
+      "itemName": "ヘッドホン",
+      "bounds": {
+        "left": 0.344583,
+        "top": 0.166,
+        "right": 0.595027,
+        "bottom": 0.207
+      },
+      "source": "annotated",
+      "sourceRect": [
+        194,
+        166,
+        335,
+        207
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_04",
+      "itemName": "ペットボトル",
+      "bounds": {
+        "left": 0.085258,
+        "top": 0.265,
+        "right": 0.257549,
+        "bottom": 0.344
+      },
+      "source": "annotated",
+      "sourceRect": [
+        48,
+        265,
+        145,
+        344
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_05",
+      "itemName": "ファイルボックス",
+      "bounds": {
+        "left": 0.371226,
+        "top": 0.266,
+        "right": 0.568384,
+        "bottom": 0.331
+      },
+      "source": "annotated",
+      "sourceRect": [
+        209,
+        266,
+        320,
+        331
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_06",
+      "itemName": "クッション",
+      "bounds": {
+        "left": 0.786856,
+        "top": 0.245,
+        "right": 0.941385,
+        "bottom": 0.309
+      },
+      "source": "annotated",
+      "sourceRect": [
+        443,
+        245,
+        530,
+        309
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_07",
+      "itemName": "ビーチボール",
+      "bounds": {
+        "left": 0.861456,
+        "top": 0.316,
+        "right": 1,
+        "bottom": 0.377
+      },
+      "source": "annotated",
+      "sourceRect": [
+        485,
+        316,
+        563,
+        377
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_7_item_08",
+      "itemName": "デスクライト",
+      "bounds": {
+        "left": 0.40675,
+        "top": 0.374,
+        "right": 0.488455,
+        "bottom": 0.521
+      },
+      "source": "annotated",
+      "sourceRect": [
+        229,
+        374,
+        275,
+        521
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_09",
+      "itemName": "化学本",
+      "bounds": {
+        "left": 0.474245,
+        "top": 0.425,
+        "right": 0.598579,
+        "bottom": 0.504
+      },
+      "source": "annotated",
+      "sourceRect": [
+        267,
+        425,
+        337,
+        504
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_10",
+      "itemName": "砂時計",
+      "bounds": {
+        "left": 0.586146,
+        "top": 0.428,
+        "right": 0.666075,
+        "bottom": 0.521
+      },
+      "source": "annotated",
+      "sourceRect": [
+        330,
+        428,
+        375,
+        521
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_11",
+      "itemName": "傘",
+      "bounds": {
+        "left": 0.817052,
+        "top": 0.431,
+        "right": 0.912966,
+        "bottom": 0.541
+      },
+      "source": "annotated",
+      "sourceRect": [
+        460,
+        431,
+        514,
+        541
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_12",
+      "itemName": "壊れたロボット",
+      "bounds": {
+        "left": 0.882771,
+        "top": 0.431,
+        "right": 1,
+        "bottom": 0.541
+      },
+      "source": "annotated",
+      "sourceRect": [
+        497,
+        431,
+        563,
+        541
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_7_item_13",
+      "itemName": "卓上カレンダー",
+      "bounds": {
+        "left": 0,
+        "top": 0.445,
+        "right": 0.220249,
+        "bottom": 0.528
+      },
+      "source": "annotated",
+      "sourceRect": [
+        0,
+        445,
+        124,
+        528
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_7_item_14",
+      "itemName": "ノートパソコン",
+      "bounds": {
+        "left": 0.218472,
+        "top": 0.435,
+        "right": 0.404973,
+        "bottom": 0.498
+      },
+      "source": "annotated",
+      "sourceRect": [
+        123,
+        435,
+        228,
+        498
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_15",
+      "itemName": "デジタル時計",
+      "bounds": {
+        "left": 0.076377,
+        "top": 0.485,
+        "right": 0.319716,
+        "bottom": 0.584
+      },
+      "source": "annotated",
+      "sourceRect": [
+        43,
+        485,
+        180,
+        584
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_16",
+      "itemName": "電卓",
+      "bounds": {
+        "left": 0.278863,
+        "top": 0.524,
+        "right": 0.394316,
+        "bottom": 0.562
+      },
+      "source": "annotated",
+      "sourceRect": [
+        157,
+        524,
+        222,
+        562
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_17",
+      "itemName": "タブレット",
+      "bounds": {
+        "left": 0.415631,
+        "top": 0.505,
+        "right": 0.626998,
+        "bottom": 0.561
+      },
+      "source": "annotated",
+      "sourceRect": [
+        234,
+        505,
+        353,
+        561
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_18",
+      "itemName": "クリップボード",
+      "bounds": {
+        "left": 0.596803,
+        "top": 0.505,
+        "right": 0.811723,
+        "bottom": 0.608
+      },
+      "source": "annotated",
+      "sourceRect": [
+        336,
+        505,
+        457,
+        608
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_19",
+      "itemName": "ハサミ",
+      "bounds": {
+        "left": 0.779751,
+        "top": 0.544,
+        "right": 1,
+        "bottom": 0.606
+      },
+      "source": "annotated",
+      "sourceRect": [
+        439,
+        544,
+        563,
+        606
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_7_item_20",
+      "itemName": "ストップウォッチ",
+      "bounds": {
+        "left": 0.815275,
+        "top": 0.612,
+        "right": 1,
+        "bottom": 0.675
+      },
+      "source": "annotated",
+      "sourceRect": [
+        459,
+        612,
+        563,
+        675
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_7_item_21",
+      "itemName": "メガネ",
+      "bounds": {
+        "left": 0,
+        "top": 0.548,
+        "right": 0.085258,
+        "bottom": 0.65
+      },
+      "source": "annotated",
+      "sourceRect": [
+        0,
+        548,
+        48,
+        650
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_7_item_22",
+      "itemName": "キーボード",
+      "bounds": {
+        "left": 0.10302,
+        "top": 0.546,
+        "right": 0.348135,
+        "bottom": 0.62
+      },
+      "source": "annotated",
+      "sourceRect": [
+        58,
+        546,
+        196,
+        620
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_23",
+      "itemName": "ウェットティッシュ",
+      "bounds": {
+        "left": 0.284192,
+        "top": 0.563,
+        "right": 0.484902,
+        "bottom": 0.62
+      },
+      "source": "annotated",
+      "sourceRect": [
+        160,
+        563,
+        273,
+        620
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_24",
+      "itemName": "ハンドミラー",
+      "bounds": {
+        "left": 0.474245,
+        "top": 0.551,
+        "right": 0.65897,
+        "bottom": 0.623
+      },
+      "source": "annotated",
+      "sourceRect": [
+        267,
+        551,
+        371,
+        623
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_25",
+      "itemName": "座布団",
+      "bounds": {
+        "left": 0.069272,
+        "top": 0.672,
+        "right": 0.330373,
+        "bottom": 0.735
+      },
+      "source": "annotated",
+      "sourceRect": [
+        39,
+        672,
+        186,
+        735
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_26",
+      "itemName": "トランプ",
+      "bounds": {
+        "left": 0.25222,
+        "top": 0.741,
+        "right": 0.470693,
+        "bottom": 0.809
+      },
+      "source": "annotated",
+      "sourceRect": [
+        142,
+        741,
+        265,
+        809
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_27",
+      "itemName": "メジャー",
+      "bounds": {
+        "left": 0.507993,
+        "top": 0.72,
+        "right": 0.69627,
+        "bottom": 0.771
+      },
+      "source": "annotated",
+      "sourceRect": [
+        286,
+        720,
+        392,
+        771
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_28",
+      "itemName": "ゴミ箱",
+      "bounds": {
+        "left": 0.687389,
+        "top": 0.702,
+        "right": 0.806394,
+        "bottom": 0.838
+      },
+      "source": "annotated",
+      "sourceRect": [
+        387,
+        702,
+        454,
+        838
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_29",
+      "itemName": "ゴーグル",
+      "bounds": {
+        "left": 0.772647,
+        "top": 0.702,
+        "right": 1,
+        "bottom": 0.766
+      },
+      "source": "annotated",
+      "sourceRect": [
+        435,
+        702,
+        563,
+        766
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_7_item_30",
+      "itemName": "ルービックキューブ",
+      "bounds": {
+        "left": 0.843694,
+        "top": 0.76,
+        "right": 1,
+        "bottom": 0.788
+      },
+      "source": "annotated",
+      "sourceRect": [
+        475,
+        760,
+        563,
+        788
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_7_item_31",
+      "itemName": "救急箱",
+      "bounds": {
+        "left": 0.843694,
+        "top": 0.802,
+        "right": 1,
+        "bottom": 0.894
+      },
+      "source": "annotated",
+      "sourceRect": [
+        475,
+        802,
+        563,
+        894
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_7_item_32",
+      "itemName": "スリッパ",
+      "bounds": {
+        "left": 0.049734,
+        "top": 0.933,
+        "right": 0.339254,
+        "bottom": 0.989
+      },
+      "source": "annotated",
+      "sourceRect": [
+        28,
+        933,
+        191,
+        989
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_33",
+      "itemName": "メモ用紙",
+      "bounds": {
+        "left": 0.357016,
+        "top": 0.937,
+        "right": 0.642984,
+        "bottom": 0.992
+      },
+      "source": "annotated",
+      "sourceRect": [
+        201,
+        937,
+        362,
+        992
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_7_item_34",
+      "itemName": "ボールペン",
+      "bounds": {
+        "left": 0.596803,
+        "top": 0.919,
+        "right": 0.895204,
+        "bottom": 1
+      },
+      "source": "annotated",
+      "sourceRect": [
+        336,
+        919,
+        504,
+        1000
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_7_item_35",
+      "itemName": "割れマグカップ",
+      "bounds": {
+        "left": 0.376554,
+        "top": 0.752,
+        "right": 0.623446,
+        "bottom": 0.837
+      },
+      "source": "annotated",
+      "sourceRect": [
+        212,
+        752,
+        351,
+        837
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    }
+  ]
+}
