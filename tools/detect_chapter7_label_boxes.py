@@ -52,10 +52,7 @@ def annotation_fill_mask(annotated: np.ndarray, base: np.ndarray) -> np.ndarray:
         mask, cv2.MORPH_CLOSE,
         cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3)), iterations=1
     )
-    return cv2.morphologyEx(
-        mask, cv2.MORPH_OPEN,
-        cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2)), iterations=1
-    )
+    return mask
 
 
 def detect_annotation_rectangles(annotated: np.ndarray, base: np.ndarray) -> list[dict]:
