@@ -23,7 +23,7 @@
     "annotatedUrl": "https://img.atwiki.jp/eden_jp/attach/46/156/%E7%AC%AC9%E7%AB%A0.jpeg",
     "baseUrl": "https://img.atwiki.jp/eden_jp/attach/46/151/%E7%AC%AC9%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg",
     "annotatedSha256": "718b7ff02279406b76ca78de54f5df900fc3db7b7bd09c4eb75eaec0d4684028",
-    "baseSha256": "93dbd1de1978f9fdf683e817805a412e7c63618436e3df7c47f20f34e3927874",
+    "baseSha256": "93dbd1de1979f8fdf683e817805a412e7c63618436e3df7c47f20f34e3927874",
     "retrievedAt": "2026-11-27"
   },
   "referenceImageAlignment": {
@@ -105,6 +105,10 @@
     ],
     "overlappingCandidatePairs": [
       [
+        "リンゴ",
+        "ほうき"
+      ],
+      [
         "懐中電灯",
         "ペットボトル"
       ],
@@ -117,16 +121,12 @@
         "缶詰"
       ],
       [
-        "リンゴ",
-        "ほうき"
-      ],
-      [
         "ヘッドホン",
         "タブレット"
       ],
       [
-        "トランシーバー",
-        "木製スタンプ"
+        "木製スタンプ",
+        "トランシーバー"
       ],
       [
         "リュック",
@@ -290,6 +290,31 @@
     },
     {
       "itemId": "chapter_9_item_06",
+      "itemName": "リンゴ",
+      "bounds": {
+        "left": 0.584369,
+        "top": 0.519,
+        "right": 0.731794,
+        "bottom": 0.566
+      },
+      "source": "annotated",
+      "sourceRect": [
+        329,
+        519,
+        412,
+        566
+      ],
+      "annotatedSourceRect": [
+        1154,
+        788,
+        1448,
+        953
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_07",
       "itemName": "傘",
       "bounds": {
         "left": 0.230906,
@@ -314,7 +339,7 @@
       "visualReviewStatus": "visually_grounded_candidate"
     },
     {
-      "itemId": "chapter_9_item_07",
+      "itemId": "chapter_9_item_08",
       "itemName": "懐中電灯",
       "bounds": {
         "left": 0.223801,
@@ -339,7 +364,7 @@
       "visualReviewStatus": "visually_grounded_candidate"
     },
     {
-      "itemId": "chapter_9_item_08",
+      "itemId": "chapter_9_item_09",
       "itemName": "ペットボトル",
       "bounds": {
         "left": 0.390764,
@@ -364,7 +389,7 @@
       "visualReviewStatus": "visually_grounded_candidate"
     },
     {
-      "itemId": "chapter_9_item_09",
+      "itemId": "chapter_9_item_10",
       "itemName": "牛乳瓶",
       "bounds": {
         "left": 0.390764,
@@ -384,31 +409,6 @@
         1170,
         991,
         1375
-      ],
-      "status": "candidate_needs_visual_review",
-      "visualReviewStatus": "visually_grounded_candidate"
-    },
-    {
-      "itemId": "chapter_9_item_10",
-      "itemName": "リンゴ",
-      "bounds": {
-        "left": 0.584369,
-        "top": 0.519,
-        "right": 0.731794,
-        "bottom": 0.566
-      },
-      "source": "annotated",
-      "sourceRect": [
-        329,
-        519,
-        412,
-        566
-      ],
-      "annotatedSourceRect": [
-        1154,
-        788,
-        1448,
-        953
       ],
       "status": "candidate_needs_visual_review",
       "visualReviewStatus": "visually_grounded_candidate"
@@ -517,31 +517,6 @@
     },
     {
       "itemId": "chapter_9_item_15",
-      "itemName": "トランシーバー",
-      "bounds": {
-        "left": 0.026643,
-        "top": 0.693,
-        "right": 0.170515,
-        "bottom": 0.739
-      },
-      "source": "annotated",
-      "sourceRect": [
-        15,
-        693,
-        96,
-        739
-      ],
-      "annotatedSourceRect": [
-        43,
-        1403,
-        328,
-        1568
-      ],
-      "status": "candidate_needs_visual_review",
-      "visualReviewStatus": "visually_grounded_candidate"
-    },
-    {
-      "itemId": "chapter_9_item_16",
       "itemName": "木製スタンプ",
       "bounds": {
         "left": 0.097691,
@@ -561,6 +536,31 @@
         1359,
         398,
         1527
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_16",
+      "itemName": "トランシーバー",
+      "bounds": {
+        "left": 0.026643,
+        "top": 0.693,
+        "right": 0.170515,
+        "bottom": 0.739
+      },
+      "source": "annotated",
+      "sourceRect": [
+        15,
+        693,
+        96,
+        739
+      ],
+      "annotatedSourceRect": [
+        43,
+        1403,
+        328,
+        1568
       ],
       "status": "candidate_needs_visual_review",
       "visualReviewStatus": "visually_grounded_candidate"
