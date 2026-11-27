@@ -1,0 +1,759 @@
+{
+  "stageId": "chapter_8",
+  "coordinateSystem": "normalized_0_to_1",
+  "coordinateReference": "reference/chapter_08/base.jpg",
+  "purpose": "Offline candidate label-box coordinates traced from the original annotated Chapter 8 reference. Not a runtime dataset.",
+  "runtimeEnabled": false,
+  "dataStatus": "partially_reviewed_candidate_only",
+  "imageSize": {
+    "width": 563,
+    "height": 1000
+  },
+  "actualReferenceImageSize": {
+    "width": 1206,
+    "height": 2144
+  },
+  "sourceImage": {
+    "format": "JPEG",
+    "annotatedUrl": "https://img.atwiki.jp/eden_jp/attach/46/155/%E7%AC%AC8%E7%AB%A0.jpeg",
+    "baseUrl": "https://img.atwiki.jp/eden_jp/attach/46/152/%E7%AC%AC8%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg",
+    "annotatedSha256": "5a856136e315f72fb9a490f01e2543603968229af26e99ef8230b0d6c9f92043",
+    "baseSha256": "2aa5632837d273242d44637944615cfce88f653ed6ca402f7bea28910b7734c5",
+    "retrievedAt": "2026-11-27"
+  },
+  "reviewNote": "32 of 33 catalog entries have candidate boxes traced from the annotated reference and compared against the clean image at the same dimensions. Six candidates touch an image edge and remain pending. The catalog item ネジ has no matching annotated label; an additional visible annotation label ポップコーン is not in the catalog. No runtime coordinates are enabled.",
+  "visualReview": {
+    "status": "partially_reviewed_candidate_only",
+    "reviewedItemCount": 33,
+    "visuallyGroundedCompleteCount": 26,
+    "edgeClippedCandidateCount": 6,
+    "edgeClippedItemNames": [
+      "ゲーム機張り紙",
+      "ドライバー",
+      "ハンマー",
+      "レンチ",
+      "作業用手袋",
+      "星型クッション"
+    ],
+    "missingCatalogItemNames": [
+      "ネジ"
+    ],
+    "unmatchedAnnotatedLabels": [
+      "ポップコーン"
+    ],
+    "overlappingCandidatePairs": [
+      [
+        "キーホルダー",
+        "ラッキーボックス"
+      ],
+      [
+        "ネオンサイン",
+        "ロボット"
+      ],
+      [
+        "ネオンサイン",
+        "トランシーバー"
+      ],
+      [
+        "ロボット",
+        "ゲームカード"
+      ],
+      [
+        "トランシーバー",
+        "ゲームカード"
+      ],
+      [
+        "バスケットボール",
+        "ゲームカード"
+      ],
+      [
+        "ゲームカード",
+        "マイク"
+      ],
+      [
+        "ゲームカード",
+        "ヘッドホン"
+      ],
+      [
+        "ゲームカード",
+        "懐中電灯"
+      ],
+      [
+        "マイク",
+        "ヘッドホン"
+      ],
+      [
+        "ヘッドホン",
+        "作業用手袋"
+      ],
+      [
+        "キャンディアソート",
+        "ゲームパッド"
+      ],
+      [
+        "キャンディアソート",
+        "ゴールドコイン"
+      ],
+      [
+        "ネコのぬいぐるみ",
+        "ゴールドコイン"
+      ],
+      [
+        "ネコのぬいぐるみ",
+        "レンチ"
+      ],
+      [
+        "ドライバー",
+        "ゲームパッド"
+      ],
+      [
+        "ドライバー",
+        "ハンマー"
+      ],
+      [
+        "ゲームパッド",
+        "ハンマー"
+      ],
+      [
+        "ゲームパッド",
+        "ネコの缶バッジ"
+      ],
+      [
+        "ハンマー",
+        "ネコの缶バッジ"
+      ],
+      [
+        "薬莢",
+        "ネジ入れ"
+      ]
+    ],
+    "overlapMethod": "Intersection of axis-aligned candidate bounds; rotated or adjacent label boxes can overlap in this representation. No overlap was auto-corrected.",
+    "sourcePair": {
+      "annotated": "https://img.atwiki.jp/eden_jp/attach/46/155/%E7%AC%AC8%E7%AB%A0.jpeg",
+      "base": "https://img.atwiki.jp/eden_jp/attach/46/152/%E7%AC%AC8%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg",
+      "width": 1206,
+      "height": 2144
+    },
+    "detectorOutputUsedAsCoordinateSource": false,
+    "reviewedAt": "2026-11-27"
+  },
+  "items": [
+    {
+      "itemId": "chapter_8_item_01",
+      "itemName": "キーホルダー",
+      "bounds": {
+        "left": 0.349911,
+        "top": 0.094,
+        "right": 0.547069,
+        "bottom": 0.159
+      },
+      "source": "annotated",
+      "sourceRect": [
+        197,
+        94,
+        308,
+        159
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_02",
+      "itemName": "ラッキーボックス",
+      "bounds": {
+        "left": 0.538188,
+        "top": 0.14,
+        "right": 0.751332,
+        "bottom": 0.21
+      },
+      "source": "annotated",
+      "sourceRect": [
+        303,
+        140,
+        423,
+        210
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_03",
+      "itemName": "星型クッション",
+      "bounds": {
+        "left": 0.767318,
+        "top": 0.121,
+        "right": 1,
+        "bottom": 0.184
+      },
+      "source": "annotated",
+      "sourceRect": [
+        432,
+        121,
+        563,
+        184
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_8_item_04",
+      "itemName": "ゲーム機張り紙",
+      "bounds": {
+        "left": 0,
+        "top": 0.164,
+        "right": 0.190053,
+        "bottom": 0.226
+      },
+      "source": "annotated",
+      "sourceRect": [
+        0,
+        164,
+        107,
+        226
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_8_item_05",
+      "itemName": "フィギュア",
+      "bounds": {
+        "left": 0.040853,
+        "top": 0.281,
+        "right": 0.172291,
+        "bottom": 0.338
+      },
+      "source": "annotated",
+      "sourceRect": [
+        23,
+        281,
+        97,
+        338
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_06",
+      "itemName": "おもちゃ剣",
+      "bounds": {
+        "left": 0.227353,
+        "top": 0.265,
+        "right": 0.397869,
+        "bottom": 0.321
+      },
+      "source": "annotated",
+      "sourceRect": [
+        128,
+        265,
+        224,
+        321
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_07",
+      "itemName": "クレーンアーム",
+      "bounds": {
+        "left": 0.417407,
+        "top": 0.326,
+        "right": 0.683837,
+        "bottom": 0.412
+      },
+      "source": "annotated",
+      "sourceRect": [
+        235,
+        326,
+        385,
+        412
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_08",
+      "itemName": "缶ジュース",
+      "bounds": {
+        "left": 0.321492,
+        "top": 0.451,
+        "right": 0.486679,
+        "bottom": 0.506
+      },
+      "source": "annotated",
+      "sourceRect": [
+        181,
+        451,
+        274,
+        506
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_09",
+      "itemName": "ウサギのぬいぐるみ",
+      "bounds": {
+        "left": 0.579041,
+        "top": 0.444,
+        "right": 0.833037,
+        "bottom": 0.514
+      },
+      "source": "annotated",
+      "sourceRect": [
+        326,
+        444,
+        469,
+        514
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_10",
+      "itemName": "ネオンサイン",
+      "bounds": {
+        "left": 0.156306,
+        "top": 0.484,
+        "right": 0.296625,
+        "bottom": 0.539
+      },
+      "source": "annotated",
+      "sourceRect": [
+        88,
+        484,
+        167,
+        539
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_11",
+      "itemName": "ロボット",
+      "bounds": {
+        "left": 0.056838,
+        "top": 0.536,
+        "right": 0.213144,
+        "bottom": 0.61
+      },
+      "source": "annotated",
+      "sourceRect": [
+        32,
+        536,
+        120,
+        610
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_12",
+      "itemName": "トランシーバー",
+      "bounds": {
+        "left": 0.21492,
+        "top": 0.53,
+        "right": 0.364121,
+        "bottom": 0.595
+      },
+      "source": "annotated",
+      "sourceRect": [
+        121,
+        530,
+        205,
+        595
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_13",
+      "itemName": "バスケットボール",
+      "bounds": {
+        "left": 0.371226,
+        "top": 0.53,
+        "right": 0.472469,
+        "bottom": 0.599
+      },
+      "source": "annotated",
+      "sourceRect": [
+        209,
+        530,
+        266,
+        599
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_14",
+      "itemName": "ゲームカード",
+      "bounds": {
+        "left": 0.142096,
+        "top": 0.562,
+        "right": 0.373002,
+        "bottom": 0.657
+      },
+      "source": "annotated",
+      "sourceRect": [
+        80,
+        562,
+        210,
+        657
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_15",
+      "itemName": "マイク",
+      "bounds": {
+        "left": 0.227353,
+        "top": 0.615,
+        "right": 0.357016,
+        "bottom": 0.657
+      },
+      "source": "annotated",
+      "sourceRect": [
+        128,
+        615,
+        201,
+        657
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_16",
+      "itemName": "ヘッドホン",
+      "bounds": {
+        "left": 0.122558,
+        "top": 0.631,
+        "right": 0.357016,
+        "bottom": 0.689
+      },
+      "source": "annotated",
+      "sourceRect": [
+        69,
+        631,
+        201,
+        689
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_17",
+      "itemName": "懐中電灯",
+      "bounds": {
+        "left": 0.357016,
+        "top": 0.627,
+        "right": 0.460036,
+        "bottom": 0.684
+      },
+      "source": "annotated",
+      "sourceRect": [
+        201,
+        627,
+        259,
+        684
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_18",
+      "itemName": "プリクラ",
+      "bounds": {
+        "left": 0.813499,
+        "top": 0.627,
+        "right": 0.939609,
+        "bottom": 0.695
+      },
+      "source": "annotated",
+      "sourceRect": [
+        458,
+        627,
+        529,
+        695
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_19",
+      "itemName": "作業用手袋",
+      "bounds": {
+        "left": 0,
+        "top": 0.672,
+        "right": 0.143872,
+        "bottom": 0.747
+      },
+      "source": "annotated",
+      "sourceRect": [
+        0,
+        672,
+        81,
+        747
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_8_item_20",
+      "itemName": "アヒルぬいぐるみ",
+      "bounds": {
+        "left": 0.484902,
+        "top": 0.691,
+        "right": 0.724689,
+        "bottom": 0.757
+      },
+      "source": "annotated",
+      "sourceRect": [
+        273,
+        691,
+        408,
+        757
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_21",
+      "itemName": "青カプセル",
+      "bounds": {
+        "left": 0.193606,
+        "top": 0.724,
+        "right": 0.346359,
+        "bottom": 0.774
+      },
+      "source": "annotated",
+      "sourceRect": [
+        109,
+        724,
+        195,
+        774
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_22",
+      "itemName": "キャンディアソート",
+      "bounds": {
+        "left": 0.374778,
+        "top": 0.758,
+        "right": 0.598579,
+        "bottom": 0.819
+      },
+      "source": "annotated",
+      "sourceRect": [
+        211,
+        758,
+        337,
+        819
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_23",
+      "itemName": "ネコのぬいぐるみ",
+      "bounds": {
+        "left": 0.719361,
+        "top": 0.757,
+        "right": 0.85968,
+        "bottom": 0.897
+      },
+      "source": "annotated",
+      "sourceRect": [
+        405,
+        757,
+        484,
+        897
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_24",
+      "itemName": "ネジ",
+      "bounds": null,
+      "sourceRect": null,
+      "source": "not_found_in_annotated_reference",
+      "status": "pending_missing_reference_label",
+      "visualReviewStatus": "catalog_item_not_found_in_reference"
+    },
+    {
+      "itemId": "chapter_8_item_25",
+      "itemName": "ドライバー",
+      "bounds": {
+        "left": 0,
+        "top": 0.79,
+        "right": 0.282416,
+        "bottom": 0.844
+      },
+      "source": "annotated",
+      "sourceRect": [
+        0,
+        790,
+        159,
+        844
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_8_item_26",
+      "itemName": "ゲームパッド",
+      "bounds": {
+        "left": 0.182948,
+        "top": 0.814,
+        "right": 0.472469,
+        "bottom": 0.872
+      },
+      "source": "annotated",
+      "sourceRect": [
+        103,
+        814,
+        266,
+        872
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_27",
+      "itemName": "ゴールドコイン",
+      "bounds": {
+        "left": 0.586146,
+        "top": 0.795,
+        "right": 0.749556,
+        "bottom": 0.848
+      },
+      "source": "annotated",
+      "sourceRect": [
+        330,
+        795,
+        422,
+        848
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_28",
+      "itemName": "レンチ",
+      "bounds": {
+        "left": 0.840142,
+        "top": 0.855,
+        "right": 1,
+        "bottom": 0.91
+      },
+      "source": "annotated",
+      "sourceRect": [
+        473,
+        855,
+        563,
+        910
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_8_item_29",
+      "itemName": "電球",
+      "bounds": {
+        "left": 0.804618,
+        "top": 0.911,
+        "right": 0.950266,
+        "bottom": 0.958
+      },
+      "source": "annotated",
+      "sourceRect": [
+        453,
+        911,
+        535,
+        958
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_30",
+      "itemName": "ハンマー",
+      "bounds": {
+        "left": 0,
+        "top": 0.84,
+        "right": 0.257549,
+        "bottom": 0.91
+      },
+      "source": "annotated",
+      "sourceRect": [
+        0,
+        840,
+        145,
+        910
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds"
+    },
+    {
+      "itemId": "chapter_8_item_31",
+      "itemName": "ネコの缶バッジ",
+      "bounds": {
+        "left": 0.198934,
+        "top": 0.854,
+        "right": 0.438721,
+        "bottom": 0.926
+      },
+      "source": "annotated",
+      "sourceRect": [
+        112,
+        854,
+        247,
+        926
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_32",
+      "itemName": "薬莢",
+      "bounds": {
+        "left": 0.492007,
+        "top": 0.884,
+        "right": 0.669627,
+        "bottom": 0.941
+      },
+      "source": "annotated",
+      "sourceRect": [
+        277,
+        884,
+        377,
+        941
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_8_item_33",
+      "itemName": "ネジ入れ",
+      "bounds": {
+        "left": 0.31794,
+        "top": 0.94,
+        "right": 0.563055,
+        "bottom": 0.987
+      },
+      "source": "annotated",
+      "sourceRect": [
+        179,
+        940,
+        317,
+        987
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    }
+  ]
+}

@@ -56,9 +56,21 @@ Last reviewed: 2026-11-27
 - At commit `cc598825ffa0481324053294687b61793841ef8a`, the catalog validator, stage validator, Kotlin unit tests, debug APK build, 17 Python detector/review tests, Chapter 6 detection job, and Chapter 6 render/comparison job succeeded. The Chapter 5 ML Kit instrumented job was still running at last check; earlier run 45724732757 failed after the test started with an instrumentation process crash, so no emulator OCR pass is claimed.
 - No real-device test has been performed.
 
+## Chapter 8 review
+
+- Chapter: 第8章「ゲームセンター(閉店)」.
+- The original annotated and clean JPEG pair was fetched unchanged from the atwiki attachment URLs recorded in `app/src/main/assets/stages/chapter_8_label_boxes.candidates.json`. Both files are 1206×2144; their SHA-256 hashes are stored with the candidate data and checked by the review workflow.
+- Added 33 catalog-ordered entries to `chapter_8_label_boxes.candidates.json`. 32 have manually traced candidate rectangles in the established 563×1000 coordinate basis; 26 have complete visible boundaries and six remain pending because their label backings touch an image edge: 星型クッション, ゲーム機張り紙, 作業用手袋, ドライバー, レンチ, ハンマー.
+- The reference image contains a visible ポップコーン annotation label that is not in the Chapter 8 catalog, while the catalog item ネジ has no matching annotation label. Both discrepancies are recorded explicitly. No coordinate was invented for ネジ and the catalog was not silently changed.
+- Twenty-one intersections between axis-aligned candidate bounds are recorded. Some are expected from rotated/adjacent label backings; none were auto-corrected.
+- Candidate boxes were rendered against both the annotated and clean images at the same source dimensions. The preview confirms the 32 traced boxes map to the corresponding visible scene regions; this is an offline visual review, not a device alignment test.
+- `app/src/main/assets/stages/chapter_8.json` remains `awaiting_coordinate_verification` with an empty `items` array. No Chapter 8 coordinates are enabled at runtime.
+- Added seven focused Chapter 8 review tests; all seven passed locally. Added a branch-only, read-only review workflow that downloads and hash-checks the original pair, runs all Python tests plus catalog/dataset validators, renders the comparison, and uploads the sources/previews as an artifact.
+- No real-device test has been performed.
+
 ## Next work
 
-1. Continue Chapter 8 candidate generation and visual review using its annotated/clean source pair; Chapters 6 and 7 may remain partially pending while later chapters progress.
-2. Keep the five clipped Chapter 6 boxes and ten clipped Chapter 7 boxes pending until an uncropped reference is found; do not infer missing edges or enable incomplete runtime datasets.
-3. Proceed through Chapters 9–10 in order after Chapter 8.
-4. Keep Chapter 5's user-approved boxes unchanged unless a clear source-image defect is found.
+1. Continue Chapter 9 candidate generation and visual review using its exact annotated/clean source pair.
+2. Keep the six clipped Chapter 8 boxes, the missing catalog label ネジ, and the unmatched ポップコーン annotation explicitly pending; do not infer missing edges or alter the catalog without stronger source evidence.
+3. Keep the five clipped Chapter 6 boxes and ten clipped Chapter 7 boxes pending until uncropped references are found; do not enable incomplete runtime datasets.
+4. Proceed through Chapter 10 after Chapter 9, and keep Chapter 5's user-approved boxes unchanged unless a clear source-image defect is found.
