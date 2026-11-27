@@ -122,7 +122,7 @@ def validate_candidate_data(data: dict, runtime: dict, catalog: dict, annotated:
         if rect is None:
             if bounds is not None or annotated_rect is not None:
                 raise SystemExit(f"{item['itemName']}: missing candidate must not have bounds")
-            if item.get("visualReviewStatus") != "missing_annotated_label":
+            if item.get("visualReviewStatus") != "catalog_item_not_found_in_reference":
                 raise SystemExit(f"{item['itemName']}: missing candidate status is inconsistent")
             continue
         x1, y1, x2, y2 = rect
