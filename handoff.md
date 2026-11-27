@@ -1,6 +1,6 @@
 # Coordinate registration handoff
 
-Last reviewed: 2026-11-26
+Last reviewed: 2026-11-27
 
 ## Repository guardrails
 
@@ -37,6 +37,18 @@ Last reviewed: 2026-11-26
 - `app/src/main/assets/stages/chapter_6.json` remains `awaiting_coordinate_verification` with an empty `items` array. No Chapter 6 coordinates are enabled at runtime.
 - The source image itself is edge-cropped for the five pending labels. Search for an uncropped/alternate reference before promoting those five; do not infer missing frame edges.
 
+
+## Chapter 7 review
+
+- Chapter: 第7章「心理評価センター」.
+- Reference pair: `reference/chapter_07/annotated.jpg` and `reference/chapter_07/base.jpg`, both 1206×2144. Candidate coordinates use the established 563×1000 normalized basis and retain the actual source dimensions in metadata.
+- Added `app/src/main/assets/stages/chapter_7_label_boxes.candidates.json` with all 35 catalog items in catalog order. Coordinates were manually traced from the annotated label backings and compared with the clean base; the OCR text-region diagnostic and connected-component detector were not used as coordinate sources.
+- 25 candidate boxes have complete visible boundaries. Ten remain explicitly pending because the backing rectangle touches an image edge: ビーチボール, 壊れたロボット, 卓上カレンダー, ハサミ, ストップウォッチ, メガネ, ゴーグル, ルービックキューブ, 救急箱, ボールペン.
+- 26 intersections are recorded between axis-aligned candidate bounds. Several source labels are rotated or adjacent; no overlap was auto-corrected. These overlaps are review metadata, not evidence that the original label backings physically overlap.
+- The earlier OCR diagnostic found only 14 merged regions and four catalog matches; it remains diagnostic-only. A separate annotation-fill detector was added for visual diagnostics, but its components were not copied into candidate coordinates.
+- `app/src/main/assets/stages/chapter_7.json` remains `awaiting_coordinate_verification` with an empty `items` array. No Chapter 7 coordinates are enabled at runtime.
+- Added candidate-review tests and a clean-base/annotated comparison renderer. The Chapter 7 review workflow is branch-only, read-only, and uploads previews as an artifact.
+
 ## Workflow safety and validation
 
 - Chapter 6 render and detector workflows previously checked out/pushed `main` with `contents: write`. They must remain branch-only, read-only, and artifact-upload-only on this working branch.
@@ -46,7 +58,7 @@ Last reviewed: 2026-11-26
 
 ## Next work
 
-1. Look for an alternate or uncropped Chapter 6 reference that fully shows the five edge-touching label frames. If none exists, keep those five pending.
-2. Do not promote the five clipped Chapter 6 boxes or populate Chapter 6 runtime data from incomplete bounds.
-3. Continue Chapter 7 candidate generation/review even if those five Chapter 6 boxes remain pending; then proceed through Chapters 8–10 in order.
+1. Continue Chapter 8 candidate generation and visual review using its annotated/clean source pair; Chapters 6 and 7 may remain partially pending while later chapters progress.
+2. Keep the five clipped Chapter 6 boxes and ten clipped Chapter 7 boxes pending until an uncropped reference is found; do not infer missing edges or enable incomplete runtime datasets.
+3. Proceed through Chapters 9–10 in order after Chapter 8.
 4. Keep Chapter 5's user-approved boxes unchanged unless a clear source-image defect is found.
