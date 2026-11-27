@@ -22,6 +22,9 @@ class Chapter8CandidateReviewTests(unittest.TestCase):
             if chapter["stageId"] == "chapter_8"
         )
 
+    def test_candidate_schema_uses_highlight_label_box_purpose(self):
+        self.assertEqual(self.candidates["purpose"], "highlight_item_name_label_box")
+
     def test_candidate_names_and_ids_match_catalog_order(self):
         items = self.candidates["items"]
         self.assertEqual([item["itemName"] for item in items], self.names)

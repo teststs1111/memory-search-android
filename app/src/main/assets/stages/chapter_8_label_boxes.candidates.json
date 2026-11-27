@@ -2,7 +2,7 @@
   "stageId": "chapter_8",
   "coordinateSystem": "normalized_0_to_1",
   "coordinateReference": "reference/chapter_08/base.jpg",
-  "purpose": "Offline candidate label-box coordinates traced from the original annotated Chapter 8 reference. Not a runtime dataset.",
+  "purpose": "highlight_item_name_label_box",
   "runtimeEnabled": false,
   "dataStatus": "partially_reviewed_candidate_only",
   "imageSize": {

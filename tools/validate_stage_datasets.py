@@ -139,8 +139,23 @@ def validate_inactive_candidates() -> None:
                 f"{path}: candidate item {item_id} must not be marked runtime-verified"
             )
             source = item.get("source")
-            assert source in {"left", "right", "annotated"}, f"{path}: invalid source side for {item_id}"
             source_rect = item.get("sourceRect")
+            bounds = item.get("bounds")
+            if source_rect is None or bounds is None:
+                assert source_rect is None and bounds is None, (
+                    f"{path}: missing candidate must have both sourceRect and bounds unset for {item_id}"
+                )
+                assert source == "not_found_in_annotated_reference", (
+                    f"{path}: missing candidate has invalid source for {item_id}"
+                )
+                assert item.get("status") == "pending_missing_reference_label", (
+                    f"{path}: missing candidate must remain pending for {item_id}"
+                )
+                assert item.get("visualReviewStatus") == "catalog_item_not_found_in_reference", (
+                    f"{path}: missing candidate must explain the absent reference label for {item_id}"
+                )
+                continue
+            assert source in {"left", "right", "annotated"}, f"{path}: invalid source side for {item_id}"
             assert (
                 isinstance(source_rect, list)
                 and len(source_rect) == 4
@@ -150,7 +165,6 @@ def validate_inactive_candidates() -> None:
             assert 0 <= sx1 < sx2 <= width and 0 <= sy1 < sy2 <= height, (
                 f"{path}: sourceRect outside reference image for {item_id}"
             )
-            bounds = item.get("bounds")
             assert isinstance(bounds, dict), f"{path}: missing bounds for {item_id}"
             coords = [bounds.get(key) for key in ("left", "top", "right", "bottom")]
             assert all(
