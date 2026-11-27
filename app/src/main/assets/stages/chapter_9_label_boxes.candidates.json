@@ -996,11 +996,11 @@
       "itemId": "chapter_9_item_34",
       "itemName": "ランチ",
       "bounds": null,
-      "source": null,
+      "source": "not_found_in_annotated_reference",
       "sourceRect": null,
       "annotatedSourceRect": null,
-      "status": "missing_reference_label_pending",
-      "visualReviewStatus": "missing_annotated_label",
+      "status": "pending_missing_reference_label",
+      "visualReviewStatus": "catalog_item_not_found_in_reference",
       "pendingReason": "No matching label is present in the annotated Chapter 9 reference; no coordinate is assigned."
     }
   ]
