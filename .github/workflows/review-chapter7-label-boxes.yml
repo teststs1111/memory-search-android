@@ -39,5 +39,8 @@ jobs:
           path: |
             reference/chapter_07/label_frame_components.candidates.json
             reference/chapter_07/label_frame_components_preview.jpg
+            reference/chapter_07/label_frame_fill_mask.png
+            reference/chapter_07/annotated.jpg
+            reference/chapter_07/base.jpg
           if-no-files-found: error
           retention-days: 14
