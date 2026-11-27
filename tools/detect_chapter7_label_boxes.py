@@ -117,6 +117,9 @@ def build_outputs(annotated_path: Path, base_path: Path, output_path: Path, prev
     annotated = align_pair(annotated, base)
     height, width = base.shape[:2]
     detections = detect_annotation_rectangles(annotated, base)
+    mask_path = preview_path.with_name("label_frame_fill_mask.png")
+    if not cv2.imwrite(str(mask_path), annotation_fill_mask(annotated, base)):
+        raise SystemExit("Could not write Chapter 7 annotation-fill mask")
     preview = base.copy()
     records = []
     for index, item in enumerate(detections, start=1):
