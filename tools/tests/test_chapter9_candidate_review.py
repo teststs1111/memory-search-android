@@ -100,7 +100,7 @@ class Chapter9CandidateReviewTests(unittest.TestCase):
         missing = items["ランチ"]
         self.assertIsNone(missing["sourceRect"])
         self.assertIsNone(missing["bounds"])
-        self.assertEqual(missing["visualReviewStatus"], "missing_annotated_label")
+        self.assertEqual(missing["visualReviewStatus"], "catalog_item_not_found_in_reference")
         review = self.candidates["visualReview"]
         self.assertEqual(review["missingCatalogItemNames"], ["ランチ"])
         self.assertEqual(
