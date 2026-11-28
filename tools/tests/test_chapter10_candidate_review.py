@@ -68,6 +68,9 @@ class Chapter10CandidateReviewTests(unittest.TestCase):
         self.assertEqual(review["nearEdgeCandidateCount"],1)
         items={i["itemName"]:i for i in self.candidates["items"]}
         self.assertIsNone(items["バケツ"]["sourceRect"])
+        self.assertEqual(items["バケツ"]["source"],"not_found_in_annotated_reference")
+        self.assertEqual(items["バケツ"]["status"],"pending_missing_reference_label")
+        self.assertTrue(all(i.get("source")=="annotated" for i in self.candidates["items"] if i["itemName"]!="バケツ"))
         self.assertEqual(items["青いバケツ"]["referenceTextLines"],["バケツ","青"])
 
     def test_annotation_to_clean_alignment_reproduces_candidate_rectangles(self):

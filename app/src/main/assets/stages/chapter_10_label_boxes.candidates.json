@@ -188,7 +188,8 @@
         "top": 0.484,
         "right": 0.159858,
         "bottom": 0.584
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_02",
@@ -218,7 +219,8 @@
         "top": 0.485,
         "right": 0.30373,
         "bottom": 0.517
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_03",
@@ -248,7 +250,8 @@
         "top": 0.442,
         "right": 0.422735,
         "bottom": 0.516
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_04",
@@ -278,7 +281,8 @@
         "top": 0.439,
         "right": 0.53286,
         "bottom": 0.473
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_05",
@@ -308,7 +312,8 @@
         "top": 0.479,
         "right": 0.539964,
         "bottom": 0.507
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_06",
@@ -338,7 +343,8 @@
         "top": 0.527,
         "right": 0.589698,
         "bottom": 0.562
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_07",
@@ -368,7 +374,8 @@
         "top": 0.527,
         "right": 0.690941,
         "bottom": 0.562
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_08",
@@ -398,7 +405,8 @@
         "top": 0.532,
         "right": 0.845471,
         "bottom": 0.57
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_09",
@@ -428,7 +436,8 @@
         "top": 0.573,
         "right": 0.870337,
         "bottom": 0.617
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_10",
@@ -458,7 +467,8 @@
         "top": 0.602,
         "right": 0.701599,
         "bottom": 0.684
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_11",
@@ -488,7 +498,8 @@
         "top": 0.585,
         "right": 0.973357,
         "bottom": 0.626
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_12",
@@ -518,7 +529,8 @@
         "top": 0.652,
         "right": 0.953819,
         "bottom": 0.69
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_13",
@@ -548,7 +560,8 @@
         "top": 0.688,
         "right": 0.939609,
         "bottom": 0.727
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_14",
@@ -578,7 +591,8 @@
         "top": 0.594,
         "right": 0.30373,
         "bottom": 0.64
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_15",
@@ -608,7 +622,8 @@
         "top": 0.621,
         "right": 0.197158,
         "bottom": 0.658
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_16",
@@ -638,7 +653,8 @@
         "top": 0.711,
         "right": 0.145648,
         "bottom": 0.784
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_17",
@@ -668,7 +684,8 @@
         "top": 0.711,
         "right": 0.287744,
         "bottom": 0.755
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_18",
@@ -698,7 +715,8 @@
         "top": 0.752,
         "right": 0.28952,
         "bottom": 0.784
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_19",
@@ -728,7 +746,8 @@
         "top": 0.802,
         "right": 0.156306,
         "bottom": 0.847
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_20",
@@ -758,7 +777,8 @@
         "top": 0.791,
         "right": 0.300178,
         "bottom": 0.846
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_21",
@@ -788,7 +808,8 @@
         "top": 0.791,
         "right": 0.422735,
         "bottom": 0.832
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_22",
@@ -818,17 +839,19 @@
         "top": 0.791,
         "right": 0.452931,
         "bottom": 0.869
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_23",
       "itemName": "バケツ",
-      "status": "candidate_needs_visual_review",
+      "status": "pending_missing_reference_label",
       "visualReviewStatus": "catalog_item_not_found_in_reference",
       "annotatedSourceRect": null,
       "mappedBaseRect": null,
       "sourceRect": null,
-      "bounds": null
+      "bounds": null,
+      "source": "not_found_in_annotated_reference"
     },
     {
       "itemId": "chapter_10_item_24",
@@ -863,7 +886,8 @@
         "バケツ",
         "青"
       ],
-      "referenceTextNote": "The annotated source displays the canonical item as two stacked reference lines, バケツ / 青; this exception applies only to reference-image parsing. Runtime bottom-button OCR remains single-line."
+      "referenceTextNote": "The annotated source displays the canonical item as two stacked reference lines, バケツ / 青; this exception applies only to reference-image parsing. Runtime bottom-button OCR remains single-line.",
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_25",
@@ -893,7 +917,8 @@
         "top": 0.855,
         "right": 0.108348,
         "bottom": 0.897
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_26",
@@ -923,7 +948,8 @@
         "top": 0.875,
         "right": 0.253996,
         "bottom": 0.931
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_27",
@@ -953,7 +979,8 @@
         "top": 0.875,
         "right": 0.452931,
         "bottom": 0.911
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_28",
@@ -983,7 +1010,8 @@
         "top": 0.908,
         "right": 0.552398,
         "bottom": 0.961
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_29",
@@ -1013,7 +1041,8 @@
         "top": 0.947,
         "right": 0.552398,
         "bottom": 0.992
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_30",
@@ -1043,7 +1072,8 @@
         "top": 0.775,
         "right": 0.847247,
         "bottom": 0.848
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_31",
@@ -1073,7 +1103,8 @@
         "top": 0.882,
         "right": 0.989343,
         "bottom": 0.943
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_32",
@@ -1103,7 +1134,8 @@
         "top": 0.602,
         "right": 0.557726,
         "bottom": 0.658
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_33",
@@ -1133,7 +1165,8 @@
         "top": 0.674,
         "right": 0.690941,
         "bottom": 0.725
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_34",
@@ -1163,7 +1196,8 @@
         "top": 0.669,
         "right": 0.552398,
         "bottom": 0.733
-      }
+      },
+      "source": "annotated"
     },
     {
       "itemId": "chapter_10_item_35",
@@ -1193,7 +1227,8 @@
         "top": 0.569,
         "right": 0.651865,
         "bottom": 0.624
-      }
+      },
+      "source": "annotated"
     }
   ]
 }
