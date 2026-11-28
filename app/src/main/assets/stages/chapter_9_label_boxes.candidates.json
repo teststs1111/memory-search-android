@@ -1,0 +1,1007 @@
+{
+  "stageId": "chapter_9",
+  "stageName": "第9章「第１補給倉庫前」",
+  "coordinateSystem": "normalized_0_to_1",
+  "coordinateReference": "reference/chapter_09/base.jpg",
+  "purpose": "highlight_item_name_label_box",
+  "runtimeEnabled": false,
+  "dataStatus": "partially_reviewed_candidate_only",
+  "imageSize": {
+    "width": 563,
+    "height": 1000
+  },
+  "actualReferenceImageSize": {
+    "width": 1404,
+    "height": 2496
+  },
+  "actualAnnotatedImageSize": {
+    "width": 1992,
+    "height": 2490
+  },
+  "sourceImage": {
+    "format": "JPEG",
+    "annotatedUrl": "https://img.atwiki.jp/eden_jp/attach/46/156/%E7%AC%AC9%E7%AB%A0.jpeg",
+    "baseUrl": "https://img.atwiki.jp/eden_jp/attach/46/151/%E7%AC%AC9%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg",
+    "annotatedSha256": "718b7ff02279406b76ca78de54f5df900fc3db7b7bd09c4eb75eaec0d4684028",
+    "baseSha256": "93dbd1de1979f8fdf683e817805a412e7c63618436e3df7c47f20f34e3927874",
+    "retrievedAt": "2026-11-27"
+  },
+  "referenceImageAlignment": {
+    "method": "SIFT feature matching, Lowe ratio test (0.72), RANSAC homography (3.0px threshold)",
+    "annotatedToBaseHomography": [
+      [
+        0.704844624293,
+        -0.000023980233,
+        7.81452442201
+      ],
+      [
+        0.000016933701,
+        0.705343991996,
+        739.616796785874
+      ],
+      [
+        2.3632e-8,
+        -1.4629e-8,
+        1
+      ]
+    ],
+    "goodMatchCount": 1422,
+    "inlierCount": 1308,
+    "inlierRatio": 0.919831,
+    "note": "The annotated source is a 1992x2490 lower-section crop and is not the same aspect ratio as the 1404x2496 clean base. Candidate label rectangles were traced in annotated-image pixels, mapped through this transform, then normalized to the 563x1000 coordinate basis."
+  },
+  "reviewNote": "33 of 34 Chapter 9 catalog entries have a matching visible annotation label. The annotated image and clean base differ in size/aspect ratio; a feature-matched homography was used to compare them at the same scene scale. Three boxes touch the annotated image edge and two more map marginally beyond the clean base's right edge, so those five remain pending. The catalog item ランチ has no matching annotation label. Two extra annotation labels, 救急箱 and ハサミ, are not in the Chapter 9 catalog. These are review-only candidates; no runtime coordinates are enabled.",
+  "visualReview": {
+    "status": "partially_reviewed_candidate_only",
+    "reviewedItemCount": 34,
+    "visuallyGroundedCompleteCount": 28,
+    "edgeClippedCandidateCount": 3,
+    "edgeClippedItemNames": [
+      "クッション",
+      "プリン",
+      "作業用手袋"
+    ],
+    "nearEdgeCandidateCount": 2,
+    "nearEdgeItemNames": [
+      "ヘッドホン",
+      "タブレット"
+    ],
+    "missingCatalogItemNames": [
+      "ランチ"
+    ],
+    "unmatchedAnnotatedLabels": [
+      {
+        "itemName": "救急箱",
+        "annotatedSourceRect": [
+          610,
+          622,
+          913,
+          751
+        ],
+        "visibleBaseSourceRect": [
+          176,
+          472,
+          261,
+          509
+        ],
+        "reason": "Visible annotation label, but this name is not present in the Chapter 9 catalog."
+      },
+      {
+        "itemName": "ハサミ",
+        "annotatedSourceRect": [
+          184,
+          1151,
+          398,
+          1288
+        ],
+        "visibleBaseSourceRect": [
+          55,
+          622,
+          116,
+          660
+        ],
+        "reason": "Visible annotation label, but this name is not present in the Chapter 9 catalog."
+      }
+    ],
+    "overlappingCandidatePairs": [
+      [
+        "リンゴ",
+        "ほうき"
+      ],
+      [
+        "懐中電灯",
+        "ペットボトル"
+      ],
+      [
+        "懐中電灯",
+        "牛乳瓶"
+      ],
+      [
+        "牛乳瓶",
+        "缶詰"
+      ],
+      [
+        "ヘッドホン",
+        "タブレット"
+      ],
+      [
+        "木製スタンプ",
+        "トランシーバー"
+      ],
+      [
+        "リュック",
+        "スニーカー"
+      ],
+      [
+        "鍵",
+        "プリン"
+      ],
+      [
+        "プリン",
+        "弁当箱"
+      ],
+      [
+        "ビニールテープ",
+        "スプーン"
+      ],
+      [
+        "スプーン",
+        "作業用手袋"
+      ]
+    ],
+    "overlapMethod": "Intersection of axis-aligned candidate bounds in the 563x1000 basis. Rotated or adjacent source labels can overlap in this representation; no overlap was auto-corrected.",
+    "sourcePair": {
+      "annotated": "https://img.atwiki.jp/eden_jp/attach/46/156/%E7%AC%AC9%E7%AB%A0.jpeg",
+      "base": "https://img.atwiki.jp/eden_jp/attach/46/151/%E7%AC%AC9%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg",
+      "annotatedWidth": 1992,
+      "annotatedHeight": 2490,
+      "baseWidth": 1404,
+      "baseHeight": 2496
+    },
+    "detectorOutputUsedAsCoordinateSource": false,
+    "reviewedAt": "2026-11-27"
+  },
+  "items": [
+    {
+      "itemId": "chapter_9_item_01",
+      "itemName": "バスケットボール",
+      "bounds": {
+        "left": 0.335702,
+        "top": 0.303,
+        "right": 0.507993,
+        "bottom": 0.351
+      },
+      "source": "annotated",
+      "sourceRect": [
+        189,
+        303,
+        286,
+        351
+      ],
+      "annotatedSourceRect": [
+        656,
+        24,
+        1001,
+        192
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_02",
+      "itemName": "安全ヘルメット",
+      "bounds": {
+        "left": 0.294849,
+        "top": 0.391,
+        "right": 0.468917,
+        "bottom": 0.438
+      },
+      "source": "annotated",
+      "sourceRect": [
+        166,
+        391,
+        264,
+        438
+      ],
+      "annotatedSourceRect": [
+        578,
+        335,
+        922,
+        501
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_03",
+      "itemName": "消火器",
+      "bounds": {
+        "left": 0.630551,
+        "top": 0.412,
+        "right": 0.703375,
+        "bottom": 0.498
+      },
+      "source": "annotated",
+      "sourceRect": [
+        355,
+        412,
+        396,
+        498
+      ],
+      "annotatedSourceRect": [
+        1244,
+        410,
+        1390,
+        715
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_04",
+      "itemName": "鉢植え",
+      "bounds": {
+        "left": 0.735346,
+        "top": 0.466,
+        "right": 0.87389,
+        "bottom": 0.55
+      },
+      "source": "annotated",
+      "sourceRect": [
+        414,
+        466,
+        492,
+        550
+      ],
+      "annotatedSourceRect": [
+        1454,
+        601,
+        1730,
+        896
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_05",
+      "itemName": "クッション",
+      "bounds": {
+        "left": 0.889876,
+        "top": 0.495,
+        "right": 1,
+        "bottom": 0.546
+      },
+      "source": "annotated",
+      "sourceRect": [
+        501,
+        495,
+        563,
+        546
+      ],
+      "annotatedSourceRect": [
+        1762,
+        704,
+        1992,
+        882
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds",
+      "pendingReason": "The annotated backing reaches the source image's right edge; its full right boundary is not visible."
+    },
+    {
+      "itemId": "chapter_9_item_06",
+      "itemName": "リンゴ",
+      "bounds": {
+        "left": 0.584369,
+        "top": 0.519,
+        "right": 0.731794,
+        "bottom": 0.566
+      },
+      "source": "annotated",
+      "sourceRect": [
+        329,
+        519,
+        412,
+        566
+      ],
+      "annotatedSourceRect": [
+        1154,
+        788,
+        1448,
+        953
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_07",
+      "itemName": "傘",
+      "bounds": {
+        "left": 0.230906,
+        "top": 0.548,
+        "right": 0.330373,
+        "bottom": 0.598
+      },
+      "source": "annotated",
+      "sourceRect": [
+        130,
+        548,
+        186,
+        598
+      ],
+      "annotatedSourceRect": [
+        450,
+        889,
+        648,
+        1068
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_08",
+      "itemName": "懐中電灯",
+      "bounds": {
+        "left": 0.223801,
+        "top": 0.604,
+        "right": 0.397869,
+        "bottom": 0.641
+      },
+      "source": "annotated",
+      "sourceRect": [
+        126,
+        604,
+        224,
+        641
+      ],
+      "annotatedSourceRect": [
+        436,
+        1087,
+        780,
+        1220
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_09",
+      "itemName": "ペットボトル",
+      "bounds": {
+        "left": 0.390764,
+        "top": 0.585,
+        "right": 0.502664,
+        "bottom": 0.627
+      },
+      "source": "annotated",
+      "sourceRect": [
+        220,
+        585,
+        283,
+        627
+      ],
+      "annotatedSourceRect": [
+        768,
+        1020,
+        991,
+        1170
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_10",
+      "itemName": "牛乳瓶",
+      "bounds": {
+        "left": 0.390764,
+        "top": 0.627,
+        "right": 0.502664,
+        "bottom": 0.685
+      },
+      "source": "annotated",
+      "sourceRect": [
+        220,
+        627,
+        283,
+        685
+      ],
+      "annotatedSourceRect": [
+        768,
+        1170,
+        991,
+        1375
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_11",
+      "itemName": "工具箱",
+      "bounds": {
+        "left": 0.674956,
+        "top": 0.593,
+        "right": 0.838366,
+        "bottom": 0.634
+      },
+      "source": "annotated",
+      "sourceRect": [
+        380,
+        593,
+        472,
+        634
+      ],
+      "annotatedSourceRect": [
+        1332,
+        1051,
+        1660,
+        1194
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_12",
+      "itemName": "ちりとり",
+      "bounds": {
+        "left": 0.889876,
+        "top": 0.563,
+        "right": 0.936057,
+        "bottom": 0.615
+      },
+      "source": "annotated",
+      "sourceRect": [
+        501,
+        563,
+        527,
+        615
+      ],
+      "annotatedSourceRect": [
+        1762,
+        943,
+        1853,
+        1128
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_13",
+      "itemName": "ヘッドホン",
+      "bounds": {
+        "left": 0.735346,
+        "top": 0.635,
+        "right": 1,
+        "bottom": 0.693
+      },
+      "source": "annotated",
+      "sourceRect": [
+        414,
+        635,
+        563,
+        693
+      ],
+      "annotatedSourceRect": [
+        1454,
+        1200,
+        1983,
+        1404
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "near_edge_alignment_pending",
+      "pendingReason": "The annotated box is visible, but its mapped right edge extends slightly beyond the clean base; retain only the visible base portion pending source-alignment confirmation."
+    },
+    {
+      "itemId": "chapter_9_item_14",
+      "itemName": "タブレット",
+      "bounds": {
+        "left": 0.889876,
+        "top": 0.683,
+        "right": 1,
+        "bottom": 0.742
+      },
+      "source": "annotated",
+      "sourceRect": [
+        501,
+        683,
+        563,
+        742
+      ],
+      "annotatedSourceRect": [
+        1762,
+        1370,
+        1981,
+        1576
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "near_edge_alignment_pending",
+      "pendingReason": "The annotated box is close to the right edge and maps marginally beyond the clean base; retain only the visible base portion pending source-alignment confirmation."
+    },
+    {
+      "itemId": "chapter_9_item_15",
+      "itemName": "木製スタンプ",
+      "bounds": {
+        "left": 0.097691,
+        "top": 0.68,
+        "right": 0.206039,
+        "bottom": 0.728
+      },
+      "source": "annotated",
+      "sourceRect": [
+        55,
+        680,
+        116,
+        728
+      ],
+      "annotatedSourceRect": [
+        184,
+        1359,
+        398,
+        1527
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_16",
+      "itemName": "トランシーバー",
+      "bounds": {
+        "left": 0.026643,
+        "top": 0.693,
+        "right": 0.170515,
+        "bottom": 0.739
+      },
+      "source": "annotated",
+      "sourceRect": [
+        15,
+        693,
+        96,
+        739
+      ],
+      "annotatedSourceRect": [
+        43,
+        1403,
+        328,
+        1568
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_17",
+      "itemName": "バナナ",
+      "bounds": {
+        "left": 0.230906,
+        "top": 0.712,
+        "right": 0.330373,
+        "bottom": 0.746
+      },
+      "source": "annotated",
+      "sourceRect": [
+        130,
+        712,
+        186,
+        746
+      ],
+      "annotatedSourceRect": [
+        450,
+        1470,
+        648,
+        1590
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_18",
+      "itemName": "電卓",
+      "bounds": {
+        "left": 0.230906,
+        "top": 0.643,
+        "right": 0.330373,
+        "bottom": 0.683
+      },
+      "source": "annotated",
+      "sourceRect": [
+        130,
+        643,
+        186,
+        683
+      ],
+      "annotatedSourceRect": [
+        450,
+        1226,
+        648,
+        1370
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_19",
+      "itemName": "缶詰",
+      "bounds": {
+        "left": 0.497336,
+        "top": 0.683,
+        "right": 0.60746,
+        "bottom": 0.706
+      },
+      "source": "annotated",
+      "sourceRect": [
+        280,
+        683,
+        342,
+        706
+      ],
+      "annotatedSourceRect": [
+        980,
+        1370,
+        1200,
+        1450
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_20",
+      "itemName": "ほうき",
+      "bounds": {
+        "left": 0.577265,
+        "top": 0.56,
+        "right": 0.657194,
+        "bottom": 0.658
+      },
+      "source": "annotated",
+      "sourceRect": [
+        325,
+        560,
+        370,
+        658
+      ],
+      "annotatedSourceRect": [
+        1140,
+        932,
+        1298,
+        1280
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_21",
+      "itemName": "メジャー",
+      "bounds": {
+        "left": 0.179396,
+        "top": 0.765,
+        "right": 0.335702,
+        "bottom": 0.795
+      },
+      "source": "annotated",
+      "sourceRect": [
+        101,
+        765,
+        189,
+        795
+      ],
+      "annotatedSourceRect": [
+        348,
+        1660,
+        658,
+        1766
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_22",
+      "itemName": "リュック",
+      "bounds": {
+        "left": 0.436945,
+        "top": 0.744,
+        "right": 0.60746,
+        "bottom": 0.898
+      },
+      "source": "annotated",
+      "sourceRect": [
+        246,
+        744,
+        342,
+        898
+      ],
+      "annotatedSourceRect": [
+        861,
+        1583,
+        1199,
+        2128
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_23",
+      "itemName": "スニーカー",
+      "bounds": {
+        "left": 0.582593,
+        "top": 0.806,
+        "right": 0.722913,
+        "bottom": 0.862
+      },
+      "source": "annotated",
+      "sourceRect": [
+        328,
+        806,
+        407,
+        862
+      ],
+      "annotatedSourceRect": [
+        1151,
+        1802,
+        1428,
+        2002
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_24",
+      "itemName": "鍵",
+      "bounds": {
+        "left": 0.843694,
+        "top": 0.807,
+        "right": 0.916519,
+        "bottom": 0.838
+      },
+      "source": "annotated",
+      "sourceRect": [
+        475,
+        807,
+        516,
+        838
+      ],
+      "annotatedSourceRect": [
+        1671,
+        1806,
+        1816,
+        1916
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_25",
+      "itemName": "プリン",
+      "bounds": {
+        "left": 0.793961,
+        "top": 0.826,
+        "right": 1,
+        "bottom": 0.932
+      },
+      "source": "annotated",
+      "sourceRect": [
+        447,
+        826,
+        563,
+        932
+      ],
+      "annotatedSourceRect": [
+        1570,
+        1873,
+        1992,
+        2248
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds",
+      "pendingReason": "The annotated backing reaches the source image's right edge; its full right boundary is not visible."
+    },
+    {
+      "itemId": "chapter_9_item_26",
+      "itemName": "ビニールテープ",
+      "bounds": {
+        "left": 0.62167,
+        "top": 0.87,
+        "right": 0.790409,
+        "bottom": 0.914
+      },
+      "source": "annotated",
+      "sourceRect": [
+        350,
+        870,
+        445,
+        914
+      ],
+      "annotatedSourceRect": [
+        1226,
+        2029,
+        1565,
+        2186
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_27",
+      "itemName": "弁当箱",
+      "bounds": {
+        "left": 0.793961,
+        "top": 0.87,
+        "right": 0.884547,
+        "bottom": 0.914
+      },
+      "source": "annotated",
+      "sourceRect": [
+        447,
+        870,
+        498,
+        914
+      ],
+      "annotatedSourceRect": [
+        1570,
+        2029,
+        1750,
+        2186
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_28",
+      "itemName": "スプーン",
+      "bounds": {
+        "left": 0.74778,
+        "top": 0.912,
+        "right": 0.793961,
+        "bottom": 0.977
+      },
+      "source": "annotated",
+      "sourceRect": [
+        421,
+        912,
+        447,
+        977
+      ],
+      "annotatedSourceRect": [
+        1480,
+        2180,
+        1570,
+        2410
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_29",
+      "itemName": "作業用手袋",
+      "bounds": {
+        "left": 0.790409,
+        "top": 0.943,
+        "right": 0.930728,
+        "bottom": 1
+      },
+      "source": "annotated",
+      "sourceRect": [
+        445,
+        943,
+        524,
+        1000
+      ],
+      "annotatedSourceRect": [
+        1564,
+        2290,
+        1843,
+        2490
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "edge_clipped_pending_full_bounds",
+      "pendingReason": "The annotated backing reaches the source image's bottom edge; its full lower boundary is not visible."
+    },
+    {
+      "itemId": "chapter_9_item_30",
+      "itemName": "レンチ",
+      "bounds": {
+        "left": 0.08881,
+        "top": 0.911,
+        "right": 0.301954,
+        "bottom": 0.953
+      },
+      "source": "annotated",
+      "sourceRect": [
+        50,
+        911,
+        170,
+        953
+      ],
+      "annotatedSourceRect": [
+        166,
+        2176,
+        592,
+        2325
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_31",
+      "itemName": "ドライバー",
+      "bounds": {
+        "left": 0.08881,
+        "top": 0.953,
+        "right": 0.301954,
+        "bottom": 0.999
+      },
+      "source": "annotated",
+      "sourceRect": [
+        50,
+        953,
+        170,
+        999
+      ],
+      "annotatedSourceRect": [
+        166,
+        2325,
+        592,
+        2485
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_32",
+      "itemName": "タンブラー",
+      "bounds": {
+        "left": 0.309059,
+        "top": 0.912,
+        "right": 0.447602,
+        "bottom": 0.983
+      },
+      "source": "annotated",
+      "sourceRect": [
+        174,
+        912,
+        252,
+        983
+      ],
+      "annotatedSourceRect": [
+        604,
+        2179,
+        882,
+        2430
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_33",
+      "itemName": "バーコードスキャナー",
+      "bounds": {
+        "left": 0.449378,
+        "top": 0.912,
+        "right": 0.612789,
+        "bottom": 0.983
+      },
+      "source": "annotated",
+      "sourceRect": [
+        253,
+        912,
+        345,
+        983
+      ],
+      "annotatedSourceRect": [
+        883,
+        2179,
+        1210,
+        2430
+      ],
+      "status": "candidate_needs_visual_review",
+      "visualReviewStatus": "visually_grounded_candidate"
+    },
+    {
+      "itemId": "chapter_9_item_34",
+      "itemName": "ランチ",
+      "bounds": null,
+      "source": "not_found_in_annotated_reference",
+      "sourceRect": null,
+      "annotatedSourceRect": null,
+      "status": "pending_missing_reference_label",
+      "visualReviewStatus": "catalog_item_not_found_in_reference",
+      "pendingReason": "No matching label is present in the annotated Chapter 9 reference; no coordinate is assigned."
+    }
+  ]
+}

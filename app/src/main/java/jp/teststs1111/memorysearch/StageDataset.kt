@@ -7,7 +7,9 @@ data class StageItem(
     val itemId: String,
     val itemName: String,
     val x: Double,
-    val y: Double
+    val y: Double,
+    val width: Double = 0.08,
+    val height: Double = 0.04
 )
 
 data class StageDataset(
@@ -46,6 +48,12 @@ object StageDatasetValidator {
             }
             require(item.y.isFinite() && item.y in 0.0..1.0) {
                 "y must be a finite normalized coordinate for ${item.itemId}"
+            }
+            require(item.width.isFinite() && item.width > 0.0 && item.width <= 1.0) {
+                "width must be a finite normalized size for ${item.itemId}"
+            }
+            require(item.height.isFinite() && item.height > 0.0 && item.height <= 1.0) {
+                "height must be a finite normalized size for ${item.itemId}"
             }
         }
     }

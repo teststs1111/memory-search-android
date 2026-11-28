@@ -1,0 +1,79 @@
+name: Validate geometry-aware OCR branch
+
+on:
+  push:
+    branches:
+      - fix/geometry-aware-two-line-ocr
+  workflow_dispatch:
+
+# Keep only the newest validation run for this branch. Multiple emulator boots
+# were competing for runner resources and causing ADB startup failures.
+concurrency:
+  group: geometry-aware-ocr-validation
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+      - name: Validate OCR catalogs
+        run: python3 tools/validate_ocr_catalogs.py
+      - name: Validate stage datasets
+        run: python3 tools/validate_stage_datasets.py
+      - name: Run unit tests
+        run: gradle --no-daemon :app:testDebugUnitTest
+      - name: Build debug APK
+        run: gradle --no-daemon :app:assembleDebug
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: memory-search-android-debug-geometry-ocr
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14
+
+  reference-image-mlkit:
+    runs-on: ubuntu-latest
+    env:
+      ANDROID_I_WANT_MY_TCG: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+      - name: Run Japanese ML Kit OCR against Chapter 5 reference image
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          # Avoid extra ADB settings writes; these were failing after emulator boot.
+          disable-animations: false
+          script: gradle --no-daemon :app:connectedDebugAndroidTest
+      - name: Upload instrumented test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter-5-mlkit-ocr-test-results
+          path: |
+            app/build/reports/androidTests/connected/
+            app/build/outputs/androidTest-results/connected/
+          if-no-files-found: warn
+          retention-days: 14

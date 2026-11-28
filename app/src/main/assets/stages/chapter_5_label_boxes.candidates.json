@@ -9,7 +9,7 @@
     "width": 563,
     "height": 1000
   },
-  "reviewNote": "Initial draft traced from the chapter 5 annotated wiki reference. All 34 label frames are approximate candidates and require visual review against the paired base image before any runtime use. The source image is a single annotated image, so source is annotated for every item. User review adjustment: item 25 moved 5 px upward and item 33 moved 5 px left; both remain draft candidates pending visual review. Further user review adjustment: item 3 moved 5 px right; item 25 moved an additional 5 px upward; item 33 moved an additional 5 px left. All remain draft candidates pending visual review. Item 3 adjustment applies to the entire frame shifted right, preserving its width. User-requested 10 px adjustment from the prior draft: item 3 shifted 10 px right, item 25 shifted 10 px upward, and item 33 shifted 10 px left; frames retain their dimensions and remain inactive candidates.",
+  "reviewNote": "Initial draft traced from the chapter 5 annotated wiki reference. All 34 label frames are approximate candidates and require visual review against the paired base image before any runtime use. The source image is a single annotated image, so source is annotated for every item. User review adjustment: item 25 moved 5 px upward and item 33 moved 5 px left; both remain draft candidates pending visual review. Further user review adjustment: item 3 moved 5 px right; item 25 moved an additional 5 px upward; item 33 moved an additional 5 px left. All remain draft candidates pending visual review. Item 3 adjustment applies to the entire frame shifted right, preserving its width. User-requested 10 px adjustment from the prior draft: item 3 shifted 10 px right, item 25 shifted 10 px upward, and item 33 shifted 10 px left; frames retain their dimensions and remain inactive candidates. User confirmed all Chapter 5 candidate boxes except 双眼鏡 are nearly correct and requested one correction followed by implementation of the glow/highlight mechanism. 双眼鏡 was retraced from the visible pink label frame in annotated.jpg: approximate bounds x=446..542, y=568..608 on the 563x1000 reference. Keep this correction subject to final on-device alignment check; it must not extend to the image edge.",
   "items": [
     {
       "itemId": "chapter_5_item_01",
@@ -249,19 +249,19 @@
       "itemId": "chapter_5_item_14",
       "itemName": "双眼鏡",
       "bounds": {
-        "left": 0.868561,
-        "top": 0.566,
-        "right": 1,
-        "bottom": 0.605
+        "left": 0.7922,
+        "top": 0.568,
+        "right": 0.9627,
+        "bottom": 0.608
       },
       "source": "annotated",
       "sourceRect": [
-        489,
-        566,
-        563,
-        605
+        446,
+        568,
+        542,
+        608
       ],
-      "status": "candidate_needs_visual_review"
+      "status": "user_review_adjusted_candidate"
     },
     {
       "itemId": "chapter_5_item_15",

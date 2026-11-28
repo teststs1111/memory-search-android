@@ -9,6 +9,8 @@ import android.content.pm.ApplicationInfo
 import android.media.projection.MediaProjectionManager
 import android.os.Build
 import android.os.Bundle
+import android.net.Uri
+import android.provider.Settings
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -22,6 +24,11 @@ class MainActivity : Activity() {
     private lateinit var captureStatus: TextView
     private var receiverRegistered = false
     private var selectedStageId: String = "chapter_1"
+    private var latestDetectedStageId: String = "chapter_1"
+    private var latestDetectedItemNames: ArrayList<String> = arrayListOf()
+    private var requestContinuousCapture = false
+    private var requestLiveHighlight = false
+    private lateinit var detectedPreviewButton: Button
 
     private val captureReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -40,15 +47,54 @@ class MainActivity : Activity() {
                         ?: lines.map { listOf(it) }
                     // Use the chapter captured when permission was granted, not a later spinner selection.
                     val resultStageId = intent.getStringExtra(ScreenCaptureService.EXTRA_STAGE_ID) ?: selectedStageId
+                    latestDetectedStageId = resultStageId
                     val itemNames = StageItemCatalogRepository.loadItemNames(assets, resultStageId)
-                    val matches = OcrItemMatcher.matchBlocks(blocks, itemNames)
-                    val matchText = if (matches.isEmpty()) {
-                        "${resultStageId} のアイテム名との完全一致はありません。"
+                    val rawBlockGeometry = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_BLOCK_GEOMETRY).orEmpty()
+                    val located = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_LOCATED_ITEMS).orEmpty()
+                    val locatedNames = located.mapNotNull { encoded ->
+                        runCatching { JSONObject(encoded).getString("itemName") }.getOrNull()
+                    }.toSet()
+                    val twoLinePatterns = TwoLineOcrPatterns.forStage(resultStageId)
+                    val targetStripMatches = intent.getStringArrayListExtra(
+                        ScreenCaptureService.EXTRA_TARGET_STRIP_MATCHES
+                    )
+                    val blockMatches = OcrItemMatcher.matchBlocks(blocks, itemNames, twoLinePatterns).toSet()
+                    // Prefer the common three-button strip; the fallback keeps older service results readable.
+                    val matches = if (targetStripMatches != null) {
+                        itemNames.filter { it in targetStripMatches }
                     } else {
-                        "一致したアイテム：\n" + matches.joinToString("、")
+                        itemNames.filter { it in blockMatches || it in locatedNames }
+                    }
+                    // The live game shows three labels at a time; only exact matches are selected.
+                    latestDetectedItemNames = if (intent.getBooleanExtra(ScreenCaptureService.EXTRA_CONTINUOUS, false)) {
+                        intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_ACTIVE_TARGETS).orEmpty().let(::ArrayList)
+                    } else {
+                        ArrayList(LabelHighlightSelection.targets(itemNames, matches))
+                    }
+                    detectedPreviewButton.visibility = if (latestDetectedItemNames.isEmpty()) android.view.View.GONE else android.view.View.VISIBLE
+                    val isContinuous = intent.getBooleanExtra(ScreenCaptureService.EXTRA_CONTINUOUS, false)
+                    val matchText = if (latestDetectedItemNames.isEmpty()) {
+                        if (isContinuous) "指定3項目を安定認識中…" else "${resultStageId} のアイテム名との完全一致はありません。"
+                    } else {
+                        (if (isContinuous) "現在のハイライト対象：" else "画面内の一致（最大3項目）：") +
+                            "\n" + latestDetectedItemNames.joinToString("、")
                     }
                     val recognized = lines.joinToString("\n").ifBlank { "文字を検出できませんでした。" }
-                    val located = intent.getStringArrayListExtra(ScreenCaptureService.EXTRA_OCR_LOCATED_ITEMS).orEmpty()
+                    val blockGeometryText = if (rawBlockGeometry.isEmpty()) {
+                        "ML Kitブロック座標：取得なし"
+                    } else {
+                        "ML Kitブロック別テキスト・四隅座標：\n" + rawBlockGeometry.mapNotNull { encoded ->
+                            runCatching {
+                                val block = JSONObject(encoded)
+                                val points = block.getJSONArray("corners")
+                                val coordinates = (0 until points.length()).map { index ->
+                                    val point = points.getJSONObject(index)
+                                    "${point.getInt("x")},${point.getInt("y")}"
+                                }.joinToString(" / ")
+                                "#${block.getInt("index")}「${block.getString("text").replace("\n", " / ")}」：${coordinates}"
+                            }.getOrNull()
+                        }.joinToString("\n")
+                    }
                     val locatedText = if (located.isEmpty()) {
                         "文字位置とアイテム名の完全一致：なし"
                     } else {
@@ -64,7 +110,7 @@ class MainActivity : Activity() {
                             }.getOrNull()
                         }.joinToString("\n")
                     }
-                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\n章：${resultStageId}\n\n${matchText}\n\n${locatedText}\n\nOCR行：\n${recognized.take(1200)}\n\n画像は保存せず、メモリ上で破棄しました。取得した座標は文字の四隅で、ラベル外周ではありません。"
+                    captureStatus.text = "画面取得・日本語OCR成功：${width} × ${height} px\n章：${resultStageId}\n\n${matchText}\n\n${locatedText}\n\n${blockGeometryText.take(2400)}\n\nOCR行：\n${recognized.take(1200)}\n\n画像は保存せず、メモリ上で破棄しました。取得した座標は文字の四隅で、ラベル外周ではありません。"
                 }
                 ScreenCaptureService.ACTION_CAPTURE_ERROR -> {
                     captureStatus.text = "画面取得/OCRエラー：${intent.getStringExtra(ScreenCaptureService.EXTRA_ERROR) ?: "不明"}"
@@ -108,6 +154,14 @@ class MainActivity : Activity() {
                     adapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_dropdown_item, stages.map { it.stageName })
                 }
                 root.addView(selector, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+                val previewButton = Button(this).apply {
+                    setOnClickListener {
+                        startActivity(
+                            Intent(this@MainActivity, LabelBoxPreviewActivity::class.java)
+                                .putExtra(LabelBoxPreviewActivity.EXTRA_STAGE_ID, selectedStageId)
+                        )
+                    }
+                }
                 fun updateStatus(index: Int) {
                     val stage = stages[index]
                     selectedStageId = stage.stageId
@@ -119,17 +173,20 @@ class MainActivity : Activity() {
                         "照合用アイテム名：${catalogCount}件\n名称枠の座標：確認待ち（実プレイでは非表示）"
                     }
                     val caution = if (reviewNotes.isEmpty()) "" else "\n\n精度注意ポイント：\n・" + reviewNotes.joinToString("\n・")
-                    stageStatus.text = "\n${stage.stageName}\n${message}${caution}\n\n番号付きプレビューは確認専用です。実プレイ画面には番号を表示しません。"
+                    stageStatus.text = "\n${stage.stageName}\n${message}${caution}\n\n番号付きプレビューは座標確認専用です。実プレイ画面には表示しません。"
+                    val candidateFile = "${stage.stageId}_label_boxes.candidates.json"
+                    val hasCandidates = assets.list("stages")?.contains(candidateFile) == true
+                    previewButton.visibility = if (hasCandidates) android.view.View.VISIBLE else android.view.View.GONE
+                    previewButton.text = "${stage.stageName}の名称枠・座標プレビュー"
                 }
                 selector.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) = updateStatus(position)
                     override fun onNothingSelected(parent: android.widget.AdapterView<*>?) = Unit
                 }
-                updateStatus(0)
-                root.addView(Button(this).apply {
-                    text = "第1章の名称枠プレビュー（候補）"
-                    setOnClickListener { startActivity(Intent(this@MainActivity, LabelBoxPreviewActivity::class.java)) }
-                })
+                val initialIndex = stages.indexOfFirst { it.stageId == "chapter_5" }.takeIf { it >= 0 } ?: 0
+                selector.setSelection(initialIndex)
+                updateStatus(initialIndex)
+                root.addView(previewButton)
             }
         } catch (error: Exception) {
             stageStatus.text = "ステージデータを読み込めませんでした。\n${error.message ?: "データ形式を確認してください。"}"
@@ -148,17 +205,67 @@ class MainActivity : Activity() {
             setPadding(0, padding, 0, 0)
         })
         captureStatus = TextView(this).apply {
-            text = "許可を求めたときだけ1フレームを取得して日本語OCRを行います。画像は保存しません。"
+            text = "単発テスト、または継続監視を選べます。画像は保存せずメモリ上で処理します。"
             textSize = 14f
             setPadding(0, padding / 2, 0, padding / 2)
         }
         root.addView(captureStatus)
+        detectedPreviewButton = Button(this).apply {
+            text = "認識した3項目を同時に発光プレビュー"
+            visibility = android.view.View.GONE
+            setOnClickListener {
+                startActivity(
+                    Intent(this@MainActivity, LabelBoxPreviewActivity::class.java)
+                        .putExtra(LabelBoxPreviewActivity.EXTRA_STAGE_ID, latestDetectedStageId)
+                        .putStringArrayListExtra(LabelBoxPreviewActivity.EXTRA_HIGHLIGHT_ITEM_NAMES, latestDetectedItemNames)
+                )
+            }
+        }
+        root.addView(detectedPreviewButton)
         root.addView(Button(this).apply {
             text = "画面取得・日本語OCRテスト"
             setOnClickListener {
                 val manager = getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
                 @Suppress("DEPRECATION")
                 startActivityForResult(manager.createScreenCaptureIntent(), REQUEST_CAPTURE)
+            }
+        })
+        root.addView(Button(this).apply {
+            text = "ゲーム画面に3項目を発光表示（開始）"
+            setOnClickListener {
+                val selectedDataset = StageDatasetRepository.loadStages(assets).firstOrNull { it.stageId == selectedStageId }
+                if (selectedDataset?.dataStatus != "verified") {
+                    captureStatus.text = "この章の座標はまだ確認待ちです。現在は第5章のみ発光表示できます。"
+                    return@setOnClickListener
+                }
+                requestLiveHighlight = true
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this@MainActivity)) {
+                    val permissionIntent = Intent(
+                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:$packageName")
+                    )
+                    @Suppress("DEPRECATION")
+                    startActivityForResult(permissionIntent, REQUEST_OVERLAY_PERMISSION)
+                } else {
+                    requestProjectionPermission()
+                }
+            }
+        })
+        root.addView(Button(this).apply {
+            text = "継続監視を開始（3項目の切り替え検出）"
+            setOnClickListener {
+                requestContinuousCapture = true
+                val manager = getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
+                @Suppress("DEPRECATION")
+                startActivityForResult(manager.createScreenCaptureIntent(), REQUEST_CAPTURE)
+            }
+        })
+        root.addView(Button(this).apply {
+            text = "継続監視を停止"
+            setOnClickListener {
+                startService(Intent(this@MainActivity, ScreenCaptureService::class.java).setAction(ScreenCaptureService.ACTION_STOP_CAPTURE))
+                startService(Intent(this@MainActivity, HighlightOverlayService::class.java).setAction(HighlightOverlayService.ACTION_STOP_OVERLAY))
+                captureStatus.text = "継続監視と発光表示の停止を要求しました。"
             }
         })
         setContentView(root)
@@ -190,19 +297,44 @@ class MainActivity : Activity() {
         super.onStop()
     }
 
+    private fun requestProjectionPermission() {
+        requestContinuousCapture = true
+        val manager = getSystemService(MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
+        @Suppress("DEPRECATION")
+        startActivityForResult(manager.createScreenCaptureIntent(), REQUEST_CAPTURE)
+    }
+
     @Deprecated("Uses the platform permission result callback")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_OVERLAY_PERMISSION) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || Settings.canDrawOverlays(this)) {
+                requestProjectionPermission()
+            } else {
+                requestLiveHighlight = false
+                captureStatus.text = "他のアプリの上に表示する許可が必要です。許可後にもう一度開始してください。"
+            }
+            return
+        }
         if (requestCode == REQUEST_CAPTURE) {
             if (resultCode == RESULT_OK && data != null) {
-                captureStatus.text = "許可を受け取りました。1フレームを取得して日本語OCRを実行します…"
+                captureStatus.text = if (requestContinuousCapture) "継続監視を開始します。新しい指定3項目を安定認識した時点で切り替えます…" else "許可を受け取りました。1フレームを取得して日本語OCRを実行します…"
+                val liveHighlight = requestLiveHighlight
+                if (liveHighlight) {
+                    startService(Intent(this, HighlightOverlayService::class.java).putExtra(HighlightOverlayService.EXTRA_STAGE_ID, selectedStageId))
+                }
                 val serviceIntent = Intent(this, ScreenCaptureService::class.java).apply {
                     putExtra(ScreenCaptureService.EXTRA_RESULT_CODE, resultCode)
                     putExtra(ScreenCaptureService.EXTRA_RESULT_DATA, data)
                     putExtra(ScreenCaptureService.EXTRA_STAGE_ID, selectedStageId)
+                    putExtra(ScreenCaptureService.EXTRA_CONTINUOUS, requestContinuousCapture || liveHighlight)
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) startForegroundService(serviceIntent) else startService(serviceIntent)
+                requestContinuousCapture = false
+                requestLiveHighlight = false
             } else {
+                requestLiveHighlight = false
+                requestContinuousCapture = false
                 captureStatus.text = "画面取得はキャンセルされました。ゲームには影響ありません。"
             }
         }
@@ -210,5 +342,6 @@ class MainActivity : Activity() {
 
     companion object {
         private const val REQUEST_CAPTURE = 5101
+        private const val REQUEST_OVERLAY_PERMISSION = 5102
     }
 }

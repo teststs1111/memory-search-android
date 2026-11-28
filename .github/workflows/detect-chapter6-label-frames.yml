@@ -2,27 +2,26 @@ name: Detect Chapter 6 label frames
 
 on:
   push:
-    branches: [ main ]
+    branches: [ fix/geometry-aware-two-line-ocr ]
     paths:
       - ".github/workflows/detect-chapter6-label-frames.yml"
       - "tools/detect_label_frames.py"
       - "tools/ocr_reference_labels.py"
       - "tools/tests/test_detect_label_frames.py"
       - "tools/tests/test_ocr_reference_labels.py"
+      - "tools/tests/test_chapter6_candidate_review.py"
       - "app/src/main/assets/stages/chapter_6_label_boxes.candidates.json"
+      - "reference/chapter_06/annotated.jpg"
       - "reference/chapter_06/base.jpg"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   detect:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -31,18 +30,21 @@ jobs:
           python -m pip install opencv-python-headless==4.10.0.84
           sudo apt-get update
           sudo apt-get install -y tesseract-ocr tesseract-ocr-jpn
-      - name: Run detector unit tests
+      - name: Run detector and candidate-review unit tests
         run: |
           set -euo pipefail
           python -m unittest discover -s tools/tests -p 'test_*.py' -v
-      - name: Download Chapter 6 annotated reference
+      - name: Validate paired Chapter 6 reference images
         run: |
           set -euo pipefail
-          mkdir -p reference/chapter_06
-          curl --fail --location --retry 3 --retry-delay 2 \
-            'https://img.atwiki.jp/eden_jp/attach/46/153/%E7%AC%AC6%E7%AB%A0.jpeg' \
-            --output reference/chapter_06/annotated.jpg
-          test "$(od -An -tx1 -N2 reference/chapter_06/annotated.jpg | tr -d ' \\n')" = "ffd8"
+          test -f reference/chapter_06/annotated.jpg
+          test -f reference/chapter_06/base.jpg
+          python - <<'PY'
+          from pathlib import Path
+          for name in ("annotated.jpg", "base.jpg"):
+              path = Path("reference/chapter_06") / name
+              assert path.read_bytes()[:2] == bytes.fromhex("ffd8"), f"{path} is not JPEG"
+          PY
       - name: Detect label backing rectangles
         run: |
           set -euo pipefail
@@ -61,17 +63,15 @@ jobs:
             --seeds app/src/main/assets/stages/chapter_6_label_boxes.candidates.json \
             --output reference/chapter_06/ocr_text_regions.json \
             --preview reference/chapter_06/ocr_text_regions_preview.jpg
-      - name: Commit review-only detection results
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reference/chapter_06/annotated.jpg reference/chapter_06/detected_label_frames.candidates.json reference/chapter_06/detected_label_frames_preview.jpg reference/chapter_06/detected_label_frames_mask.png reference/chapter_06/ocr_text_regions.json reference/chapter_06/ocr_text_regions_preview.jpg
-          if git diff --cached --quiet; then
-            echo "Detection outputs are unchanged."
-            exit 0
-          fi
-          git commit -m "Detect Chapter 6 label frames from paired references"
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
+      - name: Upload review-only diagnostics
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter6-label-frame-diagnostics
+          path: |
+            reference/chapter_06/detected_label_frames.candidates.json
+            reference/chapter_06/detected_label_frames_preview.jpg
+            reference/chapter_06/detected_label_frames_mask.png
+            reference/chapter_06/ocr_text_regions.json
+            reference/chapter_06/ocr_text_regions_preview.jpg
+          if-no-files-found: error
+          retention-days: 14

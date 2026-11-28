@@ -60,6 +60,16 @@ class StageDatasetValidatorTest {
     }
 
     @Test
+    fun rejectsInvalidHighlightBoxDimensions() {
+        assertThrows(IllegalArgumentException::class.java) {
+            StageDatasetValidator.validate(dataset(items = listOf(StageItem("bad-width", "幅不正", 0.5, 0.5, 0.0, 0.1))))
+        }
+        assertThrows(IllegalArgumentException::class.java) {
+            StageDatasetValidator.validate(dataset(items = listOf(StageItem("bad-height", "高さ不正", 0.5, 0.5, 0.1, 1.1))))
+        }
+    }
+
+    @Test
     fun rejectsDuplicateItemIds() {
         assertThrows(IllegalArgumentException::class.java) {
             StageDatasetValidator.validate(

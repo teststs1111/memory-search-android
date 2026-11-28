@@ -1,0 +1,74 @@
+name: Review Chapter 9 label-box candidates
+
+on:
+  push:
+    branches:
+      - fix/geometry-aware-two-line-ocr
+    paths:
+      - ".github/workflows/review-chapter9-label-boxes.yml"
+      - "tools/render_chapter9_label_boxes.py"
+      - "tools/tests/test_chapter9_candidate_review.py"
+      - "app/src/main/assets/stages/chapter_9_label_boxes.candidates.json"
+      - "app/src/main/assets/stages/chapter_9.json"
+      - "app/src/main/assets/stages/item_catalogs.json"
+      - "reference/chapter_09/UPLOAD_HERE.md"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/review-chapter9-label-boxes.yml"
+      - "tools/render_chapter9_label_boxes.py"
+      - "tools/tests/test_chapter9_candidate_review.py"
+      - "app/src/main/assets/stages/chapter_9_label_boxes.candidates.json"
+      - "app/src/main/assets/stages/chapter_9.json"
+      - "app/src/main/assets/stages/item_catalogs.json"
+      - "reference/chapter_09/UPLOAD_HERE.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install image processing dependency
+        run: python -m pip install opencv-python-headless==4.10.0.84
+      - name: Download and verify the original Chapter 9 reference pair
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reference/chapter_09
+          curl --fail --location --retry 3 --retry-all-errors --silent --show-error \
+            "https://img.atwiki.jp/eden_jp/attach/46/156/%E7%AC%AC9%E7%AB%A0.jpeg" \
+            -o reference/chapter_09/annotated.jpg
+          curl --fail --location --retry 3 --retry-all-errors --silent --show-error \
+            "https://img.atwiki.jp/eden_jp/attach/46/151/%E7%AC%AC9%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg" \
+            -o reference/chapter_09/base.jpg
+          echo "718b7ff02279406b76ca78de54f5df900fc3db7b7bd09c4eb75eaec0d4684028  reference/chapter_09/annotated.jpg" | sha256sum --check -
+          echo "93dbd1de1979f8fdf683e817805a412e7c63618436e3df7c47f20f34e3927874  reference/chapter_09/base.jpg" | sha256sum --check -
+          file reference/chapter_09/*.jpg
+      - name: Run candidate, catalog, dataset, and Python tests
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tools/tests -p 'test_*.py' -v
+          python tools/validate_ocr_catalogs.py
+          python tools/validate_stage_datasets.py
+      - name: Render and validate same-scale annotated/base comparison
+        run: python tools/render_chapter9_label_boxes.py
+      - name: Upload Chapter 9 reference and review artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter9-label-box-review
+          path: |
+            reference/chapter_09/annotated.jpg
+            reference/chapter_09/base.jpg
+            reference/chapter_09/label_box_candidates.jpg
+            reference/chapter_09/label_box_comparison.jpg
+            app/src/main/assets/stages/chapter_9_label_boxes.candidates.json
+          if-no-files-found: error
+          retention-days: 14

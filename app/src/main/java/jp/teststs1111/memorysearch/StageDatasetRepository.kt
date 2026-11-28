@@ -35,7 +35,9 @@ object StageDatasetRepository {
                             itemId = item.getString("itemId"),
                             itemName = item.getString("itemName"),
                             x = item.getDouble("x"),
-                            y = item.getDouble("y")
+                            y = item.getDouble("y"),
+                            width = item.optDouble("width", 0.08),
+                            height = item.optDouble("height", 0.04)
                         )
                     )
                 }

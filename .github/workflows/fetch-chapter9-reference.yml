@@ -1,0 +1,68 @@
+name: Fetch Chapter 9 original reference pair
+
+on:
+  push:
+    branches:
+      - fix/geometry-aware-two-line-ocr
+    paths:
+      - ".github/workflows/fetch-chapter9-reference.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/fetch-chapter9-reference.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install image metadata dependency
+        run: python -m pip install Pillow==11.1.0
+      - name: Download original atwiki images without transformation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reference-source
+          curl --fail --location --retry 3 --retry-all-errors --silent --show-error \
+            "https://img.atwiki.jp/eden_jp/attach/46/156/%E7%AC%AC9%E7%AB%A0.jpeg" \
+            -o reference-source/chapter9-annotated-original.jpeg
+          curl --fail --location --retry 3 --retry-all-errors --silent --show-error \
+            "https://img.atwiki.jp/eden_jp/attach/46/151/%E7%AC%AC9%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg" \
+            -o reference-source/chapter9-clean-original.jpeg
+          file reference-source/*.jpeg
+          sha256sum reference-source/*.jpeg > reference-source/SHA256SUMS
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import json
+          root = Path("reference-source")
+          records = []
+          for path in sorted(root.glob("*.jpeg")):
+              with Image.open(path) as image:
+                  records.append({
+                      "file": path.name,
+                      "format": image.format,
+                      "width": image.width,
+                      "height": image.height,
+                      "bytes": path.stat().st_size,
+                  })
+          (root / "image-metadata.json").write_text(
+              json.dumps(records, ensure_ascii=False, indent=2) + "\\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(records, ensure_ascii=False))
+          PY
+      - name: Upload unmodified Chapter 9 reference pair
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter9-original-reference-pair
+          path: reference-source/
+          if-no-files-found: error
+          retention-days: 14

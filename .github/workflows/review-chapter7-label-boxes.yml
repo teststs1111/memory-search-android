@@ -1,0 +1,57 @@
+name: Review Chapter 7 label-box candidates
+
+on:
+  push:
+    branches:
+      - fix/geometry-aware-two-line-ocr
+    paths:
+      - ".github/workflows/review-chapter7-label-boxes.yml"
+      - "tools/detect_chapter7_label_boxes.py"
+      - "tools/tests/test_chapter7_label_frame_detection.py"
+      - "tools/tests/test_chapter7_candidate_review.py"
+      - "tools/render_chapter7_label_boxes.py"
+      - "app/src/main/assets/stages/chapter_7_label_boxes.candidates.json"
+      - "app/src/main/assets/stages/chapter_7.json"
+      - "app/src/main/assets/stages/item_catalogs.json"
+      - "reference/chapter_07/annotated.jpg"
+      - "reference/chapter_07/base.jpg"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install image processing dependency
+        run: python -m pip install opencv-python-headless==4.10.0.84
+      - name: Run Chapter 7 detector and candidate-review tests
+        run: |
+          python -m unittest tools/tests/test_chapter7_label_frame_detection.py -v
+          python -m unittest tools/tests/test_chapter7_candidate_review.py -v
+      - name: Extract review-only components
+        run: |
+          python tools/detect_chapter7_label_boxes.py
+          python tools/validate_ocr_catalogs.py
+          python tools/validate_stage_datasets.py
+          python tools/render_chapter7_label_boxes.py
+      - name: Upload Chapter 7 review artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter7-label-frame-review
+          path: |
+            reference/chapter_07/label_frame_components.candidates.json
+            reference/chapter_07/label_frame_components_preview.jpg
+            reference/chapter_07/label_frame_fill_mask.png
+            reference/chapter_07/label_box_candidates.jpg
+            reference/chapter_07/label_box_comparison.jpg
+            app/src/main/assets/stages/chapter_7_label_boxes.candidates.json
+            reference/chapter_07/annotated.jpg
+            reference/chapter_07/base.jpg
+          if-no-files-found: error
+          retention-days: 14
