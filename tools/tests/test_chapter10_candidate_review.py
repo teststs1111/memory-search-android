@@ -15,6 +15,8 @@ def read_json(path):
 class Chapter10CandidateReviewTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        if not ANNOTATED_IMAGE.exists() or not BASE_IMAGE.exists():
+            raise unittest.SkipTest("Chapter 10 source images are downloaded by its dedicated review workflow")
         cls.candidates=read_json(STAGES/"chapter_10_label_boxes.candidates.json")
         cls.runtime=read_json(STAGES/"chapter_10.json")
         cls.catalog=read_json(STAGES/"item_catalogs.json")
