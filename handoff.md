@@ -83,6 +83,14 @@ Last reviewed: 2026-11-28
 - Nineteen axis-aligned candidate overlaps are recorded without automatic correction. The detector was not used as a coordinate source.
 - `app/src/main/assets/stages/chapter_10.json` remains `awaiting_coordinate_verification` with an empty `items` array. The Chapter 10 candidate file is explicitly runtime-disabled. No Chapter 10 coordinates are enabled for gameplay.
 
+## Validation after Chapter 10 candidate registration
+
+- Chapter 10 review workflow run [46115768670](https://github.com/teststs1111/memory-search-android/actions/runs/46115768670) completed successfully; artifact 15251711627 contains the original reference pair and aligned comparison preview.
+- Chapter 10 focused Python tests: 7/7 passed. OCR catalog validation passed for 10 chapters / 328 labels. Stage dataset validation passed with Chapter 10 still runtime-disabled.
+- Main validation run [46115768596](https://github.com/teststs1111/memory-search-android/actions/runs/46115768596): catalog validation, stage dataset validation, Kotlin unit tests, Debug APK build, and APK artifact upload all succeeded. The separate Chapter 5 ML Kit instrumented emulator job was still in progress at the last check; no success is claimed for that job.
+- The first Chapter 10 review workflow attempt exposed a missing inactive-candidate `source` field. The candidate records were corrected to match the repository validator (`annotated` for visible labels; `not_found_in_annotated_reference` plus pending status for バケツ), and the subsequent review workflow passed.
+- The public Chapter 10 atwiki page lists only the annotated and clean-base attachments. Its attachment-history and revision-history links returned 403, so no older/full alternative image was recovered.
+
 ## Next work
 
 1. Search for fuller or alternate Chapter 10 annotation material to resolve トランシーバー, ロープ, レンチ, 木片, and the separate catalog item バケツ. If no better source exists, leave them pending.
