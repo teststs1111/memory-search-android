@@ -151,10 +151,16 @@
       "unannotatedImages": [
         "https://img.atwiki.jp/eden_jp/attach/46/158/%E7%AC%AC10%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg"
       ],
-      "status": "source_located_catalog_and_coordinates_pending",
+      "status": "candidate_data_exists_pending_visual_review",
       "reviewNotes": [
-        "ショベルは背景に溶け込みやすい"
-      ]
+        "Annotated 2016x2520 source aligned to 1404x2496 clean base with SIFT/RANSAC (3244/3302 inliers, 0.982435).",
+        "30 complete candidate boxes; トランシーバー, ロープ, レンチ edge-clipped; 木片 near right edge; catalog item バケツ has no distinct annotation backing.",
+        "青いバケツ appears as reference lines バケツ / 青. Candidate data is runtime-disabled."
+      ],
+      "annotatedReference": "reference/chapter_10/annotated.jpg",
+      "baseReference": "reference/chapter_10/base.jpg",
+      "candidateDataset": "app/src/main/assets/stages/chapter_10_label_boxes.candidates.json",
+      "previewOutput": "reference/chapter_10/label_box_comparison.jpg"
     }
   ]
 }

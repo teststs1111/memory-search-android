@@ -1,6 +1,6 @@
 # Coordinate registration handoff
 
-Last reviewed: 2026-11-27
+Last reviewed: 2026-11-28
 
 ## Repository guardrails
 
@@ -68,9 +68,23 @@ Last reviewed: 2026-11-27
 - Added seven focused Chapter 8 review tests; all seven passed locally. Added a branch-only, read-only review workflow that downloads and hash-checks the original pair, runs all Python tests plus catalog/dataset validators, renders the comparison, and uploads the sources/previews as an artifact.
 - No real-device test has been performed.
 
+## Chapter 9 review confirmation
+
+- The existing Chapter 9 candidate dataset and aligned annotated/base comparison were rechecked from the exact source pair. The latest review workflow run 45963659191 completed successfully; artifact 15181338666 contains the source pair and comparison.
+- Chapter 9 remains candidate-only: 28 complete boxes, three edge-clipped boxes (クッション, プリン, 作業用手袋), two near-edge mappings (ヘッドホン, タブレット), and missing catalog item ランチ. The two extra annotated labels 救急箱 and ハサミ remain recorded separately. Eleven axis-aligned overlap pairs remain unadjusted.
+- `app/src/main/assets/stages/chapter_9.json` remains empty and awaiting verification. No Chapter 9 coordinates are enabled at runtime.
+
+## Chapter 10 review
+
+- Chapter: 第10章「第２沿岸区域」.
+- Exact atwiki source pair: annotated `reference/chapter_10/annotated.jpg` (2016×2520; SHA-256 `c10ffa2a046edbe6bb0b948d3a4ad27fbb3ca48fbc0898dba8709971fcc199ac`) and clean base `reference/chapter_10/base.jpg` (1404×2496; SHA-256 `a7596c060e330d5f69b3e079a5218a00487b6b83747bfdef94d634b4a453cc55`).
+- The annotated image was aligned to the clean base with SIFT/RANSAC: 3302 good matches, 3244 inliers, 0.982435 inlier ratio. Candidate rectangles were traced from the visible annotation backings, mapped through the homography, and normalized to the 563×1000 coordinate basis.
+- Added 35 catalog-ordered candidate records. 30 boxes have complete visible boundaries; three are edge-clipped (トランシーバー and ロープ at the left edge, レンチ at the bottom edge); 木片 maps within six basis pixels of the clean base's right edge and remains near-edge pending; the catalog item バケツ has no distinct visible annotation backing. 青いバケツ is recorded with reference-only lines `バケツ` / `青`.
+- Nineteen axis-aligned candidate overlaps are recorded without automatic correction. The detector was not used as a coordinate source.
+- `app/src/main/assets/stages/chapter_10.json` remains `awaiting_coordinate_verification` with an empty `items` array. The Chapter 10 candidate file is explicitly runtime-disabled. No Chapter 10 coordinates are enabled for gameplay.
+
 ## Next work
 
-1. Continue Chapter 9 candidate generation and visual review using its exact annotated/clean source pair.
-2. Keep the six clipped Chapter 8 boxes, the missing catalog label ネジ, and the unmatched ポップコーン annotation explicitly pending; do not infer missing edges or alter the catalog without stronger source evidence.
-3. Keep the five clipped Chapter 6 boxes and ten clipped Chapter 7 boxes pending until uncropped references are found; do not enable incomplete runtime datasets.
-4. Proceed through Chapter 10 after Chapter 9, and keep Chapter 5's user-approved boxes unchanged unless a clear source-image defect is found.
+1. Search for fuller or alternate Chapter 10 annotation material to resolve トランシーバー, ロープ, レンチ, 木片, and the separate catalog item バケツ. If no better source exists, leave them pending.
+2. Search for uncropped references that could resolve the existing Chapter 6–9 edge-clipped and missing-label cases, in chapter order. Do not infer missing boundaries.
+3. Keep Chapters 6–10 runtime datasets empty until every label box in a chapter is fully grounded. Preserve the Chapter 5 baseline and all runtime matching/highlight behavior.

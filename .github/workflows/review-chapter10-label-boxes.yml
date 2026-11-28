@@ -1,0 +1,71 @@
+name: Review Chapter 10 label-box candidates
+
+on:
+  push:
+    branches:
+      - fix/geometry-aware-two-line-ocr
+    paths:
+      - ".github/workflows/review-chapter10-label-boxes.yml"
+      - "tools/render_chapter10_label_boxes.py"
+      - "tools/tests/test_chapter10_candidate_review.py"
+      - "app/src/main/assets/stages/chapter_10_label_boxes.candidates.json"
+      - "app/src/main/assets/stages/chapter_10.json"
+      - "app/src/main/assets/stages/item_catalogs.json"
+      - "reference/chapter_10/UPLOAD_HERE.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install image processing dependency
+        run: python -m pip install opencv-python-headless==4.10.0.84
+      - name: Download and verify the original Chapter 10 reference pair
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reference/chapter_10
+          curl --fail --location --retry 3 --retry-all-errors --silent --show-error \
+            "https://img.atwiki.jp/eden_jp/attach/46/157/%E7%AC%AC10%E7%AB%A0.jpeg" \
+            -o reference/chapter_10/annotated.jpg
+          curl --fail --location --retry 3 --retry-all-errors --silent --show-error \
+            "https://img.atwiki.jp/eden_jp/attach/46/158/%E7%AC%AC10%E7%AB%A0%E7%84%A1%E5%8A%A0%E5%B7%A5.jpeg" \
+            -o reference/chapter_10/base.jpg
+          echo "c10ffa2a046edbe6bb0b948d3a4ad27fbb3ca48fbc0898dba8709971fcc199ac  reference/chapter_10/annotated.jpg" | sha256sum --check -
+          echo "a7596c060e330d5f69b3e079a5218a00487b6b83747bfdef94d634b4a453cc55  reference/chapter_10/base.jpg" | sha256sum --check -
+          python - <<'PY'
+          from pathlib import Path
+          import cv2
+          expected = {"annotated.jpg": (2520, 2016), "base.jpg": (2496, 1404)}
+          for name, shape in expected.items():
+              image = cv2.imread(str(Path("reference/chapter_10") / name), cv2.IMREAD_COLOR)
+              assert image is not None, f"{name}: could not decode"
+              assert image.shape[:2] == shape, f"{name}: unexpected dimensions {image.shape[:2]}"
+          PY
+      - name: Run Chapter 10 coordinate review tests and validators
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tools/tests -p 'test_chapter10_candidate_review.py' -v
+          python tools/validate_ocr_catalogs.py
+          python tools/validate_stage_datasets.py
+      - name: Render aligned annotated/base coordinate comparison
+        run: python tools/render_chapter10_label_boxes.py
+      - name: Upload Chapter 10 reference and review artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter10-label-box-review
+          path: |
+            reference/chapter_10/annotated.jpg
+            reference/chapter_10/base.jpg
+            reference/chapter_10/label_box_candidates.jpg
+            reference/chapter_10/label_box_comparison.jpg
+            app/src/main/assets/stages/chapter_10_label_boxes.candidates.json
+          if-no-files-found: error
+          retention-days: 14
